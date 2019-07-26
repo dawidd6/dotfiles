@@ -1,6 +1,6 @@
 " Plug
 if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
-    silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
+    !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
         \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
@@ -25,19 +25,6 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug '907th/vim-auto-save'
     let g:auto_save=0
     let g:auto_save_events=["InsertLeave", "TextChanged"]
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-    let g:go_highlight_build_constraints = 1
-    let g:go_highlight_extra_types = 1
-    let g:go_highlight_operators = 1
-    let g:go_highlight_function_calls = 1
-    let g:go_highlight_functions = 1
-    let g:go_highlight_types = 1
-    let g:go_highlight_fields = 1
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-    let g:deoplete#enable_at_startup = 1
-    let g:python3_host_prog = '/usr/bin/python3.7'
-Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
-    let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
 Plug 'dag/vim-fish'
 call plug#end()
 
