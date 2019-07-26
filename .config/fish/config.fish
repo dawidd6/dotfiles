@@ -134,7 +134,7 @@ alias ls "ls --color=always"
 alias lsa "ls --color=always -A"
 alias vim "nvim"
 alias rm "trash"
-alias dotfiles "git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
+alias dot "git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
 
 # Abbreviations
 #####################################################
@@ -160,15 +160,14 @@ abbr de "docker exec -it"
 
 abbr g "git"
 abbr ga "git add"
-abbr gc "git commit -S -m"
-abbr gca "git commit -S --amend --no-edit"
+abbr gc "git commie"
+abbr gca "git amend"
 abbr gs "git status"
 abbr gt "git tag"
 abbr gd "git diff"
 abbr gdc "git diff --cached"
 abbr gh "git checkout"
 abbr gb "git branch -a"
-abbr gpo "git push -u origin"
 abbr gfo "git fetch origin"
 
 abbr e "exit"
