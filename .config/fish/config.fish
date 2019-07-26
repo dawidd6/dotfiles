@@ -11,6 +11,9 @@ set -x PATH \
     "/sbin:/bin" \
     "/usr/games"
 
+# Bin
+set -x PATH "$HOME/bin" $PATH
+
 # Debian
 set -x DEBFULLNAME "Dawid Dziurla"
 set -x DEBEMAIL "dawidd0811@gmail.com"
@@ -39,6 +42,9 @@ set -x PATH "$CARGO_HOME" $PATH
 
 # Bat
 set -x BAT_THEME "TwoDark"
+
+# Snap
+set -x PATH "/snap/bin" $PATH
 
 # Snapcraft
 set -x SNAPCRAFT_BUILD_ENVIRONMENT "multipass"
