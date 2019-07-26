@@ -1,0 +1,3 @@
+#!/bin/bash
+
+du -Sh "$1" | sort -rh | head -10

@@ -1,0 +1,29 @@
+[user]
+    email = dawidd0811@gmail.com
+    name = Dawid Dziurla
+    signingkey = 172E9B0B
+    username = dawidd6
+
+[alias]
+    lg = "log --graph --pretty=format:'%Cred%h%Creset %Cgreen(%cr)%Creset %C(bold blue)<%an>%Creset %s %C(yellow)%d%Creset'"
+    stat = "status -u"
+    unadd = "rm -q --cached"
+    cleanout = "!git clean -fd && git checkout -- ."
+    clone-fork = "!git-clone-fork"
+
+[color]
+    ui = auto
+[review "review.lineageos.org"]
+    username = dawidd6
+[commit]
+    gpgSign = true
+[core]
+    excludesfile = ~/.gitignore
+	pager = less -F -X
+[push]
+    default = simple
+[gpg]
+	program = gpg2
+
+[url "git@github.com:dawidd6"]
+    insteadOf = "https://github.com/dawidd6"
