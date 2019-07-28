@@ -23,7 +23,7 @@
 [commit]
     gpgSign = true
 [core]
-    excludesfile = ~/.gitignore
+    excludesfile = ~/.gitignore_global
 	pager = less -F -X
 [push]
     default = simple
