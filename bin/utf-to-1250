@@ -1,5 +1,0 @@
-#!/bin/bash
-
-if iconv -f UTF-8 -t WINDOWS-1250 "$1" &>/dev/null; then
-    iconv -f UTF-8 -t WINDOWS-1250 -o "$1" "$1"
-fi

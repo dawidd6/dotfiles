@@ -1,5 +1,0 @@
-#!/bin/bash
-
-host="$(basename "$PWD")"
-
-rsync -v --files-from=files "${host}:/" .

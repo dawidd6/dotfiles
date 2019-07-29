@@ -1,8 +1,0 @@
-#/bin/bash
-
-id="$2"
-branch="pull/$2"
-remote="$1"
-
-git fetch "$1" "pull/$id/head:$branch"
-git checkout "$branch"

@@ -1,4 +1,0 @@
-#!/bin/bash
-
-git fetch
-git branch -u "origin/$(git symbolic-ref -q --short HEAD)"
