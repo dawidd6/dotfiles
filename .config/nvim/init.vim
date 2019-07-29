@@ -9,16 +9,15 @@ let g:plug_threads=2
 
 " Plugins
 call plug#begin('~/.local/share/nvim/plugged')
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-    let g:airline#extensions#tabline#enabled=1
-    let g:airline#extensions#branch#enabled=1
-    let g:airline_powerline_fonts=0
-    let g:airline_theme='quantum'
+Plug 'itchyny/lightline.vim'
+    let g:lightline = { 'colorscheme': 'material' }
 Plug 'airblade/vim-gitgutter'
     let g:gitgutter_enabled=1
 Plug 'tyrannicaltoucan/vim-quantum'
     let g:quantum_black=1
+Plug 'kaicataldo/material.vim'
+    let g:material_theme_style='darker'
+    let g:material_terminal_italics=1
 Plug 'tpope/vim-fugitive'
 Plug 'mhinz/vim-startify'
 Plug 'ntpeters/vim-better-whitespace'
@@ -46,7 +45,7 @@ set gdefault
 
 " Appearance
 syntax on
-colorscheme quantum
+colorscheme material
 set background=dark
 set number
 set wildmenu
