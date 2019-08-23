@@ -111,6 +111,7 @@ abbr gdc "git diff --cached"
 abbr gh "git checkout"
 abbr gb "git branch -a"
 abbr gfo "git fetch origin"
+abbr gpo "git push -u origin"
 
 # Exit
 abbr e "exit"
