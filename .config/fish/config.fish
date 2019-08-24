@@ -76,6 +76,7 @@ alias rm "trash"
 # Dotfiles
 alias dotfiles "git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
 alias keys "git --git-dir=$HOME/.keys --work-tree=$HOME"
+alias keys-chmod "chmod 600 $HOME/.ssh/* $HOME/.gnupg/*"
 
 # Apt
 abbr add "sudo apt install"
