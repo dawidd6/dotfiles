@@ -29,16 +29,15 @@ set -x MANPAGER "less"
 set -x SYSTEMD_EDITOR "$EDITOR"
 alias vim "nvim"
 abbr more "less"
-abbr cat "bat"
 
 # Go
 set -x CGO_ENABLED 0
 set -x GOPATH "$HOME/.go"
-set -x PATH "$GOPATH" $PATH
+set -x PATH "$GOPATH/bin" $PATH
 
 # Rust
 set -x CARGO_HOME "$HOME/.cargo"
-set -x PATH "$CARGO_HOME" $PATH
+set -x PATH "$CARGO_HOME/bin" $PATH
 
 # Bat
 set -x BAT_THEME "TwoDark"
@@ -89,8 +88,10 @@ abbr search "apt search"
 abbr clean "sudo apt clean && sudo apt autoclean"
 abbr upgradable "apt list --upgradable"
 abbr belongs "apt-file search"
-abbr list "apt-file list"
+abbr contents "apt-file list"
 abbr show "apt show"
+abbr list "dpkg -l"
+abbr list-grep "dpkg -l | grep"
 
 # Docker
 abbr d "docker"
@@ -112,6 +113,9 @@ abbr gh "git checkout"
 abbr gb "git branch -a"
 abbr gfo "git fetch origin"
 abbr gpo "git push -u origin"
+
+# Ansible
+abbr ansible-playbook-local "ansible-playbook -K --connection local -i localhost,"
 
 # Exit
 abbr e "exit"
