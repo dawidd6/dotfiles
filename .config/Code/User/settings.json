@@ -21,8 +21,6 @@
   "linesinfostatusbar.totalDisplayFormat": "Lines: %d",
   "linesinfostatusbar.selectedDisplayFormat": " (%d selected)",
   "trailing-spaces.highlightCurrentLine": false,
-  "sync.gist": "9a6de61923cb3c2d9edbd4d22d83011e",
-  "sync.quietSync": true,
   "dart.devToolsTheme": "dark",
   "files.eol": "\n",
   "files.autoSave": "onFocusChange",
@@ -73,5 +71,9 @@
     "statusBar.debuggingBackground": "#005f5f"
   },
   "vim.debug.silent": true,
-  "window.menuBarVisibility": "toggle",
+  "[yaml]": {
+    "editor.detectIndentation": false,
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+  },
 }
