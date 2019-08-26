@@ -21,10 +21,11 @@ set -x DEBHOME "$HOME/debian"
 set -x QUILT_PATCHES "debian/patches"
 alias duscan 'docker run -it --rm -v $PWD:/workdir:ro dawidd6/debian-dev uscan --no-download -v --destdir /tmp'
 abbr dchr "dch --release --vendor debian ''"
+abbr udd-psql "env PGPASSWORD=udd-mirror psql --host=udd-mirror.debian.net --user=udd-mirror udd"
 
 # Editors and pagers
 set -x EDITOR "nvim"
-set -x PAGER "bat"
+set -x PAGER "less"
 set -x MANPAGER "less"
 set -x SYSTEMD_EDITOR "$EDITOR"
 alias vim "nvim"
@@ -32,11 +33,10 @@ abbr more "less"
 
 # Go
 set -x CGO_ENABLED 0
-set -x GOPATH "$HOME/.go"
-set -x PATH "$GOPATH/bin" $PATH
+set -x PATH "$HOME/go/bin" $PATH
 
 # Rust
-set -x CARGO_HOME "$HOME/.cargo"
+set -x CARGO_HOME "$HOME/rust"
 set -x PATH "$CARGO_HOME/bin" $PATH
 
 # Bat
