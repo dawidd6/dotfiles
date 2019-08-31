@@ -11,6 +11,10 @@ let g:plug_threads=2
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'itchyny/lightline.vim'
     let g:lightline = { 'colorscheme': 'material' }
+Plug 'mengelbrecht/lightline-bufferline'
+    let g:lightline.tabline          = {'left': [['buffers']], 'right': [[]]}
+    let g:lightline.component_expand = {'buffers': 'lightline#bufferline#buffers'}
+    let g:lightline.component_type   = {'buffers': 'tabsel'}
 Plug 'airblade/vim-gitgutter'
     let g:gitgutter_enabled=1
 Plug 'tyrannicaltoucan/vim-quantum'
@@ -61,6 +65,7 @@ set ttimeoutlen=10
 
 " Buffers
 set hidden
+set showtabline=2
 
 " Backups
 set noswapfile
