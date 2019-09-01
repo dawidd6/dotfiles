@@ -127,7 +127,7 @@ abbr fishrc "source $HOME/.config/fish/config.fish"
 abbr fishedit "$EDITOR $HOME/.config/fish/config.fish"
 
 # Clipboard
-abbr clip "xclip -selection clipboard"
+abbr clip "xsel --clipboard"
 
 # Brew
 set -x BREW_HOME "/home/linuxbrew/.linuxbrew"
