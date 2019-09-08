@@ -34,10 +34,6 @@ abbr more "less"
 # Go
 set -x PATH "$HOME/go/bin" $PATH
 
-# Rust
-set -x CARGO_HOME "$HOME/rust"
-set -x PATH "$CARGO_HOME/bin" $PATH
-
 # Bat
 set -x BAT_THEME "TwoDark"
 
@@ -72,7 +68,7 @@ abbr sl "ls"
 # Trash
 alias rm "trash"
 
-# Dotfiles
+# Dotfiles and keys
 alias dotfiles "git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
 alias keys "git --git-dir=$HOME/.keys --work-tree=$HOME"
 
@@ -104,7 +100,7 @@ abbr g "git"
 abbr ga "git add"
 abbr gc "git commie"
 abbr gca "git amend"
-abbr gs "git status"
+abbr gs "git stat"
 abbr gt "git tag"
 abbr gd "git diff"
 abbr gdc "git diff --cached"
@@ -177,7 +173,7 @@ function fish_prompt
 
         if test -n "$gstash"
             set_color --bold yellow
-            echo -n "$gstash "
+            echo -n "stash "
         end
 
         if test -n "$gtag"
