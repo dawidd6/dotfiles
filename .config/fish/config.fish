@@ -64,6 +64,9 @@ set fish_color_normal normal
 set fish_color_comment brblack
 set fish_color_quote yellow
 
+# Sudo
+alias sudo 'sudo -E env PATH="$PATH"'
+
 # Listing
 alias ls "ls --color=always"
 alias lsa "ls --color=always -A"
@@ -129,11 +132,12 @@ abbr fishedit "$EDITOR $HOME/.config/fish/config.fish"
 # Clipboard
 abbr clip "xsel --clipboard"
 
-# Brew
-set -x BREW_HOME "/home/linuxbrew/.linuxbrew"
-if test -d "$BREW_HOME"
-    eval ("$BREW_HOME/bin/brew" shellenv)
-    set fish_complete_path "$BREW_HOME/share/fish/vendor_completions.d" $fish_complete_path
+# Homebrew
+set -x HOMEBREW_PREFIX "/home/linuxbrew/.linuxbrew"
+set -x HOMEBREW_NO_EMOJI 1
+if test -d "$HOMEBREW_PREFIX"
+    eval ("$HOMEBREW_PREFIX/bin/brew" shellenv)
+    set fish_complete_path "$HOMEBREW_PREFIX/share/fish/vendor_completions.d" $fish_complete_path
 end
 
 # Prompt
