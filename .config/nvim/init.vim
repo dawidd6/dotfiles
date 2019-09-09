@@ -25,10 +25,8 @@ Plug 'kaicataldo/material.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'mhinz/vim-startify'
 Plug 'ntpeters/vim-better-whitespace'
-Plug '907th/vim-auto-save'
-    let g:auto_save=0
-    let g:auto_save_events=["InsertLeave", "TextChanged"]
 Plug 'dag/vim-fish'
+Plug 'xu-cheng/brew.vim'
 call plug#end()
 
 " Indent
@@ -90,3 +88,6 @@ nnoremap <C-u> :e ++enc=utf-8<CR>
 
 " YAML
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+
+" Ruby
+autocmd FileType ruby setlocal ts=2 sts=2 sw=2 expandtab
