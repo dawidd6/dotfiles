@@ -13,6 +13,7 @@
     unadd = "rm -q --cached"
     cleanout = "!git clean -fd && git checkout -- ."
     clone-fork = "!git-clone-fork"
+    prune-local-branches = "!git branch --merged master | grep -v '^[ *]*master$' | xargs -r git branch -d"
     commie = "commit -S -m"
     ls = "ls-tree -r --name-only HEAD"
     puss = "push -u origin"
