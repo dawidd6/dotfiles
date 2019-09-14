@@ -68,6 +68,11 @@
     "editor.tabSize": 2,
     "editor.insertSpaces": true,
   },
+  "[ruby]": {
+    "editor.detectIndentation": false,
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+  },
   "todo-tree.highlights.defaultHighlight": {
     "icon": "alert",
     "type": "text",
