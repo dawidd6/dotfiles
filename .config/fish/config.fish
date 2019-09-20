@@ -14,6 +14,8 @@ set -gx FLUTTER_ROOT "$HOME/.flutter"
 set -gx ELECTRON_TRASH "gvfs-trash"
 set -gx HOMEBREW_PREFIX "/home/linuxbrew/.linuxbrew"
 set -gx HOMEBREW_NO_EMOJI 1
+set -gx HOMEBREW_UPDATE_TO_TAG 1
+set -gx HOMEBREW_NO_BOTTLE_SOURCE_FALLBACK 1
 set -gx PATH \
     "$HOME/bin" \
     "$HOME/go/bin" \
