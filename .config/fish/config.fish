@@ -15,7 +15,11 @@ set -gx ELECTRON_TRASH "gvfs-trash"
 set -gx HOMEBREW_PREFIX "/home/linuxbrew/.linuxbrew"
 set -gx HOMEBREW_NO_EMOJI 1
 set -gx HOMEBREW_UPDATE_TO_TAG 1
+set -gx HOMEBREW_DEVELOPER 1
+set -gx HOMEBREW_NO_AUTO_UPDATE 1
 set -gx HOMEBREW_NO_BOTTLE_SOURCE_FALLBACK 1
+set -gx HOMEBREW_BINTRAY_USER "$USER"
+set -gx HOMEBREW_BINTRAY_KEY (cat $HOME/.bintray)
 set -gx PATH \
     "$HOME/bin" \
     "$HOME/go/bin" \
@@ -73,6 +77,8 @@ abbr gd "git diff"
 abbr gdc "git diff --cached"
 abbr gh "git checkout"
 abbr gb "git branch -a"
+abbr gf "git fetch"
+abbr gp "git push"
 abbr gfo "git fetch origin"
 abbr gpo "git push -u origin"
 abbr ansible-playbook-local "ansible-playbook -K --connection local -i localhost,"
@@ -80,6 +86,9 @@ abbr suspend "systemctl suspend"
 abbr fishrc "source $HOME/.config/fish/config.fish"
 abbr fishedit "$EDITOR $HOME/.config/fish/config.fish"
 abbr clip "xsel --clipboard"
+abbr brew-cd-core "cd (brew --repository homebrew/core)"
+abbr brew-cd-tap "cd (brew --repository $USER/tap)"
+abbr brew-pull-linux-core "brew pull --bottle --bintray-org=linuxbrew --test-bot-user=LinuxbrewTestBot"
 
 # Colors
 set fish_color_command green
