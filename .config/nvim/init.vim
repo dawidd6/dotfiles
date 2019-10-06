@@ -5,8 +5,6 @@ if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
     autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-let g:plug_threads=2
-
 " Plugins
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'itchyny/lightline.vim'
@@ -25,10 +23,6 @@ Plug 'kaicataldo/material.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'mhinz/vim-startify'
 Plug 'ntpeters/vim-better-whitespace'
-Plug 'roxma/vim-paste-easy'
-Plug '907th/vim-auto-save'
-    let g:auto_save=0
-    let g:auto_save_events=["InsertLeave", "TextChanged"]
 Plug 'dag/vim-fish'
 call plug#end()
 
@@ -77,7 +71,7 @@ set nowritebackup
 filetype plugin on
 set nocompatible
 set backspace=indent,eol,start
-set clipboard=unnamedplus
+set clipboard=unnamed,unnamedplus
 set visualbell
 set autoread
 set encoding=utf8
@@ -94,3 +88,10 @@ autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
 " Ruby
 autocmd FileType ruby setlocal ts=2 sts=2 sw=2 expandtab
+
+" Delete, don't cut
+nnoremap x "_x
+nnoremap X "_X
+nnoremap d "_d
+nnoremap D "_D
+vnoremap d "_d
