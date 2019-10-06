@@ -13,6 +13,7 @@ set -gx ANDROID_HOME "$HOME/android/sdk"
 set -gx FLUTTER_ROOT "$HOME/.flutter"
 set -gx ELECTRON_TRASH "gvfs-trash"
 set -gx HOMEBREW_PREFIX "/home/linuxbrew/.linuxbrew"
+set -gx HOMEBREW_BAT 1
 set -gx HOMEBREW_NO_EMOJI 1
 set -gx HOMEBREW_UPDATE_TO_TAG 1
 set -gx HOMEBREW_DEVELOPER 1
@@ -20,6 +21,7 @@ set -gx HOMEBREW_NO_AUTO_UPDATE 1
 set -gx HOMEBREW_NO_BOTTLE_SOURCE_FALLBACK 1
 set -gx HOMEBREW_BINTRAY_USER "$USER"
 set -gx HOMEBREW_BINTRAY_KEY (cat $HOME/.bintray)
+set -gx HOMEBREW_GITHUB_API_TOKEN (cat $HOME/.github)
 set -gx PATH \
     "$HOME/bin" \
     "$HOME/go/bin" \
@@ -90,8 +92,9 @@ abbr b "brew"
 abbr bi "brew install"
 abbr bu "brew update"
 abbr be "brew edit"
-abbr brew-core "cd (brew --repository homebrew/core)"
-abbr brew-tap "cd (brew --repository $USER/tap)"
+abbr brew-docker "docker run -it --rm -v (brew --repository homebrew/core):(brew --repository homebrew/core):ro -e HOMEBREW_DEVELOPER=1 -e HOMEBREW_NO_AUTO_UPDATE=1 linuxbrew/brew"
+abbr brew-cd-tap "cd (brew --repository $USER/tap)"
+abbr brew-cd-core "cd (brew --repository homebrew/core)"
 
 # Colors
 set fish_color_command green
