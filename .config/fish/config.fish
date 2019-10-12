@@ -144,6 +144,7 @@ function fish_prompt
         set -l gstash (git stash list 2>/dev/null)
         set -l gtag (git tag --points-at HEAD 2>/dev/null)
         set -l gbranch (git symbolic-ref -q --short HEAD)
+        set -l gahead (git rev-list --count @{u}.. 2>/dev/null)
         set -l gstatus (git status -s 2>/dev/null)
 
         if "$gbare"
@@ -164,6 +165,11 @@ function fish_prompt
         if test -n "$gbranch"
             set_color --bold cyan
             echo -n "$gbranch "
+        end
+
+        if test -n "$gahead" && test "$gahead" -gt 0
+            set_color --bold brred
+            echo -n "⇡ $gahead "
         end
 
         if test -z "$gstatus"
