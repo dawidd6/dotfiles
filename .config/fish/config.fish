@@ -95,7 +95,6 @@ abbr b "brew"
 abbr bi "brew install"
 abbr bu "brew update"
 abbr be "brew edit"
-abbr brew-docker "docker run -it --rm -v (brew --repository homebrew/core):(brew --repository homebrew/core):ro -e HOMEBREW_DEVELOPER=1 -e HOMEBREW_NO_AUTO_UPDATE=1 linuxbrew/brew"
 abbr brew-cd-tap "cd (brew --repository $USER/tap)"
 abbr brew-cd-core "cd (brew --repository homebrew/core)"
 
