@@ -1,81 +1,55 @@
-# GTK no CSD
-if test -f "/usr/lib/x86_64-linux-gnu/libgtk3-nocsd.so.0"
-    set -x GTK_CSD 0
-    set -x LD_PRELOAD "/usr/lib/x86_64-linux-gnu/libgtk3-nocsd.so.0"
-end
-
-# PATH
-set -x PATH \
-    "/usr/local/sbin:/usr/local/bin" \
-    "/usr/sbin:/usr/bin" \
-    "/sbin:/bin" \
+# Exports
+set -gx DEBFULLNAME "Dawid Dziurla"
+set -gx DEBEMAIL "dawidd0811@gmail.com"
+set -gx DEBHOME "$HOME/debian"
+set -gx QUILT_PATCHES "debian/patches"
+set -gx EDITOR "nvim"
+set -gx PAGER "less"
+set -gx MANPAGER "less"
+set -gx SYSTEMD_EDITOR "$EDITOR"
+set -gx BAT_THEME "TwoDark"
+set -gx SNAPCRAFT_BUILD_ENVIRONMENT "multipass"
+set -gx ANDROID_HOME "$HOME/android/sdk"
+set -gx FLUTTER_ROOT "$HOME/.flutter"
+set -gx ELECTRON_TRASH "gvfs-trash"
+set -gx HOMEBREW_PREFIX "/home/linuxbrew/.linuxbrew"
+set -gx HOMEBREW_BAT 1
+set -gx HOMEBREW_NO_EMOJI 1
+set -gx HOMEBREW_UPDATE_TO_TAG 1
+set -gx HOMEBREW_DEVELOPER 1
+set -gx HOMEBREW_NO_AUTO_UPDATE 1
+set -gx HOMEBREW_NO_BOTTLE_SOURCE_FALLBACK 1
+set -gx HOMEBREW_BINTRAY_USER "$USER"
+set -gx HOMEBREW_BINTRAY_KEY (cat $HOME/.bintray)
+set -gx HOMEBREW_GITHUB_API_TOKEN (cat $HOME/.github)
+set -gx PATH \
+    "$HOME/bin" \
+    "$HOME/go/bin" \
+    "$HOMEBREW_PREFIX/bin" \
+    "/usr/local/sbin" \
+    "/usr/local/bin" \
+    "/usr/sbin" \
+    "/usr/bin" \
+    "/sbin" \
+    "/bin" \
     "/usr/games"
 
-# Bin
-set -x PATH "$HOME/bin" $PATH
-
-# Debian
-set -x DEBFULLNAME "Dawid Dziurla"
-set -x DEBEMAIL "dawidd0811@gmail.com"
-set -x DEBHOME "$HOME/debian"
-set -x QUILT_PATCHES "debian/patches"
+# Aliases
 alias duscan 'docker run -it --rm -v $PWD:/workdir:ro dawidd6/debian-dev uscan --no-download -v --destdir /tmp'
-abbr dchr "dch --release --vendor debian ''"
-abbr udd-psql "env PGPASSWORD=udd-mirror psql --host=udd-mirror.debian.net --user=udd-mirror udd"
-
-# Editors and pagers
-set -x EDITOR "nvim"
-set -x PAGER "less"
-set -x MANPAGER "less"
-set -x SYSTEMD_EDITOR "$EDITOR"
+alias sudo "sudo -s"
 alias vim "nvim"
-abbr more "less"
-
-# Go
-set -x PATH "$HOME/go/bin" $PATH
-
-# Bat
-set -x BAT_THEME "TwoDark"
-
-# Snap
-set -x PATH "/snap/bin" $PATH
-
-# Snapcraft
-set -x SNAPCRAFT_BUILD_ENVIRONMENT "multipass"
-
-# Android
-set -x ANDROID_HOME "$HOME/android/sdk"
-
-# Flutter
-set -x FLUTTER_ROOT "$HOME/.flutter"
-
-# Electron
-set -x ELECTRON_TRASH "gvfs-trash"
-
-# Colors
-set fish_color_command green
-set fish_color_param normal
-set fish_color_error red --bold
-set fish_color_normal normal
-set fish_color_comment brblack
-set fish_color_quote yellow
-
-# Sudo
-alias sudo 'sudo -E env PATH="$PATH"'
-
-# Listing
 alias ls "ls --color=always"
 alias lsa "ls --color=always -A"
-abbr sl "ls"
-
-# Trash
 alias rm "trash"
-
-# Dotfiles and keys
 alias dotfiles "git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
 alias keys "git --git-dir=$HOME/.keys --work-tree=$HOME"
 
-# Apt
+# Abbreviations
+abbr dchr "dch --release --vendor debian ''"
+abbr udd-psql "env PGPASSWORD=udd-mirror psql --host=udd-mirror.debian.net --user=udd-mirror udd"
+abbr e "exit"
+abbr more "less"
+abbr sl "ls"
 abbr add "sudo apt install"
 abbr src "apt source"
 abbr purge "sudo apt remove --purge"
@@ -90,50 +64,51 @@ abbr contents "apt-file list"
 abbr show "apt show"
 abbr list "dpkg -l"
 abbr list-grep "dpkg -l | grep"
-
-# Docker
 abbr d "docker"
 abbr dr "docker run -it --rm"
 abbr di "docker images"
 abbr dp "docker ps -a"
 abbr de "docker exec -it"
-
-# Git
 abbr g "git"
 abbr ga "git add"
 abbr gc "git commie"
 abbr gca "git amend"
+abbr gcae "git amend-edit"
 abbr gs "git stat"
 abbr gt "git tag"
 abbr gd "git diff"
 abbr gdc "git diff --cached"
 abbr gh "git checkout"
+abbr ghm "git checkout master"
 abbr gb "git branch -a"
+abbr gf "git fetch"
+abbr gp "git push"
 abbr gfo "git fetch origin"
-abbr gpo "git push -u origin"
-
-# Ansible
+abbr gpo "git push origin -u"
+abbr gpu "git pull origin"
 abbr ansible-playbook-local "ansible-playbook -K --connection local -i localhost,"
-
-# Exit
-abbr e "exit"
-
-# Systemd
 abbr suspend "systemctl suspend"
-
-# Fish
 abbr fishrc "source $HOME/.config/fish/config.fish"
 abbr fishedit "$EDITOR $HOME/.config/fish/config.fish"
-
-# Clipboard
 abbr clip "xsel --clipboard"
+abbr b "brew"
+abbr bi "brew install"
+abbr bu "brew update"
+abbr be "brew edit"
+abbr brew-cd-tap "cd (brew --repository $USER/tap)"
+abbr brew-cd-core "cd (brew --repository homebrew/core)"
+
+# Colors
+set fish_color_command green
+set fish_color_param normal
+set fish_color_error red --bold
+set fish_color_normal normal
+set fish_color_comment brblack
+set fish_color_quote yellow
 
 # Homebrew
-set -x HOMEBREW_PREFIX "/home/linuxbrew/.linuxbrew"
-set -x HOMEBREW_NO_EMOJI 1
-if test -d "$HOMEBREW_PREFIX"
+if test -d "$HOMEBREW_PREFIX" && test (id -u) -ne 0
     eval ("$HOMEBREW_PREFIX/bin/brew" shellenv)
-    set fish_complete_path "$HOMEBREW_PREFIX/share/fish/vendor_completions.d" $fish_complete_path
 end
 
 # Prompt
@@ -168,6 +143,7 @@ function fish_prompt
         set -l gstash (git stash list 2>/dev/null)
         set -l gtag (git tag --points-at HEAD 2>/dev/null)
         set -l gbranch (git symbolic-ref -q --short HEAD)
+        set -l gahead (git rev-list --count @{u}.. 2>/dev/null)
         set -l gstatus (git status -s 2>/dev/null)
 
         if "$gbare"
@@ -188,6 +164,11 @@ function fish_prompt
         if test -n "$gbranch"
             set_color --bold cyan
             echo -n "$gbranch "
+        end
+
+        if test -n "$gahead" && test "$gahead" -gt 0
+            set_color --bold brred
+            echo -n "⇡ $gahead "
         end
 
         if test -z "$gstatus"
