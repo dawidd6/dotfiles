@@ -83,6 +83,8 @@ nnoremap . :bn<CR>
 nnoremap , :bp<CR>
 nnoremap <C-c> :e ++enc=cp1250<CR>
 nnoremap <C-u> :e ++enc=utf-8<CR>
+" Trim whitespace
+nnoremap <F12> :%s/\s\+$//e<CR>
 
 " YAML
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
