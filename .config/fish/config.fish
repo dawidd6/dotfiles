@@ -15,7 +15,7 @@ set -gx ELECTRON_TRASH "gvfs-trash"
 set -gx HOMEBREW_PREFIX "/home/linuxbrew/.linuxbrew"
 set -gx HOMEBREW_BAT 1
 set -gx HOMEBREW_NO_EMOJI 1
-set -gx HOMEBREW_UPDATE_TO_TAG 1
+#set -gx HOMEBREW_UPDATE_TO_TAG 1
 set -gx HOMEBREW_DEVELOPER 1
 set -gx HOMEBREW_NO_AUTO_UPDATE 1
 set -gx HOMEBREW_NO_BOTTLE_SOURCE_FALLBACK 1
@@ -149,6 +149,7 @@ function fish_prompt
         set -l gtag (git tag --points-at HEAD 2>/dev/null)
         set -l gbranch (git symbolic-ref -q --short HEAD)
         set -l gahead (git rev-list --count '@{u}..' 2>/dev/null)
+        set -l gbehind (git rev-list --count '..@{u}' 2>/dev/null)
         set -l gstatus (git status -s 2>/dev/null)
 
         if "$gbare"
@@ -174,6 +175,11 @@ function fish_prompt
         if test -n "$gahead" && test "$gahead" -gt 0
             set_color --bold brred
             echo -n "⇡ $gahead "
+        end
+
+        if test -n "$gbehind" && test "$gbehind" -gt 0
+            set_color --bold brred
+            echo -n "⇣ $gbehind "
         end
 
         if test -z "$gstatus"
