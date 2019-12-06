@@ -9,6 +9,7 @@ set -gx MANPAGER "less"
 set -gx SYSTEMD_EDITOR "$EDITOR"
 set -gx BAT_THEME "TwoDark"
 set -gx SNAPCRAFT_BUILD_ENVIRONMENT "multipass"
+set -gx GEM_HOME "$HOME/.gem"
 set -gx ANDROID_HOME "$HOME/android/sdk"
 set -gx FLUTTER_ROOT "$HOME/.flutter"
 set -gx ELECTRON_TRASH "gvfs-trash"
@@ -25,6 +26,7 @@ set -gx HOMEBREW_GITHUB_API_TOKEN (cat $HOME/.github)
 set -gx PATH \
     "$HOME/bin" \
     "$HOME/go/bin" \
+    "$GEM_HOME/bin" \
     "$HOMEBREW_PREFIX/bin" \
     "/usr/local/sbin" \
     "/usr/local/bin" \
