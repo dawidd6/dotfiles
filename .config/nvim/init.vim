@@ -25,6 +25,7 @@ Plug 'mhinz/vim-startify'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'dag/vim-fish'
 Plug 'xu-cheng/brew.vim'
+Plug 'ajh17/VimCompletesMe'
 call plug#end()
 
 " Indent
