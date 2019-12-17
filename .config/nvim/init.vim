@@ -25,7 +25,14 @@ Plug 'mhinz/vim-startify'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'dag/vim-fish'
 Plug 'xu-cheng/brew.vim'
-Plug 'ajh17/VimCompletesMe'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+    let g:deoplete#enable_at_startup = 1
+Plug 'SirVer/ultisnips'
+    let g:UltiSnipsExpandTrigger="<tab>"
+    let g:UltiSnipsJumpForwardTrigger="<c-b>"
+    let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+    let g:UltiSnipsEditSplit="vertical"
+Plug 'honza/vim-snippets'
 call plug#end()
 
 " Indent
@@ -78,6 +85,7 @@ set visualbell
 set autoread
 set encoding=utf8
 set completeopt-=preview
+set nofixendofline
 
 " Key bindings
 nnoremap . :bn<CR>
