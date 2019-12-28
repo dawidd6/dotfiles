@@ -1,6 +1,6 @@
 snippet resource "Homebrew resource block" b
-resource "" do
-	url ""
-	sha256 ""
+resource "${1:name}" do
+	url "${2:url}"
+	sha256 "${3:sha}"
 end
 endsnippet
