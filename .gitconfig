@@ -17,6 +17,7 @@
     amend = "commit -S --amend --no-edit"
     amend-edit = "commit -S --amend --edit"
     cleanout = "!read -p '==> Clean?' var && git clean -fd && git checkout -- ."
+    fix-commit-rebase = "!f(){git commit --fixup $1 && git rebase -i --autosquash $1~1}; f"
     prune-local-branches = "!git branch --merged master | grep -v '^[ *]*master$' | xargs -r git branch -d"
 [color]
     ui = auto
@@ -28,7 +29,7 @@
     excludesfile = ~/.gitignore_global
     pager = diff-so-fancy | less --tabs=4 -RFX
 [push]
-    default = simple
+    default = upstream
     followTags = true
 [url "git@github.com:dawidd6"]
     insteadOf = "https://github.com/dawidd6"
