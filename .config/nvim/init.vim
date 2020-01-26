@@ -33,6 +33,9 @@ Plug 'SirVer/ultisnips'
     let g:UltiSnipsJumpBackwardTrigger="<c-z>"
     let g:UltiSnipsEditSplit="vertical"
 Plug 'honza/vim-snippets'
+Plug 'rhysd/conflict-marker.vim'
+    let g:conflict_marker_begin = '^<<<<<<< .*$'
+    let g:conflict_marker_end   = '^>>>>>>> .*$'
 call plug#end()
 
 " Indent
