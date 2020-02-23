@@ -4,3 +4,20 @@ resource "${1:name}" do
 	sha256 "${3:sha}"
 end
 endsnippet
+
+snippet uses "uses_from_macos line" b
+uses_from_macos "${1:formula}"
+endsnippet
+
+snippet rev "revision line"
+revision ${1:number}
+endsnippet
+
+snippet unless "unless OS.mac? line"
+unless OS.mac?
+endsnippet
+
+snippet ternary "ternary OS.mac? line"
+OS.mac? ? "${1:true}" : "${2:false}"
+endsnippet
+
