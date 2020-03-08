@@ -108,6 +108,7 @@ abbr snapshot-create "sudo lvcreate --snapshot --name=root_snapshot --size 30G /
 abbr snapshot-remove "sudo lvremove /dev/ubuntu-vg/root_snapshot"
 abbr snapshot-restore "sudo lvconvert --merge /dev/ubuntu-vg/root_snapshot"
 abbr snapshot-list "sudo lvs | awk 'NR==1; /snapshot/'"
+abbr hub "gh"
 
 # Colors
 set fish_color_command green
