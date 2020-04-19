@@ -14,6 +14,7 @@ set -gx GEM_HOME "$HOME/.gem"
 set -gx ANDROID_HOME "$HOME/android/sdk"
 set -gx FLUTTER_ROOT "$HOME/.flutter"
 set -gx ELECTRON_TRASH "gvfs-trash"
+set -gx GOOGLE_APPLICATION_CREDENTIALS $HOME/.projekt-zespolony-firebase-adminsdk-go118-90fe9ed507.json
 set -gx HOMEBREW_PREFIX "/home/linuxbrew/.linuxbrew"
 set -gx HOMEBREW_BAT 1
 set -gx HOMEBREW_NO_EMOJI 1
@@ -40,7 +41,7 @@ set -gx PATH \
 
 # Aliases
 alias duscan 'docker run -it --rm -v $PWD:/workdir:ro dawidd6/debian-dev uscan --no-download -v --destdir /tmp'
-alias sudo "sudo -s"
+alias sudo "sudo -s -E"
 alias vim "nvim"
 alias ls "ls --color=always"
 alias lsa "ls --color=always -A"
