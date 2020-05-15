@@ -45,4 +45,4 @@
     new = green bold
     whitespace = red reverse
 [format]
-	pretty = fuller
+    pretty = fuller
