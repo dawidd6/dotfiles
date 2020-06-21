@@ -17,13 +17,10 @@ set -gx ELECTRON_TRASH "gvfs-trash"
 set -gx GOOGLE_APPLICATION_CREDENTIALS $HOME/.projekt-zespolony-firebase-adminsdk-go118-90fe9ed507.json
 set -gx GPG_TTY (tty)
 set -gx GREP_OPTIONS "--color=always"
-set -gx HOMEBREW_PREFIX "/home/linuxbrew/.linuxbrew"
 set -gx HOMEBREW_BAT 1
 set -gx HOMEBREW_NO_EMOJI 1
-#set -gx HOMEBREW_UPDATE_TO_TAG 1
 set -gx HOMEBREW_DEVELOPER 1
 set -gx HOMEBREW_NO_AUTO_UPDATE 1
-set -gx HOMEBREW_NO_BOTTLE_SOURCE_FALLBACK 1
 set -gx HOMEBREW_BINTRAY_USER "$USER"
 set -gx HOMEBREW_BINTRAY_KEY (cat $HOME/.bintray)
 set -gx HOMEBREW_GITHUB_USER "$USER"
@@ -32,7 +29,6 @@ set -gx PATH \
     "$HOME/bin" \
     "$HOME/go/bin" \
     "$GEM_HOME/bin" \
-    "$HOMEBREW_PREFIX/bin" \
     "/usr/local/sbin" \
     "/usr/local/bin" \
     "/usr/sbin" \
@@ -119,10 +115,8 @@ set fish_color_normal normal
 set fish_color_comment brblack
 set fish_color_quote yellow
 
-# Homebrew
-if test -d "$HOMEBREW_PREFIX" && test (id -u) -ne 0
-    eval ("$HOMEBREW_PREFIX/bin/brew" shellenv)
-end
+# Homebrew on Linux
+test -d /home/linuxbrew/.linuxbrew && test (id -u) -ne 0 && eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 
 # Prompt
 function fish_prompt
