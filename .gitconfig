@@ -31,8 +31,6 @@
     followTags = true
 [url "git@github.com:dawidd6"]
     insteadOf = "https://github.com/dawidd6"
-[url "git@github.com:Homebrew"]
-    insteadOf = "https://github.com/Homebrew"
 [color "diff-highlight"]
     oldNormal = red bold
     oldHighlight = red bold 52
@@ -47,3 +45,5 @@
     whitespace = red reverse
 [format]
     pretty = fuller
+[pull]
+	rebase = true
