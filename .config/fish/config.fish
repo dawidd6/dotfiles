@@ -16,7 +16,6 @@ set -gx FLUTTER_ROOT "$HOME/.flutter"
 set -gx ELECTRON_TRASH "gvfs-trash"
 set -gx GOOGLE_APPLICATION_CREDENTIALS $HOME/.projekt-zespolony-firebase-adminsdk-go118-90fe9ed507.json
 set -gx GPG_TTY (tty)
-set -gx GREP_OPTIONS "--color=always"
 set -gx HOMEBREW_BAT 1
 set -gx HOMEBREW_NO_EMOJI 1
 set -gx HOMEBREW_DEVELOPER 1
@@ -41,6 +40,7 @@ set -gx PATH \
 alias duscan 'docker run -it --rm -v $PWD:/workdir:ro dawidd6/debian-dev uscan --no-download -v --destdir /tmp'
 alias sudo "sudo -s -E"
 alias vim "nvim"
+alias ls "ls --color"
 alias lsa "ls -A"
 alias rm "trash"
 alias dotfiles "git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
