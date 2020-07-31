@@ -37,6 +37,13 @@ set -gx PATH \
     "/bin" \
     "/usr/games"
 
+# macOS
+if test "$SHELL" = "/usr/local/bin/fish"
+    # GNU coreutils
+    set -gx PATH "/usr/local/opt/coreutils/libexec/gnubin" "$PATH"
+    set -gx MANPATH "/usr/local/opt/coreutils/libexec/gnuman" "$MANPATH"
+end
+
 # Aliases
 alias duscan 'docker run -it --rm -v $PWD:/workdir:ro dawidd6/debian-dev uscan --no-download -v --destdir /tmp'
 alias sudo "sudo -s -E"
