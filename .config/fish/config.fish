@@ -114,6 +114,9 @@ abbr snapshot-create "sudo lvcreate --snapshot --name=root_snapshot --size 30G /
 abbr snapshot-remove "sudo lvremove /dev/ubuntu-vg/root_snapshot"
 abbr snapshot-restore "sudo lvconvert --merge /dev/ubuntu-vg/root_snapshot"
 abbr snapshot-list "sudo lvs | awk 'NR==1; /snapshot/'"
+abbr plex-huh "systemctl status plexmediaserver.service"
+abbr plex-on "sudo systemctl start plexmediaserver.service"
+abbr plex-off "sudo systemctl stop plexmediaserver.service"
 
 # Colors
 set fish_color_command green
