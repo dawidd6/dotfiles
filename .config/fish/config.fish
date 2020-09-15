@@ -37,11 +37,18 @@ set -gx PATH \
     "/bin" \
     "/usr/games"
 
-# macOS
-if test "$SHELL" = "/usr/local/bin/fish"
+# Homebrew (macOS or Linux)
+if test -e /usr/local/bin/brew
     # GNU coreutils
-    set -gx PATH "/usr/local/opt/coreutils/libexec/gnubin" "$PATH"
-    set -gx MANPATH "/usr/local/opt/coreutils/libexec/gnuman" "$MANPATH"
+    set -gx PATH /usr/local/opt/coreutils/libexec/gnubin $PATH
+    set -gx MANPATH /usr/local/opt/coreutils/libexec/gnuman $MANPATH
+else if test -e /home/linuxbrew/.linuxbrew/bin/brew
+    # Can't run Homebrew as root
+    if test (id -u) -eq 0
+        set -gx PATH /home/linuxbrew/.linuxbrew/bin $PATH
+    else
+        eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+    end
 end
 
 # Aliases
@@ -125,9 +132,6 @@ set fish_color_error red --bold
 set fish_color_normal normal
 set fish_color_comment brblack
 set fish_color_quote yellow
-
-# Homebrew on Linux
-test -d /home/linuxbrew/.linuxbrew && test (id -u) -ne 0 && eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 
 # Prompt
 function fish_prompt
