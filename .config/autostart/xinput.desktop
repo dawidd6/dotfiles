@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Exec=xinput disable "PS/2 Generic Mouse"
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name[en_US]=disable trackpoint
+Name=disable trackpoint
+Comment[en_US]=
+Comment=
