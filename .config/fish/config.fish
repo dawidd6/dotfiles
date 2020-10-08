@@ -43,10 +43,7 @@ if test -e /usr/local/bin/brew
     set -gx PATH /usr/local/opt/coreutils/libexec/gnubin $PATH
     set -gx MANPATH /usr/local/opt/coreutils/libexec/gnuman $MANPATH
 else if test -e /home/linuxbrew/.linuxbrew/bin/brew
-    # Can't run Homebrew as root
-    if test (id -u) -eq 0
-        set -gx PATH /home/linuxbrew/.linuxbrew/bin $PATH
-    else
+    if test (id -u) -ne 0
         eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
     end
 end
