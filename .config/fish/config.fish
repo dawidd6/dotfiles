@@ -49,8 +49,8 @@ else if test -e /home/linuxbrew/.linuxbrew/bin/brew
 end
 
 # Aliases
+alias sudo "sudo env \"PATH=$PATH\""
 alias duscan 'docker run -it --rm -v $PWD:/workdir:ro dawidd6/debian-dev uscan --no-download -v --destdir /tmp'
-alias sudo "sudo -s -E"
 alias vim "nvim"
 alias ls "ls --color"
 alias lsa "ls -A"
