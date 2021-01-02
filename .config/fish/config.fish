@@ -29,24 +29,17 @@ set -gx PATH \
     "$HOME/bin" \
     "$HOME/go/bin" \
     "$GEM_HOME/bin" \
+    "/snap/bin" \
     "/usr/local/sbin" \
     "/usr/local/bin" \
     "/usr/sbin" \
     "/usr/bin" \
     "/sbin" \
     "/bin" \
-    "/usr/games"
-
-# Homebrew (macOS or Linux)
-if test -e /usr/local/bin/brew
-    # GNU coreutils
-    set -gx PATH /usr/local/opt/coreutils/libexec/gnubin $PATH
-    set -gx MANPATH /usr/local/opt/coreutils/libexec/gnuman $MANPATH
-else if test -e /home/linuxbrew/.linuxbrew/bin/brew
-    if test (id -u) -ne 0
-        eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-    end
-end
+    "/usr/games" \
+    "/home/linuxbrew/.linuxbrew/bin" \
+    "/home/linuxbrew/.linuxbrew/sbin"
+set -gx MANPATH "/home/linuxbrew/.linuxbrew/share/man" ""
 
 # Aliases
 alias sudo "sudo env \"PATH=$PATH\""
