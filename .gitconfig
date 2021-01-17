@@ -18,35 +18,27 @@
     prune-local-branches = "!git branch --merged master | grep -v '^[ *]*master$' | xargs -r git branch -d"
 [color]
     ui = auto
-[review "review.lineageos.org"]
-    username = dawidd6
 [commit]
     gpgSign = true
 [core]
     autocrlf = input
     excludesfile = ~/.gitignore_global
-    pager = diff-so-fancy | less --tabs=4 -RFX
+    pager = delta
 	editor = nvim
+[format]
+    pretty = fuller
 [push]
     default = upstream
     followTags = true
+[pull]
+	rebase = true
+[diff]
+    colorMoved = default
 [url "git@github.com:dawidd6"]
     pushInsteadOf = "https://github.com/dawidd6"
 [url "git@github.com:Homebrew"]
     pushInsteadOf = "https://github.com/Homebrew"
-[color "diff-highlight"]
-    oldNormal = red bold
-    oldHighlight = red bold 52
-    newNormal = green bold
-    newHighlight = green bold 22
-[color "diff"]
-    meta = 11
-    frag = magenta bold
-    commit = yellow bold
-    old = red bold
-    new = green bold
-    whitespace = red reverse
-[format]
-    pretty = fuller
-[pull]
-	rebase = true
+[interactive]
+    diffFilter = delta --color-only
+[delta]
+    line-numbers = true
