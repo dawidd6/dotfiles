@@ -26,6 +26,7 @@
     autocrlf = input
     excludesfile = ~/.gitignore_global
     pager = diff-so-fancy | less --tabs=4 -RFX
+	editor = nvim
 [push]
     default = upstream
     followTags = true
