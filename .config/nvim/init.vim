@@ -8,14 +8,18 @@ endif
 " Plugins
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'itchyny/lightline.vim'
-    let g:lightline = { 'colorscheme': 'gruvbox' }
+    let g:lightline = { 'colorscheme': 'material' }
 Plug 'mengelbrecht/lightline-bufferline'
     let g:lightline.tabline          = {'left': [['buffers']], 'right': [[]]}
     let g:lightline.component_expand = {'buffers': 'lightline#bufferline#buffers'}
     let g:lightline.component_type   = {'buffers': 'tabsel'}
 Plug 'airblade/vim-gitgutter'
     let g:gitgutter_enabled=1
-Plug 'morhetz/gruvbox'
+Plug 'tyrannicaltoucan/vim-quantum'
+    let g:quantum_black=1
+Plug 'kaicataldo/material.vim'
+    let g:material_theme_style='darker'
+    let g:material_terminal_italics=1
 Plug 'tpope/vim-fugitive'
 Plug 'mhinz/vim-startify'
 Plug 'ntpeters/vim-better-whitespace'
@@ -52,7 +56,7 @@ set gdefault
 
 " Appearance
 syntax on
-colorscheme gruvbox
+colorscheme material
 set background=dark
 set number
 set wildmenu
