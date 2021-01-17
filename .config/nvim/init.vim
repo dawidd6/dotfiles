@@ -15,8 +15,6 @@ Plug 'mengelbrecht/lightline-bufferline'
     let g:lightline.component_type   = {'buffers': 'tabsel'}
 Plug 'airblade/vim-gitgutter'
     let g:gitgutter_enabled=1
-Plug 'tyrannicaltoucan/vim-quantum'
-    let g:quantum_black=1
 Plug 'kaicataldo/material.vim'
     let g:material_theme_style='darker'
     let g:material_terminal_italics=1
