@@ -28,6 +28,7 @@ set -gx HOMEBREW_GITHUB_API_TOKEN (cat $HOME/.github)
 set -gx PATH \
     "$HOME/bin" \
     "$HOME/go/bin" \
+    "$HOME/flutter/bin" \
     "$GEM_HOME/bin" \
     "/snap/bin" \
     "/usr/local/sbin" \
