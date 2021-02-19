@@ -12,6 +12,7 @@ set -gx BAT_THEME "TwoDark"
 set -gx SNAPCRAFT_BUILD_ENVIRONMENT "multipass"
 set -gx GEM_HOME "$HOME/.gem"
 set -gx ANDROID_HOME "$HOME/android/sdk"
+set -gx ANDROID_SDK_ROOT "$HOME/android/sdk"
 set -gx FLUTTER_ROOT "$HOME/.flutter"
 set -gx ELECTRON_TRASH "gvfs-trash"
 set -gx GOOGLE_APPLICATION_CREDENTIALS $HOME/.projekt-zespolony-firebase-adminsdk-go118-90fe9ed507.json
