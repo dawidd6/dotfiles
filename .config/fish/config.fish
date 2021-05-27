@@ -213,3 +213,7 @@ end
 # Title
 function fish_title
 end
+
+# Greeting
+function fish_greeting
+end
