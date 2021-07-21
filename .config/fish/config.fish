@@ -78,15 +78,15 @@ abbr dp "docker ps -a"
 abbr de "docker exec -it"
 abbr g "git"
 abbr ga "git add"
-abbr gc "git commit -S -m"
-abbr gca "git commit -S --amend --no-edit"
-abbr gcae "git commit -S --amend --edit"
+abbr gc "git commit -m"
+abbr gca "git commit --amend --no-edit"
+abbr gcae "git commit --amend --edit"
 abbr gs "git status -u"
 abbr gt "git tag"
 abbr gd "git diff"
 abbr gdc "git diff --cached"
 abbr gh "git checkout"
-abbr ghm "git checkout master"
+abbr ghm "git checkout (git symbolic-ref --short refs/remotes/origin/HEAD | sed 's@origin/@@')"
 abbr gb "git branch -a"
 abbr gf "git fetch"
 abbr gp "git push"
@@ -212,7 +212,13 @@ function cdi -d 'interactively select directory while listing its content'
 end
 
 # Title
+#function fish_title
+#end
 function fish_title
+    set -q argv[1] || set argv fish
+    # Looks like ~/d/fish: git log
+    # or /e/apt: fish
+    echo (basename (prompt_pwd)): $argv
 end
 
 # Greeting
