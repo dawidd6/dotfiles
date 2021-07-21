@@ -106,6 +106,9 @@ autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 " Ruby
 autocmd FileType ruby setlocal ts=2 sts=2 sw=2 expandtab
 
+" Jenkinsfile
+au BufNewFile,BufRead Jenkinsfile setf groovy
+
 " Delete, don't cut
 nnoremap x "_x
 nnoremap X "_X
