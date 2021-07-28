@@ -5,6 +5,9 @@ if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
     autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
+" Python
+let g:python3_host_prog = '/usr/bin/python3'
+
 " Plugins
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'itchyny/lightline.vim'
