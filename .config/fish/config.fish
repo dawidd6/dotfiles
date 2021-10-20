@@ -17,10 +17,9 @@ set -gx FLUTTER_ROOT "$HOME/.flutter"
 set -gx ELECTRON_TRASH "gvfs-trash"
 set -gx GPG_TTY (tty)
 set -gx HOMEBREW_BAT 1
-set -gx HOMEBREW_NO_EMOJI 1
 set -gx HOMEBREW_DEVELOPER 1
 set -gx HOMEBREW_NO_AUTO_UPDATE 1
-set -gx HOMEBREW_FORCE_HOMEBREW_ON_LINUX 1
+set -gx HOMEBREW_NO_EMOJI 1
 set -gx HOMEBREW_EDITOR "$EDITOR"
 set -gx HOMEBREW_GITHUB_USER "$USER"
 set -gx HOMEBREW_GITHUB_API_TOKEN (cat $HOME/.github 2>/dev/null)
