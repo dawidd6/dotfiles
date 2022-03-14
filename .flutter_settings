@@ -1,6 +1,5 @@
 {
   "android-sdk": "/home/dawidd6/android/sdk/",
-  "android-studio-dir": "/home/dawidd6/android-studio/",
-  "enable-web": true,
+  "enable-web": false,
   "enable-linux-desktop": true
 }
