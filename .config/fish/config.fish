@@ -11,8 +11,9 @@ set -gx SYSTEMD_EDITOR "$EDITOR"
 set -gx BAT_THEME "TwoDark"
 set -gx SNAPCRAFT_BUILD_ENVIRONMENT "multipass"
 set -gx GEM_HOME "$HOME/.gem"
-set -gx ANDROID_HOME "$HOME/android/sdk"
-set -gx ANDROID_SDK_ROOT "$HOME/android/sdk"
+set -gx ANDROID_HOME "$HOME/android"
+set -gx ANDROID_SDK "$HOME/android"
+set -gx ANDROID_SDK_ROOT "$HOME/android"
 set -gx FLUTTER_ROOT "$HOME/.flutter"
 set -gx ELECTRON_TRASH "gvfs-trash"
 set -gx GPG_TTY (tty)
@@ -25,20 +26,18 @@ set -gx HOMEBREW_GITHUB_USER "$USER"
 set -gx HOMEBREW_GITHUB_API_TOKEN (cat $HOME/.github 2>/dev/null)
 set -gx MANPATH "/home/linuxbrew/.linuxbrew/share/man" ""
 set -gx PATH \
-    "/home/linuxbrew/.linuxbrew/bin" \
-    "/home/linuxbrew/.linuxbrew/sbin" \
     "$HOME/bin" \
     "$HOME/go/bin" \
     "$HOME/flutter/bin" \
     "$GEM_HOME/bin" \
-    "/snap/bin" \
     "/usr/local/sbin" \
     "/usr/local/bin" \
     "/usr/sbin" \
     "/usr/bin" \
     "/sbin" \
     "/bin" \
-    "/usr/games"
+    "/home/linuxbrew/.linuxbrew/bin" \
+    "/home/linuxbrew/.linuxbrew/sbin"
 
 # Aliases
 alias sudo "sudo env \"PATH=$PATH\""
