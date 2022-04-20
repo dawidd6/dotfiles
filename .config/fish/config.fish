@@ -20,6 +20,7 @@ set -gx GPG_TTY (tty)
 set -gx HOMEBREW_BAT 1
 set -gx HOMEBREW_DEVELOPER 1
 set -gx HOMEBREW_NO_AUTO_UPDATE 1
+set -gx HOMEBREW_RELOCATE_BUILD_PREFIX 1
 set -gx HOMEBREW_EDITOR "$EDITOR"
 set -gx HOMEBREW_GITHUB_USER "$USER"
 set -gx HOMEBREW_GITHUB_API_TOKEN (cat $HOME/.github 2>/dev/null)
@@ -35,8 +36,8 @@ set -gx PATH \
     "/usr/bin" \
     "/sbin" \
     "/bin" \
-    "/home/linuxbrew/.linuxbrew/bin" \
-    "/home/linuxbrew/.linuxbrew/sbin"
+    "$HOME/.brew/bin" \
+    "$HOME/.brew/sbin"
 
 # Aliases
 alias sudo "sudo env \"PATH=$PATH\""
