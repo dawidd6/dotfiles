@@ -20,8 +20,6 @@
     prune-local-branches = "!git branch --merged master | grep -v '^[ *]*master$' | xargs -r git branch -d"
 [color]
     ui = auto
-[review "review.lineageos.org"]
-    username = dawidd6
 [commit]
     gpgSign = true
 [core]
