@@ -20,7 +20,6 @@ set -gx GPG_TTY (tty)
 set -gx HOMEBREW_BAT 1
 set -gx HOMEBREW_DEVELOPER 1
 set -gx HOMEBREW_NO_AUTO_UPDATE 1
-set -gx HOMEBREW_NO_EMOJI 1
 set -gx HOMEBREW_EDITOR "$EDITOR"
 set -gx HOMEBREW_GITHUB_USER "$USER"
 set -gx HOMEBREW_GITHUB_API_TOKEN (cat $HOME/.github 2>/dev/null)
@@ -41,7 +40,6 @@ set -gx PATH \
 
 # Aliases
 alias sudo "sudo env \"PATH=$PATH\""
-alias duscan 'docker run -it --rm -v $PWD:/workdir:ro dawidd6/debian-dev uscan --no-download -v --destdir /tmp'
 alias vim "nvim"
 alias ls "ls --color"
 alias lsa "ls -A"
@@ -90,8 +88,6 @@ abbr gf "git fetch"
 abbr gp "git push"
 abbr gfo "git fetch origin"
 abbr gpo "git push origin -u"
-abbr ansible-playbook-local "ansible-playbook -K --connection local -i localhost,"
-abbr ansible-playbook-docker "env ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -K -i user@172.17.0.2,"
 abbr suspend "systemctl suspend"
 abbr fishrc "source $HOME/.config/fish/config.fish"
 abbr fishedit "$EDITOR $HOME/.config/fish/config.fish"
@@ -105,13 +101,6 @@ abbr be "brew edit"
 abbr brew-cd "cd (brew --repository)/Library/Homebrew"
 abbr brew-cd-tap "cd (brew --repository \$USER/tap)"
 abbr brew-cd-core "cd (brew --repository homebrew/core)"
-abbr snapshot-create "sudo lvcreate --snapshot --name=root_snapshot --size 30G /dev/ubuntu-vg/root"
-abbr snapshot-remove "sudo lvremove /dev/ubuntu-vg/root_snapshot"
-abbr snapshot-restore "sudo lvconvert --merge /dev/ubuntu-vg/root_snapshot"
-abbr snapshot-list "sudo lvs | awk 'NR==1; /snapshot/'"
-abbr plex-huh "systemctl status plexmediaserver.service"
-abbr plex-on "sudo systemctl start plexmediaserver.service"
-abbr plex-off "sudo systemctl stop plexmediaserver.service"
 abbr mic-test "arecord -f cd - | aplay -"
 
 # Colors
@@ -210,8 +199,6 @@ function cdi -d 'interactively select directory while listing its content'
 end
 
 # Title
-#function fish_title
-#end
 function fish_title
     set -q argv[1] || set argv fish
     # Looks like ~/d/fish: git log
