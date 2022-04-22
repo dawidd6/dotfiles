@@ -104,9 +104,9 @@ abbr brew-cd "cd (brew --repository)/Library/Homebrew"
 abbr brew-cd-tap "cd (brew --repository \$USER/tap)"
 abbr brew-cd-core "cd (brew --repository homebrew/core)"
 abbr mic-test "arecord -f cd - | aplay -"
-abbr snapshot-create "sudo lvcreate --snapshot --name=root_snapshot --size 50G /dev/ubuntu-vg/root"
-abbr snapshot-remove "sudo lvremove /dev/ubuntu-vg/root_snapshot"
-abbr snapshot-restore "sudo lvconvert --merge /dev/ubuntu-vg/root_snapshot"
+abbr snapshot-create "sudo lvcreate --snapshot --name=root_snapshot --size 50G vgubuntu/root"
+abbr snapshot-remove "sudo lvremove vgubuntu/root_snapshot"
+abbr snapshot-restore "sudo lvconvert --merge vgubuntu/root_snapshot"
 abbr snapshot-list "sudo lvs | awk 'NR==1; /snapshot/'"
 
 # Completions
