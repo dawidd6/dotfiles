@@ -24,7 +24,8 @@ set -gx HOMEBREW_RELOCATE_BUILD_PREFIX 1
 set -gx HOMEBREW_EDITOR "$EDITOR"
 set -gx HOMEBREW_GITHUB_USER "$USER"
 set -gx HOMEBREW_GITHUB_API_TOKEN (cat $HOME/.github 2>/dev/null)
-set -gx MANPATH "/home/linuxbrew/.linuxbrew/share/man" ""
+set -gx MANPATH "$HOME/.brew/share/man" $MANPATH
+set -gx INFOPATH "$HOME/.brew/share/info" $INFOPATH
 set -gx PATH \
     "$HOME/bin" \
     "$HOME/go/bin" \
@@ -103,6 +104,9 @@ abbr brew-cd "cd (brew --repository)/Library/Homebrew"
 abbr brew-cd-tap "cd (brew --repository \$USER/tap)"
 abbr brew-cd-core "cd (brew --repository homebrew/core)"
 abbr mic-test "arecord -f cd - | aplay -"
+
+# Completions
+set fish_complete_path "$HOME/.brew/share/fish/vendor_completions.d" $fish_complete_path
 
 # Colors
 set fish_color_command green
@@ -211,6 +215,7 @@ end
 function fish_greeting
 end
 
+# Proxy
 function proxy-disable
     set -e https_proxy
     set -e http_proxy
