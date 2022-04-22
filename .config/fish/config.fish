@@ -40,7 +40,7 @@ set -gx PATH \
     "$HOME/.brew/sbin"
 
 # Aliases
-alias sudo "sudo env \"PATH=$PATH\""
+alias sudo "sudo -E env \"PATH=$PATH\""
 alias vim "nvim"
 alias ls "ls --color"
 alias lsa "ls -A"
