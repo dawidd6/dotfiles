@@ -24,8 +24,8 @@ set -gx HOMEBREW_RELOCATE_BUILD_PREFIX 1
 set -gx HOMEBREW_EDITOR "$EDITOR"
 set -gx HOMEBREW_GITHUB_USER "$USER"
 set -gx HOMEBREW_GITHUB_API_TOKEN (cat $HOME/.github 2>/dev/null)
-set -gx MANPATH "$HOME/.brew/share/man" $MANPATH
-set -gx INFOPATH "$HOME/.brew/share/info" $INFOPATH
+set -gx MANPATH "$HOME/.brew/share/man" ""
+set -gx INFOPATH "$HOME/.brew/share/info" ""
 set -gx PATH \
     "$HOME/bin" \
     "$HOME/go/bin" \
