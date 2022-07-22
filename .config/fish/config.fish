@@ -37,6 +37,7 @@ set -gx PATH \
     "/usr/bin" \
     "/sbin" \
     "/bin" \
+    "$HOME/.local/bin" \
     "$HOME/.brew/bin" \
     "$HOME/.brew/sbin"
 
@@ -48,6 +49,7 @@ alias lsa "ls -A"
 alias rm "trash"
 alias dotfiles "git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
 alias keys "git --git-dir=$HOME/.keys --work-tree=$HOME"
+alias ssh "ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
 
 # Abbreviations
 abbr dchr "dch --release --vendor debian ''"
