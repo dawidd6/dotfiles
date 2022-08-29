@@ -124,7 +124,10 @@ set fish_color_quote yellow
 
 # Prompt
 function fish_prompt
+    # disable greeting
     set fish_greeting
+
+    # get last status
     set last_status $status
 
     # get cwd
@@ -135,6 +138,20 @@ function fish_prompt
     if test $cwd_count -gt 2
         set cwd "$cwd_tokenized[-2]/$cwd_tokenized[-1]"
     end
+
+    # in container
+    if test -f /run/.containerenv || test -f /.dockerenv
+        set_color --bold brred
+        echo -n "⬢  "
+    end
+
+    # current date
+    set_color --bold brblue
+    echo -n (date +%m-%d)" "
+
+    # current time
+    set_color --bold brblue
+    echo -n (date +%H:%M:%S)" "
 
     # status symbol
     if test $last_status -eq 0
@@ -149,7 +166,7 @@ function fish_prompt
     echo -n "$cwd "
 
     # git prompt
-    if git rev-parse > /dev/null 2>&1
+    if command -v git > /dev/null 2>&1 && git rev-parse > /dev/null 2>&1
         set -l gbare (git rev-parse --is-bare-repository)
         set -l gstash (git stash list 2>/dev/null)
         set -l gtag (git tag --points-at HEAD 2>/dev/null)
