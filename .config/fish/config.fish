@@ -146,7 +146,7 @@ function fish_prompt
 
     # current date
     set_color --bold brblue
-    echo -n (date +%m-%d)" "
+    echo -n (date '+%a %d %b')" "
 
     # current time
     set_color --bold brblue
