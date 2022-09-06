@@ -11,10 +11,6 @@ set -gx SYSTEMD_EDITOR "$EDITOR"
 set -gx BAT_THEME "TwoDark"
 set -gx SNAPCRAFT_BUILD_ENVIRONMENT "multipass"
 set -gx GEM_HOME "$HOME/.gem"
-set -gx ANDROID_HOME "$HOME/android"
-set -gx ANDROID_SDK "$HOME/android"
-set -gx ANDROID_SDK_ROOT "$HOME/android"
-set -gx FLUTTER_ROOT "$HOME/.flutter"
 set -gx ELECTRON_TRASH "gvfs-trash"
 set -gx GPG_TTY (tty)
 set -gx HOMEBREW_BAT 1
@@ -23,22 +19,18 @@ set -gx HOMEBREW_NO_AUTO_UPDATE 1
 set -gx HOMEBREW_EDITOR "$EDITOR"
 set -gx HOMEBREW_GITHUB_USER "$USER"
 set -gx HOMEBREW_GITHUB_API_TOKEN (cat $HOME/.github 2>/dev/null)
-set -gx MANPATH "$HOME/.brew/share/man" ""
-set -gx INFOPATH "$HOME/.brew/share/info" ""
+set -gx MANPATH "/home/linuxbrew/.linuxbrew/share/man" ""
+set -gx INFOPATH "/home/linuxbrew/.linuxbrew/bin/brew/info" ""
 set -gx PATH \
     "$HOME/bin" \
-    "$HOME/go/bin" \
-    "$HOME/flutter/bin" \
-    "$GEM_HOME/bin" \
     "/usr/local/sbin" \
     "/usr/local/bin" \
     "/usr/sbin" \
     "/usr/bin" \
     "/sbin" \
     "/bin" \
-    "$HOME/.local/bin" \
-    "$HOME/.brew/bin" \
-    "$HOME/.brew/sbin"
+    "/home/linuxbrew/.linuxbrew/bin" \
+    "/home/linuxbrew/.linuxbrew/sbin"
 
 # Aliases
 alias sudo "sudo -E env \"PATH=$PATH\""
@@ -111,7 +103,7 @@ abbr snapshot-restore "sudo lvconvert --merge vgubuntu/root_snapshot"
 abbr snapshot-list "sudo lvs | awk 'NR==1; /snapshot/'"
 
 # Completions
-set fish_complete_path "$HOME/.brew/share/fish/vendor_completions.d" $fish_complete_path
+#set fish_complete_path "/home/linuxbrew/.linuxbrew/share/fish/vendor_completions.d" $fish_complete_path
 
 # Colors
 set fish_color_command green
