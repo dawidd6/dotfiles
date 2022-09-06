@@ -5,9 +5,6 @@ if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
     autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-" Python
-let g:python3_host_prog = '/usr/bin/python3'
-
 " Plugins
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'itchyny/lightline.vim'
@@ -26,8 +23,6 @@ Plug 'mhinz/vim-startify'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'dag/vim-fish'
 Plug 'xu-cheng/brew.vim'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-    let g:deoplete#enable_at_startup = 1
 Plug 'SirVer/ultisnips'
     let g:UltiSnipsExpandTrigger="<tab>"
     let g:UltiSnipsJumpForwardTrigger="<c-b>"
