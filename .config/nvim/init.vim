@@ -23,11 +23,6 @@ Plug 'mhinz/vim-startify'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'dag/vim-fish'
 Plug 'xu-cheng/brew.vim'
-Plug 'SirVer/ultisnips'
-    let g:UltiSnipsExpandTrigger="<tab>"
-    let g:UltiSnipsJumpForwardTrigger="<c-b>"
-    let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-    let g:UltiSnipsEditSplit="vertical"
 Plug 'honza/vim-snippets'
 Plug 'rhysd/conflict-marker.vim'
     let g:conflict_marker_begin = '^<<<<<<< .*$'
