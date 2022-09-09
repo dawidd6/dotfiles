@@ -34,6 +34,7 @@ set -gx PATH \
 
 # Aliases
 alias sudo "sudo -E env \"PATH=$PATH\""
+alias vi "nvim"
 alias vim "nvim"
 alias ls "ls --color"
 alias lsa "ls -A"
