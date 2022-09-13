@@ -211,13 +211,6 @@ function fish_prompt
     echo -n " "
 end
 
-# Interactive cd
-function cdi -d 'interactively select directory while listing its content'
-    while true
-        find -mindepth 1 -maxdepth 1 -type d -printf '%P\n' | env LC_ALL=C sort --reverse | fzf --exit-0 --no-sort --bind "left:execute(echo ..)+cancel" --bind "right:accept" --reverse --preview "ls $PWD/{}" --header "$PWD" --height 50% | read dir && test -n "$dir" && cd "$dir" || break
-    end
-end
-
 # Title
 function fish_title
     set -q argv[1] || set argv fish
@@ -230,11 +223,3 @@ end
 function fish_greeting
 end
 
-# Proxy
-function proxy-disable
-    set -e https_proxy
-    set -e http_proxy
-    set -e ftp_proxy
-    set -e auto_proxy
-    set -e no_proxy
-end
