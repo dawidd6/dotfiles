@@ -22,14 +22,15 @@ set -gx HOMEBREW_GITHUB_API_TOKEN (cat $HOME/.github 2>/dev/null)
 set -gx MANPATH "/home/linuxbrew/.linuxbrew/share/man" ""
 set -gx INFOPATH "/home/linuxbrew/.linuxbrew/share/info" ""
 set -gx PATH \
-    "/home/linuxbrew/.linuxbrew/bin" \
+    "$HOME/bin" \
     "/usr/local/sbin" \
     "/usr/local/bin" \
     "/usr/sbin" \
     "/usr/bin" \
     "/sbin" \
     "/bin" \
-    "$HOME/bin"
+    "/home/linuxbrew/.linuxbrew/bin" \
+    "/home/linuxbrew/.linuxbrew/sbin"
 
 # Aliases
 alias sudo "sudo -E env \"PATH=$PATH\""
