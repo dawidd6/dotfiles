@@ -29,7 +29,8 @@ set -gx PATH \
     "/usr/sbin" \
     "/usr/bin" \
     "/sbin" \
-    "/bin"
+    "/bin" \
+    "/home/linuxbrew/.linuxbrew/sbin"
 
 # Aliases
 alias sudo "sudo -E env \"PATH=$PATH\""
