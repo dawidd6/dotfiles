@@ -133,8 +133,7 @@ function fish_prompt
 
     # in container
     if test -f /run/.containerenv || test -f /.dockerenv
-        set_color --bold brred
-        echo -n "⬢  "
+        echo -n "📦 "
     end
 
     # current date
