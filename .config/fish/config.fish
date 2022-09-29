@@ -23,13 +23,13 @@ set -gx MANPATH "/home/linuxbrew/.linuxbrew/share/man" ""
 set -gx INFOPATH "/home/linuxbrew/.linuxbrew/share/info" ""
 set -gx PATH \
     "$HOME/bin" \
-    "/home/linuxbrew/.linuxbrew/bin" \
     "/usr/local/sbin" \
     "/usr/local/bin" \
     "/usr/sbin" \
     "/usr/bin" \
     "/sbin" \
     "/bin" \
+    "/home/linuxbrew/.linuxbrew/bin" \
     "/home/linuxbrew/.linuxbrew/sbin"
 
 # Aliases
