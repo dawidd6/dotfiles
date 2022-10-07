@@ -63,11 +63,6 @@ abbr contents "apt-file list"
 abbr show "apt show"
 abbr list "dpkg -l"
 abbr list-grep "dpkg -l | grep"
-abbr d "docker"
-abbr dr "docker run -it --rm"
-abbr di "docker images"
-abbr dp "docker ps -a"
-abbr de "docker exec -it"
 abbr g "git"
 abbr ga "git add"
 abbr gc "git commit -m"
@@ -102,6 +97,9 @@ abbr snapshot-create "sudo lvcreate --snapshot --name=root_snapshot --size 50G v
 abbr snapshot-remove "sudo lvremove vgubuntu/root_snapshot"
 abbr snapshot-restore "sudo lvconvert --merge vgubuntu/root_snapshot"
 abbr snapshot-list "sudo lvs | awk 'NR==1; /snapshot/'"
+abbr docker "podman"
+abbr d "podman"
+abbr p "podman"
 
 # Completions
 #set fish_complete_path "/home/linuxbrew/.linuxbrew/share/fish/vendor_completions.d" $fish_complete_path
