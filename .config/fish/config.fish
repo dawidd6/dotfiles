@@ -158,7 +158,7 @@ function fish_prompt
     if command -v git > /dev/null 2>&1 && git rev-parse > /dev/null 2>&1
         set -l gbare (git rev-parse --is-bare-repository)
         set -l gstash (git stash list 2>/dev/null)
-        set -l gtag (git tag --points-at HEAD 2>/dev/null)
+        set -l gtag (git tag --points-at HEAD 2>/dev/null | head -n1)
         set -l gbranch (git symbolic-ref -q --short HEAD)
         set -l gahead (git rev-list --count '@{u}..' 2>/dev/null)
         set -l gbehind (git rev-list --count '..@{u}' 2>/dev/null)
