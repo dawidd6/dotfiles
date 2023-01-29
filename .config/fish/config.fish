@@ -144,6 +144,12 @@ function fish_prompt
     set_color --bold brblue
     echo -n (date +%H:%M:%S)" "
 
+    # background job
+    if jobs --quiet
+        set_color --bold blue
+        echo -n "job "
+    end
+
     # status symbol
     if test $last_status -eq 0
         set_color --bold green
