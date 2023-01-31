@@ -31,6 +31,7 @@ set -gx PATH \
     "/usr/bin" \
     "/sbin" \
     "/bin" \
+    "/snap/bin" \
     "/home/linuxbrew/.linuxbrew/bin" \
     "/home/linuxbrew/.linuxbrew/sbin"
 
