@@ -104,6 +104,7 @@ abbr snapshot-list "sudo lvs | awk 'NR==1; /snapshot/'"
 abbr docker "podman"
 abbr d "podman"
 abbr p "podman"
+abbr lxc-launch-desktop-vm "lxc launch images:ubuntu/jammy/desktop --vm -c limits.cpu=2 -c limits.memory=2GiB --console=vga"
 
 # Completions
 #set fish_complete_path "/home/linuxbrew/.linuxbrew/share/fish/vendor_completions.d" $fish_complete_path
