@@ -9,7 +9,7 @@ set -gx PAGER "less"
 set -gx MANPAGER "less"
 set -gx SYSTEMD_EDITOR "$EDITOR"
 set -gx BAT_THEME "TwoDark"
-set -gx SNAPCRAFT_BUILD_ENVIRONMENT "multipass"
+set -gx SNAPCRAFT_BUILD_ENVIRONMENT "lxd"
 set -gx GEM_HOME "$HOME/.gem"
 set -gx ELECTRON_TRASH "gvfs-trash"
 set -gx GPG_TTY (tty)
