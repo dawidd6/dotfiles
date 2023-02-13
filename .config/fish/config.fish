@@ -43,7 +43,6 @@ alias ls "ls --color"
 alias lsa "ls -A"
 alias rm "trash"
 alias dotfiles "git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
-alias keys "git --git-dir=$HOME/.keys --work-tree=$HOME"
 alias ssh "ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
 alias hub "gh"
 
