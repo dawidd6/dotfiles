@@ -4,7 +4,7 @@
     signingkey = 172E9B0B
     username = dawidd6
 [includeIf "gitdir:~/ghorg/brcloud/**"]
-    path = ~/.gitconfig_nokia
+    path = ~/.config/git/nokia
 [alias]
     lg = "log --graph --pretty=format:'%Cred%h%Creset %Cgreen(%cr)%Creset %C(bold blue)<%an>%Creset %s %C(yellow)%d%Creset'"
     c = "commit -m"
