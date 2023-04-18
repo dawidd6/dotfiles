@@ -1,5 +1,11 @@
+" Install vim-plug if not found
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+endif
+
 " Plugins
-call plug#begin('~/.local/share/nvim/plugged')
+call plug#begin()
 Plug 'itchyny/lightline.vim'
     let g:lightline = { 'colorscheme': 'material' }
 Plug 'mengelbrecht/lightline-bufferline'
@@ -21,6 +27,11 @@ Plug 'rhysd/conflict-marker.vim'
     let g:conflict_marker_begin = '^<<<<<<< .*$'
     let g:conflict_marker_end   = '^>>>>>>> .*$'
 call plug#end()
+
+" Run PlugInstall if there are missing plugins
+autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+  \| PlugInstall --sync | source $MYVIMRC
+\| endif
 
 " Indent
 set autoindent
