@@ -219,15 +219,6 @@ function fish_prompt
     echo -n " "
 end
 
-# Title
-function fish_title
-    set -q argv[1] || set argv fish
-    # Looks like ~/d/fish: git log
-    # or /e/apt: fish
-    echo (basename (prompt_pwd)): $argv
-end
-
 # Greeting
 function fish_greeting
 end
-
