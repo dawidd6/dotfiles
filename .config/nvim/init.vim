@@ -1,38 +1,3 @@
-" Install vim-plug if not found
-let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
-if empty(glob(data_dir . '/autoload/plug.vim'))
-  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-endif
-
-" Plugins
-call plug#begin()
-Plug 'itchyny/lightline.vim'
-    let g:lightline = { 'colorscheme': 'material' }
-Plug 'mengelbrecht/lightline-bufferline'
-    let g:lightline.tabline          = {'left': [['buffers']], 'right': [[]]}
-    let g:lightline.component_expand = {'buffers': 'lightline#bufferline#buffers'}
-    let g:lightline.component_type   = {'buffers': 'tabsel'}
-Plug 'airblade/vim-gitgutter'
-    let g:gitgutter_enabled=1
-Plug 'kaicataldo/material.vim'
-    let g:material_theme_style='darker'
-    let g:material_terminal_italics=1
-Plug 'tpope/vim-fugitive'
-Plug 'mhinz/vim-startify'
-Plug 'ntpeters/vim-better-whitespace'
-Plug 'dag/vim-fish'
-Plug 'xu-cheng/brew.vim'
-Plug 'honza/vim-snippets'
-Plug 'rhysd/conflict-marker.vim'
-    let g:conflict_marker_begin = '^<<<<<<< .*$'
-    let g:conflict_marker_end   = '^>>>>>>> .*$'
-call plug#end()
-
-" Run PlugInstall if there are missing plugins
-autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
-  \| PlugInstall --sync | source $MYVIMRC
-\| endif
-
 " Indent
 set autoindent
 set smartindent
@@ -51,7 +16,6 @@ set gdefault
 
 " Appearance
 syntax on
-colorscheme material
 set background=dark
 set number
 set wildmenu
@@ -84,10 +48,6 @@ set autoread
 set encoding=utf8
 set completeopt-=preview
 set nofixendofline
-
-" Change cursor based on mode
-set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,sm:block-blinkwait175-blinkoff150-blinkon175
-highlight Cursor gui=reverse
 
 " Key bindings
 nnoremap . :bn<CR>
