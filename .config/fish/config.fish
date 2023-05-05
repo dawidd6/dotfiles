@@ -92,6 +92,14 @@ abbr docker "podman"
 abbr d "podman"
 abbr p "podman"
 
+# Colors
+set fish_color_command green
+set fish_color_param normal
+set fish_color_error red --bold
+set fish_color_normal normal
+set fish_color_comment brblack
+set fish_color_quote yellow
+
 # Sources
 starship init fish | source
 zoxide init --cmd cd fish | source
