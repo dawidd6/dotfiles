@@ -9,3 +9,4 @@ disabled = true
 
 [status]
 disabled = false
+format = '[$status]($style) '
