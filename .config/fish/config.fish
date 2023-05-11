@@ -11,7 +11,6 @@ set -gx LESSHISTFILE "$HOME/.cache/less/history"
 set -gx STARSHIP_CONFIG "$HOME/.config/starship/config.toml"
 set -gx SYSTEMD_EDITOR "$EDITOR"
 set -gx BAT_THEME "TwoDark"
-set -gx SNAPCRAFT_BUILD_ENVIRONMENT "lxd"
 set -gx GEM_HOME "$HOME/.gem"
 set -gx ELECTRON_TRASH "gvfs-trash"
 set -gx GPG_TTY (tty)
@@ -23,8 +22,6 @@ set -gx HOMEBREW_NO_INSTALL_FROM_API 1
 set -gx HOMEBREW_EDITOR "$EDITOR"
 set -gx HOMEBREW_GITHUB_USER dawidd6
 set -gx HOMEBREW_GITHUB_API_TOKEN (cat $HOME/.github 2>/dev/null)
-set -gx MANPATH "/home/linuxbrew/.linuxbrew/share/man" ""
-set -gx INFOPATH "/home/linuxbrew/.linuxbrew/share/info" ""
 set -gx PATH \
     "$HOME/bin" \
     "$PATH" \
