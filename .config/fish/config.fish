@@ -22,11 +22,7 @@ set -gx HOMEBREW_NO_INSTALL_FROM_API 1
 set -gx HOMEBREW_EDITOR "$EDITOR"
 set -gx HOMEBREW_GITHUB_USER dawidd6
 set -gx HOMEBREW_GITHUB_API_TOKEN (cat $HOME/.github 2>/dev/null)
-set -gx PATH \
-    "$HOME/bin" \
-    "$PATH" \
-    "/home/linuxbrew/.linuxbrew/bin" \
-    "/home/linuxbrew/.linuxbrew/sbin"
+set -gx PATH "$HOME/bin" "$PATH"
 
 # Aliases
 alias sudo "sudo -E env \"PATH=$PATH\""
