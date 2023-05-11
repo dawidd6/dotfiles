@@ -21,19 +21,13 @@ set -gx HOMEBREW_NO_AUTO_UPDATE 1
 set -gx HOMEBREW_NO_ENV_HINTS 1
 set -gx HOMEBREW_NO_INSTALL_FROM_API 1
 set -gx HOMEBREW_EDITOR "$EDITOR"
-set -gx HOMEBREW_GITHUB_USER "$USER"
+set -gx HOMEBREW_GITHUB_USER dawidd6
 set -gx HOMEBREW_GITHUB_API_TOKEN (cat $HOME/.github 2>/dev/null)
 set -gx MANPATH "/home/linuxbrew/.linuxbrew/share/man" ""
 set -gx INFOPATH "/home/linuxbrew/.linuxbrew/share/info" ""
 set -gx PATH \
     "$HOME/bin" \
-    "/usr/local/sbin" \
-    "/usr/local/bin" \
-    "/usr/sbin" \
-    "/usr/bin" \
-    "/sbin" \
-    "/bin" \
-    "/snap/bin" \
+    "$PATH" \
     "/home/linuxbrew/.linuxbrew/bin" \
     "/home/linuxbrew/.linuxbrew/sbin"
 
