@@ -17,7 +17,7 @@
 1. Run `sudo apt install keyutils`.
 1. Append `,keyscript=decrypt_keyctl` to line in `/etc/crypttab`.
 1. Append ` use_authtok` to `pam_gnome_keyring.so` line in `/etc/pam.d/common-password`.
-1. Run `update-initramfs -u -k all`.
+1. Run `sudo update-initramfs -u -k all`.
 
 ## Font revert to classic variant
 
