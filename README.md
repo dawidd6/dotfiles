@@ -1,7 +1,8 @@
-# Set up Ubuntu
+# Ubuntu setup
 
 ## Enable fingerprint authentication
 
+1. Enroll fingerprints in settings.
 1. Run `sudo pam-auth-update`.
 2. Select the fingerprint checkbox.
 
