@@ -13,14 +13,15 @@
 ## GNOME keyring auto unlock with LUKS passphrase
 
 1. Enable user auto-login in settings.
-2. TODO
+1. Run `sudo apt install keyutils`.
+1. Append `,keyscript=decrypt_keyctl` to line in `/etc/crypttab`.
+1. Append ` use_authtok` to `pam_gnome_keyring.so` line in `/etc/pam.d/common-password`.
+1. Run `update-initramfs -u -k all`.
 
 ## Font revert to classic variant
 
-```sh
-sudo apt install fonts-ubuntu-classic
-TODO gsettings
-```
+1. Run `sudo apt install fonts-ubuntu-classic`.
+2. TODO gsettings
 
 ## Third-party software from websites
 
