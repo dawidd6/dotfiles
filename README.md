@@ -23,6 +23,7 @@
 
 1. Run `sudo apt install fonts-ubuntu-classic`.
 2. TODO gsettings
+3. Log out and log back in.
 
 ## Third-party software from websites
 
