@@ -43,7 +43,8 @@ This is for Ubuntu Desktop specifically.
 1. Run `sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo`.
 2. Open GNOME software app.
 3. Install below apps via flatpak:
-- TODO
+    - Ignition
+    - Extension Manager
 
 ### Install virt-manager
 
