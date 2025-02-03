@@ -67,7 +67,8 @@
 2. Download and install `.deb` package.
 3. Run `sudo apt update`.
 4. Run `sudo apt install 1password-cli`.
-5. Open the app and set it up.
+5. Run `sudo ln -s /opt/1Password/op-ssh-sign /usr/local/bin/op-ssh-sign`.
+6. Open the app and set it up.
 
 ## VSCode
 
