@@ -1,3 +1,5 @@
+.direnv
 .idea
 *.iml
+result
 .vscode

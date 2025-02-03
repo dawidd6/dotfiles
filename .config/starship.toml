@@ -1,0 +1,16 @@
+add_newline = false
+command_timeout = 5000
+
+[character]
+error_symbol = "[➜](bold red) "
+success_symbol = "[➜](bold green) "
+
+[line_break]
+disabled = true
+
+[nix_shell]
+heuristic = true
+
+[status]
+disabled = false
+format = "[$status]($style) "

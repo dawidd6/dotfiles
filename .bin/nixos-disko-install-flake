@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+if [[ $EUID -ne 0 ]]; then
+    echo Run this as root!
+    exit 127
+fi
+
+set -x
+
+nix --experimental-features "nix-command flakes" run .#disko -- --mode destroy,format,mount --flake ".#$1"
+
+nixos-install --no-root-passwd --no-channel-copy --flake ".#$1"

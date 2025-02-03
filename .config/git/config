@@ -1,51 +1,42 @@
-[user]
-    email = dawidd0811@gmail.com
-    name = Dawid Dziurla
-    signingkey = 172E9B0B
-    username = dawidd6
-[includeIf "gitdir:~/ghorg/brcloud/**"]
-    path = ~/.config/git/nokia
 [alias]
-    lg = "log --graph --pretty=format:'%Cred%h%Creset %Cgreen(%cr)%Creset %C(bold blue)<%an>%Creset %s %C(yellow)%d%Creset'"
-    c = "commit -m"
-    s = "status"
-    d = "diff"
-    dc = "diff --cached"
-    unadd = "restore --staged"
-    ls = "ls-tree -r --name-only HEAD"
-    amend = "commit -S --amend --no-edit"
-    amend-edit = "commit -S --amend --edit"
-    cleanout = "!read -p '==> Clean?' var && git clean -fd && git checkout -- ."
-    fix-commit-rebase = "!f(){git commit --fixup $1 && git rebase -i --autosquash $1~1}; f"
-    prune-local-branches = "!git branch --merged master | grep -v '^[ *]*master$' | xargs -r git branch -d"
-[color]
-    ui = auto
+	lg = "log --graph --pretty=format:'%Cred%h%Creset %Cgreen(%cr)%Creset %C(bold blue)<%an>%Creset %s %C(yellow)%d%Creset'"
+	ls = "ls-tree -r --name-only HEAD"
+	unadd = "restore --staged"
+
 [commit]
-    gpgSign = true
+	gpgSign = true
+
 [core]
-    excludesfile = ~/.config/git/ignore
-    pager = diff-so-fancy | less --tabs=4 -RFX
-    editor = nvim
-[push]
-    default = upstream
-    followTags = true
-[url "git@github.com:dawidd6"]
-    pushInsteadOf = "https://github.com/dawidd6"
-[url "git@github.com:Homebrew"]
-    pushInsteadOf = "https://github.com/Homebrew"
-[color "diff-highlight"]
-    oldNormal = red bold
-    oldHighlight = red bold 52
-    newNormal = green bold
-    newHighlight = green bold 22
-[color "diff"]
-    meta = 11
-    frag = magenta bold
-    commit = yellow bold
-    old = red bold
-    new = green bold
-    whitespace = red reverse
+	pager = "diff-so-fancy | less --tabs=4 -RFX"
+
+[diff-so-fancy]
+	changeHunkIndicators = true
+	markEmptyLines = true
+	stripLeadingSymbols = true
+	useUnicodeRuler = true
+
 [format]
-    pretty = fuller
-[pull]
-    rebase = true
+	pretty = "fuller"
+
+[gpg]
+	format = "ssh"
+
+[gpg "ssh"]
+	program = "op-ssh-sign"
+
+[interactive]
+	diffFilter = "diff-so-fancy --patch"
+
+[tag]
+	gpgSign = true
+
+[url "git@github.com:"]
+	pushInsteadOf = "https://github.com/"
+
+[user]
+	email = "dawidd0811@gmail.com"
+	name = "Dawid Dziurla"
+	signingKey = "~/.ssh/id_ed25519.pub"
+
+[includeIf "gitdir:~/ghorg/brcloud/**"]
+	path = "~/.config/git/nokia"

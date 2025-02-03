@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+gsettings set org.gnome.desktop.interface clock-show-weekday true
+gsettings set org.gnome.desktop.interface clock-show-seconds true
+gsettings set org.gnome.desktop.interface show-battery-percentage true
+gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
+gsettings set org.gnome.desktop.peripherals.touchpad two-finger-scrolling-enabled true
+gsettings set org.gnome.desktop.calendar show-weekdate true
+gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-battery-type "nothing"
+gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-type "nothing"
+gsettings set org.gnome.settings-daemon.plugins.power idle-dim false
+gsettings set org.gnome.settings-daemon.plugins.power idle-brightness 100
+gsettings set org.gnome.desktop.session idle-delay 0
+gsettings set org.gtk.gtk4.Settings.FileChooser show-hidden true
+gsettings set org.gnome.shell disabled-extensions "['ubuntu-dock@ubuntu.com', 'ding@rastersoft.com']"
+gsettings set org.gnome.Terminal.Legacy.Profile:/:0/ audible-bell false
+gsettings set org.gnome.Terminal.Legacy.Profile:/:0/ login-shell true
+gsettings set org.gnome.Terminal.Legacy.Profile:/:0/ use-custom-command true
+gsettings set org.gnome.Terminal.Legacy.Profile:/:0/ custom-command "fish"
+gsettings set org.gnome.Terminal.Legacy.Profile:/:0/ preserve-working-directory "always"
+gsettings set org.gnome.Terminal.Legacy.Profile:/:0/ use-theme-colors false
+gsettings set org.gnome.Terminal.Legacy.Profile:/:0/ foreground-color "rgb(255,255,255)"
+gsettings set org.gnome.Terminal.Legacy.Profile:/:0/ background-color "rgb(24,24,24)"
