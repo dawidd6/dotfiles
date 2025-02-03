@@ -62,7 +62,9 @@ This is for Ubuntu Desktop specifically.
 3. Run `sudo apt update`.
 4. Run `sudo apt install 1password-cli`.
 5. Run `sudo ln -s /opt/1Password/op-ssh-sign /usr/local/bin/op-ssh-sign`.
-6. Open the app and set it up.
+6. Open Ignition app.
+7. Add 1Password to the autostart list.
+8. Modify Exec line to include `--silent` flag.
 
 ### Install VSCode
 
