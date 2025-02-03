@@ -27,13 +27,15 @@
 
 ## Third-party software from websites
 
-### Nix
+### Flox (Nix)
 
-Go to https://nixos.org.
+1. Go to https://flox.dev.
+2. Download and install `.deb` package.
 
 ### Google Chrome
 
-Go to https://www.google.com/chrome.
+1. Go to https://www.google.com/chrome.
+2. Download and install `.deb` package.
 
 ### 1Password
 
@@ -45,4 +47,5 @@ Go to TODO.
 
 ### Incus
 
-Go to TODO.
+1. Go to https://github.com/zabbly/incus.
+2. Follow instructions there.
