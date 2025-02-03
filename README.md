@@ -18,7 +18,7 @@ This is for Ubuntu Desktop specifically.
 1. Go to https://www.nerdfonts.com/font-downloads and download UbuntuMono.
 2. Run `mkdir -p ~/.local/share/fonts`.
 3. Run `unzip -o ~/Downloads/UbuntuMono.zip -d ~/.local/share/fonts`.
-4. Run `fc-cache -v`.
+4. Run `fc-cache -fv`.
 5. Run `sudo apt install fonts-ubuntu-classic`.
 6. Run `gsettings set org.gnome.desktop.interface font-name "Ubuntu 11"`.
 7. Run `gsettings set org.gnome.desktop.interface monospace-font-name "UbuntuMono Nerd Font Regular 13"`.
