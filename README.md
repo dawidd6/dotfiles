@@ -35,7 +35,7 @@ This is for Ubuntu Desktop specifically.
 
 ### Swap software store apps
 
-1. Run `sudo snap --terminate --purge snap-store`.
+1. Run `sudo snap remove --terminate --purge snap-store`.
 2. Run `sudo apt install gnome-software gnome-software-plugin-flatpak gnome-software-plugin-snap`.
 
 ### Install various desktop apps
