@@ -1,4 +1,6 @@
-# Ubuntu setup
+# Workstation setup
+
+This is for Ubuntu Desktop specifically.
 
 ### Enable fingerprint authentication
 
