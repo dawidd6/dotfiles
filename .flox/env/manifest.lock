@@ -12,6 +12,9 @@
       "diff-so-fancy": {
         "pkg-path": "diff-so-fancy"
       },
+      "diffoscopeMinimal": {
+        "pkg-path": "diffoscopeMinimal"
+      },
       "direnv": {
         "pkg-path": "direnv"
       },
@@ -424,6 +427,134 @@
       ],
       "outputs": {
         "out": "/nix/store/1f6pbwkvw81yk6z86wmrxygls9vmnbmy-diff-so-fancy-1.4.4"
+      },
+      "system": "x86_64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "diffoscopeMinimal",
+      "broken": false,
+      "derivation": "/nix/store/k23nwcjwvgx3nzgsgy290fqhaqcjl3gw-diffoscope-285.drv",
+      "description": "Perform in-depth comparison of files, archives, and directories",
+      "install_id": "diffoscopeMinimal",
+      "license": "GPL-3.0-or-later",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=3a228057f5b619feb3186e986dbe76278d707b6e",
+      "name": "diffoscope-285",
+      "pname": "diffoscopeMinimal",
+      "rev": "3a228057f5b619feb3186e986dbe76278d707b6e",
+      "rev_count": 746337,
+      "rev_date": "2025-02-01T11:46:30Z",
+      "scrape_date": "2025-02-02T00:30:00Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "diffoscope-285",
+      "outputs_to_install": [
+        "man",
+        "out"
+      ],
+      "outputs": {
+        "dist": "/nix/store/i1vyakl3mgqar3qflni3nhbz9a5h2n6j-diffoscope-285-dist",
+        "man": "/nix/store/jvxz5k07r0ykrj103q2wg9qjap2j1hlf-diffoscope-285-man",
+        "out": "/nix/store/xpb4smadh6rg4xkmy65di8p00wg40biw-diffoscope-285"
+      },
+      "system": "aarch64-darwin",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "diffoscopeMinimal",
+      "broken": false,
+      "derivation": "/nix/store/9fs0q2q70wc8kfjyvmg5k4inhf7pgjbk-diffoscope-285.drv",
+      "description": "Perform in-depth comparison of files, archives, and directories",
+      "install_id": "diffoscopeMinimal",
+      "license": "GPL-3.0-or-later",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=3a228057f5b619feb3186e986dbe76278d707b6e",
+      "name": "diffoscope-285",
+      "pname": "diffoscopeMinimal",
+      "rev": "3a228057f5b619feb3186e986dbe76278d707b6e",
+      "rev_count": 746337,
+      "rev_date": "2025-02-01T11:46:30Z",
+      "scrape_date": "2025-02-02T00:30:00Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "diffoscope-285",
+      "outputs_to_install": [
+        "man",
+        "out"
+      ],
+      "outputs": {
+        "dist": "/nix/store/svbakvnwfb7sjv0qbiikm1f5fh16rwzn-diffoscope-285-dist",
+        "man": "/nix/store/qy7sr611qmxvm9dav85s94y5vb8ygl32-diffoscope-285-man",
+        "out": "/nix/store/a6xbb8rmijgdfzv3ma98s54zdm3xa0am-diffoscope-285"
+      },
+      "system": "aarch64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "diffoscopeMinimal",
+      "broken": false,
+      "derivation": "/nix/store/90isk4a0lkc9wlg8ygx47mymlq6lwqhz-diffoscope-285.drv",
+      "description": "Perform in-depth comparison of files, archives, and directories",
+      "install_id": "diffoscopeMinimal",
+      "license": "GPL-3.0-or-later",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=3a228057f5b619feb3186e986dbe76278d707b6e",
+      "name": "diffoscope-285",
+      "pname": "diffoscopeMinimal",
+      "rev": "3a228057f5b619feb3186e986dbe76278d707b6e",
+      "rev_count": 746337,
+      "rev_date": "2025-02-01T11:46:30Z",
+      "scrape_date": "2025-02-02T00:30:00Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "diffoscope-285",
+      "outputs_to_install": [
+        "man",
+        "out"
+      ],
+      "outputs": {
+        "dist": "/nix/store/m7k2pvcvapdcxrx7c5xkr2c46jv75rcz-diffoscope-285-dist",
+        "man": "/nix/store/b8wfmqsxz6dwj2d6xdyqcz4qzc53xvx6-diffoscope-285-man",
+        "out": "/nix/store/409s710c1mn3vdy85jn0vwqqgw7373ra-diffoscope-285"
+      },
+      "system": "x86_64-darwin",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "diffoscopeMinimal",
+      "broken": false,
+      "derivation": "/nix/store/3vgxdvclwj1fnwvk5f7bajg2m3aqp084-diffoscope-285.drv",
+      "description": "Perform in-depth comparison of files, archives, and directories",
+      "install_id": "diffoscopeMinimal",
+      "license": "GPL-3.0-or-later",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=3a228057f5b619feb3186e986dbe76278d707b6e",
+      "name": "diffoscope-285",
+      "pname": "diffoscopeMinimal",
+      "rev": "3a228057f5b619feb3186e986dbe76278d707b6e",
+      "rev_count": 746337,
+      "rev_date": "2025-02-01T11:46:30Z",
+      "scrape_date": "2025-02-02T00:30:00Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "diffoscope-285",
+      "outputs_to_install": [
+        "man",
+        "out"
+      ],
+      "outputs": {
+        "dist": "/nix/store/g38d7bcb4n6nk575xxz7bzs2y6r6q13n-diffoscope-285-dist",
+        "man": "/nix/store/2xgrcaf93f77jpnvqcg38d311cl60vb2-diffoscope-285-man",
+        "out": "/nix/store/wrvnzqh6bxv2hzk6rp9pbxcvfgkcksk2-diffoscope-285"
       },
       "system": "x86_64-linux",
       "group": "toplevel",
