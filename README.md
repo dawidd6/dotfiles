@@ -45,7 +45,7 @@ This is for Ubuntu Desktop specifically.
 
 ### Install virt-manager
 
-1. Run `sudo apt install virt-manager`.
+1. Run `sudo apt install virt-manager virtiofsd`.
 2. Run `sudo usermod -aG kvm,libvirt $USER`.
 
 ### Install Google Chrome
