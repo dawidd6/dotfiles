@@ -27,6 +27,10 @@ This is for Ubuntu Desktop specifically.
 2. Run `sudo apt-mark hold snapd`.
 3. Run `rm -rf ~/snap`.
 
+### Install podman system dependencies
+
+1. Run `sudo apt install uidmap`.
+
 ### Install various desktop apps
 
 1. Run `sudo apt install gnome-software gnome-software-plugin-flatpak`.
