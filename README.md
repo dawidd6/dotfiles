@@ -37,6 +37,7 @@ This is for Ubuntu Desktop specifically.
     - Extension Manager
     - SaveDesktop
     - Dconf Editor
+    - Spotify
 
 ### Install virt-manager
 
