@@ -44,6 +44,7 @@ This is for Ubuntu Desktop specifically.
     - Ignition
     - Extension Manager
     - SaveDesktop
+    - Dconf Editor
 
 ### Install virt-manager
 
