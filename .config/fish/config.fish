@@ -1,4 +1,4 @@
-status is-interactive; and begin
+if status is-interactive
     # Scripts
     fish_add_path ~/.bin
 
@@ -11,8 +11,8 @@ status is-interactive; and begin
     set fish_color_quote yellow
 
     # Exports
-    set -gx EDITOR 'nvim'
-    set -gx PAGER 'less'
+    set -gx EDITOR nvim
+    set -gx PAGER less
 
     # Abbreviations
     abbr --add -- clip 'xsel --clipboard'
@@ -38,29 +38,33 @@ status is-interactive; and begin
     alias vi nvim
     alias vim nvim
     alias eza 'eza --group-directories-first --group --header '\''--time-style=long-iso'\'''
-    alias hub gh
     alias la 'eza -a'
     alias ll 'eza -l'
     alias lla 'eza -la'
     alias ls eza
+    alias l eza
     alias lt 'eza --tree'
+    alias tree 'eza --tree'
     alias rm trash
     alias ssh 'ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
+
+    # Functions
+    function hub --wraps="gh"
+        if command -q op
+            command op plugin run -- gh $argv
+        else
+            command gh $argv
+        end
+    end
 
     # Sources
     carapace nix-build fish | source
     carapace nix-instantiate fish | source
     carapace nix-shell fish | source
-
     fzf --fish | source
-
     starship init fish | source
-
     zoxide init fish --cmd=cd | source
-
     direnv hook fish | source
-
     nix-your-shell fish | source
-
     flox activate -d ~ -m run | source
 end
