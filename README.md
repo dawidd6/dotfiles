@@ -20,10 +20,6 @@ This is for Ubuntu Desktop specifically.
 3. Run `unzip -o ~/Downloads/UbuntuMono.zip -d ~/.local/share/fonts`.
 4. Run `fc-cache -fv`.
 5. Run `sudo apt install fonts-ubuntu-classic`.
-6. Run `gsettings set org.gnome.desktop.interface font-name "Ubuntu 11"`.
-7. Run `gsettings set org.gnome.desktop.interface monospace-font-name "UbuntuMono Nerd Font Regular 13"`.
-8. Run `gsettings set org.gnome.desktop.wm.preferences titlebar-font "Ubuntu Bold 11"`.
-8. Log out and log back in.
 
 ### Set auto unlock of GNOME keyring with LUKS passphrse
 
@@ -45,6 +41,7 @@ This is for Ubuntu Desktop specifically.
 3. Install below apps via flatpak:
     - Ignition
     - Extension Manager
+    - SaveDesktop
 
 ### Install virt-manager
 
@@ -90,3 +87,9 @@ This is for Ubuntu Desktop specifically.
 2. Run `cd ~/.dotfiles`.
 3. Run `flox activate`.
 4. Run `stow .`.
+
+### Set up desktop
+
+1. Open SaveDesktop app.
+2. Import `.desktop.sd.tar.gz` file.
+3. Log out and log back in.
