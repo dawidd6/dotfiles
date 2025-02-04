@@ -18,8 +18,10 @@ This is for Ubuntu Desktop specifically.
 1. Go to https://www.nerdfonts.com/font-downloads and download UbuntuMono.
 2. Run `mkdir -p ~/.local/share/fonts`.
 3. Run `unzip -o ~/Downloads/UbuntuMono.zip -d ~/.local/share/fonts`.
-4. Run `fc-cache -fv`.
-5. Run `sudo apt install fonts-ubuntu-classic`.
+4. Run `sudo apt install fonts-ubuntu-classic`.
+5. Run `sudo apt purge fonts-noto-core`.
+6. Run `sudo fc-cache -fv`.
+7. Run `fc-cache -fv`.
 
 ### Set auto unlock of GNOME keyring with LUKS passphrse
 
