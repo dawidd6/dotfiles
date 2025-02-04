@@ -30,6 +30,16 @@
       "git": {
         "pkg-path": "git"
       },
+      "htop": {
+        "pkg-path": "htop"
+      },
+      "lm_sensors": {
+        "pkg-path": "lm_sensors",
+        "systems": [
+          "aarch64-linux",
+          "x86_64-linux"
+        ]
+      },
       "man": {
         "pkg-path": "man"
       },
@@ -1136,6 +1146,190 @@
         "debug": "/nix/store/0yk2g1fyf6wnari6qjy0x5ljkg5lirci-git-2.47.1-debug",
         "doc": "/nix/store/4i5f6hdjmjn70m4qfvg8ymg9abhszlrp-git-2.47.1-doc",
         "out": "/nix/store/7mln3k7mmvsnpgp47zr63w9d60pqba9n-git-2.47.1"
+      },
+      "system": "x86_64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "htop",
+      "broken": false,
+      "derivation": "/nix/store/7x1fl4c087ws0mbs8fzwf82dx5rr0h1l-htop-3.3.0.drv",
+      "description": "Interactive process viewer",
+      "install_id": "htop",
+      "license": "GPL-2.0-only",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=3a228057f5b619feb3186e986dbe76278d707b6e",
+      "name": "htop-3.3.0",
+      "pname": "htop",
+      "rev": "3a228057f5b619feb3186e986dbe76278d707b6e",
+      "rev_count": 746337,
+      "rev_date": "2025-02-01T11:46:30Z",
+      "scrape_date": "2025-02-02T00:30:00Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "3.3.0",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/2b3pm92abbwk3zz13qlmdc3xv8g2jp2c-htop-3.3.0"
+      },
+      "system": "aarch64-darwin",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "htop",
+      "broken": false,
+      "derivation": "/nix/store/g3h5lbr50ffhn4mnjg7v9xyrn3qkx52y-htop-3.3.0.drv",
+      "description": "Interactive process viewer",
+      "install_id": "htop",
+      "license": "GPL-2.0-only",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=3a228057f5b619feb3186e986dbe76278d707b6e",
+      "name": "htop-3.3.0",
+      "pname": "htop",
+      "rev": "3a228057f5b619feb3186e986dbe76278d707b6e",
+      "rev_count": 746337,
+      "rev_date": "2025-02-01T11:46:30Z",
+      "scrape_date": "2025-02-02T00:30:00Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "3.3.0",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/9y14wcvb8w26810skdbs9zpibd403j2p-htop-3.3.0"
+      },
+      "system": "aarch64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "htop",
+      "broken": false,
+      "derivation": "/nix/store/bfxfmb2jp550qg9yq6x94n2f5g1jq1dd-htop-3.3.0.drv",
+      "description": "Interactive process viewer",
+      "install_id": "htop",
+      "license": "GPL-2.0-only",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=3a228057f5b619feb3186e986dbe76278d707b6e",
+      "name": "htop-3.3.0",
+      "pname": "htop",
+      "rev": "3a228057f5b619feb3186e986dbe76278d707b6e",
+      "rev_count": 746337,
+      "rev_date": "2025-02-01T11:46:30Z",
+      "scrape_date": "2025-02-02T00:30:00Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "3.3.0",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/ax2g5l7lbgjcf399apyfy986cb584svc-htop-3.3.0"
+      },
+      "system": "x86_64-darwin",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "htop",
+      "broken": false,
+      "derivation": "/nix/store/0xc6lakcs2dbvzb0rbkv26kz5a174mz2-htop-3.3.0.drv",
+      "description": "Interactive process viewer",
+      "install_id": "htop",
+      "license": "GPL-2.0-only",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=3a228057f5b619feb3186e986dbe76278d707b6e",
+      "name": "htop-3.3.0",
+      "pname": "htop",
+      "rev": "3a228057f5b619feb3186e986dbe76278d707b6e",
+      "rev_count": 746337,
+      "rev_date": "2025-02-01T11:46:30Z",
+      "scrape_date": "2025-02-02T00:30:00Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "3.3.0",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/ibjn1vysg7vz3vr5d2mdi10s8y8ziy6x-htop-3.3.0"
+      },
+      "system": "x86_64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "lm_sensors",
+      "broken": false,
+      "derivation": "/nix/store/7120i805v81kzkiq27v9z94j679wysmg-lm-sensors-3.6.0.drv",
+      "description": "Tools for reading hardware sensors",
+      "install_id": "lm_sensors",
+      "license": "[ LGPL-2.1-or-later, GPL-2.0-or-later ]",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=3a228057f5b619feb3186e986dbe76278d707b6e",
+      "name": "lm-sensors-3.6.0",
+      "pname": "lm_sensors",
+      "rev": "3a228057f5b619feb3186e986dbe76278d707b6e",
+      "rev_count": 746337,
+      "rev_date": "2025-02-01T11:46:30Z",
+      "scrape_date": "2025-02-02T00:30:00Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "lm-sensors-3.6.0",
+      "outputs_to_install": [
+        "bin",
+        "man"
+      ],
+      "outputs": {
+        "bin": "/nix/store/69kiigijknibzl4q0mvs16x6nz0kc1kl-lm-sensors-3.6.0-bin",
+        "dev": "/nix/store/18qagq50qfzx7wdsl9ldycjanbx05vbn-lm-sensors-3.6.0-dev",
+        "doc": "/nix/store/9dg4i9hx83i042z0jz6rigwkkikv6ydk-lm-sensors-3.6.0-doc",
+        "man": "/nix/store/4f4ask96wm242d88d1786hvpj26fgw2s-lm-sensors-3.6.0-man",
+        "out": "/nix/store/id62xrhsl925gqcm3c7nd9jz94a5ki0v-lm-sensors-3.6.0"
+      },
+      "system": "aarch64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "lm_sensors",
+      "broken": false,
+      "derivation": "/nix/store/55av7pavkb9jcliv6i3qw4lpbdvpwn0l-lm-sensors-3.6.0.drv",
+      "description": "Tools for reading hardware sensors",
+      "install_id": "lm_sensors",
+      "license": "[ LGPL-2.1-or-later, GPL-2.0-or-later ]",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=3a228057f5b619feb3186e986dbe76278d707b6e",
+      "name": "lm-sensors-3.6.0",
+      "pname": "lm_sensors",
+      "rev": "3a228057f5b619feb3186e986dbe76278d707b6e",
+      "rev_count": 746337,
+      "rev_date": "2025-02-01T11:46:30Z",
+      "scrape_date": "2025-02-02T00:30:00Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "lm-sensors-3.6.0",
+      "outputs_to_install": [
+        "bin",
+        "man"
+      ],
+      "outputs": {
+        "bin": "/nix/store/4r3d2jbp7c3rjpsa1x1y4xs6qj696mxc-lm-sensors-3.6.0-bin",
+        "dev": "/nix/store/dygykyv01bdcd5f8hjaldszzp0y6hrwa-lm-sensors-3.6.0-dev",
+        "doc": "/nix/store/5z0k3d81il7szmrm7r2q2bxbcgx05klw-lm-sensors-3.6.0-doc",
+        "man": "/nix/store/p98jxns93n131x2l4asar4qsgr3i7q1j-lm-sensors-3.6.0-man",
+        "out": "/nix/store/2qskvw7cl64dgg793mly3936bf4wpamw-lm-sensors-3.6.0"
       },
       "system": "x86_64-linux",
       "group": "toplevel",
