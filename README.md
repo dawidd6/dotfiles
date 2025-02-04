@@ -13,16 +13,6 @@ This is for Ubuntu Desktop specifically.
 1. Add as root `amdgpu.abmlevel=0` to `GRUB_CMDLINE_LINUX_DEFAULT` in `/etc/default/grub`.
 2. Run `sudo update-grub`.
 
-### Set up fonts
-
-1. Go to https://www.nerdfonts.com/font-downloads and download UbuntuMono.
-2. Run `mkdir -p ~/.local/share/fonts`.
-3. Run `unzip -o ~/Downloads/UbuntuMono.zip -d ~/.local/share/fonts`.
-4. Run `sudo apt install fonts-ubuntu-classic`.
-5. Run `sudo apt purge fonts-noto-core`.
-6. Run `sudo fc-cache -fv`.
-7. Run `fc-cache -fv`.
-
 ### Set auto unlock of GNOME keyring with LUKS passphrse
 
 1. Enable user auto-login in settings.
@@ -31,16 +21,18 @@ This is for Ubuntu Desktop specifically.
 1. Append ` use_authtok` to `pam_gnome_keyring.so` line in `/etc/pam.d/common-password`.
 1. Run `sudo update-initramfs -u -k all`.
 
-### Swap software store apps
+### Remove snapd
 
-1. Run `sudo snap remove --terminate --purge snap-store`.
-2. Run `sudo apt install gnome-software gnome-software-plugin-flatpak gnome-software-plugin-snap`.
+1. Run `sudo apt purge snapd`.
+2. Run `sudo apt-mark hold snapd`.
+3. Run `rm -rf ~/snap`.
 
 ### Install various desktop apps
 
+1. Run `sudo apt install gnome-software gnome-software-plugin-flatpak`.
 1. Run `sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo`.
-2. Open GNOME software app.
-3. Install below apps via flatpak:
+3. Open GNOME software app.
+4. Install below apps via flatpak:
     - Ignition
     - Extension Manager
     - SaveDesktop
@@ -83,6 +75,16 @@ This is for Ubuntu Desktop specifically.
 
 1. Go to https://flox.dev.
 2. Download and install `.deb` package.
+
+### Set up fonts
+
+1. Go to https://www.nerdfonts.com/font-downloads and download UbuntuMono.
+2. Run `mkdir -p ~/.local/share/fonts`.
+3. Run `unzip -o ~/Downloads/UbuntuMono.zip -d ~/.local/share/fonts`.
+4. Run `sudo apt install fonts-ubuntu-classic`.
+5. Run `sudo apt purge fonts-noto-core`.
+6. Run `sudo fc-cache -fv`.
+7. Run `fc-cache -fv`.
 
 ### Set up dotfiles
 
