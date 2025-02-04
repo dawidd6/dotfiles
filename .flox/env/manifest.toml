@@ -36,6 +36,21 @@ htop.pkg-path = "htop"
 lm_sensors.pkg-path = "lm_sensors"
 lm_sensors.systems = ["aarch64-linux", "x86_64-linux"]
 diffoscopeMinimal.pkg-path = "diffoscopeMinimal"
+ack.pkg-path = "ack"
+btop.pkg-path = "btop"
+distrobox.pkg-path = "distrobox"
+dos2unix.pkg-path = "dos2unix"
+fx.pkg-path = "fx"
+ghorg.pkg-path = "ghorg"
+gnumake.pkg-path = "gnumake"
+ipcalc.pkg-path = "ipcalc"
+ncdu.pkg-path = "ncdu"
+ripgrep.pkg-path = "ripgrep"
+shellcheck.pkg-path = "shellcheck"
+ruby.pkg-path = "ruby"
+nodejs.pkg-path = "nodejs"
+sshpass.pkg-path = "sshpass"
+tealdeer.pkg-path = "tealdeer"
 # gum.pkg-path = "gum"
 # gum.version = "^0.14.5"
 
@@ -91,9 +106,7 @@ diffoscopeMinimal.pkg-path = "diffoscopeMinimal"
 [options]
 # Systems that environment is compatible with
 systems = [
-  "aarch64-darwin",
   "aarch64-linux",
-  "x86_64-darwin",
   "x86_64-linux",
 ]
 # Uncomment to disable CUDA detection.
