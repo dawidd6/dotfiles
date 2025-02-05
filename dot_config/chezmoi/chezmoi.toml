@@ -1,1 +1,2 @@
 pager = "less -R"
+umask = 0o022
