@@ -52,6 +52,7 @@ nodejs.pkg-path = "nodejs"
 sshpass.pkg-path = "sshpass"
 tealdeer.pkg-path = "tealdeer"
 podman.pkg-path = "podman"
+stylua.pkg-path = "stylua"
 # gum.pkg-path = "gum"
 # gum.version = "^0.14.5"
 

@@ -103,6 +103,9 @@
       "stow": {
         "pkg-path": "stow"
       },
+      "stylua": {
+        "pkg-path": "stylua"
+      },
       "tealdeer": {
         "pkg-path": "tealdeer"
       },
@@ -2043,6 +2046,64 @@
       ],
       "outputs": {
         "out": "/nix/store/zp203wfcr071m80n009nc0ngxyp6crpw-stow-2.4.1"
+      },
+      "system": "x86_64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "stylua",
+      "broken": false,
+      "derivation": "/nix/store/idimr43r886n4y2acvj17lsfsl7qwmjn-stylua-2.0.2.drv",
+      "description": "Opinionated Lua code formatter",
+      "install_id": "stylua",
+      "license": "MPL-2.0",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=3a228057f5b619feb3186e986dbe76278d707b6e",
+      "name": "stylua-2.0.2",
+      "pname": "stylua",
+      "rev": "3a228057f5b619feb3186e986dbe76278d707b6e",
+      "rev_count": 746337,
+      "rev_date": "2025-02-01T11:46:30Z",
+      "scrape_date": "2025-02-02T00:30:00Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "2.0.2",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/fdjrn9xl12rdwfvfr4izqaagjpkkc0l8-stylua-2.0.2"
+      },
+      "system": "aarch64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "stylua",
+      "broken": false,
+      "derivation": "/nix/store/3bp9jkjjfvmdbfrgr6mcmkqr8n5agy5z-stylua-2.0.2.drv",
+      "description": "Opinionated Lua code formatter",
+      "install_id": "stylua",
+      "license": "MPL-2.0",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=3a228057f5b619feb3186e986dbe76278d707b6e",
+      "name": "stylua-2.0.2",
+      "pname": "stylua",
+      "rev": "3a228057f5b619feb3186e986dbe76278d707b6e",
+      "rev_count": 746337,
+      "rev_date": "2025-02-01T11:46:30Z",
+      "scrape_date": "2025-02-02T00:30:00Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "2.0.2",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/d2kll4ywb917dgljvv7dj2zmbh6g2459-stylua-2.0.2"
       },
       "system": "x86_64-linux",
       "group": "toplevel",
