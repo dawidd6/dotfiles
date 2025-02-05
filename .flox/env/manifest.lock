@@ -15,6 +15,9 @@
       "carapace": {
         "pkg-path": "carapace"
       },
+      "chezmoi": {
+        "pkg-path": "chezmoi"
+      },
       "diff-so-fancy": {
         "pkg-path": "diff-so-fancy"
       },
@@ -364,6 +367,64 @@
       ],
       "outputs": {
         "out": "/nix/store/mr4wfsp7malvds86hl69rrkzbm0i97kh-carapace-1.1.1"
+      },
+      "system": "x86_64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "chezmoi",
+      "broken": false,
+      "derivation": "/nix/store/wc0gwga98d7i3jnm9fb5rb6gzsb9nnnw-chezmoi-2.58.0.drv",
+      "description": "Manage your dotfiles across multiple machines, securely",
+      "install_id": "chezmoi",
+      "license": "MIT",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=3a228057f5b619feb3186e986dbe76278d707b6e",
+      "name": "chezmoi-2.58.0",
+      "pname": "chezmoi",
+      "rev": "3a228057f5b619feb3186e986dbe76278d707b6e",
+      "rev_count": 746337,
+      "rev_date": "2025-02-01T11:46:30Z",
+      "scrape_date": "2025-02-02T00:30:00Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "2.58.0",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/q0nhvqsg4rk8jwpr7spg0dfdcwq76did-chezmoi-2.58.0"
+      },
+      "system": "aarch64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "chezmoi",
+      "broken": false,
+      "derivation": "/nix/store/1150vzq7gg449qg4c9i7fmrlay0wc71k-chezmoi-2.58.0.drv",
+      "description": "Manage your dotfiles across multiple machines, securely",
+      "install_id": "chezmoi",
+      "license": "MIT",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=3a228057f5b619feb3186e986dbe76278d707b6e",
+      "name": "chezmoi-2.58.0",
+      "pname": "chezmoi",
+      "rev": "3a228057f5b619feb3186e986dbe76278d707b6e",
+      "rev_count": 746337,
+      "rev_date": "2025-02-01T11:46:30Z",
+      "scrape_date": "2025-02-02T00:30:00Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "2.58.0",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/v0d1bp5ryjyxq5xzmx4lnakywa41r30m-chezmoi-2.58.0"
       },
       "system": "x86_64-linux",
       "group": "toplevel",
