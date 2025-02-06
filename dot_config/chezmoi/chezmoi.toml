@@ -1,2 +1,1 @@
-pager = "less -R"
-umask = 0o022
+umask = 0o002
