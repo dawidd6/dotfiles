@@ -27,21 +27,14 @@ This is for Ubuntu Desktop specifically.
 2. Run `sudo apt-mark hold snapd`.
 3. Run `rm -rf ~/snap`.
 
-### Install podman system dependencies
+### Install uidmap for podman
 
 1. Run `sudo apt install uidmap`.
 
-### Install various desktop apps
+### Install flatpak
 
-1. Run `sudo apt install gnome-software gnome-software-plugin-flatpak`.
-1. Run `sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo`.
-3. Open GNOME software app.
-4. Install below apps via flatpak:
-    - Ignition
-    - Extension Manager
-    - SaveDesktop
-    - Dconf Editor
-    - Spotify
+1. Run `sudo apt install flatpak`.
+1. Run `flatpak --user remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo`.
 
 ### Install virt-manager
 
@@ -79,6 +72,11 @@ This is for Ubuntu Desktop specifically.
 ### Install flox (Nix)
 
 1. Go to https://flox.dev.
+2. Download and install `.deb` package.
+
+### Install MEGA
+
+1. Go to https://mega.io/desktop.
 2. Download and install `.deb` package.
 
 ### Set up fonts
