@@ -86,8 +86,9 @@ This is for Ubuntu Desktop specifically.
 3. Run `unzip -o ~/Downloads/UbuntuMono.zip -d ~/.local/share/fonts`.
 4. Run `sudo apt install fonts-ubuntu-classic`.
 5. Run `sudo apt purge fonts-noto-core`.
-6. Run `sudo fc-cache -fv`.
-7. Run `fc-cache -fv`.
+6. Run `sudo apt-mark hold fonts-noto-core`.
+7. Run `sudo fc-cache -fv`.
+8. Run `fc-cache -fv`.
 
 ### Set up dotfiles
 
