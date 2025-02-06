@@ -12,7 +12,8 @@ if status is-interactive
 
     # Exports
     set -gx EDITOR nvim
-    set -gx PAGER less
+    set -gx PAGER bat
+    set -gx SHELL fish
 
     # Abbreviations
     abbr --add -- clip 'xsel --clipboard'
@@ -67,7 +68,4 @@ if status is-interactive
     direnv hook fish | source
     nix-your-shell fish | source
     flox activate -d ~ -m run | source
-
-    # TODO
-    set fish_complete_path $fish_complete_path "$FLOX_ENV/share/fish/vendor_completions.d"
 end
