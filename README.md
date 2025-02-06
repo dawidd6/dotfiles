@@ -44,12 +44,12 @@ This is for Ubuntu Desktop specifically.
 ### Install Google Chrome
 
 1. Go to https://www.google.com/chrome.
-2. Download and install `.deb` package.
+2. Follow instructions there.
 
 ### Install 1Password
 
 1. Go to https://1password.com/downloads/linux.
-2. Download and install `.deb` package.
+2. Follow instructions there.
 3. Run `sudo apt update`.
 4. Run `sudo apt install 1password-cli`.
 5. Run `sudo ln -s /opt/1Password/op-ssh-sign /usr/local/bin/op-ssh-sign`.
@@ -60,8 +60,7 @@ This is for Ubuntu Desktop specifically.
 ### Install VSCode
 
 1. Go to https://code.visualstudio.com/download.
-2. Download and install `.deb` package.
-3. Open the app and sync settings.
+2. Follow instructions there.
 
 ### Install incus
 
@@ -72,12 +71,12 @@ This is for Ubuntu Desktop specifically.
 ### Install flox (Nix)
 
 1. Go to https://flox.dev.
-2. Download and install `.deb` package.
+2. Follow instructions there.
 
 ### Install MEGA
 
 1. Go to https://mega.io/desktop.
-2. Download and install `.deb` package.
+2. Follow instructions there.
 
 ### Set up fonts
 
@@ -92,13 +91,10 @@ This is for Ubuntu Desktop specifically.
 
 ### Set up dotfiles
 
-1. Run `git clone https://github.com/dawidd6/dotfiles ~/.dotfiles`.
-2. Run `cd ~/.dotfiles`.
-3. Run `flox activate`.
-4. Run `stow .`.
+1. Run `nix-shell -p chezmoi --run "chezmoi init --apply dawidd6"`.
 
 ### Set up desktop
 
 1. Open SaveDesktop app.
-2. Import `.desktop.sd.tar.gz` file.
+2. Import `desktop.sd.tar.gz` file from MEGA drive.
 3. Log out and log back in.
