@@ -67,5 +67,4 @@ if status is-interactive
     zoxide init fish --cmd=cd | source
     direnv hook fish | source
     nix-your-shell fish | source
-    flox activate -d ~ -m run | source
 end
