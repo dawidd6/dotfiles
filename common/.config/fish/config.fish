@@ -1,4 +1,7 @@
 if status is-interactive
+    # Fixes
+    set fish_complete_path $fish_complete_path "$FLOX_ENV/share/fish/vendor_completions.d"
+
     # Scripts
     fish_add_path ~/.bin
 
