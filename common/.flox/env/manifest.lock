@@ -120,9 +120,7 @@
       }
     },
     "hook": {},
-    "profile": {
-      "fish": "set fish_complete_path $fish_complete_path \"$FLOX_ENV/share/fish/vendor_completions.d\"\nset -gx LOCALE_ARCHIVE /usr/lib/locale/locale-archive\n"
-    },
+    "profile": {},
     "options": {
       "systems": [
         "aarch64-linux",

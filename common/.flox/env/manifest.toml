@@ -92,10 +92,8 @@ stylua.pkg-path = "stylua"
 ## Shell specific profiles go here:
 # bash = ...
 # zsh  = ...
-fish =  """
-set fish_complete_path $fish_complete_path "$FLOX_ENV/share/fish/vendor_completions.d"
-set -gx LOCALE_ARCHIVE /usr/lib/locale/locale-archive
-"""
+#fish =  """
+#"""
 
 
 ## Services ----------------------------------------------------------
