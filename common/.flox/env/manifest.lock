@@ -115,6 +115,9 @@
       "xsel": {
         "pkg-path": "xsel"
       },
+      "yubikey-manager": {
+        "pkg-path": "yubikey-manager"
+      },
       "zoxide": {
         "pkg-path": "zoxide"
       }
@@ -148,6 +151,7 @@
       "rev_date": "2025-02-04T14:46:40Z",
       "scrape_date": "2025-02-05T00:30:07Z",
       "stabilities": [
+        "staging",
         "unstable"
       ],
       "unfree": false,
@@ -179,6 +183,7 @@
       "rev_date": "2025-02-04T14:46:40Z",
       "scrape_date": "2025-02-05T00:30:07Z",
       "stabilities": [
+        "staging",
         "unstable"
       ],
       "unfree": false,
@@ -210,6 +215,7 @@
       "rev_date": "2025-02-04T14:46:40Z",
       "scrape_date": "2025-02-05T00:30:07Z",
       "stabilities": [
+        "staging",
         "unstable"
       ],
       "unfree": false,
@@ -239,6 +245,7 @@
       "rev_date": "2025-02-04T14:46:40Z",
       "scrape_date": "2025-02-05T00:30:07Z",
       "stabilities": [
+        "staging",
         "unstable"
       ],
       "unfree": false,
@@ -268,6 +275,7 @@
       "rev_date": "2025-02-04T14:46:40Z",
       "scrape_date": "2025-02-05T00:30:07Z",
       "stabilities": [
+        "staging",
         "unstable"
       ],
       "unfree": false,
@@ -297,6 +305,7 @@
       "rev_date": "2025-02-04T14:46:40Z",
       "scrape_date": "2025-02-05T00:30:07Z",
       "stabilities": [
+        "staging",
         "unstable"
       ],
       "unfree": false,
@@ -326,6 +335,7 @@
       "rev_date": "2025-02-04T14:46:40Z",
       "scrape_date": "2025-02-05T00:30:07Z",
       "stabilities": [
+        "staging",
         "unstable"
       ],
       "unfree": false,
@@ -355,6 +365,7 @@
       "rev_date": "2025-02-04T14:46:40Z",
       "scrape_date": "2025-02-05T00:30:07Z",
       "stabilities": [
+        "staging",
         "unstable"
       ],
       "unfree": false,
@@ -384,6 +395,7 @@
       "rev_date": "2025-02-04T14:46:40Z",
       "scrape_date": "2025-02-05T00:30:07Z",
       "stabilities": [
+        "staging",
         "unstable"
       ],
       "unfree": false,
@@ -413,6 +425,7 @@
       "rev_date": "2025-02-04T14:46:40Z",
       "scrape_date": "2025-02-05T00:30:07Z",
       "stabilities": [
+        "staging",
         "unstable"
       ],
       "unfree": false,
@@ -442,6 +455,7 @@
       "rev_date": "2025-02-04T14:46:40Z",
       "scrape_date": "2025-02-05T00:30:07Z",
       "stabilities": [
+        "staging",
         "unstable"
       ],
       "unfree": false,
@@ -474,6 +488,7 @@
       "rev_date": "2025-02-04T14:46:40Z",
       "scrape_date": "2025-02-05T00:30:07Z",
       "stabilities": [
+        "staging",
         "unstable"
       ],
       "unfree": false,
@@ -506,6 +521,7 @@
       "rev_date": "2025-02-04T14:46:40Z",
       "scrape_date": "2025-02-05T00:30:07Z",
       "stabilities": [
+        "staging",
         "unstable"
       ],
       "unfree": false,
@@ -535,6 +551,7 @@
       "rev_date": "2025-02-04T14:46:40Z",
       "scrape_date": "2025-02-05T00:30:07Z",
       "stabilities": [
+        "staging",
         "unstable"
       ],
       "unfree": false,
@@ -564,6 +581,7 @@
       "rev_date": "2025-02-04T14:46:40Z",
       "scrape_date": "2025-02-05T00:30:07Z",
       "stabilities": [
+        "staging",
         "unstable"
       ],
       "unfree": false,
@@ -593,6 +611,7 @@
       "rev_date": "2025-02-04T14:46:40Z",
       "scrape_date": "2025-02-05T00:30:07Z",
       "stabilities": [
+        "staging",
         "unstable"
       ],
       "unfree": false,
@@ -622,6 +641,7 @@
       "rev_date": "2025-02-04T14:46:40Z",
       "scrape_date": "2025-02-05T00:30:07Z",
       "stabilities": [
+        "staging",
         "unstable"
       ],
       "unfree": false,
@@ -651,6 +671,7 @@
       "rev_date": "2025-02-04T14:46:40Z",
       "scrape_date": "2025-02-05T00:30:07Z",
       "stabilities": [
+        "staging",
         "unstable"
       ],
       "unfree": false,
@@ -680,6 +701,7 @@
       "rev_date": "2025-02-04T14:46:40Z",
       "scrape_date": "2025-02-05T00:30:07Z",
       "stabilities": [
+        "staging",
         "unstable"
       ],
       "unfree": false,
@@ -711,6 +733,7 @@
       "rev_date": "2025-02-04T14:46:40Z",
       "scrape_date": "2025-02-05T00:30:07Z",
       "stabilities": [
+        "staging",
         "unstable"
       ],
       "unfree": false,
@@ -742,6 +765,7 @@
       "rev_date": "2025-02-04T14:46:40Z",
       "scrape_date": "2025-02-05T00:30:07Z",
       "stabilities": [
+        "staging",
         "unstable"
       ],
       "unfree": false,
@@ -772,6 +796,7 @@
       "rev_date": "2025-02-04T14:46:40Z",
       "scrape_date": "2025-02-05T00:30:07Z",
       "stabilities": [
+        "staging",
         "unstable"
       ],
       "unfree": false,
@@ -802,6 +827,7 @@
       "rev_date": "2025-02-04T14:46:40Z",
       "scrape_date": "2025-02-05T00:30:07Z",
       "stabilities": [
+        "staging",
         "unstable"
       ],
       "unfree": false,
@@ -831,6 +857,7 @@
       "rev_date": "2025-02-04T14:46:40Z",
       "scrape_date": "2025-02-05T00:30:07Z",
       "stabilities": [
+        "staging",
         "unstable"
       ],
       "unfree": false,
@@ -860,6 +887,7 @@
       "rev_date": "2025-02-04T14:46:40Z",
       "scrape_date": "2025-02-05T00:30:07Z",
       "stabilities": [
+        "staging",
         "unstable"
       ],
       "unfree": false,
@@ -891,6 +919,7 @@
       "rev_date": "2025-02-04T14:46:40Z",
       "scrape_date": "2025-02-05T00:30:07Z",
       "stabilities": [
+        "staging",
         "unstable"
       ],
       "unfree": false,
@@ -922,6 +951,7 @@
       "rev_date": "2025-02-04T14:46:40Z",
       "scrape_date": "2025-02-05T00:30:07Z",
       "stabilities": [
+        "staging",
         "unstable"
       ],
       "unfree": false,
@@ -951,6 +981,7 @@
       "rev_date": "2025-02-04T14:46:40Z",
       "scrape_date": "2025-02-05T00:30:07Z",
       "stabilities": [
+        "staging",
         "unstable"
       ],
       "unfree": false,
@@ -980,6 +1011,7 @@
       "rev_date": "2025-02-04T14:46:40Z",
       "scrape_date": "2025-02-05T00:30:07Z",
       "stabilities": [
+        "staging",
         "unstable"
       ],
       "unfree": false,
@@ -1009,6 +1041,7 @@
       "rev_date": "2025-02-04T14:46:40Z",
       "scrape_date": "2025-02-05T00:30:07Z",
       "stabilities": [
+        "staging",
         "unstable"
       ],
       "unfree": false,
@@ -1038,6 +1071,7 @@
       "rev_date": "2025-02-04T14:46:40Z",
       "scrape_date": "2025-02-05T00:30:07Z",
       "stabilities": [
+        "staging",
         "unstable"
       ],
       "unfree": false,
@@ -1069,6 +1103,7 @@
       "rev_date": "2025-02-04T14:46:40Z",
       "scrape_date": "2025-02-05T00:30:07Z",
       "stabilities": [
+        "staging",
         "unstable"
       ],
       "unfree": false,
@@ -1100,6 +1135,7 @@
       "rev_date": "2025-02-04T14:46:40Z",
       "scrape_date": "2025-02-05T00:30:07Z",
       "stabilities": [
+        "staging",
         "unstable"
       ],
       "unfree": false,
@@ -1133,6 +1169,7 @@
       "rev_date": "2025-02-04T14:46:40Z",
       "scrape_date": "2025-02-05T00:30:07Z",
       "stabilities": [
+        "staging",
         "unstable"
       ],
       "unfree": false,
@@ -1166,6 +1203,7 @@
       "rev_date": "2025-02-04T14:46:40Z",
       "scrape_date": "2025-02-05T00:30:07Z",
       "stabilities": [
+        "staging",
         "unstable"
       ],
       "unfree": false,
@@ -1195,6 +1233,7 @@
       "rev_date": "2025-02-04T14:46:40Z",
       "scrape_date": "2025-02-05T00:30:07Z",
       "stabilities": [
+        "staging",
         "unstable"
       ],
       "unfree": false,
@@ -1224,6 +1263,7 @@
       "rev_date": "2025-02-04T14:46:40Z",
       "scrape_date": "2025-02-05T00:30:07Z",
       "stabilities": [
+        "staging",
         "unstable"
       ],
       "unfree": false,
@@ -1253,6 +1293,7 @@
       "rev_date": "2025-02-04T14:46:40Z",
       "scrape_date": "2025-02-05T00:30:07Z",
       "stabilities": [
+        "staging",
         "unstable"
       ],
       "unfree": false,
@@ -1282,6 +1323,7 @@
       "rev_date": "2025-02-04T14:46:40Z",
       "scrape_date": "2025-02-05T00:30:07Z",
       "stabilities": [
+        "staging",
         "unstable"
       ],
       "unfree": false,
@@ -1316,6 +1358,7 @@
       "rev_date": "2025-02-04T14:46:40Z",
       "scrape_date": "2025-02-05T00:30:07Z",
       "stabilities": [
+        "staging",
         "unstable"
       ],
       "unfree": false,
@@ -1350,6 +1393,7 @@
       "rev_date": "2025-02-04T14:46:40Z",
       "scrape_date": "2025-02-05T00:30:07Z",
       "stabilities": [
+        "staging",
         "unstable"
       ],
       "unfree": false,
@@ -1380,6 +1424,7 @@
       "rev_date": "2025-02-04T14:46:40Z",
       "scrape_date": "2025-02-05T00:30:07Z",
       "stabilities": [
+        "staging",
         "unstable"
       ],
       "unfree": false,
@@ -1410,6 +1455,7 @@
       "rev_date": "2025-02-04T14:46:40Z",
       "scrape_date": "2025-02-05T00:30:07Z",
       "stabilities": [
+        "staging",
         "unstable"
       ],
       "unfree": false,
@@ -1439,6 +1485,7 @@
       "rev_date": "2025-02-04T14:46:40Z",
       "scrape_date": "2025-02-05T00:30:07Z",
       "stabilities": [
+        "staging",
         "unstable"
       ],
       "unfree": false,
@@ -1468,6 +1515,7 @@
       "rev_date": "2025-02-04T14:46:40Z",
       "scrape_date": "2025-02-05T00:30:07Z",
       "stabilities": [
+        "staging",
         "unstable"
       ],
       "unfree": false,
@@ -1497,6 +1545,7 @@
       "rev_date": "2025-02-04T14:46:40Z",
       "scrape_date": "2025-02-05T00:30:07Z",
       "stabilities": [
+        "staging",
         "unstable"
       ],
       "unfree": false,
@@ -1526,6 +1575,7 @@
       "rev_date": "2025-02-04T14:46:40Z",
       "scrape_date": "2025-02-05T00:30:07Z",
       "stabilities": [
+        "staging",
         "unstable"
       ],
       "unfree": false,
@@ -1555,6 +1605,7 @@
       "rev_date": "2025-02-04T14:46:40Z",
       "scrape_date": "2025-02-05T00:30:07Z",
       "stabilities": [
+        "staging",
         "unstable"
       ],
       "unfree": false,
@@ -1584,6 +1635,7 @@
       "rev_date": "2025-02-04T14:46:40Z",
       "scrape_date": "2025-02-05T00:30:07Z",
       "stabilities": [
+        "staging",
         "unstable"
       ],
       "unfree": false,
@@ -1614,6 +1666,7 @@
       "rev_date": "2025-02-04T14:46:40Z",
       "scrape_date": "2025-02-05T00:30:07Z",
       "stabilities": [
+        "staging",
         "unstable"
       ],
       "unfree": false,
@@ -1644,6 +1697,7 @@
       "rev_date": "2025-02-04T14:46:40Z",
       "scrape_date": "2025-02-05T00:30:07Z",
       "stabilities": [
+        "staging",
         "unstable"
       ],
       "unfree": false,
@@ -1675,6 +1729,7 @@
       "rev_date": "2025-02-04T14:46:40Z",
       "scrape_date": "2025-02-05T00:30:07Z",
       "stabilities": [
+        "staging",
         "unstable"
       ],
       "unfree": false,
@@ -1706,6 +1761,7 @@
       "rev_date": "2025-02-04T14:46:40Z",
       "scrape_date": "2025-02-05T00:30:07Z",
       "stabilities": [
+        "staging",
         "unstable"
       ],
       "unfree": false,
@@ -1735,6 +1791,7 @@
       "rev_date": "2025-02-04T14:46:40Z",
       "scrape_date": "2025-02-05T00:30:07Z",
       "stabilities": [
+        "staging",
         "unstable"
       ],
       "unfree": false,
@@ -1764,6 +1821,7 @@
       "rev_date": "2025-02-04T14:46:40Z",
       "scrape_date": "2025-02-05T00:30:07Z",
       "stabilities": [
+        "staging",
         "unstable"
       ],
       "unfree": false,
@@ -1794,6 +1852,7 @@
       "rev_date": "2025-02-04T14:46:40Z",
       "scrape_date": "2025-02-05T00:30:07Z",
       "stabilities": [
+        "staging",
         "unstable"
       ],
       "unfree": false,
@@ -1824,6 +1883,7 @@
       "rev_date": "2025-02-04T14:46:40Z",
       "scrape_date": "2025-02-05T00:30:07Z",
       "stabilities": [
+        "staging",
         "unstable"
       ],
       "unfree": false,
@@ -1858,6 +1918,7 @@
       "rev_date": "2025-02-04T14:46:40Z",
       "scrape_date": "2025-02-05T00:30:07Z",
       "stabilities": [
+        "staging",
         "unstable"
       ],
       "unfree": false,
@@ -1892,6 +1953,7 @@
       "rev_date": "2025-02-04T14:46:40Z",
       "scrape_date": "2025-02-05T00:30:07Z",
       "stabilities": [
+        "staging",
         "unstable"
       ],
       "unfree": false,
@@ -1921,6 +1983,7 @@
       "rev_date": "2025-02-04T14:46:40Z",
       "scrape_date": "2025-02-05T00:30:07Z",
       "stabilities": [
+        "staging",
         "unstable"
       ],
       "unfree": false,
@@ -1950,6 +2013,7 @@
       "rev_date": "2025-02-04T14:46:40Z",
       "scrape_date": "2025-02-05T00:30:07Z",
       "stabilities": [
+        "staging",
         "unstable"
       ],
       "unfree": false,
@@ -1979,6 +2043,7 @@
       "rev_date": "2025-02-04T14:46:40Z",
       "scrape_date": "2025-02-05T00:30:07Z",
       "stabilities": [
+        "staging",
         "unstable"
       ],
       "unfree": false,
@@ -2008,6 +2073,7 @@
       "rev_date": "2025-02-04T14:46:40Z",
       "scrape_date": "2025-02-05T00:30:07Z",
       "stabilities": [
+        "staging",
         "unstable"
       ],
       "unfree": false,
@@ -2037,6 +2103,7 @@
       "rev_date": "2025-02-04T14:46:40Z",
       "scrape_date": "2025-02-05T00:30:07Z",
       "stabilities": [
+        "staging",
         "unstable"
       ],
       "unfree": false,
@@ -2066,6 +2133,7 @@
       "rev_date": "2025-02-04T14:46:40Z",
       "scrape_date": "2025-02-05T00:30:07Z",
       "stabilities": [
+        "staging",
         "unstable"
       ],
       "unfree": false,
@@ -2095,6 +2163,7 @@
       "rev_date": "2025-02-04T14:46:40Z",
       "scrape_date": "2025-02-05T00:30:07Z",
       "stabilities": [
+        "staging",
         "unstable"
       ],
       "unfree": false,
@@ -2124,6 +2193,7 @@
       "rev_date": "2025-02-04T14:46:40Z",
       "scrape_date": "2025-02-05T00:30:07Z",
       "stabilities": [
+        "staging",
         "unstable"
       ],
       "unfree": false,
@@ -2153,6 +2223,7 @@
       "rev_date": "2025-02-04T14:46:40Z",
       "scrape_date": "2025-02-05T00:30:07Z",
       "stabilities": [
+        "staging",
         "unstable"
       ],
       "unfree": false,
@@ -2182,6 +2253,7 @@
       "rev_date": "2025-02-04T14:46:40Z",
       "scrape_date": "2025-02-05T00:30:07Z",
       "stabilities": [
+        "staging",
         "unstable"
       ],
       "unfree": false,
@@ -2212,6 +2284,7 @@
       "rev_date": "2025-02-04T14:46:40Z",
       "scrape_date": "2025-02-05T00:30:07Z",
       "stabilities": [
+        "staging",
         "unstable"
       ],
       "unfree": false,
@@ -2242,6 +2315,7 @@
       "rev_date": "2025-02-04T14:46:40Z",
       "scrape_date": "2025-02-05T00:30:07Z",
       "stabilities": [
+        "staging",
         "unstable"
       ],
       "unfree": false,
@@ -2271,6 +2345,7 @@
       "rev_date": "2025-02-04T14:46:40Z",
       "scrape_date": "2025-02-05T00:30:07Z",
       "stabilities": [
+        "staging",
         "unstable"
       ],
       "unfree": false,
@@ -2280,6 +2355,68 @@
       ],
       "outputs": {
         "out": "/nix/store/ir18b8kw7ljcawxkpypg50v024m93gfv-xsel-1.2.1"
+      },
+      "system": "x86_64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "yubikey-manager",
+      "broken": false,
+      "derivation": "/nix/store/89z7r713l10z2znx74f6q1mjin2wh2w5-python3.12-yubikey-manager-5.5.1.drv",
+      "description": "Command line tool for configuring any YubiKey over all USB transports",
+      "install_id": "yubikey-manager",
+      "license": "BSD-2-Clause",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=799ba5bffed04ced7067a91798353d360788b30d",
+      "name": "python3.12-yubikey-manager-5.5.1",
+      "pname": "yubikey-manager",
+      "rev": "799ba5bffed04ced7067a91798353d360788b30d",
+      "rev_count": 747653,
+      "rev_date": "2025-02-04T14:46:40Z",
+      "scrape_date": "2025-02-05T00:30:07Z",
+      "stabilities": [
+        "staging",
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "python3.12-yubikey-manager-5.5.1",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "dist": "/nix/store/79fdjcrjz2ari0hrws8q08vkxjfmbz51-python3.12-yubikey-manager-5.5.1-dist",
+        "out": "/nix/store/34y30vipfdff0rbwm9m549694r725ns7-python3.12-yubikey-manager-5.5.1"
+      },
+      "system": "aarch64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "yubikey-manager",
+      "broken": false,
+      "derivation": "/nix/store/x0l29bf3xj8fyl9w0qka3sgsirihlczw-python3.12-yubikey-manager-5.5.1.drv",
+      "description": "Command line tool for configuring any YubiKey over all USB transports",
+      "install_id": "yubikey-manager",
+      "license": "BSD-2-Clause",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=799ba5bffed04ced7067a91798353d360788b30d",
+      "name": "python3.12-yubikey-manager-5.5.1",
+      "pname": "yubikey-manager",
+      "rev": "799ba5bffed04ced7067a91798353d360788b30d",
+      "rev_count": 747653,
+      "rev_date": "2025-02-04T14:46:40Z",
+      "scrape_date": "2025-02-05T00:30:07Z",
+      "stabilities": [
+        "staging",
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "python3.12-yubikey-manager-5.5.1",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "dist": "/nix/store/spxvv3bf4b5ar4hxpk8yx0jbjbl4ndd7-python3.12-yubikey-manager-5.5.1-dist",
+        "out": "/nix/store/kv9626s6qas81chgmzg061rjx2vbqbzl-python3.12-yubikey-manager-5.5.1"
       },
       "system": "x86_64-linux",
       "group": "toplevel",
@@ -2300,6 +2437,7 @@
       "rev_date": "2025-02-04T14:46:40Z",
       "scrape_date": "2025-02-05T00:30:07Z",
       "stabilities": [
+        "staging",
         "unstable"
       ],
       "unfree": false,
@@ -2329,6 +2467,7 @@
       "rev_date": "2025-02-04T14:46:40Z",
       "scrape_date": "2025-02-05T00:30:07Z",
       "stabilities": [
+        "staging",
         "unstable"
       ],
       "unfree": false,
