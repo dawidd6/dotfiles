@@ -2,4 +2,4 @@
 	path = "common"
 
 [gpg "ssh"]
-	program = "op-ssh-sign"
+	program = "/opt/1Password/op-ssh-sign"
