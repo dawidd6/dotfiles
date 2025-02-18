@@ -15,7 +15,7 @@ if status is-interactive
 
     # Exports
     set -gx EDITOR nvim
-    set -gx PAGER bat
+    set -gx PAGER less
     set -gx SHELL fish
 
     # Abbreviations
