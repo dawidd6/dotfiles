@@ -64,7 +64,7 @@ if status is-interactive
     function flox --wraps="flox"
         command flox $argv
         if contains -- $argv[1] install uninstall
-            echo 'Generating man cache...'
+            echo "Generating man cache, because it's fucked..."
             mandb -C (echo "MANDB_MAP $FLOX_ENV/share/man $HOME/.cache/man" | psub) --user-db --no-straycats --quiet --create
         end
     end
