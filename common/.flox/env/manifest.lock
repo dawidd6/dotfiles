@@ -67,9 +67,6 @@
           "x86_64-linux"
         ]
       },
-      "man": {
-        "pkg-path": "man"
-      },
       "ncdu": {
         "pkg-path": "ncdu"
       },
@@ -122,8 +119,12 @@
         "pkg-path": "zoxide"
       }
     },
-    "hook": {},
-    "profile": {},
+    "hook": {
+      "on-activate": "mandb -C <(echo \"MANDB_MAP $FLOX_ENV/share/man $HOME/.cache/man\") --user-db --no-straycats --quiet\n"
+    },
+    "profile": {
+      "bash": "export MANPATH=\"$HOME/.cache/man:\"\nexport LOCALE_ARCHIVE=/usr/lib/locale/locale-archive\n"
+    },
     "options": {
       "systems": [
         "aarch64-linux",
@@ -1333,66 +1334,6 @@
         "doc": "/nix/store/h316zv8nd80a5r8k4nf0asf13wg9r8xx-lm-sensors-3.6.0-doc",
         "man": "/nix/store/c0v8l6wdbzcklsjbdrj5r9r2w0c3n01g-lm-sensors-3.6.0-man",
         "out": "/nix/store/mgcdyx03lj9r86579qa9azvks9az7hh6-lm-sensors-3.6.0"
-      },
-      "system": "x86_64-linux",
-      "group": "toplevel",
-      "priority": 5
-    },
-    {
-      "attr_path": "man",
-      "broken": false,
-      "derivation": "/nix/store/q1qi6i8bbrqh9f1dbvvcsrj7qjb0ngn2-man-db-2.13.0.drv",
-      "description": "Implementation of the standard Unix documentation system accessed using the man command",
-      "install_id": "man",
-      "license": "GPL-2.0-or-later",
-      "locked_url": "https://github.com/flox/nixpkgs?rev=2ff53fe64443980e139eaa286017f53f88336dd0",
-      "name": "man-db-2.13.0",
-      "pname": "man",
-      "rev": "2ff53fe64443980e139eaa286017f53f88336dd0",
-      "rev_count": 752742,
-      "rev_date": "2025-02-13T11:42:38Z",
-      "scrape_date": "2025-02-15T05:15:55Z",
-      "stabilities": [
-        "unstable"
-      ],
-      "unfree": false,
-      "version": "2.13.0",
-      "outputs_to_install": [
-        "out"
-      ],
-      "outputs": {
-        "doc": "/nix/store/vly1j8rn9mqzbnrrg9vvqzxsnqshyani-man-db-2.13.0-doc",
-        "out": "/nix/store/8zvvbxznv49qw5k1d2sdwww9xcgdrh3l-man-db-2.13.0"
-      },
-      "system": "aarch64-linux",
-      "group": "toplevel",
-      "priority": 5
-    },
-    {
-      "attr_path": "man",
-      "broken": false,
-      "derivation": "/nix/store/4ccviibrav11m455gwifbp70aq6may7g-man-db-2.13.0.drv",
-      "description": "Implementation of the standard Unix documentation system accessed using the man command",
-      "install_id": "man",
-      "license": "GPL-2.0-or-later",
-      "locked_url": "https://github.com/flox/nixpkgs?rev=2ff53fe64443980e139eaa286017f53f88336dd0",
-      "name": "man-db-2.13.0",
-      "pname": "man",
-      "rev": "2ff53fe64443980e139eaa286017f53f88336dd0",
-      "rev_count": 752742,
-      "rev_date": "2025-02-13T11:42:38Z",
-      "scrape_date": "2025-02-15T05:15:55Z",
-      "stabilities": [
-        "unstable"
-      ],
-      "unfree": false,
-      "version": "2.13.0",
-      "outputs_to_install": [
-        "out"
-      ],
-      "outputs": {
-        "doc": "/nix/store/pylcw4aggn5r3k4iici0x8qv77spcn3g-man-db-2.13.0-doc",
-        "out": "/nix/store/mq9hdmv0na30dl6jkcincj9v0l9myjlm-man-db-2.13.0"
       },
       "system": "x86_64-linux",
       "group": "toplevel",
