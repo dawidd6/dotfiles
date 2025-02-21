@@ -17,6 +17,7 @@ if status is-interactive
     set -gx EDITOR nvim
     set -gx PAGER less
     set -gx SHELL fish
+    set -gx MANPATH ~/.cache/man:
 
     # Abbreviations
     abbr --add -- clip 'xsel --clipboard'
@@ -58,6 +59,13 @@ if status is-interactive
             command op plugin run -- gh $argv
         else
             command gh $argv
+        end
+    end
+    function flox --wraps="flox"
+        command flox $argv
+        if contains -- $argv[1] install uninstall
+            echo 'Generating man cache...'
+            mandb -C (echo "MANDB_MAP $FLOX_ENV/share/man $HOME/.cache/man" | psub) --user-db --no-straycats --quiet --create
         end
     end
 
