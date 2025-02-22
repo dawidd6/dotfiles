@@ -42,7 +42,7 @@ if status is-interactive
     # Aliases
     alias vi nvim
     alias vim nvim
-    alias eza 'eza --group-directories-first --group --header '\''--time-style=long-iso'\'''
+    alias eza 'eza --group-directories-first --group --header --time-style=long-iso'
     alias la 'eza -a'
     alias ll 'eza -l'
     alias lla 'eza -la'
