@@ -2,7 +2,7 @@ if status is-interactive
     # Flox
     function flox-gen-man-cache
         echo "==> Generating flox man cache..."
-        mandb -C (echo "MANDB_MAP $FLOX_ENV/share/man $HOME/.cache/flox/man" | psub) --user-db --quiet
+        mandb -C (echo "MANDB_MAP $FLOX_ENV/share/man $HOME/.cache/flox/man" | psub) --user-db --quiet --create
     end
     function flox --wraps="flox"
         command flox $argv
