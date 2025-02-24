@@ -1,20 +1,22 @@
 if status is-interactive
     # Flox
     function flox-gen-man-cache
-        echo "==> Generating flox man cache..."
-        mandb -C (echo "MANDB_MAP $FLOX_ENV/share/man $HOME/.cache/flox/man" | psub) --user-db --quiet --create
+        if test "$FLOX_ENV_DESCRIPTION" = "default"
+            echo 'Generating flox man cache...'
+            mandb -C (echo "MANDB_MAP $FLOX_ENV/share/man $HOME/.cache/flox/man" | psub) --user-db --quiet --create --no-straycats
+        end
     end
-    function flox --wraps="flox"
+    function flox --wraps=flox
         command flox $argv
         if contains -- $argv[1] install uninstall
             flox-gen-man-cache
         end
     end
+    set fish_complete_path $fish_complete_path "$FLOX_ENV/share/fish/vendor_completions.d"
     set -gx MANPATH ~/.cache/flox/man:
     if not test -d ~/.cache/flox/man
         flox-gen-man-cache
     end
-    set fish_complete_path $fish_complete_path "$FLOX_ENV/share/fish/vendor_completions.d"
 
     # Scripts
     fish_add_path ~/.bin
@@ -67,7 +69,7 @@ if status is-interactive
     alias ssh 'ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
 
     # Functions
-    function hub --wraps="gh"
+    function hub --wraps=gh
         if command -q op
             command op plugin run -- gh $argv
         else
