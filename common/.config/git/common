@@ -3,8 +3,15 @@
 	ls = "ls-tree -r --name-only HEAD"
 	unadd = "restore --staged"
 
+[branch]
+	sort = -committerdate
+
+[column]
+	ui = auto
+
 [commit]
 	gpgSign = true
+	verbose = true
 
 [core]
 	pager = "diff-so-fancy | less --tabs=4 -RFX"
@@ -15,17 +22,39 @@
 	stripLeadingSymbols = true
 	useUnicodeRuler = true
 
+[fetch]
+	prune = true
+	pruneTags = true
+	all = true
+
 [format]
 	pretty = "fuller"
 
 [gpg]
 	format = "ssh"
 
+[help]
+	autocorrect = prompt
+
 [interactive]
 	diffFilter = "diff-so-fancy --patch"
 
+[pull]
+	rebase = true
+
+[push]
+	default = simple
+	autoSetupRemote = true
+	followTags = true
+
+[rebase]
+	autoSquash = true
+	autoStash = true
+	updateRefs = true
+
 [tag]
 	gpgSign = true
+	sort = version:refname
 
 [url "git@github.com:"]
 	pushInsteadOf = "https://github.com/"
