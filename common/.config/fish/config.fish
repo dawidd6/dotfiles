@@ -53,6 +53,7 @@ if status is-interactive
     abbr --add -- gs 'git status -u'
     abbr --add -- gt 'git tag'
     abbr --add -- p podman
+    abbr --add -- incus-vm 'incus launch --vm -c limits.cpu=4 -c limits.memory=4GiB -d root,size=50GiB'
 
     # Aliases
     alias vi nvim
