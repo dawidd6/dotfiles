@@ -6,9 +6,6 @@
 [branch]
 	sort = -committerdate
 
-[column]
-	ui = auto
-
 [commit]
 	gpgSign = true
 	verbose = true
