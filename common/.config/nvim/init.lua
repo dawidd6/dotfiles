@@ -40,6 +40,8 @@ vim.opt.clipboard = "unnamedplus"
 vim.keymap.set({ "n", "v" }, "x", '"_x', { silent = true })
 vim.keymap.set({ "n", "v" }, "X", '"_X', { silent = true })
 vim.keymap.set("v", "p", '"_dP', { silent = true })
+vim.keymap.set('n', ',', ':bprevious<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '.', ':bnext<CR>', { noremap = true, silent = true })
 
 -- Plugin setup using lazy.nvim
 require("lazy").setup({
