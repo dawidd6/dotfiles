@@ -48,6 +48,7 @@ if status is-interactive
     abbr --add -- gf 'git fetch'
     abbr --add -- gfo 'git fetch origin'
     abbr --add -- gh 'git checkout'
+    abbr --add -- ghm 'git checkout-main-branch'
     abbr --add -- gp 'git push'
     abbr --add -- gpo 'git push origin -u'
     abbr --add -- gs 'git status -u'
