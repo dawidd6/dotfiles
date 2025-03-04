@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+for branch in development develop master main; do
+    if git rev-parse --quiet --verify "$branch" &> /dev/null; then
+        git checkout "$branch"
+        break
+    fi
+done
