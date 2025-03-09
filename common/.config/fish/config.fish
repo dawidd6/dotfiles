@@ -19,7 +19,7 @@ if status is-interactive
     end
 
     # Scripts
-    fish_add_path ~/.bin
+    fish_add_path --path --global --move ~/.bin
 
     # Colors
     set fish_color_command green
