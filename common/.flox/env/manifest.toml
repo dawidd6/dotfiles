@@ -29,7 +29,9 @@ nix-your-shell.pkg-path = "nix-your-shell"
 starship.pkg-path = "starship"
 stow.pkg-path = "stow"
 trash-cli.pkg-path = "trash-cli"
+trash-cli.systems = ["aarch64-linux", "x86_64-linux"]
 xsel.pkg-path = "xsel"
+xsel.systems = ["aarch64-linux", "x86_64-linux"]
 zoxide.pkg-path = "zoxide"
 htop.pkg-path = "htop"
 lm_sensors.pkg-path = "lm_sensors"
@@ -38,6 +40,7 @@ diffoscopeMinimal.pkg-path = "diffoscopeMinimal"
 ack.pkg-path = "ack"
 btop.pkg-path = "btop"
 distrobox.pkg-path = "distrobox"
+distrobox.systems = ["aarch64-linux", "x86_64-linux"]
 dos2unix.pkg-path = "dos2unix"
 fx.pkg-path = "fx"
 ghorg.pkg-path = "ghorg"
@@ -51,10 +54,9 @@ nodejs.pkg-path = "nodejs"
 sshpass.pkg-path = "sshpass"
 tealdeer.pkg-path = "tealdeer"
 podman.pkg-path = "podman"
+podman.systems = ["aarch64-linux", "x86_64-linux"]
 stylua.pkg-path = "stylua"
 yubikey-manager.pkg-path = "yubikey-manager"
-# gum.pkg-path = "gum"
-# gum.version = "^0.14.5"
 
 
 ## Environment Variables ---------------------------------------------
@@ -111,6 +113,8 @@ yubikey-manager.pkg-path = "yubikey-manager"
 systems = [
   "aarch64-linux",
   "x86_64-linux",
+  "aarch64-darwin",
+  "x86_64-darwin",
 ]
 # Uncomment to disable CUDA detection.
 # cuda-detection = false
