@@ -12,7 +12,7 @@ if status is-interactive
             flox-gen-man-cache
         end
     end
-    set fish_complete_path $fish_complete_path "$FLOX_ENV/share/fish/vendor_completions.d"
+    set -p fish_complete_path "$FLOX_ENV/share/fish/vendor_completions.d"
     set -gx MANPATH ~/.cache/flox/man:
     if not test -d ~/.cache/flox/man
         flox-gen-man-cache
