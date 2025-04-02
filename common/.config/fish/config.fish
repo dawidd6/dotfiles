@@ -30,44 +30,47 @@ if status is-interactive
     set fish_color_quote yellow
 
     # Exports
-    set -gx EDITOR nvim
-    set -gx PAGER less
-    set -gx SHELL fish
+    export EDITOR=nvim
+    export PAGER=less
+    export SHELL=fish
 
     # Abbreviations
-    abbr --add -- clip 'xsel --clipboard'
-    abbr --add -- e exit
-    abbr --add -- g git
-    abbr --add -- ga 'git add'
-    abbr --add -- gb 'git branch -a'
-    abbr --add -- gc 'git commit -m'
-    abbr --add -- gca 'git commit --amend --no-edit'
-    abbr --add -- gcae 'git commit --amend --edit'
-    abbr --add -- gd 'git diff'
-    abbr --add -- gdc 'git diff --cached'
-    abbr --add -- gf 'git fetch'
-    abbr --add -- gfo 'git fetch origin'
-    abbr --add -- gh 'git checkout'
-    abbr --add -- ghm 'git checkout-main-branch'
-    abbr --add -- gp 'git push'
-    abbr --add -- gpo 'git push origin -u'
-    abbr --add -- gs 'git status -u'
-    abbr --add -- gt 'git tag'
-    abbr --add -- p podman
-    abbr --add -- incus-vm 'incus launch --vm -c limits.cpu=4 -c limits.memory=4GiB -d root,size=50GiB'
+    abbr clip 'xsel --clipboard'
+    abbr e 'exit'
+    abbr g 'git'
+    abbr ga 'git add'
+    abbr gb 'git branch -a'
+    abbr gc 'git commit -m'
+    abbr gca 'git commit --amend --no-edit'
+    abbr gcae 'git commit --amend --edit'
+    abbr gd 'git diff'
+    abbr gdc 'git diff --cached'
+    abbr gf 'git fetch'
+    abbr gfo 'git fetch origin'
+    abbr gh 'git checkout'
+    abbr ghm 'git checkout-main-branch'
+    abbr gp 'git push'
+    abbr gpo 'git push origin -u'
+    abbr gs 'git status -u'
+    abbr gt 'git tag'
+    abbr p 'podman'
+    abbr incus-vm 'incus launch --vm -c limits.cpu=4 -c limits.memory=4GiB -d root,size=50GiB'
+    abbr incus-mount 'incus config device add $VM_NAME $DEVICE_NAME disk source=$HOME/test path=$HOME/share'
+    abbr fishedit 'vi ~/.config/fish/config.fish'
+    abbr nvimedit 'vi ~/.config/nvim/init.lua'
 
     # Aliases
-    alias vi nvim
-    alias vim nvim
+    alias vi 'nvim'
+    alias vim 'nvim'
     alias eza 'eza --group-directories-first --group --header --time-style=long-iso'
     alias la 'eza -a'
     alias ll 'eza -l'
     alias lla 'eza -la'
-    alias ls eza
-    alias l eza
+    alias ls 'eza'
+    alias l 'eza'
     alias lt 'eza --tree'
     alias tree 'eza --tree'
-    alias rm trash
+    alias rm 'trash'
     alias ssh 'ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
 
     # Functions
