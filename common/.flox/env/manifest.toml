@@ -57,6 +57,7 @@ podman.pkg-path = "podman"
 podman.systems = ["aarch64-linux", "x86_64-linux"]
 stylua.pkg-path = "stylua"
 yubikey-manager.pkg-path = "yubikey-manager"
+act.pkg-path = "act"
 
 
 ## Environment Variables ---------------------------------------------
