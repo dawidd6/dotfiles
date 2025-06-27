@@ -1,22 +1,4 @@
 if status is-interactive
-    # Flox
-    function flox-gen-man-cache
-        if test "$FLOX_ENV_DESCRIPTION" = "default"
-            echo 'Generating flox man cache...'
-            mandb -C (echo "MANDB_MAP $FLOX_ENV/share/man $HOME/.cache/flox/man" | psub) --user-db --quiet --create --no-straycats
-        end
-    end
-    function flox --wraps=flox
-        command flox $argv
-        if contains -- $argv[1] install uninstall
-            flox-gen-man-cache
-        end
-    end
-    set -gx MANPATH ~/.cache/flox/man:
-    if not test -d ~/.cache/flox/man
-        flox-gen-man-cache
-    end
-
     # Scripts
     fish_add_path --path --global --move ~/.bin
 
@@ -29,9 +11,10 @@ if status is-interactive
     set fish_color_quote yellow
 
     # Exports
-    export EDITOR=nvim
-    export PAGER=less
-    export SHELL=fish
+    export MANPATH="$HOME/.cache/flox/man:"
+    export EDITOR='nvim'
+    export PAGER='less'
+    export SHELL='fish'
 
     # Abbreviations
     abbr clip 'xsel --clipboard'
@@ -74,6 +57,18 @@ if status is-interactive
     alias ssh 'ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
 
     # Functions
+    function flox-gen-man-cache
+        if test "$FLOX_ENV_DESCRIPTION" = 'default'
+            echo 'Generating flox man cache...'
+            mandb -C (echo "MANDB_MAP $FLOX_ENV/share/man $HOME/.cache/flox/man" | psub) --user-db --quiet --create --no-straycats
+        end
+    end
+    function flox --wraps=flox
+        command flox $argv
+        if contains -- $argv[1] install uninstall
+            flox-gen-man-cache
+        end
+    end
     function hub --wraps=gh
         if command -q op
             command op plugin run -- gh $argv
@@ -91,4 +86,7 @@ if status is-interactive
     zoxide init fish --cmd=cd | source
     direnv hook fish | source
     nix-your-shell fish | source
+
+    # Actions
+    test -d "$HOME/.cache/flox/man" || flox-gen-man-cache
 end
