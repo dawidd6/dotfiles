@@ -65,7 +65,7 @@ if status is-interactive
     end
     function flox --wraps=flox
         command flox $argv
-        if contains -- $argv[1] install uninstall
+        if contains -- $argv[1] install uninstall upgrade
             flox-gen-man-cache
         end
     end
