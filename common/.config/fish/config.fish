@@ -37,7 +37,7 @@ if status is-interactive
     abbr gt 'git tag'
     abbr p 'podman'
     abbr incus-vm 'incus launch --vm -c limits.cpu=4 -c limits.memory=4GiB -d root,size=50GiB'
-    abbr incus-mount 'incus config device add $VM_NAME share disk source=$HOME/test path=$HOME/share'
+    abbr incus-mount 'incus config device add $VM_NAME share disk source=$PWD path=$PWD'
     abbr incus-display 'incus console --type vga'
     abbr fishedit 'vi ~/.config/fish/config.fish'
     abbr nvimedit 'vi ~/.config/nvim/init.lua'
