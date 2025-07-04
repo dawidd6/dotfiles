@@ -1,5 +1,0 @@
-[include]
-	path = "common"
-
-[includeIf "gitdir:~/ghorg/brcloud/**"]
-	path = "nokia"

@@ -18,6 +18,9 @@
       "carapace": {
         "pkg-path": "carapace"
       },
+      "chezmoi": {
+        "pkg-path": "chezmoi"
+      },
       "devpod": {
         "pkg-path": "devpod"
       },
@@ -736,6 +739,122 @@
       ],
       "outputs": {
         "out": "/nix/store/l6yac60kvhh973fnxyr4ydlkp3jdwbyv-carapace-1.3.2"
+      },
+      "system": "x86_64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "chezmoi",
+      "broken": false,
+      "derivation": "/nix/store/ja0g01n8cisaica7x3kq7pj4vld5maa2-chezmoi-2.62.5.drv",
+      "description": "Manage your dotfiles across multiple machines, securely",
+      "install_id": "chezmoi",
+      "license": "MIT",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=ee930f9755f58096ac6e8ca94a1887e0534e2d81",
+      "name": "chezmoi-2.62.5",
+      "pname": "chezmoi",
+      "rev": "ee930f9755f58096ac6e8ca94a1887e0534e2d81",
+      "rev_count": 814309,
+      "rev_date": "2025-06-13T06:09:42Z",
+      "scrape_date": "2025-06-15T00:16:02.353646Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "2.62.5",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/n001cz2d1w1rarrp8r927n5vdy7lq16x-chezmoi-2.62.5"
+      },
+      "system": "aarch64-darwin",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "chezmoi",
+      "broken": false,
+      "derivation": "/nix/store/nrnxr3jgfvwymx8dxywihw042c5sdjyz-chezmoi-2.62.5.drv",
+      "description": "Manage your dotfiles across multiple machines, securely",
+      "install_id": "chezmoi",
+      "license": "MIT",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=ee930f9755f58096ac6e8ca94a1887e0534e2d81",
+      "name": "chezmoi-2.62.5",
+      "pname": "chezmoi",
+      "rev": "ee930f9755f58096ac6e8ca94a1887e0534e2d81",
+      "rev_count": 814309,
+      "rev_date": "2025-06-13T06:09:42Z",
+      "scrape_date": "2025-06-15T00:35:26.399224Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "2.62.5",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/hcqgvryc3c187k9bgafbgap6cqdhz7p9-chezmoi-2.62.5"
+      },
+      "system": "aarch64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "chezmoi",
+      "broken": false,
+      "derivation": "/nix/store/avblm0k8r2y2k6nv67dik25pw0nry2l5-chezmoi-2.62.5.drv",
+      "description": "Manage your dotfiles across multiple machines, securely",
+      "install_id": "chezmoi",
+      "license": "MIT",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=ee930f9755f58096ac6e8ca94a1887e0534e2d81",
+      "name": "chezmoi-2.62.5",
+      "pname": "chezmoi",
+      "rev": "ee930f9755f58096ac6e8ca94a1887e0534e2d81",
+      "rev_count": 814309,
+      "rev_date": "2025-06-13T06:09:42Z",
+      "scrape_date": "2025-06-15T00:54:01.711144Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "2.62.5",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/isjpmb07m0i6qjavx7frvn6068xcd60n-chezmoi-2.62.5"
+      },
+      "system": "x86_64-darwin",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "chezmoi",
+      "broken": false,
+      "derivation": "/nix/store/4y9sqy4dq071mlkc99d55a5jc3q3hiry-chezmoi-2.62.5.drv",
+      "description": "Manage your dotfiles across multiple machines, securely",
+      "install_id": "chezmoi",
+      "license": "MIT",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=ee930f9755f58096ac6e8ca94a1887e0534e2d81",
+      "name": "chezmoi-2.62.5",
+      "pname": "chezmoi",
+      "rev": "ee930f9755f58096ac6e8ca94a1887e0534e2d81",
+      "rev_count": 814309,
+      "rev_date": "2025-06-13T06:09:42Z",
+      "scrape_date": "2025-06-15T01:16:11.666668Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "2.62.5",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/968hh1gyalagypdcrfd0mfd2awrfn3rv-chezmoi-2.62.5"
       },
       "system": "x86_64-linux",
       "group": "toplevel",
