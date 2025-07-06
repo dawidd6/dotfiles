@@ -13,6 +13,8 @@ echo "Shut down the VM once installation is done in order to remove ISO and star
 
 incus start --console=vga "$vm_name"
 
-incus config device remove "$vm_name" iso
+until incus config device remove "$vm_name" iso; do
+    sleep 2s
+done
 
 incus start "$vm_name"
