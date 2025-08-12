@@ -1,4 +1,2 @@
 eval "$(flox activate -d ~ -m run)"
 export LOCALE_ARCHIVE=/usr/lib/locale/locale-archive
-
-export ELECTRON_OZONE_PLATFORM_HINT=auto
