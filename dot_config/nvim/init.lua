@@ -50,7 +50,7 @@ require("lazy").setup({
 	{ "lewis6991/gitsigns.nvim", config = true },
 	{ "NMAC427/guess-indent.nvim", config = true },
 	{ "nvim-lualine/lualine.nvim", config = true },
-	{ "folke/noice.nvim", config = true },
+	-- { "folke/noice.nvim", config = true },
 	{ "johnfrankmorgan/whitespace.nvim", config = true },
 	{ "kyazdani42/nvim-web-devicons", config = true },
 	{ "windwp/nvim-autopairs", config = true },
