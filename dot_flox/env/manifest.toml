@@ -62,6 +62,8 @@ devpod.pkg-path = "devpod"
 chezmoi.pkg-path = "chezmoi"
 kubectl.pkg-path = "kubectl"
 kubernetes-helm.pkg-path = "kubernetes-helm"
+kubevirt.pkg-path = "kubevirt"
+k9s.pkg-path = "k9s"
 
 
 ## Environment Variables ---------------------------------------------

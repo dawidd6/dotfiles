@@ -73,11 +73,17 @@
       "ipcalc": {
         "pkg-path": "ipcalc"
       },
+      "k9s": {
+        "pkg-path": "k9s"
+      },
       "kubectl": {
         "pkg-path": "kubectl"
       },
       "kubernetes-helm": {
         "pkg-path": "kubernetes-helm"
+      },
+      "kubevirt": {
+        "pkg-path": "kubevirt"
       },
       "lm_sensors": {
         "pkg-path": "lm_sensors",
@@ -2717,6 +2723,122 @@
       "priority": 5
     },
     {
+      "attr_path": "k9s",
+      "broken": false,
+      "derivation": "/nix/store/n53wzdzv2vjbk2424w8bj24jh8ybywal-k9s-0.50.6.drv",
+      "description": "Kubernetes CLI To Manage Your Clusters In Style",
+      "install_id": "k9s",
+      "license": "Apache-2.0",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=ee930f9755f58096ac6e8ca94a1887e0534e2d81",
+      "name": "k9s-0.50.6",
+      "pname": "k9s",
+      "rev": "ee930f9755f58096ac6e8ca94a1887e0534e2d81",
+      "rev_count": 814309,
+      "rev_date": "2025-06-13T06:09:42Z",
+      "scrape_date": "2025-06-15T00:16:03.573702Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "0.50.6",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/0kjbnz4vyqv50xmidkf3a9fd9xkv7qnx-k9s-0.50.6"
+      },
+      "system": "aarch64-darwin",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "k9s",
+      "broken": false,
+      "derivation": "/nix/store/ls5ippnq1ngi5nr69lw9why1r194sp51-k9s-0.50.6.drv",
+      "description": "Kubernetes CLI To Manage Your Clusters In Style",
+      "install_id": "k9s",
+      "license": "Apache-2.0",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=ee930f9755f58096ac6e8ca94a1887e0534e2d81",
+      "name": "k9s-0.50.6",
+      "pname": "k9s",
+      "rev": "ee930f9755f58096ac6e8ca94a1887e0534e2d81",
+      "rev_count": 814309,
+      "rev_date": "2025-06-13T06:09:42Z",
+      "scrape_date": "2025-06-15T00:35:29.343457Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "0.50.6",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/cy9v8qdf8y1g45774rm9jzw03pf0866d-k9s-0.50.6"
+      },
+      "system": "aarch64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "k9s",
+      "broken": false,
+      "derivation": "/nix/store/hrmh071zh28wmdxmsgr9576md3q64zhl-k9s-0.50.6.drv",
+      "description": "Kubernetes CLI To Manage Your Clusters In Style",
+      "install_id": "k9s",
+      "license": "Apache-2.0",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=ee930f9755f58096ac6e8ca94a1887e0534e2d81",
+      "name": "k9s-0.50.6",
+      "pname": "k9s",
+      "rev": "ee930f9755f58096ac6e8ca94a1887e0534e2d81",
+      "rev_count": 814309,
+      "rev_date": "2025-06-13T06:09:42Z",
+      "scrape_date": "2025-06-15T00:54:02.974191Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "0.50.6",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/33wpwmnd235m388diiky223sm2g1gf9g-k9s-0.50.6"
+      },
+      "system": "x86_64-darwin",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "k9s",
+      "broken": false,
+      "derivation": "/nix/store/0136nr1va8r2vy9vrrgny058hwnxjp47-k9s-0.50.6.drv",
+      "description": "Kubernetes CLI To Manage Your Clusters In Style",
+      "install_id": "k9s",
+      "license": "Apache-2.0",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=ee930f9755f58096ac6e8ca94a1887e0534e2d81",
+      "name": "k9s-0.50.6",
+      "pname": "k9s",
+      "rev": "ee930f9755f58096ac6e8ca94a1887e0534e2d81",
+      "rev_count": 814309,
+      "rev_date": "2025-06-13T06:09:42Z",
+      "scrape_date": "2025-06-15T01:16:14.930983Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "0.50.6",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/ym871cb8337ph62j517586skc6ya7znp-k9s-0.50.6"
+      },
+      "system": "x86_64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
       "attr_path": "kubectl",
       "broken": false,
       "derivation": "/nix/store/hj9ga8m4x3rxjfb15zbfwnkx37zwwvfd-kubectl-1.33.1.drv",
@@ -2955,6 +3077,122 @@
       ],
       "outputs": {
         "out": "/nix/store/i7ak9gjj38s29k5lxjnak735713caf6f-kubernetes-helm-3.18.2"
+      },
+      "system": "x86_64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "kubevirt",
+      "broken": false,
+      "derivation": "/nix/store/xywzknq1q0wg324l4py9yqi5hcm9l98v-kubevirt-1.5.1.drv",
+      "description": "Client tool to use advanced features such as console access",
+      "install_id": "kubevirt",
+      "license": "Apache-2.0",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=ee930f9755f58096ac6e8ca94a1887e0534e2d81",
+      "name": "kubevirt-1.5.1",
+      "pname": "kubevirt",
+      "rev": "ee930f9755f58096ac6e8ca94a1887e0534e2d81",
+      "rev_count": 814309,
+      "rev_date": "2025-06-13T06:09:42Z",
+      "scrape_date": "2025-06-15T00:16:03.737567Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "1.5.1",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/nf56m8y2d56xsq5y0g1vqqzgamzcglx0-kubevirt-1.5.1"
+      },
+      "system": "aarch64-darwin",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "kubevirt",
+      "broken": false,
+      "derivation": "/nix/store/i6csqz83xfqvdsslf7sjf2yaay3l3q7z-kubevirt-1.5.1.drv",
+      "description": "Client tool to use advanced features such as console access",
+      "install_id": "kubevirt",
+      "license": "Apache-2.0",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=ee930f9755f58096ac6e8ca94a1887e0534e2d81",
+      "name": "kubevirt-1.5.1",
+      "pname": "kubevirt",
+      "rev": "ee930f9755f58096ac6e8ca94a1887e0534e2d81",
+      "rev_count": 814309,
+      "rev_date": "2025-06-13T06:09:42Z",
+      "scrape_date": "2025-06-15T00:35:29.875019Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "1.5.1",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/9gcf6csib7s3g1qv180b2q1njg2rc6ww-kubevirt-1.5.1"
+      },
+      "system": "aarch64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "kubevirt",
+      "broken": false,
+      "derivation": "/nix/store/92747wb428biyhs78rh6lz9qs93r0v4x-kubevirt-1.5.1.drv",
+      "description": "Client tool to use advanced features such as console access",
+      "install_id": "kubevirt",
+      "license": "Apache-2.0",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=ee930f9755f58096ac6e8ca94a1887e0534e2d81",
+      "name": "kubevirt-1.5.1",
+      "pname": "kubevirt",
+      "rev": "ee930f9755f58096ac6e8ca94a1887e0534e2d81",
+      "rev_count": 814309,
+      "rev_date": "2025-06-13T06:09:42Z",
+      "scrape_date": "2025-06-15T00:54:03.138570Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "1.5.1",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/4pc3jpmi9ihn3jnw1rmarf955s8d9wak-kubevirt-1.5.1"
+      },
+      "system": "x86_64-darwin",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "kubevirt",
+      "broken": false,
+      "derivation": "/nix/store/q19r8f958qlcrn5qwsp7lsaibxrf6z9k-kubevirt-1.5.1.drv",
+      "description": "Client tool to use advanced features such as console access",
+      "install_id": "kubevirt",
+      "license": "Apache-2.0",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=ee930f9755f58096ac6e8ca94a1887e0534e2d81",
+      "name": "kubevirt-1.5.1",
+      "pname": "kubevirt",
+      "rev": "ee930f9755f58096ac6e8ca94a1887e0534e2d81",
+      "rev_count": 814309,
+      "rev_date": "2025-06-13T06:09:42Z",
+      "scrape_date": "2025-06-15T01:16:15.518747Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "1.5.1",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/5cajrx2fsaq39q89f75vpb5rpzf21fdy-kubevirt-1.5.1"
       },
       "system": "x86_64-linux",
       "group": "toplevel",
