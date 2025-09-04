@@ -101,6 +101,9 @@
       "nix-your-shell": {
         "pkg-path": "nix-your-shell"
       },
+      "nmap": {
+        "pkg-path": "nmap"
+      },
       "nodejs": {
         "pkg-path": "nodejs"
       },
@@ -3609,6 +3612,122 @@
       ],
       "outputs": {
         "out": "/nix/store/iyi7j0w9j6cv11sdn658rq8asla9s2s1-nix-your-shell-1.4.6"
+      },
+      "system": "x86_64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "nmap",
+      "broken": false,
+      "derivation": "/nix/store/m0rsiijcpp97j80r69b15nv0lvviiifp-nmap-7.97.drv",
+      "description": "Free and open source utility for network discovery and security auditing",
+      "install_id": "nmap",
+      "license": "GPL-2.0-only",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=5b09dc45f24cf32316283e62aec81ffee3c3e376",
+      "name": "nmap-7.97",
+      "pname": "nmap",
+      "rev": "5b09dc45f24cf32316283e62aec81ffee3c3e376",
+      "rev_count": 838708,
+      "rev_date": "2025-08-03T09:47:33Z",
+      "scrape_date": "2025-08-05T00:29:24.016198Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "7.97",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/h89r483s3xwnndbim0zg2i2jzlm700l8-nmap-7.97"
+      },
+      "system": "aarch64-darwin",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "nmap",
+      "broken": false,
+      "derivation": "/nix/store/dwvrycxiq9kfwbbln8rakikqk9vbamdx-nmap-7.97.drv",
+      "description": "Free and open source utility for network discovery and security auditing",
+      "install_id": "nmap",
+      "license": "GPL-2.0-only",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=5b09dc45f24cf32316283e62aec81ffee3c3e376",
+      "name": "nmap-7.97",
+      "pname": "nmap",
+      "rev": "5b09dc45f24cf32316283e62aec81ffee3c3e376",
+      "rev_count": 838708,
+      "rev_date": "2025-08-03T09:47:33Z",
+      "scrape_date": "2025-08-05T00:49:25.220982Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "7.97",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/yqhga1swbyhfky2dxvs1y34hdn4q92pg-nmap-7.97"
+      },
+      "system": "aarch64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "nmap",
+      "broken": false,
+      "derivation": "/nix/store/fwar4hygggybgi1jryfwmjda69nmw1gi-nmap-7.97.drv",
+      "description": "Free and open source utility for network discovery and security auditing",
+      "install_id": "nmap",
+      "license": "GPL-2.0-only",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=5b09dc45f24cf32316283e62aec81ffee3c3e376",
+      "name": "nmap-7.97",
+      "pname": "nmap",
+      "rev": "5b09dc45f24cf32316283e62aec81ffee3c3e376",
+      "rev_count": 838708,
+      "rev_date": "2025-08-03T09:47:33Z",
+      "scrape_date": "2025-08-05T01:08:52.239058Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "7.97",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/c7sq8k0wwxm25v6h2zpnlr2fjr23121y-nmap-7.97"
+      },
+      "system": "x86_64-darwin",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "nmap",
+      "broken": false,
+      "derivation": "/nix/store/nkr7wq1drsvyyzah24qxb5vlpmgrkxmw-nmap-7.97.drv",
+      "description": "Free and open source utility for network discovery and security auditing",
+      "install_id": "nmap",
+      "license": "GPL-2.0-only",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=5b09dc45f24cf32316283e62aec81ffee3c3e376",
+      "name": "nmap-7.97",
+      "pname": "nmap",
+      "rev": "5b09dc45f24cf32316283e62aec81ffee3c3e376",
+      "rev_count": 838708,
+      "rev_date": "2025-08-03T09:47:33Z",
+      "scrape_date": "2025-08-05T01:33:09.925188Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "7.97",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/xkxqsyqh5p8gsigsd0349yq2aay0zj6l-nmap-7.97"
       },
       "system": "x86_64-linux",
       "group": "toplevel",

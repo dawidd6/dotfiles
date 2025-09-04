@@ -64,6 +64,7 @@ kubectl.pkg-path = "kubectl"
 kubernetes-helm.pkg-path = "kubernetes-helm"
 kubevirt.pkg-path = "kubevirt"
 k9s.pkg-path = "k9s"
+nmap.pkg-path = "nmap"
 
 
 ## Environment Variables ---------------------------------------------
