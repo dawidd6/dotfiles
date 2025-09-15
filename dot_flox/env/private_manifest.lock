@@ -70,6 +70,9 @@
       "gnumake": {
         "pkg-path": "gnumake"
       },
+      "helmfile": {
+        "pkg-path": "helmfile"
+      },
       "htop": {
         "pkg-path": "htop"
       },
@@ -2607,6 +2610,122 @@
         "info": "/nix/store/hs8b0bwzv4q3w8mf4pbq8l7v0vnjj0f9-gnumake-4.4.1-info",
         "man": "/nix/store/n414mxklk1mxyk9syhbbh6j0d92l4ggi-gnumake-4.4.1-man",
         "out": "/nix/store/kzf67ka1wa2055bnsdrnqnv59md9xbxa-gnumake-4.4.1"
+      },
+      "system": "x86_64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "helmfile",
+      "broken": false,
+      "derivation": "/nix/store/pb3k5rmmmk6llw6m7n3qdcj6q6gvqp51-helmfile-1.1.3.drv",
+      "description": "Declarative spec for deploying Helm charts",
+      "install_id": "helmfile",
+      "license": "MIT",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=5b09dc45f24cf32316283e62aec81ffee3c3e376",
+      "name": "helmfile-1.1.3",
+      "pname": "helmfile",
+      "rev": "5b09dc45f24cf32316283e62aec81ffee3c3e376",
+      "rev_count": 838708,
+      "rev_date": "2025-08-03T09:47:33Z",
+      "scrape_date": "2025-08-05T00:29:21.627305Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "1.1.3",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/4fg75i2as7y3wcv7ljry0ac7ydk7wm4z-helmfile-1.1.3"
+      },
+      "system": "aarch64-darwin",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "helmfile",
+      "broken": false,
+      "derivation": "/nix/store/qqf00vnhy8aix7411zpcmks0qfvgh74z-helmfile-1.1.3.drv",
+      "description": "Declarative spec for deploying Helm charts",
+      "install_id": "helmfile",
+      "license": "MIT",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=5b09dc45f24cf32316283e62aec81ffee3c3e376",
+      "name": "helmfile-1.1.3",
+      "pname": "helmfile",
+      "rev": "5b09dc45f24cf32316283e62aec81ffee3c3e376",
+      "rev_count": 838708,
+      "rev_date": "2025-08-03T09:47:33Z",
+      "scrape_date": "2025-08-05T00:49:16.473083Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "1.1.3",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/zj9aky5gn6mv8918m239gcb7rcw6kr0b-helmfile-1.1.3"
+      },
+      "system": "aarch64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "helmfile",
+      "broken": false,
+      "derivation": "/nix/store/kx90m7f2yq98cqm7x58wiysxsdxgg6zq-helmfile-1.1.3.drv",
+      "description": "Declarative spec for deploying Helm charts",
+      "install_id": "helmfile",
+      "license": "MIT",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=5b09dc45f24cf32316283e62aec81ffee3c3e376",
+      "name": "helmfile-1.1.3",
+      "pname": "helmfile",
+      "rev": "5b09dc45f24cf32316283e62aec81ffee3c3e376",
+      "rev_count": 838708,
+      "rev_date": "2025-08-03T09:47:33Z",
+      "scrape_date": "2025-08-05T01:08:49.817416Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "1.1.3",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/1iqr3vpgsh46ll5c6p9mmyxhylwnmam8-helmfile-1.1.3"
+      },
+      "system": "x86_64-darwin",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "helmfile",
+      "broken": false,
+      "derivation": "/nix/store/jx3f87l5bfbhasgp2rzh24d7lxa8i1ps-helmfile-1.1.3.drv",
+      "description": "Declarative spec for deploying Helm charts",
+      "install_id": "helmfile",
+      "license": "MIT",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=5b09dc45f24cf32316283e62aec81ffee3c3e376",
+      "name": "helmfile-1.1.3",
+      "pname": "helmfile",
+      "rev": "5b09dc45f24cf32316283e62aec81ffee3c3e376",
+      "rev_count": 838708,
+      "rev_date": "2025-08-03T09:47:33Z",
+      "scrape_date": "2025-08-05T01:32:59.519902Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "1.1.3",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/ks422wb92w527dbxrydnzqyj1q1qbk0m-helmfile-1.1.3"
       },
       "system": "x86_64-linux",
       "group": "toplevel",

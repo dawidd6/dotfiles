@@ -65,6 +65,7 @@ kubernetes-helm.pkg-path = "kubernetes-helm"
 kubevirt.pkg-path = "kubevirt"
 k9s.pkg-path = "k9s"
 nmap.pkg-path = "nmap"
+helmfile.pkg-path = "helmfile"
 glow.pkg-path = "glow"
 
 
