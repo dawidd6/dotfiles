@@ -64,6 +64,9 @@
       "git": {
         "pkg-path": "git"
       },
+      "glow": {
+        "pkg-path": "glow"
+      },
       "gnumake": {
         "pkg-path": "gnumake"
       },
@@ -2358,6 +2361,122 @@
         "debug": "/nix/store/l46kpjpcwwp8l7kzzr1s2dlk646r73z2-git-2.50.1-debug",
         "doc": "/nix/store/d2lhlzkdziwmijik8nszfwp8srbkskb9-git-2.50.1-doc",
         "out": "/nix/store/5i8zvall945kypmwgqd0y47f02pldwp4-git-2.50.1"
+      },
+      "system": "x86_64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "glow",
+      "broken": false,
+      "derivation": "/nix/store/bkh29863l6a6ww2yqz8z1asb16chp31l-glow-2.1.1.drv",
+      "description": "Render markdown on the CLI, with pizzazz",
+      "install_id": "glow",
+      "license": "MIT",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=5b09dc45f24cf32316283e62aec81ffee3c3e376",
+      "name": "glow-2.1.1",
+      "pname": "glow",
+      "rev": "5b09dc45f24cf32316283e62aec81ffee3c3e376",
+      "rev_count": 838708,
+      "rev_date": "2025-08-03T09:47:33Z",
+      "scrape_date": "2025-08-05T00:29:21.381457Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "2.1.1",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/9klpngq42n0f6l20iwa4bdw6qdygmlv9-glow-2.1.1"
+      },
+      "system": "aarch64-darwin",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "glow",
+      "broken": false,
+      "derivation": "/nix/store/vf64pkmxms0havwzs649nz7h8yryai7i-glow-2.1.1.drv",
+      "description": "Render markdown on the CLI, with pizzazz",
+      "install_id": "glow",
+      "license": "MIT",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=5b09dc45f24cf32316283e62aec81ffee3c3e376",
+      "name": "glow-2.1.1",
+      "pname": "glow",
+      "rev": "5b09dc45f24cf32316283e62aec81ffee3c3e376",
+      "rev_count": 838708,
+      "rev_date": "2025-08-03T09:47:33Z",
+      "scrape_date": "2025-08-05T00:49:15.759461Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "2.1.1",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/hr0x3a9f6dakg6jprfslrr3d5mf1yklr-glow-2.1.1"
+      },
+      "system": "aarch64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "glow",
+      "broken": false,
+      "derivation": "/nix/store/244db5nvzgpkb7292rhlw5vkzza6s5yq-glow-2.1.1.drv",
+      "description": "Render markdown on the CLI, with pizzazz",
+      "install_id": "glow",
+      "license": "MIT",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=5b09dc45f24cf32316283e62aec81ffee3c3e376",
+      "name": "glow-2.1.1",
+      "pname": "glow",
+      "rev": "5b09dc45f24cf32316283e62aec81ffee3c3e376",
+      "rev_count": 838708,
+      "rev_date": "2025-08-03T09:47:33Z",
+      "scrape_date": "2025-08-05T01:08:49.541831Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "2.1.1",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/pipzshz01yz9f6siaqccdvx7n4i90gpi-glow-2.1.1"
+      },
+      "system": "x86_64-darwin",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "glow",
+      "broken": false,
+      "derivation": "/nix/store/diqwzp67bjppgayfz0dka0r5yqyiv3rf-glow-2.1.1.drv",
+      "description": "Render markdown on the CLI, with pizzazz",
+      "install_id": "glow",
+      "license": "MIT",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=5b09dc45f24cf32316283e62aec81ffee3c3e376",
+      "name": "glow-2.1.1",
+      "pname": "glow",
+      "rev": "5b09dc45f24cf32316283e62aec81ffee3c3e376",
+      "rev_count": 838708,
+      "rev_date": "2025-08-03T09:47:33Z",
+      "scrape_date": "2025-08-05T01:32:58.720084Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "2.1.1",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/zli90b2g2m1dl9bnxyp3s9m39ksxl5wi-glow-2.1.1"
       },
       "system": "x86_64-linux",
       "group": "toplevel",
