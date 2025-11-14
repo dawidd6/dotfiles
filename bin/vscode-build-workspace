@@ -11,6 +11,9 @@ for path in "${@}"; do
     echo "    { \"name\": \"${name}\", \"path\": \"${path}\" }"
 done
 cat <<EOF
-  ]
+  ],
+  "settings": {
+    "ansible.python.interpreterPath": "/bin/python"
+  }
 }
 EOF
