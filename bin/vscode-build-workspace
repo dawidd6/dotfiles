@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+cat <<EOF
+{
+  "folders": [
+EOF
+for path in "${@}"; do
+    name="$(basename "${path}")"
+    echo "    { \"name\": \"${name}\", \"path\": \"${path}\" }"
+done
+cat <<EOF
+  ]
+}
+EOF
