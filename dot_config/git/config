@@ -61,10 +61,5 @@
 	name = "Dawid Dziurla"
 	signingKey = "~/.ssh/id_ed25519.pub"
 
-{{ if stat "/opt/1Password" -}}
-[gpg "ssh"]
-	program = "/opt/1Password/op-ssh-sign"
-{{- end }}
-
 [includeIf "gitdir:~/ghorg/brcloud/**"]
 	path = "nokia"

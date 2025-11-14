@@ -51,6 +51,7 @@ if status is-interactive
     alias tree 'eza --tree'
     alias rm 'trash'
     alias ssh 'ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
+    alias hub 'gh'
 
     # Functions
     function flox-gen-man-cache
@@ -63,13 +64,6 @@ if status is-interactive
         command flox $argv
         if contains -- $argv[1] install uninstall upgrade
             flox-gen-man-cache
-        end
-    end
-    function hub --wraps=gh
-        if command -q op
-            command op plugin run -- gh $argv
-        else
-            command gh $argv
         end
     end
 
