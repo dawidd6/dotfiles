@@ -34,9 +34,9 @@ if status is-interactive
     abbr gs 'git status -u'
     abbr gt 'git tag'
     abbr p 'podman'
-    abbr incus-vm 'incus launch --vm -c limits.cpu=4 -c limits.memory=4GiB -d root,size=50GiB'
-    abbr incus-mount 'incus config device add $VM_NAME share disk source=$PWD path=$PWD'
-    abbr incus-display 'incus console --type vga'
+    abbr lxc-vm 'lxc launch --vm -c limits.cpu=4 -c limits.memory=4GiB -d root,size=50GiB'
+    abbr lxc-mount 'lxc config device add $VM_NAME share disk source=$PWD path=$PWD'
+    abbr lxc-display 'lxc console --type vga'
 
     # Aliases
     alias vi 'nvim'
@@ -76,6 +76,7 @@ if status is-interactive
     zoxide init fish --cmd=cd | source
     direnv hook fish | source
     nix-your-shell fish | source
+    lxc completion fish | source
 
     # Actions
     test -d "$HOME/.cache/flox/man" || flox-gen-man-cache
