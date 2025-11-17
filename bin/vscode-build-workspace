@@ -1,19 +1,23 @@
-#!/usr/bin/env bash
+#!/usr/bin/env python3
 
-set -euo pipefail
+import json
+import os
+import sys
 
-cat <<EOF
-{
-  "folders": [
-EOF
-for path in "${@}"; do
-    name="$(basename "${path}")"
-    echo "    { \"name\": \"${name}\", \"path\": \"${path}\" }"
-done
-cat <<EOF
-  ],
-  "settings": {
-    "ansible.python.interpreterPath": "/bin/python"
-  }
+folders = []
+
+for path in sys.argv[1:]:
+    name = os.path.basename(path.rstrip("/"))
+    folders.append({
+        "name": name,
+        "path": path
+    })
+
+output = {
+    "folders": folders,
+    "settings": {
+        "ansible.python.interpreterPath": "/bin/python"
+    }
 }
-EOF
+
+print(json.dumps(output, indent=2))
