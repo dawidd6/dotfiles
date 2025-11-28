@@ -40,6 +40,9 @@
           "x86_64-linux"
         ]
       },
+      "dive": {
+        "pkg-path": "dive"
+      },
       "dos2unix": {
         "pkg-path": "dos2unix"
       },
@@ -69,6 +72,9 @@
       },
       "gnumake": {
         "pkg-path": "gnumake"
+      },
+      "grype": {
+        "pkg-path": "grype"
       },
       "helmfile": {
         "pkg-path": "helmfile"
@@ -129,6 +135,9 @@
       "shellcheck": {
         "pkg-path": "shellcheck"
       },
+      "skopeo": {
+        "pkg-path": "skopeo"
+      },
       "sshpass": {
         "pkg-path": "sshpass"
       },
@@ -140,6 +149,9 @@
       },
       "stylua": {
         "pkg-path": "stylua"
+      },
+      "syft": {
+        "pkg-path": "syft"
       },
       "tealdeer": {
         "pkg-path": "tealdeer"
@@ -1458,6 +1470,126 @@
       "priority": 5
     },
     {
+      "attr_path": "dive",
+      "broken": false,
+      "derivation": "/nix/store/hkrq7966kf56h9mhnhcal0swhsl4hv52-dive-0.13.1.drv",
+      "description": "Tool for exploring each layer in a docker image",
+      "install_id": "dive",
+      "license": "MIT",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=ab0f3607a6c7486ea22229b92ed2d355f1482ee0",
+      "name": "dive-0.13.1",
+      "pname": "dive",
+      "rev": "ab0f3607a6c7486ea22229b92ed2d355f1482ee0",
+      "rev_count": 859555,
+      "rev_date": "2025-09-10T06:58:08Z",
+      "scrape_date": "2025-09-12T02:06:11.780723Z",
+      "stabilities": [
+        "staging",
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "0.13.1",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/4asn42ii87vd9bz2qph4rwsqdgmxzj5g-dive-0.13.1"
+      },
+      "system": "aarch64-darwin",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "dive",
+      "broken": false,
+      "derivation": "/nix/store/l1kagh6kmhy64mis8ik4zv1n1wx3d961-dive-0.13.1.drv",
+      "description": "Tool for exploring each layer in a docker image",
+      "install_id": "dive",
+      "license": "MIT",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=ab0f3607a6c7486ea22229b92ed2d355f1482ee0",
+      "name": "dive-0.13.1",
+      "pname": "dive",
+      "rev": "ab0f3607a6c7486ea22229b92ed2d355f1482ee0",
+      "rev_count": 859555,
+      "rev_date": "2025-09-10T06:58:08Z",
+      "scrape_date": "2025-09-12T02:40:52.307050Z",
+      "stabilities": [
+        "staging",
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "0.13.1",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/fyc3v1iiazlbif6ldxmviq0924qymgmq-dive-0.13.1"
+      },
+      "system": "aarch64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "dive",
+      "broken": false,
+      "derivation": "/nix/store/axigxsbpyljq786r22hd099yjwxay077-dive-0.13.1.drv",
+      "description": "Tool for exploring each layer in a docker image",
+      "install_id": "dive",
+      "license": "MIT",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=ab0f3607a6c7486ea22229b92ed2d355f1482ee0",
+      "name": "dive-0.13.1",
+      "pname": "dive",
+      "rev": "ab0f3607a6c7486ea22229b92ed2d355f1482ee0",
+      "rev_count": 859555,
+      "rev_date": "2025-09-10T06:58:08Z",
+      "scrape_date": "2025-09-12T03:13:15.823278Z",
+      "stabilities": [
+        "staging",
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "0.13.1",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/v0hhsyrj0hips7ax4idb9x36c1abq905-dive-0.13.1"
+      },
+      "system": "x86_64-darwin",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "dive",
+      "broken": false,
+      "derivation": "/nix/store/xd349dxbjd2m20m6gm5581kkdi867kbn-dive-0.13.1.drv",
+      "description": "Tool for exploring each layer in a docker image",
+      "install_id": "dive",
+      "license": "MIT",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=ab0f3607a6c7486ea22229b92ed2d355f1482ee0",
+      "name": "dive-0.13.1",
+      "pname": "dive",
+      "rev": "ab0f3607a6c7486ea22229b92ed2d355f1482ee0",
+      "rev_count": 859555,
+      "rev_date": "2025-09-10T06:58:08Z",
+      "scrape_date": "2025-09-12T03:49:35.364593Z",
+      "stabilities": [
+        "staging",
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "0.13.1",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/abf3s6a8g6h9n2ln8ndnj6v2rkagvkav-dive-0.13.1"
+      },
+      "system": "x86_64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
       "attr_path": "dos2unix",
       "broken": false,
       "derivation": "/nix/store/wraxky5nag5vdv58sf0yq3j0jklmf41f-dos2unix-7.5.2.drv",
@@ -2692,6 +2824,126 @@
         "info": "/nix/store/m0ijkc5j3wdawh302pns9b45v9n6nq64-gnumake-4.4.1-info",
         "man": "/nix/store/ha44mgbdcrzgah0dnjd28ax4hrdkc4mm-gnumake-4.4.1-man",
         "out": "/nix/store/ahxj2q2mrl9z2k77ahqsl9j4zxq1wf84-gnumake-4.4.1"
+      },
+      "system": "x86_64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "grype",
+      "broken": false,
+      "derivation": "/nix/store/iivdpf7bnch0l90sp0pbl0kp0z9als28-grype-0.99.1.drv",
+      "description": "Vulnerability scanner for container images and filesystems",
+      "install_id": "grype",
+      "license": "[ Apache-2.0 ]",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=ab0f3607a6c7486ea22229b92ed2d355f1482ee0",
+      "name": "grype-0.99.1",
+      "pname": "grype",
+      "rev": "ab0f3607a6c7486ea22229b92ed2d355f1482ee0",
+      "rev_count": 859555,
+      "rev_date": "2025-09-10T06:58:08Z",
+      "scrape_date": "2025-09-12T02:06:12.544865Z",
+      "stabilities": [
+        "staging",
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "0.99.1",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/sy2vs7cg9xg6w0a6h53rwwsvpdxplzv6-grype-0.99.1"
+      },
+      "system": "aarch64-darwin",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "grype",
+      "broken": false,
+      "derivation": "/nix/store/23wfaxqqm39665ixdchd8gv4cmi8hbvz-grype-0.99.1.drv",
+      "description": "Vulnerability scanner for container images and filesystems",
+      "install_id": "grype",
+      "license": "[ Apache-2.0 ]",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=ab0f3607a6c7486ea22229b92ed2d355f1482ee0",
+      "name": "grype-0.99.1",
+      "pname": "grype",
+      "rev": "ab0f3607a6c7486ea22229b92ed2d355f1482ee0",
+      "rev_count": 859555,
+      "rev_date": "2025-09-10T06:58:08Z",
+      "scrape_date": "2025-09-12T02:40:53.858619Z",
+      "stabilities": [
+        "staging",
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "0.99.1",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/b4szfkilbsj6aqh9zxppndbwxymj2v6s-grype-0.99.1"
+      },
+      "system": "aarch64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "grype",
+      "broken": false,
+      "derivation": "/nix/store/dwkdxfgwqv9mxbh3xfrc7qrn7jsp4j3s-grype-0.99.1.drv",
+      "description": "Vulnerability scanner for container images and filesystems",
+      "install_id": "grype",
+      "license": "[ Apache-2.0 ]",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=ab0f3607a6c7486ea22229b92ed2d355f1482ee0",
+      "name": "grype-0.99.1",
+      "pname": "grype",
+      "rev": "ab0f3607a6c7486ea22229b92ed2d355f1482ee0",
+      "rev_count": 859555,
+      "rev_date": "2025-09-10T06:58:08Z",
+      "scrape_date": "2025-09-12T03:13:16.620106Z",
+      "stabilities": [
+        "staging",
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "0.99.1",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/87niwrd2f5aklddhxqsqaibdwh168brk-grype-0.99.1"
+      },
+      "system": "x86_64-darwin",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "grype",
+      "broken": false,
+      "derivation": "/nix/store/zmr0wi83x9fsw47v31l264da539xjwwp-grype-0.99.1.drv",
+      "description": "Vulnerability scanner for container images and filesystems",
+      "install_id": "grype",
+      "license": "[ Apache-2.0 ]",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=ab0f3607a6c7486ea22229b92ed2d355f1482ee0",
+      "name": "grype-0.99.1",
+      "pname": "grype",
+      "rev": "ab0f3607a6c7486ea22229b92ed2d355f1482ee0",
+      "rev_count": 859555,
+      "rev_date": "2025-09-10T06:58:08Z",
+      "scrape_date": "2025-09-12T03:49:37.135409Z",
+      "stabilities": [
+        "staging",
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "0.99.1",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/bkzf9j7djg7yy7037df4ac38np80ixcw-grype-0.99.1"
       },
       "system": "x86_64-linux",
       "group": "toplevel",
@@ -4676,6 +4928,134 @@
       "priority": 5
     },
     {
+      "attr_path": "skopeo",
+      "broken": false,
+      "derivation": "/nix/store/axljh90w38a6my1qz6iarghnad3ayyr4-skopeo-1.20.0.drv",
+      "description": "Command line utility for various operations on container images and image repositories",
+      "install_id": "skopeo",
+      "license": "Apache-2.0",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=ab0f3607a6c7486ea22229b92ed2d355f1482ee0",
+      "name": "skopeo-1.20.0",
+      "pname": "skopeo",
+      "rev": "ab0f3607a6c7486ea22229b92ed2d355f1482ee0",
+      "rev_count": 859555,
+      "rev_date": "2025-09-10T06:58:08Z",
+      "scrape_date": "2025-09-12T02:08:02.626988Z",
+      "stabilities": [
+        "staging",
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "1.20.0",
+      "outputs_to_install": [
+        "man",
+        "out"
+      ],
+      "outputs": {
+        "man": "/nix/store/775fj280s7yksry8wabbscr7q83w2n8s-skopeo-1.20.0-man",
+        "out": "/nix/store/iflzzyfpa1wvplwpzv6wayxmr5d2q5rz-skopeo-1.20.0"
+      },
+      "system": "aarch64-darwin",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "skopeo",
+      "broken": false,
+      "derivation": "/nix/store/gp2h1ljjfbv42jcrr8j20x1hlll5z09n-skopeo-1.20.0.drv",
+      "description": "Command line utility for various operations on container images and image repositories",
+      "install_id": "skopeo",
+      "license": "Apache-2.0",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=ab0f3607a6c7486ea22229b92ed2d355f1482ee0",
+      "name": "skopeo-1.20.0",
+      "pname": "skopeo",
+      "rev": "ab0f3607a6c7486ea22229b92ed2d355f1482ee0",
+      "rev_count": 859555,
+      "rev_date": "2025-09-10T06:58:08Z",
+      "scrape_date": "2025-09-12T02:43:24.603528Z",
+      "stabilities": [
+        "staging",
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "1.20.0",
+      "outputs_to_install": [
+        "man",
+        "out"
+      ],
+      "outputs": {
+        "man": "/nix/store/2s6zhvqaa502aks3cjan9wk21d2hiz3a-skopeo-1.20.0-man",
+        "out": "/nix/store/rj2i9fi44zrb95m7rfc0p84y9v404k38-skopeo-1.20.0"
+      },
+      "system": "aarch64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "skopeo",
+      "broken": false,
+      "derivation": "/nix/store/ki8186x7xg4ymmf24glrcba4w8dmyx26-skopeo-1.20.0.drv",
+      "description": "Command line utility for various operations on container images and image repositories",
+      "install_id": "skopeo",
+      "license": "Apache-2.0",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=ab0f3607a6c7486ea22229b92ed2d355f1482ee0",
+      "name": "skopeo-1.20.0",
+      "pname": "skopeo",
+      "rev": "ab0f3607a6c7486ea22229b92ed2d355f1482ee0",
+      "rev_count": 859555,
+      "rev_date": "2025-09-10T06:58:08Z",
+      "scrape_date": "2025-09-12T03:14:57.873339Z",
+      "stabilities": [
+        "staging",
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "1.20.0",
+      "outputs_to_install": [
+        "man",
+        "out"
+      ],
+      "outputs": {
+        "man": "/nix/store/zrw1klq16r57ss0wqmcn17frw95lksm0-skopeo-1.20.0-man",
+        "out": "/nix/store/16ky278hngrnmar3vpl1kmlqhzx98qln-skopeo-1.20.0"
+      },
+      "system": "x86_64-darwin",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "skopeo",
+      "broken": false,
+      "derivation": "/nix/store/jjzd51nl6p73xh8k6spsp688q2k7bf7z-skopeo-1.20.0.drv",
+      "description": "Command line utility for various operations on container images and image repositories",
+      "install_id": "skopeo",
+      "license": "Apache-2.0",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=ab0f3607a6c7486ea22229b92ed2d355f1482ee0",
+      "name": "skopeo-1.20.0",
+      "pname": "skopeo",
+      "rev": "ab0f3607a6c7486ea22229b92ed2d355f1482ee0",
+      "rev_count": 859555,
+      "rev_date": "2025-09-10T06:58:08Z",
+      "scrape_date": "2025-09-12T03:52:11.759468Z",
+      "stabilities": [
+        "staging",
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "1.20.0",
+      "outputs_to_install": [
+        "man",
+        "out"
+      ],
+      "outputs": {
+        "man": "/nix/store/q9w6rkdj2bkr4gylyvwlphj948llig9k-skopeo-1.20.0-man",
+        "out": "/nix/store/8vv3k30wgfa8711spbbid1ys8q5ml89w-skopeo-1.20.0"
+      },
+      "system": "x86_64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
       "attr_path": "sshpass",
       "broken": false,
       "derivation": "/nix/store/mpkbv8kgyj04f4adjd3spwa6n7y855am-sshpass-1.10.drv",
@@ -5150,6 +5530,126 @@
       ],
       "outputs": {
         "out": "/nix/store/hijc7nwwx9qakvdvb1g4z88gvwmyfw18-stylua-2.1.0"
+      },
+      "system": "x86_64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "syft",
+      "broken": false,
+      "derivation": "/nix/store/7qpijis7sayayg5g76wndqkmqhvhh7pf-syft-1.32.0.drv",
+      "description": "CLI tool and library for generating a Software Bill of Materials from container images and filesystems",
+      "install_id": "syft",
+      "license": "[ Apache-2.0 ]",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=ab0f3607a6c7486ea22229b92ed2d355f1482ee0",
+      "name": "syft-1.32.0",
+      "pname": "syft",
+      "rev": "ab0f3607a6c7486ea22229b92ed2d355f1482ee0",
+      "rev_count": 859555,
+      "rev_date": "2025-09-10T06:58:08Z",
+      "scrape_date": "2025-09-12T02:08:04.956151Z",
+      "stabilities": [
+        "staging",
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "1.32.0",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/m0rbf217myp6p76z07x6zl8wqwbkyn6k-syft-1.32.0"
+      },
+      "system": "aarch64-darwin",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "syft",
+      "broken": false,
+      "derivation": "/nix/store/kh27pnakl5r9n7bn2gwpp8xcmg46nvss-syft-1.32.0.drv",
+      "description": "CLI tool and library for generating a Software Bill of Materials from container images and filesystems",
+      "install_id": "syft",
+      "license": "[ Apache-2.0 ]",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=ab0f3607a6c7486ea22229b92ed2d355f1482ee0",
+      "name": "syft-1.32.0",
+      "pname": "syft",
+      "rev": "ab0f3607a6c7486ea22229b92ed2d355f1482ee0",
+      "rev_count": 859555,
+      "rev_date": "2025-09-10T06:58:08Z",
+      "scrape_date": "2025-09-12T02:43:28.322623Z",
+      "stabilities": [
+        "staging",
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "1.32.0",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/x43d9n4q5y84b58lghy79wswkh3hqjcy-syft-1.32.0"
+      },
+      "system": "aarch64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "syft",
+      "broken": false,
+      "derivation": "/nix/store/82ixggn36c054iwrbiy3ph7a16q4m38v-syft-1.32.0.drv",
+      "description": "CLI tool and library for generating a Software Bill of Materials from container images and filesystems",
+      "install_id": "syft",
+      "license": "[ Apache-2.0 ]",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=ab0f3607a6c7486ea22229b92ed2d355f1482ee0",
+      "name": "syft-1.32.0",
+      "pname": "syft",
+      "rev": "ab0f3607a6c7486ea22229b92ed2d355f1482ee0",
+      "rev_count": 859555,
+      "rev_date": "2025-09-10T06:58:08Z",
+      "scrape_date": "2025-09-12T03:15:00.031437Z",
+      "stabilities": [
+        "staging",
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "1.32.0",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/lwx616zdm6lx28vxlxmi2y9id4gzbrfj-syft-1.32.0"
+      },
+      "system": "x86_64-darwin",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "syft",
+      "broken": false,
+      "derivation": "/nix/store/i40mdzhx3f5d6c973kpnbly4gy9w8lqa-syft-1.32.0.drv",
+      "description": "CLI tool and library for generating a Software Bill of Materials from container images and filesystems",
+      "install_id": "syft",
+      "license": "[ Apache-2.0 ]",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=ab0f3607a6c7486ea22229b92ed2d355f1482ee0",
+      "name": "syft-1.32.0",
+      "pname": "syft",
+      "rev": "ab0f3607a6c7486ea22229b92ed2d355f1482ee0",
+      "rev_count": 859555,
+      "rev_date": "2025-09-10T06:58:08Z",
+      "scrape_date": "2025-09-12T03:52:15.853250Z",
+      "stabilities": [
+        "staging",
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "1.32.0",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/ivxv1fnql7af11jiaw50bvf3sms8v2sn-syft-1.32.0"
       },
       "system": "x86_64-linux",
       "group": "toplevel",

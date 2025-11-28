@@ -67,6 +67,10 @@ k9s.pkg-path = "k9s"
 nmap.pkg-path = "nmap"
 helmfile.pkg-path = "helmfile"
 glow.pkg-path = "glow"
+dive.pkg-path = "dive"
+skopeo.pkg-path = "skopeo"
+grype.pkg-path = "grype"
+syft.pkg-path = "syft"
 
 
 ## Environment Variables ---------------------------------------------
