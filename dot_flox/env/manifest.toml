@@ -71,6 +71,7 @@ dive.pkg-path = "dive"
 skopeo.pkg-path = "skopeo"
 grype.pkg-path = "grype"
 syft.pkg-path = "syft"
+dasel.pkg-path = "dasel"
 
 
 ## Environment Variables ---------------------------------------------
