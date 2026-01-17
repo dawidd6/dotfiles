@@ -11,13 +11,17 @@ if status is-interactive
     set fish_color_quote yellow
 
     # Exports
-    export MANPATH="$HOME/.cache/flox/man:"
+    export MANPATH="$HOME/.cache/nix/man:"
     export EDITOR='nvim'
     export PAGER='less'
     export SHELL='fish'
 
     # Abbreviations
-    abbr clip 'xsel --clipboard'
+    if command -q wl-copy
+        abbr clip 'wl-copy'
+    else if command -q xsel
+        abbr clip 'xsel --clipboard'
+    end
     abbr e 'exit'
     abbr g 'git'
     abbr ga 'git add'
@@ -54,11 +58,8 @@ if status is-interactive
     alias hub 'gh'
 
     # Functions
-    function flox-gen-man-cache
-        if test "$FLOX_ENV_DESCRIPTION" = 'default'
-            echo 'Generating flox man cache...'
-            mandb -C (echo "MANDB_MAP $FLOX_ENV/share/man $HOME/.cache/flox/man" | psub) --user-db --quiet --create --no-straycats
-        end
+    function nix-gen-man-cache
+        mandb -C (echo "MANDB_MAP $HOME/.nix-profile/share/man $HOME/.cache/nix/man" | psub) --user-db --create --no-straycats
     end
 
     # Sources
