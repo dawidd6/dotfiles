@@ -11,8 +11,10 @@ if status is-interactive
     set fish_color_quote yellow
 
     # Exports
+    export MANPATH="$HOME/.cache/nix/man:"
     export EDITOR='nvim'
     export PAGER='less'
+    export SHELL='fish'
 
     # Abbreviations
     if command -q wl-copy
@@ -54,6 +56,11 @@ if status is-interactive
     alias rm 'trash'
     alias ssh 'ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
     alias hub 'gh'
+
+    # Functions
+    function nix-gen-man-cache
+        mandb -C (echo "MANDB_MAP $HOME/.nix-profile/share/man $HOME/.cache/nix/man" | psub) --user-db --create --no-straycats
+    end
 
     # Sources
     fzf --fish | source
