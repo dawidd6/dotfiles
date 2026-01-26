@@ -60,24 +60,9 @@ if status is-interactive
             mandb -C (echo "MANDB_MAP $FLOX_ENV/share/man $HOME/.cache/flox/man" | psub) --user-db --quiet --create --no-straycats
         end
     end
-    function flox --wraps=flox
-        command flox $argv
-        if contains -- $argv[1] install uninstall upgrade
-            flox-gen-man-cache
-        end
-    end
 
     # Sources
-    carapace nix-build fish | source
-    carapace nix-instantiate fish | source
-    carapace nix-shell fish | source
     fzf --fish | source
     starship init fish | source
     zoxide init fish --cmd=cd | source
-    direnv hook fish | source
-    nix-your-shell fish | source
-    lxc completion fish | source
-
-    # Actions
-    test -d "$HOME/.cache/flox/man" || flox-gen-man-cache
 end
