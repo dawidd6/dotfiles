@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+sudo apt purge fonts-noto-core
+sudo apt install fonts-ubuntu-classic
+
+sudo snap install --classic code
+sudo snap install lxd
+sudo snap install spotify
+
+nix --extra-experimental-features 'flakes nix-command' profile add \
+    nixpkgs#fish \
+    nixpkgs#trash-cli \
+    nixpkgs#fzf \
+    nixpkgs#starship \
+    nixpkgs#htop \
+    nixpkgs#git \
+    nixpkgs#zoxide
+
+if ! test -d ~/.local/share/fonts; then
+    cd /tmp
+    mkdir -p ~/.local/share/fonts
+    wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/UbuntuMono.zip
+    unzip -o UbuntuMono.zip -d ~/.local/share/fonts
+fi
+
+if ! test -d ~/.local/share/chezmoi; then
+    chezmoi -- init --apply dawidd6
+fi
+
+gsettings set org.gnome.desktop.interface font-name 'Ubuntu 11'
+gsettings set org.gnome.desktop.interface monospace-font-name 'UbuntuMono Nerd Font 13'
+gsettings set org.gnome.desktop.interface document-font-name 'Sans 11'
+gsettings set org.gnome.desktop.wm.preferences titlebar-font 'Ubuntu Bold 11'
