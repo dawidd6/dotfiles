@@ -2,20 +2,37 @@
 
 set -euo pipefail
 
+sudo pam-auth-update --enable fprintd
+
 sudo apt purge fonts-noto-core
 sudo apt install fonts-ubuntu-classic
+sudo apt install \
+    flatpak \
+    podman \
+    virt-manager
 
-sudo snap install --classic code
-sudo snap install lxd
-sudo snap install spotify
+sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+
+sudo snap install --classic \
+    code
+sudo snap install \
+    lxd \
+    spotify
 
 nix --extra-experimental-features 'flakes nix-command' profile add \
+    nixpkgs#bat \
+    nixpkgs#chezmoi \
+    nixpkgs#diffoscope \
+    nixpkgs#diff-so-fancy \
+    nixpkgs#dos2unix \
+    nixpkgs#eza \
     nixpkgs#fish \
-    nixpkgs#trash-cli \
     nixpkgs#fzf \
-    nixpkgs#starship \
-    nixpkgs#htop \
     nixpkgs#git \
+    nixpkgs#htop \
+    nixpkgs#starship \
+    nixpkgs#trash-cli \
+    nixpkgs#wl-clipboard \
     nixpkgs#zoxide
 
 if ! test -d ~/.local/share/fonts; then
