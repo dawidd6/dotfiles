@@ -1,0 +1,8 @@
+[Unit]
+Description=Fish extra completions
+
+[Path]
+PathChanged=/snap/bin/lxc
+
+[Install]
+WantedBy=default.target
