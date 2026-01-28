@@ -22,7 +22,7 @@ sudo snap install \
 nix --extra-experimental-features 'flakes nix-command' profile add \
     nixpkgs#bat \
     nixpkgs#chezmoi \
-    nixpkgs#diffoscope \
+    nixpkgs#diffoscopeMinimal \
     nixpkgs#diff-so-fancy \
     nixpkgs#dos2unix \
     nixpkgs#eza \
