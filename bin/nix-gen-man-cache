@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+mandb -C <(echo "MANDB_MAP $HOME/.nix-profile/share/man $HOME/.cache/nix/man") --user-db --create --no-straycats
