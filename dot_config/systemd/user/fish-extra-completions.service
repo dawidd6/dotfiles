@@ -1,6 +1,0 @@
-[Unit]
-Description=Fish extra completions
-
-[Service]
-Type=oneshot
-ExecStart=/bin/bash -c '/snap/bin/lxc completion fish > ~/.config/fish/completions/lxc.fish'
