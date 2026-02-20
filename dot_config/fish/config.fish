@@ -56,7 +56,6 @@ if status is-interactive
     alias rm 'trash'
     alias ssh 'ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
     alias hub 'gh'
-    alias sudo 'sudo PATH="$PATH"'
 
     # Sources
     fzf --fish | source
