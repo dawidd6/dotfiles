@@ -56,11 +56,7 @@ if status is-interactive
     alias rm 'trash'
     alias ssh 'ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
     alias hub 'gh'
-
-    # Functions
-    function nix-gen-man-cache
-        mandb -C (echo "MANDB_MAP $HOME/.nix-profile/share/man $HOME/.cache/nix/man" | psub) --user-db --create --no-straycats
-    end
+    alias sudo 'sudo PATH="$PATH"'
 
     # Sources
     fzf --fish | source
