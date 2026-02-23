@@ -54,8 +54,9 @@ if status is-interactive
     alias lt 'eza --tree'
     alias tree 'eza --tree'
     alias rm 'trash'
-    alias ssh 'ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
+    alias ssh 'command ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
     alias hub 'gh'
+    alias minikube 'LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu command minikube'
 
     # Sources
     fzf --fish | source
