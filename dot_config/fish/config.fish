@@ -38,6 +38,7 @@ if status is-interactive
     abbr gs 'git status -u'
     abbr gt 'git tag'
     abbr p 'podman'
+    abbr k 'kubectl'
     abbr lxc-vm 'lxc launch --vm -c limits.cpu=4 -c limits.memory=4GiB -d root,size=50GiB'
     abbr lxc-mount 'lxc config device add $VM_NAME share disk source=$PWD path=$PWD'
     abbr lxc-display 'lxc console --type vga'
