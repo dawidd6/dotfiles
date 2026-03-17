@@ -30,6 +30,14 @@ nix --extra-experimental-features 'flakes nix-command' profile add \
     nixpkgs#fzf \
     nixpkgs#git \
     nixpkgs#htop \
+    nixpkgs#k9s \
+    nixpkgs#kubectl \
+    nixpkgs#kubectx \
+    nixpkgs#kubernetes-helm \
+    nixpkgs#lm_sensors \
+    nixpkgs#minikube \
+    nixpkgs#neovim-unwrapped \
+    nixpkgs#picocom \
     nixpkgs#starship \
     nixpkgs#trash-cli \
     nixpkgs#wl-clipboard \
