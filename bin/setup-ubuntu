@@ -33,6 +33,7 @@ nix --extra-experimental-features 'flakes nix-command' profile add \
     nixpkgs#k9s \
     nixpkgs#kubectl \
     nixpkgs#kubectx \
+    nixpkgs#kubectl-explore \
     nixpkgs#kubernetes-helm \
     nixpkgs#lm_sensors \
     nixpkgs#minikube \
