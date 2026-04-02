@@ -32,7 +32,7 @@ if ! test -d ~/.local/share/chezmoi; then
     chezmoi init --apply dawidd6
 fi
 
-if command -v gnome-shell &>/dev/null;
+if command -v gnome-shell &>/dev/null; then
     sudo pam-auth-update --enable fprintd
 
     sudo apt purge fonts-noto-core
@@ -55,4 +55,5 @@ if command -v gnome-shell &>/dev/null;
     gsettings set org.gnome.desktop.interface monospace-font-name 'UbuntuMono Nerd Font 13'
     gsettings set org.gnome.desktop.interface document-font-name 'Sans 11'
     gsettings set org.gnome.desktop.wm.preferences titlebar-font 'Ubuntu Bold 11'
+    gsettings set org.gnome.settings-daemon.plugins.power idle-dim false
 fi
