@@ -56,4 +56,5 @@ if command -v gnome-shell &>/dev/null; then
     gsettings set org.gnome.desktop.interface document-font-name 'Sans 11'
     gsettings set org.gnome.desktop.wm.preferences titlebar-font 'Ubuntu Bold 11'
     gsettings set org.gnome.settings-daemon.plugins.power idle-dim false
+    gsettings set org.gnome.settings-daemon.plugins.power idle-brightness 0
 fi
