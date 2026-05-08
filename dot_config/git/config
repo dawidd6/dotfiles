@@ -63,3 +63,7 @@
 
 [includeIf "gitdir:~/ghorg/brcloud/**"]
 	path = "nokia"
+
+[includeIf "gitdir:~/telekom/**"]
+	path = "telekom"
+
