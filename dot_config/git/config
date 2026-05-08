@@ -61,9 +61,6 @@
 	name = "Dawid Dziurla"
 	signingKey = "~/.ssh/id_ed25519.pub"
 
-[includeIf "gitdir:~/ghorg/brcloud/**"]
-	path = "nokia"
-
 [includeIf "gitdir:~/telekom/**"]
 	path = "telekom"
 
