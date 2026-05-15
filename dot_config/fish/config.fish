@@ -1,4 +1,22 @@
 if status is-interactive
+    # Functions
+    function __nix_profile_post_tasks --on-event fish_postexec
+        if test $status -ne 0
+            return
+        end
+
+        if not string match -rq '^\s*nix\s+profile\s+(install|add|upgrade|remove)(\s|$)' -- $argv[1]
+            return
+        end
+
+        echo "Collecting garbage..."
+        command nix-collect-garbage --delete-old >/dev/null 2>&1
+        command nix-collect-garbage >/dev/null 2>&1
+
+        echo "Refreshing mandb cache..."
+        command mandb -C (echo "MANDB_MAP $HOME/.nix-profile/share/man $HOME/.cache/nix/man" | psub) --user-db --quiet --create --no-straycats
+    end
+
     # Scripts
     fish_add_path --path --global --move ~/.local/share/chezmoi/bin
 
