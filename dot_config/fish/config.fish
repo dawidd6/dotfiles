@@ -62,4 +62,9 @@ if status is-interactive
     fzf --fish | source
     starship init fish | source
     zoxide init fish --cmd=cd | source
+
+    # Completions
+    chezmoi completion fish > ~/.config/fish/completions/chezmoi.fish
+    helm completion fish > ~/.config/fish/completions/helm.fish
+    kubectl completion fish > ~/.config/fish/completions/kubectl.fish
 end
