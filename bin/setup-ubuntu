@@ -2,31 +2,19 @@
 
 set -euo pipefail
 
-nix --extra-experimental-features 'flakes nix-command' profile add \
-    nixpkgs#bat \
-    nixpkgs#chezmoi \
-    nixpkgs#diffoscopeMinimal \
-    nixpkgs#diff-so-fancy \
-    nixpkgs#dos2unix \
-    nixpkgs#eza \
-    nixpkgs#fish \
-    nixpkgs#fzf \
-    nixpkgs#git \
-    nixpkgs#htop \
-    nixpkgs#k9s \
-    nixpkgs#kubectl \
-    nixpkgs#kubectx \
-    nixpkgs#kubectl-explore \
-    nixpkgs#kubernetes-helm \
-    nixpkgs#lm_sensors \
-    nixpkgs#minikube \
-    nixpkgs#neovim-unwrapped \
-    nixpkgs#picocom \
-    nixpkgs#podman \
-    nixpkgs#starship \
-    nixpkgs#trash-cli \
-    nixpkgs#wl-clipboard \
-    nixpkgs#zoxide
+if [ $EUID -eq 0 ]; then
+    echo "Do not run this as root!"
+    exit 127
+fi
+
+sudo apt install -y bat diffoscope-minimal dos2unix eza fish fzf git htop lm-sensors neovim picocom podman starship trash-cli wl-clipboard zoxide
+
+sudo snap install --classic chezmoi
+sudo snap install --classic kubectl
+sudo snap install --classic helm
+sudo snap install diff-so-fancy
+
+sudo chsh -s /usr/bin/fish "$USER"
 
 if ! test -d ~/.local/share/chezmoi; then
     chezmoi init --apply dawidd6
@@ -38,7 +26,7 @@ if command -v gnome-shell &>/dev/null; then
     sudo apt purge fonts-noto-core
     sudo apt install fonts-ubuntu-classic
 
-    sudo apt install flatpak
+    sudo apt install -y flatpak
     sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 
     if ! test -d ~/.local/share/fonts; then
