@@ -58,13 +58,13 @@ if status is-interactive
     alias ghub 'command gh'
     alias bat 'command batcat'
 
-    # Sources
+    # Inits
     fzf --fish | source
     starship init fish | source
     zoxide init fish --cmd=cd | source
 
     # Completions
-    chezmoi completion fish > ~/.config/fish/completions/chezmoi.fish
-    helm completion fish > ~/.config/fish/completions/helm.fish
-    kubectl completion fish > ~/.config/fish/completions/kubectl.fish
+    chezmoi completion fish | source
+    helm completion fish | source
+    kubectl completion fish | source
 end
