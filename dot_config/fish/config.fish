@@ -68,4 +68,5 @@ if status is-interactive
     chezmoi completion fish | source
     helm completion fish | source
     kubectl completion fish | source
+    minikube completion fish | source
 end
