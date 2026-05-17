@@ -1,66 +1,62 @@
 [alias]
-	lg = "log --graph --pretty=format:'%Cred%h%Creset %Cgreen(%cr)%Creset %C(bold blue)<%an>%Creset %s %C(yellow)%d%Creset'"
-	ls = "ls-tree -r --name-only HEAD"
-	unadd = "restore --staged"
+    lg = log --graph --pretty=format:'%Cred%h%Creset %Cgreen(%cr)%Creset %C(bold blue)<%an>%Creset %s %C(yellow)%d%Creset'
+    ls = ls-tree -r --name-only HEAD
+    unadd = restore --staged
 
 [branch]
-	sort = -committerdate
+    sort = -committerdate
 
 [commit]
-	gpgSign = true
-	verbose = true
+    gpgSign = true
+    verbose = true
 
 [core]
-	pager = "diff-so-fancy | less --tabs=4 -RFX"
-
-[diff-so-fancy]
-	changeHunkIndicators = true
-	markEmptyLines = true
-	stripLeadingSymbols = true
-	useUnicodeRuler = true
-
-[fetch]
-	prune = true
-	pruneTags = true
-	all = true
-
-[format]
-	pretty = "fuller"
-
-[gpg]
-	format = "ssh"
-
-[help]
-	autocorrect = prompt
+    pager = delta --diff-so-fancy
 
 [interactive]
-	diffFilter = "diff-so-fancy --patch"
+    diffFilter = delta --diff-so-fancy --color-only
+
+[merge]
+    conflictStyle = zdiff3
+
+[fetch]
+    prune = true
+    pruneTags = true
+    all = true
+
+[format]
+    pretty = fuller
+
+[gpg]
+    format = ssh
+
+[help]
+    autocorrect = prompt
 
 [pull]
-	rebase = true
+    rebase = true
 
 [push]
-	default = simple
-	autoSetupRemote = true
-	followTags = true
+    default = simple
+    autoSetupRemote = true
+    followTags = true
 
 [rebase]
-	autoSquash = true
-	autoStash = true
-	updateRefs = true
+    autoSquash = true
+    autoStash = true
+    updateRefs = true
 
 [tag]
-	gpgSign = true
-	sort = version:refname
+    gpgSign = true
+    sort = version:refname
 
 [url "git@github.com:dawidd6"]
-	pushInsteadOf = "https://github.com/dawidd6"
+    pushInsteadOf = https://github.com/dawidd6
 
 [user]
-	email = "dawidd0811@gmail.com"
-	name = "Dawid Dziurla"
-	signingKey = "~/.ssh/id_ed25519.pub"
+    email = dawidd0811@gmail.com
+    name = Dawid Dziurla
+    signingKey = ~/.ssh/id_ed25519.pub
 
 [includeIf "gitdir:~/telekom/**"]
-	path = "telekom"
-
+    path = telekom
