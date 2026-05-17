@@ -14,6 +14,7 @@ if status is-interactive
     export EDITOR='nvim'
     export PAGER='less'
     export SHELL='fish'
+    export LANG='en_US.UTF-8'
 
     # Abbreviations
     if command -q wl-copy
