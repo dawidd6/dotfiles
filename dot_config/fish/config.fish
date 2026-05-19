@@ -1,6 +1,7 @@
 if status is-interactive
     # Scripts
     fish_add_path --path --global --move ~/.local/share/chezmoi/bin
+    fish_add_path --path --global --append ~/.local/bin
 
     # Colors
     set fish_color_command green
