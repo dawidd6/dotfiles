@@ -88,4 +88,10 @@ require("lazy").setup({
 			vim.cmd.colorscheme("vscode")
 		end,
 	},
+}, {
+	performance = {
+		rtp = {
+			reset = false
+		}
+	}
 })
