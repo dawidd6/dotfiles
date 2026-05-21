@@ -61,13 +61,27 @@ if status is-interactive
     alias bat 'batcat'
 
     # Inits
-    fzf --fish | source
-    starship init fish | source
-    zoxide init fish --cmd=cd | source
+    if command -q fzf
+        fzf --fish | source
+    end
+    if command -q starship
+        starship init fish | source
+    end
+    if command -q zoxide
+        zoxide init fish --cmd=cd | source
+    end
 
     # Completions
-    chezmoi completion fish | source
-    helm completion fish | source
-    kubectl completion fish | source
-    minikube completion fish | source
+    if command -q chezmoi
+        chezmoi completion fish | source
+    end
+    if command -q helm
+        helm completion fish | source
+    end
+    if command -q kubectl
+        kubectl completion fish | source
+    end
+    if command -q minikube
+        minikube completion fish | source
+    end
 end
