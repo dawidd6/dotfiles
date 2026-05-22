@@ -1,21 +1,25 @@
-#!/usr/bin/env ruby
+#!/usr/bin/env bash
 
-require 'English'
+set -euo pipefail
+shopt -s globstar nullglob
 
-failures = {}
+failures=()
 
-Dir['*/'].sort.each do |dir|
-  Dir.chdir(dir) do
-    puts "\n\e[96m\e[1m==> \e[39m#{dir}\e[0m"
-    out = `git #{ARGV.join(' ')} 2>&1`.chomp
-    puts out
-    failures[dir] = out unless $CHILD_STATUS.success?
-  end
-end
+while read -r repo; do
+  if [[ -z "$repo" ]]; then
+    continue
+  fi
+  repo="${repo%/.git/}"
+  echo -e "\e[96m\e[1m==> \e[39m$repo\e[0m"
+  if ! git -C "$repo" "$@"; then
+    failures+=("$repo")
+  fi
+done < <(printf '%s\n' **/.git/ | sort -f)
 
-failures.keys.each do |dir|
-    puts "\n\e[31m\e[1m==> \e[39m#{dir}\e[0m"
-    puts failures[dir]
-end
+if [[ ${#failures[@]} -gt 0 ]]; then
+  echo
+fi
 
-exit 1 unless failures.empty?
+for failure in "${failures[@]}"; do
+  echo -e "\e[31m\e[1m==> \e[39m$failure\e[0m"
+done
