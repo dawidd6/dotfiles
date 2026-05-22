@@ -5,7 +5,7 @@ shopt -s globstar nullglob
 
 failures=()
 
-while read -r repo; do
+while read -r -d '' repo; do
   if [[ -z "$repo" ]]; then
     continue
   fi
@@ -14,7 +14,7 @@ while read -r repo; do
   if ! git -C "$repo" "$@"; then
     failures+=("$repo")
   fi
-done < <(printf '%s\n' **/.git/ | sort -f)
+done < <(printf '%s\0' **/.git/ | sort -fz)
 
 if [[ ${#failures[@]} -gt 0 ]]; then
   echo
