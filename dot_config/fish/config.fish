@@ -16,7 +16,7 @@ if status is-interactive
     export PAGER='less'
     export LANG='C.UTF-8'
 
-    # Abbreviations
+    # Abbrs
     if command -q wl-copy
         abbr clip 'wl-copy'
     else if command -q xsel
