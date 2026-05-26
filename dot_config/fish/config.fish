@@ -12,7 +12,7 @@ if status is-interactive
     set fish_color_quote yellow
 
     # Exports
-    export EDITOR='micro'
+    export EDITOR='nvim'
     export PAGER='less'
     export SHELL='fish'
     export LANG='C.UTF-8'
@@ -45,6 +45,8 @@ if status is-interactive
     abbr lxc-display 'lxc console --type vga'
 
     # Aliases
+    alias vi 'nvim'
+    alias vim 'nvim'
     alias eza 'eza --group-directories-first --group --header --time-style=long-iso'
     alias la 'eza -a'
     alias ll 'eza -l'
