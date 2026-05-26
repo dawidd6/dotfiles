@@ -7,7 +7,7 @@ if [ $EUID -eq 0 ]; then
     exit 127
 fi
 
-sudo apt install -y bat diffoscope-minimal dos2unix eza fd-find fish fzf gcc git git-delta htop lm-sensors make neovim picocom podman ripgrep starship trash-cli wl-clipboard zoxide
+sudo apt install -y diffoscope-minimal dos2unix eza fd-find fish fzf gcc git git-delta htop lm-sensors make neovim picocom podman ripgrep starship trash-cli wl-clipboard zoxide
 
 sudo chsh -s /usr/bin/fish "$USER"
 

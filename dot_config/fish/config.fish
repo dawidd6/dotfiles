@@ -14,7 +14,6 @@ if status is-interactive
     # Exports
     export EDITOR='nvim'
     export PAGER='less'
-    export SHELL='fish'
     export LANG='C.UTF-8'
 
     # Abbreviations
@@ -58,7 +57,6 @@ if status is-interactive
     alias rm 'trash'
     alias ssh 'ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
     alias ghub 'gh'
-    alias bat 'batcat'
 
     # Inits
     if command -q fzf
