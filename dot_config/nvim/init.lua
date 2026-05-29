@@ -4,6 +4,15 @@ vim.g.maplocalleader = " "
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
+-- Filetypes
+vim.filetype.add({
+	pattern = {
+		[".*/playbooks/.*%.ya?ml"] = "yaml.ansible",
+		[".*/roles/.*/tasks/.*%.ya?ml"] = "yaml.ansible",
+		[".*/ansible/.*%.ya?ml"] = "yaml.ansible",
+	},
+})
+
 -- Plugins
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -17,80 +26,104 @@ if not vim.loop.fs_stat(lazypath) then
 	})
 end
 vim.opt.rtp:prepend(lazypath)
--- LSP: nvim-lspconfig
--- Lint: nvim-lint
 require("lazy").setup({
 	{
-		"nvim-telescope/telescope.nvim",
-		version = "*",
+		"neovim/nvim-lspconfig",
+		event = { "BufReadPre", "BufNewFile" },
+		config = function()
+			vim.lsp.enable({
+				"yamlls",
+				"ansiblels",
+			})
+		end,
+	},
+	{
+		"mfussenegger/nvim-lint",
+		event = { "BufReadPre", "BufNewFile" },
+		config = function()
+			local lint = require("lint")
+			lint.linters_by_ft = {
+				["yaml.ansible"] = { "ansible_lint" },
+			}
+			vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
+				callback = function()
+					lint.try_lint()
+				end,
+			})
+		end,
+	},
+	{
+		"nvim-lua/plenary.nvim",
+	},
+	{
+		"trevorhauter/gitportal.nvim",
 		config = true,
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-		},
+	},
+	{
+		"ibhagwan/fzf-lua",
+		config = true,
+	},
+	{
+		"nvim-telescope/telescope.nvim",
+		config = true,
 	},
 	{
 		"karb94/neoscroll.nvim",
-		version = "*",
 		config = true,
 	},
 	{
 		"sphamba/smear-cursor.nvim",
-		version = "*",
 		config = true,
 	},
 	{
 		"folke/todo-comments.nvim",
-		version = "*",
 		config = true,
 	},
 	{
 		"akinsho/bufferline.nvim",
-		version = "*",
 		config = true,
 	},
 	{
 		"akinsho/git-conflict.nvim",
-		version = "*",
 		config = true,
 	},
 	{
 		"lewis6991/gitsigns.nvim",
-		version = "*",
 		config = true,
 	},
 	{
 		"NMAC427/guess-indent.nvim",
-		version = "*",
 		config = true,
 	},
 	{
 		"nvim-lualine/lualine.nvim",
-		version = "*",
 		config = true,
 	},
 	{
 		"johnfrankmorgan/whitespace.nvim",
-		version = "*",
-		config = true,
+		config = function()
+			vim.api.nvim_create_autocmd("BufWritePre", {
+				pattern = "*",
+				callback = function()
+					require("whitespace-nvim").trim()
+				end,
+			})
+		end,
 	},
 	{
 		"kyazdani42/nvim-web-devicons",
-		version = "*",
 		config = true,
 	},
 	{
 		"windwp/nvim-autopairs",
-		version = "*",
 		config = true,
 	},
 	{
 		"folke/which-key.nvim",
-		version = "*",
 		config = true,
 	},
 	{
 		"saghen/blink.cmp",
-		version = "*",
 		config = true,
 		opts = {
 			keymap = {
@@ -105,7 +138,6 @@ require("lazy").setup({
 	},
 	{
 		"stevearc/conform.nvim",
-		version = "*",
 		config = true,
 		opts = {
 			format_on_save = {
@@ -119,16 +151,10 @@ require("lazy").setup({
 	},
 	{
 		"nvim-tree/nvim-tree.lua",
-		version = "*",
-		lazy = false,
-		dependencies = {
-			"nvim-tree/nvim-web-devicons",
-		},
 		config = true,
 	},
 	{
 		"Mofiqul/vscode.nvim",
-		version = "*",
 		lazy = false,
 		config = function()
 			vim.cmd.colorscheme("vscode")
@@ -180,11 +206,5 @@ vim.api.nvim_create_autocmd("FileType", {
 	pattern = "*",
 	callback = function()
 		vim.opt_local.formatoptions:remove({ "c", "r", "o" })
-	end,
-})
-vim.api.nvim_create_autocmd("BufWritePre", {
-	pattern = "*",
-	callback = function()
-		require("whitespace-nvim").trim()
 	end,
 })
