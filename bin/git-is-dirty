@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -euo pipefail
+
 if test -n "$(git status -s 2>/dev/null)"; then
     echo dirty
     exit 1
