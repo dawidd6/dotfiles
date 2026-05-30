@@ -11,10 +11,10 @@
     verbose = true
 
 [core]
-    pager = delta --diff-so-fancy
+    pager = diff-so-fancy | less --tabs=4 -RFX
 
 [interactive]
-    diffFilter = delta --diff-so-fancy --color-only
+    diffFilter = diff-so-fancy --patch
 
 [merge]
     conflictStyle = zdiff3
