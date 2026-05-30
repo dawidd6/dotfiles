@@ -44,6 +44,9 @@ require("lazy").setup({
 			local lint = require("lint")
 			lint.linters_by_ft = {
 				["yaml.ansible"] = { "ansible_lint" },
+				["yaml"] = { "yamllint" },
+				["sh"] = { "shellcheck" },
+				["fish"] = { "fish" },
 			}
 			vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
 				callback = function()
@@ -51,6 +54,19 @@ require("lazy").setup({
 				end,
 			})
 		end,
+	},
+	{
+		"stevearc/conform.nvim",
+		config = true,
+		opts = {
+			format_on_save = {
+				timeout_ms = 500,
+				lsp_format = "fallback",
+			},
+			formatters_by_ft = {
+				lua = { "stylua" },
+			},
+		},
 	},
 	{
 		"nvim-lua/plenary.nvim",
@@ -133,19 +149,6 @@ require("lazy").setup({
 				["<Down>"] = { "select_next", "fallback" },
 				["<Left>"] = { "hide", "fallback" },
 				["<Right>"] = { "hide", "fallback" },
-			},
-		},
-	},
-	{
-		"stevearc/conform.nvim",
-		config = true,
-		opts = {
-			format_on_save = {
-				timeout_ms = 500,
-				lsp_format = "fallback",
-			},
-			formatters_by_ft = {
-				lua = { "stylua" },
 			},
 		},
 	},
