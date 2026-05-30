@@ -9,7 +9,7 @@ fi
 
 # APT
 # TODO: delete autopurge line once run on every machine
-sudo apt autopurge -y diffoscope-minimal dos2unix eza fd-find fish fzf git-delta htop lm-sensors make neovim picocom ripgrep starship trash-cli zoxide
+sudo apt autopurge -y diffoscope-minimal dos2unix eza fd-find fish fzf git-delta htop lm-sensors neovim picocom ripgrep starship trash-cli zoxide
 sudo apt install -y podman wl-clipboard
 
 # Homebrew
@@ -21,8 +21,8 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv bash)"
 brew install age chezmoi diff-so-fancy diffoscope dos2unix eza fd fish fzf git glow helm htop k9s kubectl make neovim ripgrep shellcheck sops starship stylua trash-cli zoxide
 if ! grep -q /home/linuxbrew/.linuxbrew/bin/brew /etc/shells; then
     echo /home/linuxbrew/.linuxbrew/bin/fish | sudo tee -a /etc/shells
-    sudo chsh -s /home/linuxbrew/.linuxbrew/bin/fish "$(whoami)"
 fi
+sudo chsh -s /home/linuxbrew/.linuxbrew/bin/fish "$(whoami)"
 
 # Dotfiles
 if ! test -d ~/.local/share/chezmoi; then
