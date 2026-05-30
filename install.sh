@@ -21,7 +21,7 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv bash)"
 brew install age chezmoi diff-so-fancy diffoscope dos2unix eza fd fish fzf git glow helm htop k9s kubectl make neovim ripgrep shellcheck sops starship stylua trash-cli zoxide
 if ! grep -q /home/linuxbrew/.linuxbrew/bin/brew /etc/shells; then
     echo /home/linuxbrew/.linuxbrew/bin/fish | sudo tee -a /etc/shells
-    sudo chsh -s /home/linuxbrew/.linuxbrew/bin/fish "$USER"
+    sudo chsh -s /home/linuxbrew/.linuxbrew/bin/fish "$(whoami)"
 fi
 
 # Dotfiles
