@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-if test $EUID -eq 0; then
+if test $EUID -eq 0 && ! test -e /run/.containerenv; then
     echo "Do not run this as root!"
     exit 127
 fi
