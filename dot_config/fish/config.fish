@@ -17,11 +17,7 @@ if status is-interactive
     export LANG='C.UTF-8'
 
     # Abbrs
-    if command -q wl-copy
-        abbr clip 'wl-copy'
-    else if command -q xsel
-        abbr clip 'xsel --clipboard'
-    end
+    abbr clip 'wl-copy'
     abbr e 'exit'
     abbr g 'git'
     abbr ga 'git add'
@@ -59,27 +55,7 @@ if status is-interactive
     alias ghub 'gh'
 
     # Inits
-    if command -q fzf
-        fzf --fish | source
-    end
-    if command -q starship
-        starship init fish | source
-    end
-    if command -q zoxide
-        zoxide init fish --cmd=cd | source
-    end
-
-    # Completions
-    if command -q chezmoi
-        chezmoi completion fish | source
-    end
-    if command -q helm
-        helm completion fish | source
-    end
-    if command -q kubectl
-        kubectl completion fish | source
-    end
-    if command -q minikube
-        minikube completion fish | source
-    end
+    fzf --fish | source
+    starship init fish | source
+    zoxide init fish --cmd=cd | source
 end
