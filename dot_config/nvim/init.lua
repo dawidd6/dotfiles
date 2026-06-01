@@ -174,8 +174,5 @@ vim.api.nvim_create_autocmd("CursorHold", {
 -- Diagnostics
 vim.diagnostic.config({
 	virtual_text = true,
-	signs = true,
-	underline = true,
-	update_in_insert = false,
-	severity_sort = true,
+	virtual_lines = true,
 })
