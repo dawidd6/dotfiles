@@ -8,9 +8,7 @@ if test $EUID -eq 0 && ! test -e /run/.containerenv; then
 fi
 
 # APT
-# TODO: delete autopurge line once run on every machine
-sudo apt autopurge -y diffoscope-minimal dos2unix eza fd-find fish fzf git-delta htop lm-sensors neovim picocom ripgrep starship trash-cli zoxide
-sudo apt install -y podman wl-clipboard
+sudo apt install -y podman
 
 # Homebrew
 sudo apt install -y build-essential curl file git procps
@@ -18,7 +16,7 @@ if ! test -e /home/linuxbrew/.linuxbrew/bin/brew; then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv bash)"
-brew install age chezmoi diff-so-fancy diffoscope dos2unix eza fd fish fzf git glow helm htop k9s kubectl make neovim ripgrep shellcheck sops starship stylua trash-cli zoxide
+brew install age chezmoi diff-so-fancy diffoscope dos2unix eza fd fish fzf git glow helm htop k9s kubectl make neovim ripgrep shellcheck sops starship stylua trash-cli wl-clipboard zoxide
 if ! grep -q /home/linuxbrew/.linuxbrew/bin/brew /etc/shells; then
     echo /home/linuxbrew/.linuxbrew/bin/fish | sudo tee -a /etc/shells
 fi
