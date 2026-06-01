@@ -19,6 +19,8 @@ set fish_color_quote yellow
 export EDITOR='nvim'
 export PAGER='less'
 export LANG='C.UTF-8'
+export HOMEBREW_NO_INSTALL_FROM_API='1'
+export HOMEBREW_EDITOR="env XDG_RUNTIME_DIR=$XDG_RUNTIME_DIR WAYLAND_DISPLAY=$WAYLAND_DISPLAY $EDITOR"
 
 # Abbrs
 abbr clip 'wl-copy'
@@ -37,7 +39,12 @@ abbr gp 'git push'
 abbr gpf 'git push -f'
 abbr gs 'git status -u'
 abbr gt 'git tag'
+
 abbr p 'podman'
+abbr pp 'podman ps'
+abbr pi 'podman images'
+abbr pr 'podman run --rm'
+abbr pri 'podman run --rm -it'
 abbr k 'kubectl'
 abbr lxc-vm 'lxc launch --vm -c limits.cpu=4 -c limits.memory=4GiB -d root,size=50GiB'
 abbr lxc-mount 'lxc config device add $VM_NAME share disk source=$PWD path=$PWD'
