@@ -22,18 +22,10 @@ vim.pack.add({ { src = "https://github.com/nvim-tree/nvim-web-devicons" } })
 -- Plugin for LSP configs
 vim.pack.add({ { src = "https://github.com/neovim/nvim-lspconfig" } })
 vim.lsp.enable({
-	"yamlls",
 	"ansiblels",
+	"bashls",
+	"yamlls",
 })
-
--- Plugin for linting
-vim.pack.add({ { src = "https://github.com/mfussenegger/nvim-lint" } })
-require("lint").linters_by_ft = {
-	["yaml.ansible"] = { "ansible_lint" },
-	["yaml"] = { "yamllint" },
-	["sh"] = { "shellcheck" },
-	["fish"] = { "fish" },
-}
 
 -- Plugin for formatting
 vim.pack.add({ { src = "https://github.com/stevearc/conform.nvim" } })
@@ -171,11 +163,6 @@ vim.api.nvim_create_autocmd("FileType", {
 vim.api.nvim_create_autocmd("BufWritePre", {
 	callback = function()
 		require("whitespace-nvim").trim()
-	end,
-})
-vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
-	callback = function()
-		require("lint").try_lint()
 	end,
 })
 vim.api.nvim_create_autocmd("CursorHold", {
