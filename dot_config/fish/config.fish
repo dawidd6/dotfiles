@@ -27,11 +27,12 @@ export PAGER='less'
 export LANG='C.UTF-8'
 export HOMEBREW_NO_INSTALL_FROM_API='1'
 export HOMEBREW_EDITOR="env XDG_RUNTIME_DIR=$XDG_RUNTIME_DIR WAYLAND_DISPLAY=$WAYLAND_DISPLAY $EDITOR"
+export FZF_DEFAULT_OPTS="--bind pgup:preview-up,pgdn:preview-down"
 
 # Abbrs
 abbr !! --position anywhere --function last_history_item
-abbr cbc 'wl-copy'
-abbr cbp 'wl-paste'
+abbr pbcopy 'wl-copy'
+abbr pbpaste 'wl-paste'
 abbr e 'exit'
 abbr g 'git'
 abbr ga 'git add'
@@ -43,6 +44,7 @@ abbr gca 'git commit --amend --no-edit'
 abbr gcae 'git commit --amend --edit'
 abbr gd 'git diff'
 abbr gdc 'git diff --cached'
+abbr gl 'git lg'
 abbr gp 'git push'
 abbr gpf 'git push -f'
 abbr gs 'git status -u'
