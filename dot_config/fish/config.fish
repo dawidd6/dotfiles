@@ -15,6 +15,12 @@ set fish_color_normal normal
 set fish_color_comment brblack
 set fish_color_quote yellow
 
+# Functions
+function fish_greeting; end
+function last_history_item
+    echo $history[1]
+end
+
 # Exports
 export EDITOR='nvim'
 export PAGER='less'
@@ -23,34 +29,46 @@ export HOMEBREW_NO_INSTALL_FROM_API='1'
 export HOMEBREW_EDITOR="env XDG_RUNTIME_DIR=$XDG_RUNTIME_DIR WAYLAND_DISPLAY=$WAYLAND_DISPLAY $EDITOR"
 
 # Abbrs
-abbr clip 'wl-copy'
+abbr !! --position anywhere --function last_history_item
+abbr cbc 'wl-copy'
+abbr cbp 'wl-paste'
 abbr e 'exit'
 abbr g 'git'
 abbr ga 'git add'
 abbr gb 'git branch -a'
+abbr gh 'git checkout'
+abbr ghm 'git checkout-main-branch'
 abbr gc 'git commit -m'
 abbr gca 'git commit --amend --no-edit'
 abbr gcae 'git commit --amend --edit'
 abbr gd 'git diff'
 abbr gdc 'git diff --cached'
-abbr gh 'git checkout'
-abbr ghm 'git checkout-main-branch'
 abbr gp 'git push'
 abbr gpf 'git push -f'
 abbr gs 'git status -u'
 abbr gt 'git tag'
-
 abbr p 'podman'
 abbr pp 'podman ps'
 abbr pi 'podman images'
 abbr pr 'podman run --rm'
 abbr pri 'podman run --rm -it'
 abbr k 'kubectl'
-abbr lxc-vm 'lxc launch --vm -c limits.cpu=4 -c limits.memory=4GiB -d root,size=50GiB'
-abbr lxc-mount 'lxc config device add $VM_NAME share disk source=$PWD path=$PWD'
-abbr lxc-display 'lxc console --type vga'
+abbr ka 'kubectl apply -f'
+abbr kd 'kubectl describe'
+abbr kg 'kubectl get'
+abbr kgy 'kubectl get -o yaml'
+abbr kc 'kubectx'
+abbr kn 'kubens'
+abbr cm 'chezmoi'
+abbr cma 'chezmoi apply'
+abbr cmd 'chezmoi diff'
+abbr cme 'chezmoi edit'
+abbr cmea 'chezmoi edit --apply'
+abbr cmg 'chezmoi git'
+abbr cms 'chezmoi status'
 
 # Aliases
+alias v 'nvim'
 alias vi 'nvim'
 alias vim 'nvim'
 alias eza 'eza --group-directories-first --group --header --time-style=long-iso'
