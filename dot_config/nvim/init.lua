@@ -165,11 +165,6 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 		require("whitespace-nvim").trim()
 	end,
 })
-vim.api.nvim_create_autocmd("CursorHold", {
-	callback = function()
-		vim.diagnostic.open_float(nil, { focus = false })
-	end,
-})
 
 -- Diagnostics
 vim.diagnostic.config({
