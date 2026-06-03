@@ -5,7 +5,7 @@ set -euo pipefail
 REMOTE="${1:-origin}"
 BRANCH="${2:-"$(git branch --show-current)"}"
 
-git fetch "$REMOTE" "$BRANCH"
+git fetch "$REMOTE" "$BRANCH" --quiet
 
 LOCAL="$(git rev-parse HEAD)"
 REMOTE_HEAD="$(git rev-parse "$REMOTE/$BRANCH")"
@@ -15,22 +15,16 @@ if [[ "$LOCAL" = "$REMOTE_HEAD" ]]; then
     exit 0
 fi
 
-echo
-git log --oneline HEAD.."$REMOTE/$BRANCH"
+git log --pretty=format:'%Cred%h%Creset %Cgreen(%cr)%Creset %C(bold blue)<%an>%Creset %s %C(yellow)%d%Creset' --stat HEAD.."$REMOTE/$BRANCH"
 
-echo
-git diff --name-status HEAD.."$REMOTE/$BRANCH"
-
-echo
-read -rp "Show full diff? [y/N]: " SHOW_DIFF
+read -rp "==> Diff? [y/N]: " SHOW_DIFF
 
 if [[ "$SHOW_DIFF" =~ ^[Yy]$ ]]; then
     git diff HEAD.."$REMOTE/$BRANCH"
 fi
 
-echo
-read -rp "Pull changes now? [y/N]: " PULL
+read -rp "==> Rebase? [y/N]: " PULL
 
 if [[ "$PULL" =~ ^[Yy]$ ]]; then
-    git pull "$REMOTE" "$BRANCH"
+    git rebase "$REMOTE" "$BRANCH" --quiet
 fi
