@@ -1,3 +1,4 @@
+### ALL SESSIONS
 # Exports
 export EDITOR='nvim'
 export PAGER='less'
@@ -11,6 +12,7 @@ export FZF_DEFAULT_OPTS="--bind pgup:preview-up,pgdn:preview-down"
 # PATH
 fish_add_path --path --global --move --append ~/.local/share/chezmoi/bin ~/.local/bin "$HOMEBREW_PREFIX/bin" "$HOMEBREW_PREFIX/sbin"
 
+### INTERACTIVE SESSIONS ONLY
 if status --is-interactive
     # Sources
     fzf --fish | source
@@ -39,8 +41,8 @@ if status --is-interactive
 
     # Abbrs
     abbr !! --position anywhere --function last_history_item
-    abbr pbcopy 'wl-copy'
-    abbr pbpaste 'wl-paste'
+    abbr C 'wl-copy'
+    abbr P 'wl-copy'
     abbr e 'exit'
     abbr g 'git'
     abbr ga 'git add'
@@ -65,17 +67,18 @@ if status --is-interactive
     abbr k 'kubectl'
     abbr ka 'kubectl apply -f'
     abbr kd 'kubectl describe'
+    abbr ke 'kubectl exec -it'
     abbr kg 'kubectl get'
     abbr kgy 'kubectl get -o yaml'
+    abbr kr 'kubectl run -it --rm --restart=Never --image'
     abbr kc 'kubectx'
     abbr kn 'kubens'
-    abbr ch 'chezmoi'
-    abbr cha 'chezmoi apply'
-    abbr chc 'chezmoi cd'
-    abbr chd 'chezmoi diff'
-    abbr che 'chezmoi edit'
-    abbr chea 'chezmoi edit --apply'
-    abbr chs 'chezmoi status'
+    abbr c 'chezmoi'
+    abbr ca 'chezmoi apply'
+    abbr cc 'chezmoi cd'
+    abbr ce 'chezmoi edit'
+    abbr cl 'chezmoi list'
+    abbr cs 'chezmoi status && chezmoi diff'
     abbr ef 'vi ~/.config/fish/config.fish'
     abbr en 'vi ~/.config/nvim/init.lua'
     abbr eg 'vi ~/.config/git/config'
@@ -85,11 +88,11 @@ if status --is-interactive
     alias vi 'nvim'
     alias vim 'nvim'
     alias eza 'eza --group-directories-first --group --header --time-style=long-iso'
+    alias l 'eza'
+    alias ls 'eza'
     alias la 'eza -a'
     alias ll 'eza -l'
     alias lla 'eza -la'
-    alias ls 'eza'
-    alias l 'eza'
     alias lt 'eza --tree'
     alias tree 'eza --tree'
     alias rm 'trash'
