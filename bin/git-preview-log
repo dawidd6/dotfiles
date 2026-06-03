@@ -2,14 +2,15 @@
 
 set -euo pipefail
 
-git lg --color "$@" |
+git log --pretty=format:'%Cred%h%Creset %Cgreen(%cr)%Creset %C(bold blue)<%an>%Creset %s %C(yellow)%d%Creset' --color "$@" |
 fzf \
   --ansi \
   --no-sort \
   --reverse \
   --multi \
-  --preview 'git show --color {2} | diff-so-fancy' \
+  --preview 'git show --color {1} | diff-so-fancy' \
   --preview-window 'right:60%:wrap' \
   --header "Tab - select items, Enter - confirm, PgUp/PgDown - scroll preview" \
+  --bind 'home:first,end:last' \
   --bind 'pgup:preview-up,pgdn:preview-down' |
-awk '{print $2}' | tee | wl-copy
+awk '{print $1}' | tee /dev/stderr | wl-copy -n
