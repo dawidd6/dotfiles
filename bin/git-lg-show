@@ -2,13 +2,14 @@
 
 set -euo pipefail
 
-pager="$(git config --global core.pager)"
-copier="wl-copy -n"
-
-# shellcheck disable=2016
-git lg --color "$@" | fzf --ansi --no-sort --reverse --preview-window=right:60%:wrap --accept-nth 2 --delimiter ' ' --multi \
-    --preview "git show --color {2} | $pager" \
-    --bind "enter:execute(printf '%s\\n' {+2} | $copier)+accept" \
-    --bind "pgup:preview-up,pgdn:preview-down" \
-    --header "Tab - select items, Enter - confirm, PgUp/PgDown - scroll preview"
-
+git lg --color "$@" |
+fzf \
+  --ansi \
+  --no-sort \
+  --reverse \
+  --multi \
+  --preview 'git show --color {2} | diff-so-fancy' \
+  --preview-window 'right:60%:wrap' \
+  --header "Tab - select items, Enter - confirm, PgUp/PgDown - scroll preview" \
+  --bind 'pgup:preview-up,pgdn:preview-down' |
+awk '{print $2}' | tee | wl-copy
