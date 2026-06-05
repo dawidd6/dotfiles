@@ -1,11 +1,4 @@
 ### ALL SESSIONS
-# Exports
-export EDITOR='nvim'
-export PAGER='less'
-export HOMEBREW_NO_INSTALL_FROM_API='1'
-export HOMEBREW_EDITOR="env XDG_RUNTIME_DIR=$XDG_RUNTIME_DIR WAYLAND_DISPLAY=$WAYLAND_DISPLAY $EDITOR"
-export FZF_DEFAULT_OPTS="--bind pgup:preview-up,pgdn:preview-down"
-
 # Sources
 /home/linuxbrew/.linuxbrew/bin/brew shellenv fish | source
 
@@ -32,12 +25,11 @@ if status --is-interactive
     function last_history_item
         echo $history[1]
     end
-    function __auto_ls --on-variable PWD
-        ls
-    end
 
     # Exports
     export LANG='C.UTF-8'
+    export EDITOR='nvim'
+    export PAGER='less'
 
     # Abbrs
     abbr !! --position anywhere --function last_history_item
