@@ -8,12 +8,12 @@ success_symbol = "[➜](bold green) "
 [line_break]
 disabled = true
 
-[nix_shell]
-heuristic = true
-
 [status]
 disabled = false
 format = "[$status]($style) "
 
 [kubernetes]
 disabled = false
+
+[aws]
+disabled = true
