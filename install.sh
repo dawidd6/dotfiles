@@ -45,20 +45,24 @@ function check() {
 }
 
 function setup_apt() {
-    sudo apt install -y "${apt_packages[@]}"
+    if ! dpkg -l "${apt_packages[@]}" &>/dev/null; then
+        sudo apt install -y "${apt_packages[@]}"
+    fi
 }
 
 function setup_brew() {
-    sudo apt install -y build-essential curl file git procps
     if ! test -e /home/linuxbrew/.linuxbrew/bin/brew; then
+        if ! dpkg -l build-essential curl file git procps &>/dev/null; then
+            sudo apt install -y build-essential curl file git procps
+        fi
         /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     fi
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv bash)"
-    brew install "${brew_packages[@]}"
+    brew install "${brew_packages[@]}" 2>/dev/null
     if ! grep -q /home/linuxbrew/.linuxbrew/bin/fish /etc/shells; then
         echo /home/linuxbrew/.linuxbrew/bin/fish | sudo tee -a /etc/shells
+        sudo chsh -s /home/linuxbrew/.linuxbrew/bin/fish "$(whoami)"
     fi
-    sudo chsh -s /home/linuxbrew/.linuxbrew/bin/fish "$(whoami)"
 }
 
 function setup_dotfiles() {
@@ -86,13 +90,19 @@ function setup_desktop() {
         gsettings set org.gnome.settings-daemon.plugins.power idle-dim false
         gsettings set org.gnome.settings-daemon.plugins.power idle-brightness 100
 
-        sudo pam-auth-update --enable fprintd
+        if ! grep -q fprintd /etc/pam.d/common-auth; then
+            sudo pam-auth-update --enable fprintd
+        fi
 
-        sudo apt purge fonts-noto-core
-        sudo apt install fonts-ubuntu-classic
+        if ! dpkg -l fonts-ubuntu-classic &>/dev/null; then
+            sudo apt purge -y fonts-noto-core
+            sudo apt install -y fonts-ubuntu-classic
+        fi
 
-        sudo apt install -y flatpak
-        sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+        if ! command -v flatpak &>/dev/null; then
+            sudo apt install -y flatpak
+            sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+        fi
     fi
 }
 
