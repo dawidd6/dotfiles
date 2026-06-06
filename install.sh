@@ -14,6 +14,7 @@ brew_packages=(
     fd
     fish
     fzf
+    fx
     git
     glow
     helm
@@ -25,10 +26,8 @@ brew_packages=(
     make
     neovim
     ripgrep
-    shellcheck
     sops
     starship
-    stylua
     trash-cli
     wl-clipboard
     zoxide
