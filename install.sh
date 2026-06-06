@@ -55,7 +55,7 @@ function setup_brew() {
     fi
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv bash)"
     brew install "${brew_packages[@]}"
-    if ! grep -q /home/linuxbrew/.linuxbrew/bin/brew /etc/shells; then
+    if ! grep -q /home/linuxbrew/.linuxbrew/bin/fish /etc/shells; then
         echo /home/linuxbrew/.linuxbrew/bin/fish | sudo tee -a /etc/shells
     fi
     sudo chsh -s /home/linuxbrew/.linuxbrew/bin/fish "$(whoami)"
