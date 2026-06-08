@@ -14,8 +14,96 @@
   "files.trimTrailingWhitespace": true,
   "remote.autoForwardPortsSource": "hybrid",
   "search.followSymlinks": false,
+  "vim.handleKeys": {
+    "<C-a>": false,
+    "<C-f>": false
+  },
+  "vim.hlsearch": true,
+  "vim.incsearch": true,
+  "vim.leader": "<space>",
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "after": [
+        "\"",
+        "_",
+        "x"
+      ],
+      "before": [
+        "x"
+      ]
+    },
+    {
+      "after": [
+        "\"",
+        "_",
+        "X"
+      ],
+      "before": [
+        "X"
+      ]
+    },
+    {
+      "before": [
+        "."
+      ],
+      "commands": [
+        ":bn"
+      ]
+    },
+    {
+      "before": [
+        ","
+      ],
+      "commands": [
+        ":bp"
+      ]
+    },
+    {
+      "before": [
+        "<Esc>"
+      ],
+      "commands": [
+        ":nohlsearch"
+      ]
+    }
+  ],
+  "vim.useCtrlKeys": true,
+  "vim.useSystemClipboard": true,
+  "vim.visualModeKeyBindingsNonRecursive": [
+    {
+      "after": [
+        "\"",
+        "_",
+        "x"
+      ],
+      "before": [
+        "x"
+      ]
+    },
+    {
+      "after": [
+        "\"",
+        "_",
+        "X"
+      ],
+      "before": [
+        "X"
+      ]
+    },
+    {
+      "after": [
+        "\"",
+        "_",
+        "d",
+        "P"
+      ],
+      "before": [
+        "p"
+      ]
+    }
+  ],
   "window.commandCenter": false,
+  "workbench.colorTheme": "Dark Modern",
   "workbench.iconTheme": "material-icon-theme",
-  "workbench.tree.indent": 22,
-  "workbench.colorTheme": "Dark Modern"
+  "workbench.tree.indent": 22
 }

@@ -2,6 +2,8 @@
 vim.keymap.set({ "n", "v" }, "x", '"_x')
 vim.keymap.set({ "n", "v" }, "X", '"_X')
 vim.keymap.set("v", "p", '"_dP')
+vim.keymap.set("n", ",", ":bprevious<CR>")
+vim.keymap.set("n", ".", ":bnext<CR>")
 vim.keymap.set("n", "<Esc>", ":nohlsearch<CR>")
 
 -- Options
