@@ -56,6 +56,8 @@ if status --is-interactive
     abbr pi 'podman images'
     abbr pr 'podman run --rm'
     abbr pri 'podman run --rm -it'
+    abbr pe 'podman exec'
+    abbr pei 'podman exec -it'
     abbr k 'kubectl'
     abbr ka 'kubectl apply -f'
     abbr kd 'kubectl describe'
