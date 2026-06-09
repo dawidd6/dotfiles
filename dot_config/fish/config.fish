@@ -92,4 +92,5 @@ if status --is-interactive
     alias rm 'trash'
     alias ssh 'ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
     alias ghub 'gh'
+    alias dot 'git --git-dir "$HOME/.dotfiles" --work-tree "$HOME"'
 end
