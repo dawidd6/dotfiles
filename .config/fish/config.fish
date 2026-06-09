@@ -3,7 +3,7 @@
 /home/linuxbrew/.linuxbrew/bin/brew shellenv fish | source
 
 # PATH
-fish_add_path --path --global --move --append ~/.local/share/chezmoi/bin ~/.local/bin "$HOMEBREW_PREFIX/bin" "$HOMEBREW_PREFIX/sbin"
+fish_add_path --path --global --move --append ~/.local/bin "$HOMEBREW_PREFIX/bin" "$HOMEBREW_PREFIX/sbin"
 
 ### INTERACTIVE SESSIONS ONLY
 if status --is-interactive
@@ -76,6 +76,17 @@ if status --is-interactive
     abbr ef 'vi ~/.config/fish/config.fish'
     abbr en 'vi ~/.config/nvim/init.lua'
     abbr eg 'vi ~/.config/git/config'
+    abbr d 'dotfiles'
+    abbr da 'dotfiles add -f'
+    abbr dh 'dotfiles checkout'
+    abbr dc 'dotfiles commit -m'
+    abbr dca 'dotfiles commit --amend --no-edit'
+    abbr dcae 'dotfiles commit --amend --edit'
+    abbr dd 'dotfiles diff'
+    abbr ddc 'dotfiles diff --cached'
+    abbr dl 'dotfiles lg'
+    abbr dp 'dotfiles push'
+    abbr ds 'dotfiles status -u'
 
     # Aliases
     alias v 'nvim'
@@ -92,5 +103,5 @@ if status --is-interactive
     alias rm 'trash'
     alias ssh 'ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
     alias ghub 'gh'
-    alias dot 'git --git-dir "$HOME/.dotfiles" --work-tree "$HOME"'
+    alias dotfiles 'git --git-dir "$HOME/.dotfiles" --work-tree "$HOME"'
 end
