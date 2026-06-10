@@ -2,6 +2,16 @@
 
 set -euo pipefail
 
+# Perform initial checks
+if test $EUID -eq 0; then
+    echo Do not run this script as root
+    exit 127
+fi
+if ! command -v brew &>/dev/null; then
+    echo Cannot find brew
+    exit 127
+fi
+
 # Swap snapped software management with gnome software
 if snap list snap-store &>/dev/null; then
     sudo snap remove --purge snap-store
@@ -13,8 +23,10 @@ if ! dpkg -l gnome-software &>/dev/null; then
     sudo apt install -y gnome-software-plugin-deb gnome-software-plugin-snap gnome-software-plugin-flatpak gnome-software-plugin-fwupd
 fi
 
-# Add flathub flatpak remote
-sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+# Add flathub flatpak remote globally
+if ! flatpak remotes --columns=name | grep -qx flathub; then
+    sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+fi
 
 # Fingerprint authentication everywhere with more tries
 if ! grep -q 'max-tries=5' /etc/pam.d/common-auth; then
@@ -30,6 +42,26 @@ fi
 # Revert to pre-24.04 ubuntu fonts (they are better, what the heck canonical?)
 if ! dpkg -l fonts-ubuntu-classic &>/dev/null; then
     sudo apt install -y fonts-ubuntu-classic
+fi
+
+# Check out my dotfiles to current user's home directory
+if ! test -d ~/.dotfiles; then
+    git clone --bare https://github.com/dawidd6/dotfiles ~/.dotfiles
+    git --git-dir ~/.dotfiles config remote.origin.fetch '+refs/heads/*:refs/remotes/origin/*'
+    git --git-dir ~/.dotfiles fetch origin
+    git --git-dir ~/.dotfiles branch --set-upstream-to origin/master master
+    git --git-dir ~/.dotfiles --work-tree ~ checkout --force
+fi
+
+# Set default shell to fish globally for current user
+if ! grep -q /home/linuxbrew/.linuxbrew/bin/fish /etc/shells; then
+    echo /home/linuxbrew/.linuxbrew/bin/fish | sudo tee --append /etc/shells
+    sudo chsh --shell /home/linuxbrew/.linuxbrew/bin/fish "$(whoami)"
+fi
+
+# Install packages from brewfile
+if ! brew bundle check --global &>/dev/null; then
+    brew bundle install --global
 fi
 
 # Tweak gnome desktop settings
