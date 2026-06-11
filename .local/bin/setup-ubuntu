@@ -11,6 +11,24 @@ if ! command -v brew &>/dev/null; then
     echo Cannot find brew
     exit 127
 fi
+if ! fprintd-list $(whoami) | grep -q 'right-index-finger'; then
+    echo Scan fingerprint first
+    exit 127
+fi
+
+# Check out my dotfiles to current user's home directory
+if ! test -d ~/.dotfiles; then
+    git clone --bare https://github.com/dawidd6/dotfiles ~/.dotfiles
+    git --git-dir ~/.dotfiles config remote.origin.fetch '+refs/heads/*:refs/remotes/origin/*'
+    git --git-dir ~/.dotfiles fetch origin
+    git --git-dir ~/.dotfiles branch --set-upstream-to origin/master master
+    git --git-dir ~/.dotfiles --work-tree ~ checkout --force
+fi
+
+# Install packages from brewfile
+if ! brew bundle check --global &>/dev/null; then
+    brew bundle install --global
+fi
 
 # Swap snapped software management with gnome software
 if snap list snap-store &>/dev/null; then
@@ -44,24 +62,16 @@ if ! dpkg -s fonts-ubuntu-classic &>/dev/null; then
     sudo apt install -y fonts-ubuntu-classic
 fi
 
-# Check out my dotfiles to current user's home directory
-if ! test -d ~/.dotfiles; then
-    git clone --bare https://github.com/dawidd6/dotfiles ~/.dotfiles
-    git --git-dir ~/.dotfiles config remote.origin.fetch '+refs/heads/*:refs/remotes/origin/*'
-    git --git-dir ~/.dotfiles fetch origin
-    git --git-dir ~/.dotfiles branch --set-upstream-to origin/master master
-    git --git-dir ~/.dotfiles --work-tree ~ checkout --force
+# Correct fonts for gdm
+if grep -q 'Ubuntu Sans' /usr/share/glib-2.0/schemas/10_ubuntu-settings.gschema.override; then
+    sudo sed -i 's/Ubuntu Sans/Ubuntu/' /usr/share/glib-2.0/schemas/10_ubuntu-settings.gschema.override
+    sudo glib-compile-schemas /usr/share/glib-2.0/schemas/
 fi
 
 # Set default shell to fish globally for current user
 if ! grep -q /home/linuxbrew/.linuxbrew/bin/fish /etc/shells; then
     echo /home/linuxbrew/.linuxbrew/bin/fish | sudo tee --append /etc/shells
     sudo chsh --shell /home/linuxbrew/.linuxbrew/bin/fish "$(whoami)"
-fi
-
-# Install packages from brewfile
-if ! brew bundle check --global &>/dev/null; then
-    brew bundle install --global
 fi
 
 # Tweak gnome desktop settings
