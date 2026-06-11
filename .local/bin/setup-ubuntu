@@ -52,6 +52,11 @@ if ! grep -q 'max-tries=5' /etc/pam.d/common-auth; then
     sudo sed -i 's/max-tries=1/max-tries=5/' /etc/pam.d/common-auth
 fi
 
+# Match gdm scaling to user session settings
+if ! test -e /etc/xdg/monitors.xml; then
+    sudo cp ~/.config/monitors.xml /etc/xdg/monitors.xml
+fi
+
 # Remove noto fonts (dejavu looks better for me)
 if dpkg -s fonts-noto-core &>/dev/null; then
     sudo apt purge -y fonts-noto-core
