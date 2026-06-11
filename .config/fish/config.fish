@@ -82,6 +82,9 @@ if status --is-interactive
     abbr dls 'dotfiles ls'
     abbr dp 'dotfiles push'
     abbr ds 'dotfiles status -u'
+    abbr incus-vm 'incus launch --vm -c limits.cpu=4 -c limits.memory=4GiB -d root,size=50GiB'
+    abbr incus-mount 'incus config device add $VM_NAME share disk source=$PWD path=$PWD'
+    abbr incus-display 'incus console --type vga'
 
     # Aliases
     alias v 'nvim'
