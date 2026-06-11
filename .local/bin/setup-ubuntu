@@ -57,6 +57,17 @@ if ! test -e /etc/xdg/monitors.xml; then
     sudo cp ~/.config/monitors.xml /etc/xdg/monitors.xml
 fi
 
+# Install podman
+if ! dpkg -s podman; then
+    sudo apt install -y podman
+fi
+
+# Install incus
+if ! dpkg -s incus; then
+    sudo apt install -y incus spice-client-gtk
+    sudo incus admin init --auto
+fi
+
 # Remove noto fonts (dejavu looks better for me)
 if dpkg -s fonts-noto-core &>/dev/null; then
     sudo apt purge -y fonts-noto-core
