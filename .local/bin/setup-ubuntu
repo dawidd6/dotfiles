@@ -4,11 +4,7 @@ set -xeuo pipefail
 
 # Perform initial checks
 if test $EUID -eq 0; then
-    echo Do not run this script as root
-    exit 127
-fi
-if ! command -v brew &>/dev/null; then
-    echo Cannot find brew
+    echo 'Do not run this script as root!'
     exit 127
 fi
 
@@ -21,20 +17,26 @@ if ! test -d ~/.dotfiles; then
     git --git-dir ~/.dotfiles --work-tree ~ checkout --force
 fi
 
+# Install homebrew
+if ! test -e /home/linuxbrew/.linuxbrew/bin/brew; then
+    sudo apt-get install build-essential procps curl file git
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
+
 # Install packages from brewfile
 if ! brew bundle check --global &>/dev/null; then
     brew bundle install --global
-fi
-
-# Install podman
-if ! dpkg -s podman; then
-    sudo apt install -y podman
 fi
 
 # Set default shell to fish globally for current user
 if ! grep -q /home/linuxbrew/.linuxbrew/bin/fish /etc/shells; then
     echo /home/linuxbrew/.linuxbrew/bin/fish | sudo tee --append /etc/shells
     sudo chsh --shell /home/linuxbrew/.linuxbrew/bin/fish "$(whoami)"
+fi
+
+# Install podman
+if ! dpkg -s podman; then
+    sudo apt install -y podman
 fi
 
 # If on desktop then do these

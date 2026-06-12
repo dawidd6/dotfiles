@@ -27,10 +27,9 @@ jobs:
       run: sudo incus launch --vm -c limits.cpu=2 -c limits.memory=2GiB -d root,size=50GiB images:ubuntu/${{ matrix.ubuntu_release }}/desktop vm
 
     - name: Wait up
-      run: until sudo incus exec vm -- systemctl is-active gdm; do sleep 5; done
-
-    - name: Install Homebrew
-      run: sudo incus exec vm -- bash -c "$(wget -qO - https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+      run: until sudo incus exec vm -- systemctl is-active gdm; do sleep 10; done
 
     - name: Setup Ubuntu
-      run: sudo incus exec vm -- bash -c "$(wget -qO - https://raw.githubusercontent.com/dawidd6/dotfiles/refs/heads/master/.local/bin/setup-ubuntu)"
+      run: >-
+        sudo incus exec vm --env NONINTERACTIVE=1 --user 1000 --
+        bash -c "$(wget -qO - https://raw.githubusercontent.com/dawidd6/dotfiles/refs/heads/master/.local/bin/setup-ubuntu)"
