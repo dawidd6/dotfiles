@@ -6,6 +6,7 @@ on:
       - master
     paths:
       - .local/bin/setup-ubuntu
+      - .github/workflows/setup-ubuntu.yml
   workflow_dispatch:
 
 jobs:
