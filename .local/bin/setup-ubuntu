@@ -8,6 +8,12 @@ if test $EUID -eq 0; then
     exit 127
 fi
 
+# Install homebrew
+if ! test -e /home/linuxbrew/.linuxbrew/bin/brew; then
+    sudo apt install -y build-essential procps curl file git
+    bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
+
 # Check out my dotfiles to current user's home directory
 if ! test -d ~/.dotfiles; then
     git clone --bare https://github.com/dawidd6/dotfiles ~/.dotfiles
@@ -15,12 +21,6 @@ if ! test -d ~/.dotfiles; then
     git --git-dir ~/.dotfiles fetch origin
     git --git-dir ~/.dotfiles branch --set-upstream-to origin/master master
     git --git-dir ~/.dotfiles --work-tree ~ checkout --force
-fi
-
-# Install homebrew
-if ! test -e /home/linuxbrew/.linuxbrew/bin/brew; then
-    sudo apt-get install build-essential procps curl file git
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
 # Install packages from brewfile
