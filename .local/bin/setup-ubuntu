@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -euo pipefail
+set -xeuo pipefail
 
 # Perform initial checks
 if test $EUID -eq 0; then
@@ -9,10 +9,6 @@ if test $EUID -eq 0; then
 fi
 if ! command -v brew &>/dev/null; then
     echo Cannot find brew
-    exit 127
-fi
-if ! fprintd-list $(whoami) | grep -q 'right-index-finger'; then
-    echo Scan fingerprint first
     exit 127
 fi
 
@@ -30,58 +26,9 @@ if ! brew bundle check --global &>/dev/null; then
     brew bundle install --global
 fi
 
-# Swap snapped software management with gnome software
-if snap list snap-store &>/dev/null; then
-    sudo snap remove --purge snap-store
-fi
-if snap list firmware-updater &>/dev/null; then
-    sudo snap remove --purge firmware-updater
-fi
-if ! dpkg -s gnome-software &>/dev/null; then
-    sudo apt install -y gnome-software-plugin-deb gnome-software-plugin-snap gnome-software-plugin-flatpak gnome-software-plugin-fwupd
-fi
-
-# Add flathub flatpak remote globally
-if ! flatpak remotes --columns=name | grep -qx flathub; then
-    sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-fi
-
-# Fingerprint authentication everywhere with more tries
-if ! grep -q 'max-tries=5' /etc/pam.d/common-auth; then
-    sudo pam-auth-update --enable fprintd
-    sudo sed -i 's/max-tries=1/max-tries=5/' /etc/pam.d/common-auth
-fi
-
-# Match gdm scaling to user session settings
-if ! test -e /etc/xdg/monitors.xml; then
-    sudo cp ~/.config/monitors.xml /etc/xdg/monitors.xml
-fi
-
 # Install podman
 if ! dpkg -s podman; then
     sudo apt install -y podman
-fi
-
-# Install incus
-if ! dpkg -s incus; then
-    sudo apt install -y incus spice-client-gtk
-    sudo incus admin init --auto
-fi
-
-# Remove noto fonts (dejavu looks better for me)
-if dpkg -s fonts-noto-core &>/dev/null; then
-    sudo apt purge -y fonts-noto-core
-fi
-
-# Revert to pre-24.04 ubuntu fonts (they are better, what the heck canonical?)
-if ! dpkg -s fonts-ubuntu-classic &>/dev/null; then
-    sudo apt install -y fonts-ubuntu-classic
-fi
-
-# Correct fonts for gdm
-if grep -q 'Ubuntu Sans' /usr/share/glib-2.0/schemas/10_ubuntu-settings.gschema.override; then
-    sudo sed -i 's/Ubuntu Sans/Ubuntu/' /usr/share/glib-2.0/schemas/10_ubuntu-settings.gschema.override
-    sudo glib-compile-schemas /usr/share/glib-2.0/schemas/
 fi
 
 # Set default shell to fish globally for current user
@@ -90,16 +37,66 @@ if ! grep -q /home/linuxbrew/.linuxbrew/bin/fish /etc/shells; then
     sudo chsh --shell /home/linuxbrew/.linuxbrew/bin/fish "$(whoami)"
 fi
 
-# Tweak gnome desktop settings
-gsettings set org.gnome.desktop.interface font-name 'Ubuntu 11'
-gsettings set org.gnome.desktop.interface monospace-font-name 'UbuntuMono Nerd Font 13'
-gsettings set org.gnome.desktop.interface document-font-name 'Sans 11'
-gsettings set org.gnome.desktop.wm.preferences titlebar-font 'Ubuntu Bold 11'
-gsettings set org.gnome.settings-daemon.plugins.power idle-dim false
-gsettings set org.gnome.settings-daemon.plugins.power idle-brightness 100
+# If on desktop then do these
+if command -v gnome-shell &>/dev/null; then
+    # Install incus
+    if ! dpkg -s incus; then
+        sudo apt install -y incus spice-client-gtk
+        sudo incus admin init --auto
+    fi
 
-# Disable ubuntu specific gnome extensions
-gnome-extensions disable ubuntu-dock@ubuntu.com
-gnome-extensions disable ding@rastersoft.com
+    # Swap snapped software management with gnome software
+    if snap list snap-store &>/dev/null; then
+        sudo snap remove --purge snap-store
+    fi
+    if snap list firmware-updater &>/dev/null; then
+        sudo snap remove --purge firmware-updater
+    fi
+    if ! dpkg -s gnome-software &>/dev/null; then
+        sudo apt install -y gnome-software-plugin-deb gnome-software-plugin-snap gnome-software-plugin-flatpak gnome-software-plugin-fwupd
+    fi
 
-echo done
+    # Add flathub flatpak remote globally
+    if ! flatpak remotes --columns=name | grep -qx flathub; then
+        sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+    fi
+
+    # Fingerprint authentication everywhere with more tries
+    if ! grep -q 'max-tries=5' /etc/pam.d/common-auth; then
+        sudo pam-auth-update --enable fprintd
+        sudo sed -i 's/max-tries=1/max-tries=5/' /etc/pam.d/common-auth
+    fi
+
+    # Match gdm scaling to user session settings
+    if ! test -e /etc/xdg/monitors.xml; then
+        sudo cp ~/.config/monitors.xml /etc/xdg/monitors.xml
+    fi
+
+    # Remove noto fonts (dejavu looks better for me)
+    if dpkg -s fonts-noto-core &>/dev/null; then
+        sudo apt purge -y fonts-noto-core
+    fi
+
+    # Revert to pre-24.04 ubuntu fonts (they are better, what the heck canonical?)
+    if ! dpkg -s fonts-ubuntu-classic &>/dev/null; then
+        sudo apt install -y fonts-ubuntu-classic
+    fi
+
+    # Correct fonts for gdm
+    if grep -q 'Ubuntu Sans' /usr/share/glib-2.0/schemas/10_ubuntu-settings.gschema.override; then
+        sudo sed -i 's/Ubuntu Sans/Ubuntu/' /usr/share/glib-2.0/schemas/10_ubuntu-settings.gschema.override
+        sudo glib-compile-schemas /usr/share/glib-2.0/schemas/
+    fi
+
+    # Tweak gnome desktop settings
+    gsettings set org.gnome.desktop.interface font-name 'Ubuntu 11'
+    gsettings set org.gnome.desktop.interface monospace-font-name 'UbuntuMono Nerd Font 13'
+    gsettings set org.gnome.desktop.interface document-font-name 'Sans 11'
+    gsettings set org.gnome.desktop.wm.preferences titlebar-font 'Ubuntu Bold 11'
+    gsettings set org.gnome.settings-daemon.plugins.power idle-dim false
+    gsettings set org.gnome.settings-daemon.plugins.power idle-brightness 100
+
+    # Disable ubuntu specific gnome extensions
+    gnome-extensions disable ubuntu-dock@ubuntu.com
+    gnome-extensions disable ding@rastersoft.com
+fi
