@@ -12,6 +12,7 @@ fi
 if ! test -e /home/linuxbrew/.linuxbrew/bin/brew; then
     sudo apt install -y build-essential procps curl file git
     bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 
 # Check out my dotfiles to current user's home directory
