@@ -33,9 +33,9 @@ jobs:
       run: |
         sudo incus launch --vm -c limits.cpu=2 -c limits.memory=2GiB -d root,size=50GiB images:ubuntu/${{ matrix.ubuntu_release }}/desktop vm
 
-    - name: Wait for VM to be running
+    - name: Wait for VM
       run: |
-        until sudo incus exec vm -- systemctl is-system-running --wait; do sleep 5; done
+        until sudo incus exec vm -- systemctl is-active gdm; do sleep 5; done
 
     - name: TODO
       run: |
