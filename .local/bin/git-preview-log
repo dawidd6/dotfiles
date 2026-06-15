@@ -13,4 +13,4 @@ fzf \
   --header "Tab - select items, Enter - confirm, PgUp/PgDown - scroll preview" \
   --bind 'home:first,end:last' \
   --bind 'pgup:preview-up,pgdn:preview-down' |
-awk '{print $1}' | tee /dev/stderr | wl-copy -n
+awk '{print $1}' | tr '\n' ' ' | wl-copy -n
