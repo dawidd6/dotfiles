@@ -11,6 +11,9 @@ function fish_greeting; end
 function last_history_item
     echo $history[1]
 end
+function fish_prompt_loading_indicator
+    echo (set_color '#aaa')' … '(set_color normal)
+end
 
 # Exports
 export LANG='C.UTF-8'
@@ -77,6 +80,12 @@ abbr il 'incus list'
 abbr ir 'incus launch --vm -c limits.cpu=4 -c limits.memory=4GiB -d root,size=50GiB $NAME images:'
 abbr im 'incus config device add $NAME share disk source=$PWD path=$PWD'
 abbr ic 'incus console --type vga'
+abbr b 'brew'
+abbr bi 'brew install'
+abbr br 'brew uninstall'
+abbr bl 'brew list'
+abbr bu 'brew upgrade'
+abbr bbd 'brew bundle -g dump --force --formula --cask'
 
 # Aliases
 alias v 'nvim'
