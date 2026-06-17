@@ -91,7 +91,6 @@ alias lla 'eza -la'
 alias lt 'eza --tree'
 alias tree 'eza --tree'
 alias rm 'trash'
-alias ssh 'ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
 alias ghub 'gh'
 alias dotfiles 'git --git-dir "$HOME/.dotfiles" --work-tree "$HOME"'
 
