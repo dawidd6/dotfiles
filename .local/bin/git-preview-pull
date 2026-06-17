@@ -26,5 +26,5 @@ fi
 read -rp "==> Rebase? [y/N]: " PULL
 
 if [[ "$PULL" =~ ^[Yy]$ ]]; then
-    git rebase "$REMOTE" "$BRANCH" --quiet
+    git rebase "$REMOTE/$BRANCH" --quiet
 fi
