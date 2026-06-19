@@ -23,7 +23,7 @@ export PAGER='less'
 # Abbrs
 abbr !! --position anywhere --function last_history_item
 abbr C 'wl-copy'
-abbr P 'wl-copy'
+abbr P 'wl-paste'
 abbr e 'exit'
 abbr g 'git'
 abbr ga 'git add'
