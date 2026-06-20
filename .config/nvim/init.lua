@@ -8,31 +8,33 @@ end
 do -- CODING PLUGINS --
 	-- Plugin for LSP configs
 	vim.pack.add({ { src = "https://github.com/neovim/nvim-lspconfig" } })
+	vim.lsp.config("lua_ls", {
+		settings = {
+			Lua = {
+				runtime = {
+					version = "LuaJIT",
+				},
+				diagnostics = {
+					globals = { "vim" },
+				},
+				workspace = {
+					library = {
+						vim.env.VIMRUNTIME .. "/lua",
+					},
+					checkThirdParty = false,
+				},
+				telemetry = {
+					enable = false,
+				},
+			},
+		},
+	})
 	vim.lsp.enable({
 		"ansiblels",
 		"bashls",
 		"lua_ls",
 		"yamlls",
 	})
-	vim.lsp.config("lua_ls", {
-  settings = {
-    Lua = {
-      runtime = {
-        version = "LuaJIT",
-      },
-      diagnostics = {
-        globals = { "vim" },
-      },
-      workspace = {
-        library = vim.api.nvim_get_runtime_file("", true),
-        checkThirdParty = false,
-      },
-      telemetry = {
-        enable = false,
-      },
-    },
-  },
-})
 	vim.diagnostic.config({
 		update_in_insert = false,
 		severity_sort = true,
@@ -68,8 +70,18 @@ do -- COMPLETING PLUGINS --
 	vim.pack.add({ { src = "https://github.com/folke/which-key.nvim" } })
 	require("which-key").setup()
 	-- Plugin for completion
-	vim.pack.add({ "https://github.com/saghen/blink.lib", "https://github.com/saghen/blink.cmp" })
+	vim.pack.add({ { src = "https://github.com/saghen/blink.lib" }, { src = "https://github.com/saghen/blink.cmp" } })
 	require("blink.cmp").setup({
+		completion = {
+			menu = {
+				border = "rounded",
+			},
+			documentation = {
+				window = {
+					border = "rounded",
+				},
+			},
+		},
 		fuzzy = {
 			implementation = "lua",
 		},
@@ -279,6 +291,7 @@ do -- KEYMAPS --
 	vim.keymap.set("n", "<Leader>sd", ":Telescope diagnostics<CR>", { desc = "Search diagnostics" })
 	vim.keymap.set("n", "<Leader>sf", ":Telescope find_files<CR>", { desc = "Search files" })
 	vim.keymap.set("n", "<Leader>sh", ":Telescope help_tags<CR>", { desc = "Search help" })
+	vim.keymap.set("n", "<Leader>sj", ":Telescope jumplist<CR>", { desc = "Search jumps" })
 	vim.keymap.set("n", "<Leader>sk", ":Telescope keymaps<CR>", { desc = "Search keymaps" })
 	vim.keymap.set("n", "<Leader>ss", ":Telescope live_grep<CR>", { desc = "Search string" })
 
