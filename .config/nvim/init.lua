@@ -1,12 +1,11 @@
 do -- BASE PLUGINS --
-	-- Plugin for useful functions
-	vim.pack.add({ { src = "https://github.com/nvim-lua/plenary.nvim" } })
-	-- Plugin for nice icons
-	vim.pack.add({ { src = "https://github.com/nvim-tree/nvim-web-devicons" } })
+	vim.pack.add({
+		{ src = "https://github.com/nvim-lua/plenary.nvim" },
+		{ src = "https://github.com/nvim-tree/nvim-web-devicons" },
+	})
 end
 
 do -- CODING PLUGINS --
-	-- Plugin for LSP configs
 	vim.pack.add({ { src = "https://github.com/neovim/nvim-lspconfig" } })
 	vim.lsp.config("lua_ls", {
 		settings = {
@@ -52,7 +51,7 @@ do -- CODING PLUGINS --
 			end,
 		},
 	})
-	-- Plugin for formatting
+
 	vim.pack.add({ { src = "https://github.com/stevearc/conform.nvim" } })
 	require("conform").setup({
 		format_on_save = {
@@ -66,10 +65,9 @@ do -- CODING PLUGINS --
 end
 
 do -- COMPLETING PLUGINS --
-	-- Plugin for showing next keys
 	vim.pack.add({ { src = "https://github.com/folke/which-key.nvim" } })
 	require("which-key").setup()
-	-- Plugin for completion
+
 	vim.pack.add({ { src = "https://github.com/saghen/blink.lib" }, { src = "https://github.com/saghen/blink.cmp" } })
 	require("blink.cmp").setup({
 		completion = {
@@ -97,22 +95,20 @@ do -- COMPLETING PLUGINS --
 end
 
 do -- EDITING PLUGINS --
-	-- Plugin for highlighting special comments
 	vim.pack.add({ { src = "https://github.com/folke/todo-comments.nvim" } })
 	require("todo-comments").setup()
-	-- Plugin for guessing indentation
+
 	vim.pack.add({ { src = "https://github.com/NMAC427/guess-indent.nvim" } })
 	require("guess-indent").setup()
-	-- Plugin for handling whitespace
+
 	vim.pack.add({ { src = "https://github.com/johnfrankmorgan/whitespace.nvim" } })
 	require("whitespace-nvim").setup()
-	-- Plugin for auto pairing
+
 	vim.pack.add({ { src = "https://github.com/windwp/nvim-autopairs" } })
 	require("nvim-autopairs").setup()
 end
 
 do -- EXPLORING PLUGINS --
-	-- Plugin for file tree/explorer
 	vim.pack.add({ { src = "https://github.com/nvim-tree/nvim-tree.lua" } })
 	require("nvim-tree").setup()
 	vim.g.loaded_netrw = 1
@@ -120,38 +116,35 @@ do -- EXPLORING PLUGINS --
 end
 
 do -- LOOKING PLUGINS --
-	-- Plugin for smooth scrolling
 	vim.pack.add({ { src = "https://github.com/karb94/neoscroll.nvim" } })
 	require("neoscroll").setup()
-	-- Plugin for cursor animation
+
 	vim.pack.add({ { src = "https://github.com/sphamba/smear-cursor.nvim" } })
 	require("smear_cursor").setup()
-	-- Plugin for buffer line
+
 	vim.pack.add({ { src = "https://github.com/akinsho/bufferline.nvim" } })
 	require("bufferline").setup()
-	-- Plugin for status line
+
 	vim.pack.add({ { src = "https://github.com/nvim-lualine/lualine.nvim" } })
 	require("lualine").setup()
-	-- Plugin for theme/colorcheme
+
 	vim.pack.add({ { src = "https://github.com/Mofiqul/vscode.nvim" } })
 	require("vscode").setup()
 	vim.cmd.colorscheme("vscode")
 end
 
 do -- PICKING PLUGINS --
-	-- Plugin for picking stuff
 	vim.pack.add({ { src = "https://github.com/nvim-telescope/telescope.nvim" } })
 	require("telescope").setup()
 end
 
 do -- VERSIONING PLUGINS --
-	-- Plugin for opening git objects in web browser
 	vim.pack.add({ { src = "https://github.com/trevorhauter/gitportal.nvim" } })
 	require("gitportal").setup()
-	-- Plugin for git integration
+
 	vim.pack.add({ { src = "https://github.com/lewis6991/gitsigns.nvim" } })
 	require("gitsigns").setup()
-	-- Plugin for git conflicts handling
+
 	vim.pack.add({ { src = "https://github.com/akinsho/git-conflict.nvim" } })
 	require("git-conflict").setup()
 end
