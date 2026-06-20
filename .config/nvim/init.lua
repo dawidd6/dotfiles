@@ -15,14 +15,24 @@ do -- CODING PLUGINS --
 		"yamlls",
 	})
 	vim.lsp.config("lua_ls", {
-		settings = {
-			Lua = {
-				diagnostics = {
-					globals = { "vim" },
-				},
-			},
-		},
-	})
+  settings = {
+    Lua = {
+      runtime = {
+        version = "LuaJIT",
+      },
+      diagnostics = {
+        globals = { "vim" },
+      },
+      workspace = {
+        library = vim.api.nvim_get_runtime_file("", true),
+        checkThirdParty = false,
+      },
+      telemetry = {
+        enable = false,
+      },
+    },
+  },
+})
 	vim.diagnostic.config({
 		update_in_insert = false,
 		severity_sort = true,
