@@ -169,6 +169,14 @@ do -- COMMANDS --
 			vim.notify("Not in git repository")
 		end
 	end, { desc = "Print and copy git root path" })
+	vim.api.nvim_create_user_command("Terminal", function()
+		local path = vim.fn.expand("%:p:h")
+		if vim.b.gitsigns_status_dict then
+			path = vim.b.gitsigns_status_dict.root
+		end
+		vim.cmd("edit term://" .. path .. "//$SHELL")
+		vim.cmd("startinsert")
+	end, { desc = "Print and copy git root path" })
 end
 
 do -- AUTOCOMMANDS --
@@ -225,6 +233,15 @@ do -- AUTOCOMMANDS --
 		end,
 		group = vim.api.nvim_create_augroup("resize-split", { clear = true }),
 		desc = "Auto-resize splits when window is resized",
+	})
+	vim.api.nvim_create_autocmd("TermClose", {
+		callback = function(args)
+			if vim.api.nvim_buf_is_valid(args.buf) then
+				vim.api.nvim_buf_delete(args.buf, { force = true })
+			end
+		end,
+		group = vim.api.nvim_create_augroup("terminal-autoclose", { clear = true }),
+		desc = "Terminal buffer is automatically deleted when process ends",
 	})
 end
 
