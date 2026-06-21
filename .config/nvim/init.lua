@@ -1,12 +1,27 @@
-do -- BASE PLUGINS --
-	vim.pack.add({
-		{ src = "https://github.com/nvim-lua/plenary.nvim" },
-		{ src = "https://github.com/nvim-tree/nvim-web-devicons" },
-	})
+do -- BASE PLUGINS
+	vim.pack.add({ { src = "https://github.com/nvim-lua/plenary.nvim" } })
+	vim.pack.add({ { src = "https://github.com/nvim-tree/nvim-web-devicons" } })
 end
 
-do -- CODING PLUGINS --
+do -- LSP PLUGINS
 	vim.pack.add({ { src = "https://github.com/neovim/nvim-lspconfig" } })
+	vim.diagnostic.config({
+		update_in_insert = false,
+		severity_sort = true,
+		float = { border = "rounded", source = "if_many" },
+		underline = { severity = { min = vim.diagnostic.severity.WARN } },
+		virtual_text = true,
+		virtual_lines = false,
+		jump = {
+			on_jump = function(_, bufnr)
+				vim.diagnostic.open_float({
+					bufnr = bufnr,
+					scope = "cursor",
+					focus = false,
+				})
+			end,
+		},
+	})
 	vim.lsp.config("lua_ls", {
 		settings = {
 			Lua = {
@@ -34,24 +49,9 @@ do -- CODING PLUGINS --
 		"lua_ls",
 		"yamlls",
 	})
-	vim.diagnostic.config({
-		update_in_insert = false,
-		severity_sort = true,
-		float = { border = "rounded", source = "if_many" },
-		underline = { severity = { min = vim.diagnostic.severity.WARN } },
-		virtual_text = true, -- Text shows up at the end of the line
-		virtual_lines = false, -- Text shows up underneath the line, with virtual lines
-		jump = {
-			on_jump = function(_, bufnr)
-				vim.diagnostic.open_float({
-					bufnr = bufnr,
-					scope = "cursor",
-					focus = false,
-				})
-			end,
-		},
-	})
+end
 
+do -- FORMAT PLUGINS
 	vim.pack.add({ { src = "https://github.com/stevearc/conform.nvim" } })
 	require("conform").setup({
 		format_on_save = {
@@ -64,11 +64,20 @@ do -- CODING PLUGINS --
 	})
 end
 
-do -- COMPLETING PLUGINS --
-	vim.pack.add({ { src = "https://github.com/folke/which-key.nvim" } })
-	require("which-key").setup()
+do -- COMPLETION PLUGINS
+	vim.pack.add({ { src = "https://github.com/RRethy/nvim-treesitter-endwise" } })
+	-- no setup needed
 
-	vim.pack.add({ { src = "https://github.com/saghen/blink.lib" }, { src = "https://github.com/saghen/blink.cmp" } })
+	vim.pack.add({ { src = "https://github.com/folke/which-key.nvim" } })
+	require("which-key").setup({
+		preset = "helix",
+	})
+
+	vim.pack.add({ { src = "https://github.com/altermo/ultimate-autopair.nvim" } })
+	require("ultimate-autopair").setup()
+
+	vim.pack.add({ { src = "https://github.com/saghen/blink.lib" } })
+	vim.pack.add({ { src = "https://github.com/saghen/blink.cmp" } })
 	require("blink.cmp").setup({
 		completion = {
 			menu = {
@@ -94,7 +103,7 @@ do -- COMPLETING PLUGINS --
 	})
 end
 
-do -- EDITING PLUGINS --
+do -- EDITOR PLUGINS
 	vim.pack.add({ { src = "https://github.com/folke/todo-comments.nvim" } })
 	require("todo-comments").setup()
 
@@ -103,42 +112,43 @@ do -- EDITING PLUGINS --
 
 	vim.pack.add({ { src = "https://github.com/johnfrankmorgan/whitespace.nvim" } })
 	require("whitespace-nvim").setup()
-
-	vim.pack.add({ { src = "https://github.com/windwp/nvim-autopairs" } })
-	require("nvim-autopairs").setup()
 end
 
-do -- EXPLORING PLUGINS --
+do -- EXPLORER PLUGINS
 	vim.pack.add({ { src = "https://github.com/nvim-tree/nvim-tree.lua" } })
 	require("nvim-tree").setup()
 	vim.g.loaded_netrw = 1
 	vim.g.loaded_netrwPlugin = 1
 end
 
-do -- LOOKING PLUGINS --
+do -- ANIMATION PLUGINS
 	vim.pack.add({ { src = "https://github.com/karb94/neoscroll.nvim" } })
 	require("neoscroll").setup()
 
 	vim.pack.add({ { src = "https://github.com/sphamba/smear-cursor.nvim" } })
 	require("smear_cursor").setup()
+end
 
+do -- STATUS PLUGINS
 	vim.pack.add({ { src = "https://github.com/akinsho/bufferline.nvim" } })
 	require("bufferline").setup()
 
 	vim.pack.add({ { src = "https://github.com/nvim-lualine/lualine.nvim" } })
 	require("lualine").setup()
+end
 
+do -- THEME PLUGINS
 	vim.pack.add({ { src = "https://github.com/Mofiqul/vscode.nvim" } })
 	require("vscode").setup()
 	vim.cmd.colorscheme("vscode")
 end
 
-do -- PICKING PLUGINS --
+do -- PICKER PLUGINS
 	vim.pack.add({ { src = "https://github.com/nvim-telescope/telescope.nvim" } })
 	require("telescope").setup()
 end
 
-do -- VERSIONING PLUGINS --
+do -- SCM PLUGINS
 	vim.pack.add({ { src = "https://github.com/trevorhauter/gitportal.nvim" } })
 	require("gitportal").setup()
 
@@ -149,17 +159,19 @@ do -- VERSIONING PLUGINS --
 	require("git-conflict").setup()
 end
 
-do -- COMMANDS --
+do -- COMMANDS
 	vim.api.nvim_create_user_command("RelPath", function()
 		local path = vim.fn.expand("%")
 		vim.fn.setreg("+", path)
 		vim.notify(path)
 	end, { desc = "Print and copy relative file path" })
+
 	vim.api.nvim_create_user_command("AbsPath", function()
 		local path = vim.fn.expand("%:p")
 		vim.fn.setreg("+", path)
 		vim.notify(path)
 	end, { desc = "Print and copy absolute file path" })
+
 	vim.api.nvim_create_user_command("RootPath", function()
 		if vim.b.gitsigns_status_dict then
 			local path = vim.b.gitsigns_status_dict.root
@@ -169,6 +181,7 @@ do -- COMMANDS --
 			vim.notify("Not in git repository")
 		end
 	end, { desc = "Print and copy git root path" })
+
 	vim.api.nvim_create_user_command("Terminal", function()
 		local path = vim.fn.expand("%:p:h")
 		if vim.b.gitsigns_status_dict then
@@ -176,25 +189,23 @@ do -- COMMANDS --
 		end
 		vim.cmd("edit term://" .. path .. "//$SHELL")
 		vim.cmd("startinsert")
-	end, { desc = "Print and copy git root path" })
+	end, { desc = "Open terminal buffer in git root dir or file dir" })
+
+	vim.api.nvim_create_user_command("PackUpdate", function()
+		vim.pack.update()
+	end, { desc = "Update all vim.pack plugins" })
 end
 
-do -- AUTOCOMMANDS --
+do -- AUTOCOMMANDS
 	vim.api.nvim_create_autocmd("FileType", {
 		callback = function()
-			vim.api.nvim_win_set_config(vim.api.nvim_get_current_win(), {
-				relative = "editor",
-				border = "rounded",
-				width = vim.o.columns,
-				height = vim.o.lines,
-				row = 0,
-				col = 0,
-			})
+			vim.cmd.wincmd("L")
 		end,
 		pattern = "help",
-		group = vim.api.nvim_create_augroup("floating-help", { clear = true }),
-		desc = "Open help in a floating window",
+		group = vim.api.nvim_create_augroup("vertical-help", { clear = true }),
+		desc = "Open help in vertical split window",
 	})
+
 	vim.api.nvim_create_autocmd("FileType", {
 		callback = function()
 			vim.opt_local.formatoptions:remove({ "c", "r", "o" })
@@ -202,6 +213,7 @@ do -- AUTOCOMMANDS --
 		group = vim.api.nvim_create_augroup("discontinue-comment", { clear = true }),
 		desc = "Don't continue comments on newlines",
 	})
+
 	vim.api.nvim_create_autocmd("BufWritePre", {
 		callback = function()
 			require("whitespace-nvim").trim()
@@ -209,6 +221,7 @@ do -- AUTOCOMMANDS --
 		group = vim.api.nvim_create_augroup("trim-whitespace", { clear = true }),
 		desc = "Trim whitespace on buffer write",
 	})
+
 	vim.api.nvim_create_autocmd("TextYankPost", {
 		callback = function()
 			vim.highlight.on_yank()
@@ -216,6 +229,7 @@ do -- AUTOCOMMANDS --
 		group = vim.api.nvim_create_augroup("highlight-yank", { clear = true }),
 		desc = "Highlight text briefly after yanking",
 	})
+
 	vim.api.nvim_create_autocmd("BufReadPost", {
 		callback = function()
 			local mark = vim.api.nvim_buf_get_mark(0, '"')
@@ -227,6 +241,7 @@ do -- AUTOCOMMANDS --
 		group = vim.api.nvim_create_augroup("return-last", { clear = true }),
 		desc = "Return to last edit position when opening files",
 	})
+
 	vim.api.nvim_create_autocmd("VimResized", {
 		callback = function()
 			vim.cmd("tabdo wincmd =")
@@ -234,6 +249,7 @@ do -- AUTOCOMMANDS --
 		group = vim.api.nvim_create_augroup("resize-split", { clear = true }),
 		desc = "Auto-resize splits when window is resized",
 	})
+
 	vim.api.nvim_create_autocmd("TermClose", {
 		callback = function(args)
 			if vim.api.nvim_buf_is_valid(args.buf) then
@@ -245,7 +261,7 @@ do -- AUTOCOMMANDS --
 	})
 end
 
-do -- FILETYPES --
+do -- FILETYPES
 	vim.filetype.add({
 		pattern = {
 			[".*/playbooks/.*%.ya?ml"] = "yaml.ansible",
@@ -255,7 +271,7 @@ do -- FILETYPES --
 	})
 end
 
-do -- OPTIONS --
+do -- OPTIONS
 	vim.o.autoindent = true
 	vim.o.confirm = true
 	vim.o.cursorline = true
@@ -281,30 +297,35 @@ do -- OPTIONS --
 	vim.o.writebackup = false
 end
 
-do -- KEYMAPS --
+do -- KEYMAPS
 	vim.keymap.set({ "n", "v" }, "x", '"_x', { desc = "Cut character without yanking" })
 	vim.keymap.set({ "n", "v" }, "X", '"_X', { desc = "Cut character without yanking" })
+
 	vim.keymap.set("v", "p", '"_dP', { desc = "Paste without yanking" })
 	vim.keymap.set("v", "<C-c>", '"+y', { desc = "Copy to system clipboard" })
+
 	vim.keymap.set("n", "<Esc>", ":nohlsearch<CR>", { desc = "Disable search highlight" })
 	vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit to normal mode easier in terminal" })
+
 	vim.keymap.set("v", "<", "<gv", { desc = "Indent left and reselect" })
 	vim.keymap.set("v", ">", ">gv", { desc = "Indent right and reselect" })
+end
 
-	vim.keymap.set("n", "<Leader>bd", ":bwipeout<CR>", { desc = "Delete buffer" })
+do -- LEADER KEYMAPS
+	vim.keymap.set("n", "<Leader>e", ":NvimTreeFocus<CR>", { desc = "Focus file tree explorer" })
+	vim.keymap.set("n", "<Leader>E", ":NvimTreeClose<CR>", { desc = "Close file tree explorer" })
 
-	vim.keymap.set("n", "<Leader>ec", ":NvimTreeClose<CR>", { desc = "Close file tree explorer" })
-	vim.keymap.set("n", "<Leader>ef", ":NvimTreeFocus<CR>", { desc = "Focus file tree explorer" })
+	vim.keymap.set("n", "<Leader>b", ":Telescope buffers<CR>", { desc = "Search buffers" })
+	vim.keymap.set("n", "<Leader>c", ":Telescope commands<CR>", { desc = "Search commands" })
+	vim.keymap.set("n", "<Leader>d", ":Telescope diagnostics<CR>", { desc = "Search diagnostics" })
+	vim.keymap.set("n", "<Leader>f", ":Telescope find_files<CR>", { desc = "Search files" })
+	vim.keymap.set("n", "<Leader>h", ":Telescope help_tags<CR>", { desc = "Search help" })
+	vim.keymap.set("n", "<Leader>j", ":Telescope jumplist<CR>", { desc = "Search jumps" })
+	vim.keymap.set("n", "<Leader>k", ":Telescope keymaps<CR>", { desc = "Search keymaps" })
+	vim.keymap.set("n", "<Leader>s", ":Telescope live_grep<CR>", { desc = "Search string" })
 
-	vim.keymap.set("n", "<Leader>sb", ":Telescope buffers<CR>", { desc = "Search buffers" })
-	vim.keymap.set("n", "<Leader>sc", ":Telescope commands<CR>", { desc = "Search commands" })
-	vim.keymap.set("n", "<Leader>sd", ":Telescope diagnostics<CR>", { desc = "Search diagnostics" })
-	vim.keymap.set("n", "<Leader>sf", ":Telescope find_files<CR>", { desc = "Search files" })
-	vim.keymap.set("n", "<Leader>sh", ":Telescope help_tags<CR>", { desc = "Search help" })
-	vim.keymap.set("n", "<Leader>sj", ":Telescope jumplist<CR>", { desc = "Search jumps" })
-	vim.keymap.set("n", "<Leader>sk", ":Telescope keymaps<CR>", { desc = "Search keymaps" })
-	vim.keymap.set("n", "<Leader>ss", ":Telescope live_grep<CR>", { desc = "Search string" })
+	vim.keymap.set({ "n", "v" }, "<Leader>y", '"+y', { desc = "Copy to system clipboard" })
+	vim.keymap.set({ "n", "v" }, "<Leader>p", '"+p', { desc = "Paste from system clipboard" })
 
-	vim.keymap.set("n", "<Leader>y", '"+y', { desc = "Copy to system clipboard" })
-	vim.keymap.set("n", "<Leader>p", '"+p', { desc = "Paste from system clipboard" })
+	vim.keymap.set("n", "<Leader>x", ":bwipeout<CR>", { desc = "Delete buffer" })
 end
