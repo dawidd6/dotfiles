@@ -106,6 +106,9 @@ alias rm 'trash'
 alias ghub 'gh'
 alias dotfiles 'git --git-dir "$HOME/.dotfiles" --work-tree "$HOME"'
 
+# Keymaps
+bind \cz 'fg 2>/dev/null; commandline -f repaint'
+
 # Sources
 /home/linuxbrew/.linuxbrew/bin/brew shellenv fish | source
 fzf --fish | source
