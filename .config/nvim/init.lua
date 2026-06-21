@@ -274,7 +274,7 @@ do -- KEYMAPS --
 	vim.keymap.set("v", "<", "<gv", { desc = "Indent left and reselect" })
 	vim.keymap.set("v", ">", ">gv", { desc = "Indent right and reselect" })
 
-	vim.keymap.set("n", "<Leader>bd", ":bdelete<CR>", { desc = "Delete buffer" })
+	vim.keymap.set("n", "<Leader>bd", ":bwipeout<CR>", { desc = "Delete buffer" })
 
 	vim.keymap.set("n", "<Leader>ec", ":NvimTreeClose<CR>", { desc = "Close file tree explorer" })
 	vim.keymap.set("n", "<Leader>ef", ":NvimTreeFocus<CR>", { desc = "Focus file tree explorer" })
