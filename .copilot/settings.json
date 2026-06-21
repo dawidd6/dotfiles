@@ -11,5 +11,6 @@
     "showUsername": true,
     "showSandbox": true,
     "showCustom": true
-  }
+  },
+  "model": "gpt-5.3-codex"
 }
