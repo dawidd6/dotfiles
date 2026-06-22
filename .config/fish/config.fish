@@ -11,9 +11,6 @@ function fish_greeting; end
 function last_history_item
     echo $history[1]
 end
-function fish_prompt_loading_indicator
-    echo (set_color '#aaa')' … '(set_color normal)
-end
 
 # Exports
 export LANG='C.UTF-8'
@@ -25,8 +22,10 @@ abbr !! --position anywhere --function last_history_item
 abbr C 'wl-copy'
 abbr P 'wl-paste'
 abbr e 'exit'
+abbr d 'cd ~/.dotfiles'
 abbr g 'git'
 abbr ga 'git add'
+abbr gaf 'git add -f'
 abbr gb 'git branch -a'
 abbr gh 'git checkout'
 abbr ghm 'git checkout-main-branch'
@@ -60,20 +59,6 @@ abbr kn 'kubens'
 abbr ef 'vi ~/.config/fish/config.fish'
 abbr en 'vi ~/.config/nvim/init.lua'
 abbr eg 'vi ~/.config/git/config'
-abbr d 'dotfiles'
-abbr da 'dotfiles add -f'
-abbr dh 'dotfiles checkout'
-abbr dc 'dotfiles commit -m'
-abbr dca 'dotfiles commit --amend --no-edit'
-abbr dcae 'dotfiles commit --amend --edit'
-abbr dd 'dotfiles diff'
-abbr ddc 'dotfiles diff --cached'
-abbr dl 'dotfiles lg'
-abbr dls 'dotfiles ls'
-abbr dp 'dotfiles push'
-abbr dpf 'dotfiles push -f'
-abbr dpp 'dotfiles preview-pull'
-abbr ds 'dotfiles status -u'
 abbr i 'incus'
 abbr ii 'incus info'
 abbr ie 'incus exec -it $NAME -- sh'
@@ -104,7 +89,6 @@ alias lt 'eza --tree'
 alias tree 'eza --tree'
 alias rm 'trash'
 alias ghub 'gh'
-alias dotfiles 'git --git-dir "$HOME/.dotfiles" --work-tree "$HOME"'
 
 # Keymaps
 bind \cz 'fg 2>/dev/null; commandline -f repaint'
