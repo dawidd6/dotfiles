@@ -19,9 +19,11 @@ fi
 if ! test -d ~/.dotfiles; then
     git clone --bare https://github.com/dawidd6/dotfiles ~/.dotfiles
     git --git-dir ~/.dotfiles config remote.origin.fetch '+refs/heads/*:refs/remotes/origin/*'
+    git --git-dir ~/.dotfiles config --bool core.bare false
+    git --git-dir ~/.dotfiles config core.worktree ~
     git --git-dir ~/.dotfiles fetch origin
     git --git-dir ~/.dotfiles branch --set-upstream-to origin/master master
-    git --git-dir ~/.dotfiles --work-tree ~ checkout --force
+    git --git-dir ~/.dotfiles checkout --force
 fi
 
 # Install packages from brewfile
