@@ -4,5 +4,8 @@ set -euo pipefail
 
 read -r -p '==> Clean?'
 
+root="$(git rev-parse --show-cdup)"
+root="${root:-.}"
+
 git clean -fd
-git checkout -- .
+git checkout -- "${root}"
