@@ -12,6 +12,9 @@ function last_history_item
     echo $history[1]
 end
 
+# Completions
+complete -f -c git -n '__fish_git_using_command multi' -a '(set -l cmd (commandline -opc); set -e cmd[2]; complete -C (string join " " (string escape -- $cmd))" "(string escape -- (commandline -ct)))'
+
 # Exports
 export LANG='C.UTF-8'
 export EDITOR='nvim'
