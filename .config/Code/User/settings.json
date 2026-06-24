@@ -1,18 +1,20 @@
 {
-  "dev.containers.dockerComposePath": "podman-compose",
   "dev.containers.dockerPath": "podman",
-  "editor.fontLigatures": true,
+  "editor.cursorBlinking": "solid",
+  "editor.cursorSmoothCaretAnimation": "on",
+  "editor.cursorSurroundingLines": 10,
   "editor.fontSize": 15,
   "editor.formatOnSave": true,
+  "editor.lineNumbers": "relative",
   "editor.minimap.enabled": false,
   "editor.selectionClipboard": false,
+  "editor.smoothScrolling": true,
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
   "files.autoSave": "onFocusChange",
   "files.insertFinalNewline": true,
   "files.trimFinalNewlines": true,
   "files.trimTrailingWhitespace": true,
-  "remote.autoForwardPortsSource": "hybrid",
   "search.followSymlinks": false,
   "vim.handleKeys": {
     "<C-a>": false,
@@ -20,7 +22,17 @@
   },
   "vim.hlsearch": true,
   "vim.incsearch": true,
-  "vim.leader": "<space>",
+  "vim.normalModeKeyBindings": [
+    {
+      "after": [
+        "y",
+        "s"
+      ],
+      "before": [
+        "s"
+      ]
+    }
+  ],
   "vim.normalModeKeyBindingsNonRecursive": [
     {
       "after": [
@@ -44,31 +56,57 @@
     },
     {
       "before": [
-        "."
-      ],
-      "commands": [
-        ":bn"
-      ]
-    },
-    {
-      "before": [
-        ","
-      ],
-      "commands": [
-        ":bp"
-      ]
-    },
-    {
-      "before": [
         "<Esc>"
       ],
       "commands": [
         ":nohlsearch"
       ]
-    }
+    },
+    {
+      "after": [
+        "\"",
+        "+",
+        "y"
+      ],
+      "before": [
+        "<leader>",
+        "y"
+      ]
+    },
+    {
+      "after": [
+        "\"",
+        "+",
+        "p"
+      ],
+      "before": [
+        "<leader>",
+        "p"
+      ]
+    },
+    {
+      "after": [
+        "\"",
+        "+",
+        "Y"
+      ],
+      "before": [
+        "<leader>",
+        "Y"
+      ]
+    },
+    {
+      "after": [
+        "\"",
+        "+",
+        "P"
+      ],
+      "before": [
+        "<leader>",
+        "P"
+      ]
+    },
   ],
-  "vim.useCtrlKeys": true,
-  "vim.useSystemClipboard": true,
   "vim.visualModeKeyBindingsNonRecursive": [
     {
       "after": [
@@ -100,10 +138,85 @@
       "before": [
         "p"
       ]
+    },
+    {
+      "after": [
+        "<",
+        "g",
+        "v"
+      ],
+      "before": [
+        "<"
+      ]
+    },
+    {
+      "after": [
+        ">",
+        "g",
+        "v"
+      ],
+      "before": [
+        ">"
+      ]
+    },
+    {
+      "after": [
+        "\"",
+        "+",
+        "y"
+      ],
+      "before": [
+        "<C-c>"
+      ]
+    },
+    {
+      "after": [
+        "\"",
+        "+",
+        "y"
+      ],
+      "before": [
+        "<leader>",
+        "y"
+      ]
+    },
+    {
+      "after": [
+        "\"",
+        "+",
+        "p"
+      ],
+      "before": [
+        "<leader>",
+        "p"
+      ]
+    },
+    {
+      "after": [
+        "\"",
+        "+",
+        "Y"
+      ],
+      "before": [
+        "<leader>",
+        "Y"
+      ]
+    },
+    {
+      "after": [
+        "\"",
+        "+",
+        "P"
+      ],
+      "before": [
+        "<leader>",
+        "P"
+      ]
     }
   ],
-  "window.commandCenter": false,
+  "vim.visualstar": true,
   "workbench.colorTheme": "Dark Modern",
   "workbench.iconTheme": "material-icon-theme",
-  "workbench.tree.indent": 22
+  "workbench.list.smoothScrolling": true,
+  "workbench.tree.indent": 20
 }
