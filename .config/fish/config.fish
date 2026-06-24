@@ -33,6 +33,7 @@ abbr en 'v ~/.config/nvim/init.lua'
 abbr et 'v ~/.config/tmux/tmux.conf'
 abbr g git
 abbr ga 'git add'
+abbr gaa 'git add -A'
 abbr gaf 'git add -f'
 abbr gb 'git branch -a'
 abbr gh 'git checkout'
