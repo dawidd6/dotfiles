@@ -7,7 +7,8 @@ set fish_color_comment brblack
 set fish_color_quote yellow
 
 # Functions
-function fish_greeting; end
+function fish_greeting
+end
 function last_history_item
     echo $history[1]
 end
@@ -22,15 +23,15 @@ export PAGER='less'
 
 # Abbrs
 abbr !! --position anywhere --function last_history_item
-abbr C 'wl-copy'
-abbr P 'wl-paste'
-abbr e 'exit'
+abbr C wl-copy
+abbr P wl-paste
+abbr e exit
 abbr d 'cd ~/.dotfiles'
 abbr ef 'v ~/.config/fish/config.fish'
 abbr eg 'v ~/.config/git/config'
 abbr en 'v ~/.config/nvim/init.lua'
 abbr et 'v ~/.config/tmux/tmux.conf'
-abbr g 'git'
+abbr g git
 abbr ga 'git add'
 abbr gaf 'git add -f'
 abbr gb 'git branch -a'
@@ -47,23 +48,23 @@ abbr gpf 'git push -f'
 abbr gpp 'git preview-pull'
 abbr gs 'git status -u'
 abbr gt 'git tag'
-abbr p 'podman'
+abbr p podman
 abbr pp 'podman ps'
 abbr pi 'podman images'
 abbr pr 'podman run --rm'
 abbr pri 'podman run --rm -it'
 abbr pe 'podman exec'
 abbr pei 'podman exec -it'
-abbr k 'kubectl'
+abbr k kubectl
 abbr ka 'kubectl apply -f'
 abbr kd 'kubectl describe'
 abbr ke 'kubectl exec -it'
 abbr kg 'kubectl get'
 abbr kgy 'kubectl get -o yaml'
 abbr kr 'kubectl run -it --rm --restart=Never --image'
-abbr kc 'kubectx'
-abbr kn 'kubens'
-abbr i 'incus'
+abbr kc kubectx
+abbr kn kubens
+abbr i incus
 abbr ii 'incus info'
 abbr ie 'incus exec -it $NAME -- sh'
 abbr is 'incus shell'
@@ -72,7 +73,7 @@ abbr il 'incus list'
 abbr ir 'incus launch --vm -c limits.cpu=4 -c limits.memory=4GiB -d root,size=50GiB $NAME images:'
 abbr im 'incus config device add $NAME share disk source=$PWD path=$PWD'
 abbr ic 'incus console --type vga'
-abbr b 'brew'
+abbr b brew
 abbr bi 'brew install'
 abbr br 'brew uninstall'
 abbr bl 'brew list'
@@ -80,19 +81,19 @@ abbr bu 'brew upgrade'
 abbr bbd 'brew bundle -g dump --force --formula --cask'
 
 # Aliases
-alias v 'nvim'
-alias vi 'nvim'
-alias vim 'nvim'
+alias v nvim
+alias vi nvim
+alias vim nvim
 alias eza 'eza --group-directories-first --group --header --time-style=long-iso'
-alias l 'eza'
-alias ls 'eza'
+alias l eza
+alias ls eza
 alias la 'eza -a'
 alias ll 'eza -l'
 alias lla 'eza -la'
 alias lt 'eza --tree'
 alias tree 'eza --tree'
-alias rm 'trash'
-alias ghub 'gh'
+alias rm trash
+alias ghub gh
 
 # Sources
 /home/linuxbrew/.linuxbrew/bin/brew shellenv fish | source
