@@ -94,9 +94,6 @@ alias tree 'eza --tree'
 alias rm 'trash'
 alias ghub 'gh'
 
-# Keymaps
-bind \cz 'fg 2>/dev/null; commandline -f repaint'
-
 # Sources
 /home/linuxbrew/.linuxbrew/bin/brew shellenv fish | source
 fzf --fish | source
