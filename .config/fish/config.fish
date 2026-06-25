@@ -16,6 +16,9 @@ end
 # Completions
 complete -f -c git -n '__fish_git_using_command multi' -a '(set -l cmd (commandline -opc); set -e cmd[2]; complete -C (string join " " (string escape -- $cmd))" "(string escape -- (commandline -ct)))'
 
+# Binds
+bind ctrl-g edit_command_buffer
+
 # Exports
 export LANG='C.UTF-8'
 export EDITOR='nvim'
