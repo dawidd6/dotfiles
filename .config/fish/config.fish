@@ -95,6 +95,7 @@ alias la 'eza -a'
 alias ll 'eza -l'
 alias lla 'eza -la'
 alias lt 'eza --tree'
+alias lta 'eza --tree -a'
 alias tree 'eza --tree'
 alias rm trash
 alias ghub gh
