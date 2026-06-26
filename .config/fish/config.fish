@@ -107,4 +107,4 @@ starship init fish | source
 zoxide init fish --cmd=cd | source
 
 # PATH
-fish_add_path --path --global --move --append ~/.local/bin "$HOMEBREW_PREFIX/bin" "$HOMEBREW_PREFIX/sbin"
+fish_add_path --path --global --move --append ~/.local/bin
