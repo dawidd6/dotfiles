@@ -60,3 +60,6 @@
 
 [includeIf "gitdir:~/telekom/**"]
     path = telekom
+
+[diff "sopsdiffer"]
+    textconv = git-sops-decrypt
