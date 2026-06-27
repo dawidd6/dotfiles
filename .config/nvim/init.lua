@@ -81,6 +81,9 @@ require("blink.cmp").setup({
 		["<Down>"] = { "select_next", "fallback" },
 		["<Left>"] = { "hide", "fallback" },
 		["<Right>"] = { "hide", "fallback" },
+		["<Esc>"] = { "hide", "fallback" },
+		["<PageDown>"] = { "scroll_documentation_down", "fallback" },
+		["<PageUp>"] = { "scroll_documentation_up", "fallback" },
 	},
 })
 
@@ -158,12 +161,13 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 
 vim.cmd.colorscheme("vscode")
 
-vim.o.autoindent = true
+vim.o.cmdheight = 0
 vim.o.confirm = true
 vim.o.cursorline = true
 vim.o.expandtab = true
 vim.o.ignorecase = true
 vim.o.inccommand = "split"
+vim.o.mouse = "a"
 vim.o.number = true
 vim.o.relativenumber = true
 vim.o.scrolloff = 10
@@ -172,10 +176,13 @@ vim.o.showmode = false
 vim.o.signcolumn = "yes"
 vim.o.smartcase = true
 vim.o.smartindent = true
+vim.o.splitbelow = true
+vim.o.splitright = true
 vim.o.swapfile = false
 vim.o.tabstop = 4
-vim.o.termguicolors = true
+vim.o.timeoutlen = 300
 vim.o.undofile = true
+vim.o.updatetime = 250
 vim.o.writebackup = false
 
 vim.keymap.set({ "n", "v" }, "x", '"_x', { desc = "Cut character without yanking", silent = true })
