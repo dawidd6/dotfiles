@@ -108,3 +108,8 @@ zoxide init fish --cmd=cd | source
 
 # PATH
 fish_add_path --path --global --move --append ~/.local/bin
+
+# Mux
+if status is-interactive && not set -q TMUX && command -q tmux
+    exec tmux new-session -A -s main
+end
