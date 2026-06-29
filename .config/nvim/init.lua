@@ -1,6 +1,7 @@
 vim.pack.add({
 	{ src = "https://github.com/nvim-lua/plenary.nvim" },
 	{ src = "https://github.com/nvim-tree/nvim-web-devicons" },
+	{ src = "https://github.com/b0o/SchemaStore.nvim" },
 
 	{ src = "https://github.com/Mofiqul/vscode.nvim" },
 
@@ -11,16 +12,25 @@ vim.pack.add({
 	{ src = "https://github.com/nvim-lualine/lualine.nvim" },
 	{ src = "https://github.com/tzachar/local-highlight.nvim" },
 	{ src = "https://github.com/folke/todo-comments.nvim" },
+	{ src = "https://github.com/folke/which-key.nvim" },
+	{ src = "https://github.com/Bekaboo/dropbar.nvim" },
+	{ src = "https://github.com/lukas-reineke/indent-blankline.nvim" },
 
 	{ src = "https://github.com/kylechui/nvim-surround" },
 	{ src = "https://github.com/windwp/nvim-autopairs" },
 	{ src = "https://github.com/NMAC427/guess-indent.nvim" },
 	{ src = "https://github.com/johnfrankmorgan/whitespace.nvim" },
+	{ src = "https://github.com/nemanjamalesija/smart-paste.nvim" },
 
 	{ src = "https://github.com/lewis6991/gitsigns.nvim" },
 
+	{ src = "https://github.com/barrettruth/canola.nvim" },
+
 	{ src = "https://github.com/stevearc/conform.nvim" },
 	{ src = "https://github.com/neovim/nvim-lspconfig" },
+
+	{ src = "https://github.com/nvim-telescope/telescope.nvim" },
+	{ src = "https://github.com/nvim-telescope/telescope-ui-select.nvim" },
 
 	{ src = "https://github.com/saghen/blink.lib" },
 	{ src = "https://github.com/saghen/blink.cmp" },
@@ -41,13 +51,21 @@ require("local-highlight").setup({
 	},
 })
 require("todo-comments").setup()
+require("which-key").setup({
+	preset = "helix",
+})
+require("dropbar").setup()
+require("ibl").setup()
 
 require("nvim-surround").setup()
 require("nvim-autopairs").setup()
 require("guess-indent").setup()
 require("whitespace-nvim").setup()
+require("smart-paste").setup()
 
 require("gitsigns").setup()
+
+require("oil").setup()
 
 require("conform").setup({
 	format_on_save = {
@@ -59,6 +77,9 @@ require("conform").setup({
 		fish = { "fish_indent" },
 	},
 })
+
+require("telescope").setup()
+require("telescope").load_extension("ui-select")
 
 require("blink.cmp").setup({
 	completion = {
@@ -81,7 +102,6 @@ require("blink.cmp").setup({
 		["<Down>"] = { "select_next", "fallback" },
 		["<Left>"] = { "hide", "fallback" },
 		["<Right>"] = { "hide", "fallback" },
-		["<Esc>"] = { "hide", "fallback" },
 		["<PageDown>"] = { "scroll_documentation_down", "fallback" },
 		["<PageUp>"] = { "scroll_documentation_up", "fallback" },
 	},
@@ -123,6 +143,27 @@ vim.lsp.config("lua_ls", {
 			telemetry = {
 				enable = false,
 			},
+		},
+	},
+})
+
+vim.lsp.config("jsonls", {
+	settings = {
+		json = {
+			schemas = require("schemastore").json.schemas(),
+			validate = { enable = true },
+		},
+	},
+})
+
+vim.lsp.config("yamlls", {
+	settings = {
+		yaml = {
+			schemaStore = {
+				enable = false,
+				url = "",
+			},
+			schemas = require("schemastore").yaml.schemas(),
 		},
 	},
 })
