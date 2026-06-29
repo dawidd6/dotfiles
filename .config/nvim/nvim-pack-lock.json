@@ -64,6 +64,10 @@
       "rev": "8b47db616ef658b8fc27e61db2896aa2f40134de",
       "src": "https://github.com/kylechui/nvim-surround"
     },
+    "nvim-ufo": {
+      "rev": "ab3eb124062422d276fae49e0dd63b3ad1062cfc",
+      "src": "https://github.com/kevinhwang91/nvim-ufo"
+    },
     "nvim-web-devicons": {
       "rev": "dfbfaa967a6f7ec50789bead7ef87e336c1fa63c",
       "src": "https://github.com/nvim-tree/nvim-web-devicons"
@@ -72,6 +76,10 @@
       "rev": "74b06c6c75e4eeb3108ec01852001636d85a932b",
       "src": "https://github.com/nvim-lua/plenary.nvim"
     },
+    "promise-async": {
+      "rev": "119e8961014c9bfaf1487bf3c2a393d254f337e2",
+      "src": "https://github.com/kevinhwang91/promise-async"
+    },
     "smart-paste.nvim": {
       "rev": "7a461d3d83a6bee199d3f1c0b177f7f3e22fa371",
       "src": "https://github.com/nemanjamalesija/smart-paste.nvim"
@@ -79,6 +87,10 @@
     "smear-cursor.nvim": {
       "rev": "9e9378d6ee34bb3782e0e8c63d9ec8ca618b479b",
       "src": "https://github.com/sphamba/smear-cursor.nvim"
+    },
+    "sops.nvim": {
+      "rev": "0fa3d0fd98e4e1b339d464cbfde25d84aac93d83",
+      "src": "https://github.com/0xHolyTech/sops.nvim"
     },
     "telescope-ui-select.nvim": {
       "rev": "6e51d7da30bd139a6950adf2a47fda6df9fa06d2",
@@ -103,6 +115,10 @@
     "whitespace.nvim": {
       "rev": "70cd14a1a2fad87da0e18e90b0dc4a461d2113c1",
       "src": "https://github.com/johnfrankmorgan/whitespace.nvim"
+    },
+    "yaml-companion.nvim": {
+      "rev": "c5feed97061f89ca7303a220230877b07c6b3b0f",
+      "src": "https://github.com/mosheavni/yaml-companion.nvim"
     }
   }
 }

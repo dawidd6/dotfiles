@@ -1,6 +1,9 @@
 vim.pack.add({
 	{ src = "https://github.com/nvim-lua/plenary.nvim" },
 	{ src = "https://github.com/nvim-tree/nvim-web-devicons" },
+	{ src = "https://github.com/kevinhwang91/promise-async" },
+	{ src = "https://github.com/0xHolyTech/sops.nvim" },
+	{ src = "https://github.com/mosheavni/yaml-companion.nvim" },
 	{ src = "https://github.com/b0o/SchemaStore.nvim" },
 
 	{ src = "https://github.com/Mofiqul/vscode.nvim" },
@@ -15,6 +18,7 @@ vim.pack.add({
 	{ src = "https://github.com/folke/which-key.nvim" },
 	{ src = "https://github.com/Bekaboo/dropbar.nvim" },
 	{ src = "https://github.com/lukas-reineke/indent-blankline.nvim" },
+	{ src = "https://github.com/kevinhwang91/nvim-ufo" },
 
 	{ src = "https://github.com/kylechui/nvim-surround" },
 	{ src = "https://github.com/windwp/nvim-autopairs" },
@@ -56,6 +60,7 @@ require("which-key").setup({
 })
 require("dropbar").setup()
 require("ibl").setup()
+require("ufo").setup()
 
 require("nvim-surround").setup()
 require("nvim-autopairs").setup()
@@ -147,26 +152,23 @@ vim.lsp.config("lua_ls", {
 	},
 })
 
-vim.lsp.config("jsonls", {
-	settings = {
-		json = {
-			schemas = require("schemastore").json.schemas(),
-			validate = { enable = true },
-		},
-	},
-})
-
-vim.lsp.config("yamlls", {
-	settings = {
-		yaml = {
-			schemaStore = {
-				enable = false,
-				url = "",
+vim.lsp.config(
+	"yamlls",
+	require("yaml-companion").setup({
+		lspconfig = {
+			settings = {
+				yaml = {
+					schemaStore = {
+						enable = false,
+						url = "",
+					},
+					schemaDownload = { enable = false },
+					schemas = require("schemastore").yaml.schemas(),
+				},
 			},
-			schemas = require("schemastore").yaml.schemas(),
 		},
-	},
-})
+	})
+)
 
 vim.lsp.enable({
 	"ansiblels",
@@ -206,6 +208,11 @@ vim.o.cmdheight = 0
 vim.o.confirm = true
 vim.o.cursorline = true
 vim.o.expandtab = true
+vim.o.fillchars = "eob: ,fold: ,foldopen:,foldsep: ,foldinner: ,foldclose:"
+vim.o.foldcolumn = "1"
+vim.o.foldenable = true
+vim.o.foldlevel = 99
+vim.o.foldlevelstart = 99
 vim.o.ignorecase = true
 vim.o.inccommand = "split"
 vim.o.mouse = "a"
