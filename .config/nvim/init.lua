@@ -2,7 +2,6 @@ vim.pack.add({
 	{ src = "https://github.com/nvim-lua/plenary.nvim" },
 	{ src = "https://github.com/nvim-tree/nvim-web-devicons" },
 	{ src = "https://github.com/kevinhwang91/promise-async" },
-	{ src = "https://github.com/0xHolyTech/sops.nvim" },
 	{ src = "https://github.com/mosheavni/yaml-companion.nvim" },
 	{ src = "https://github.com/b0o/SchemaStore.nvim" },
 
@@ -24,7 +23,6 @@ vim.pack.add({
 	{ src = "https://github.com/windwp/nvim-autopairs" },
 	{ src = "https://github.com/NMAC427/guess-indent.nvim" },
 	{ src = "https://github.com/johnfrankmorgan/whitespace.nvim" },
-	{ src = "https://github.com/nemanjamalesija/smart-paste.nvim" },
 
 	{ src = "https://github.com/lewis6991/gitsigns.nvim" },
 
@@ -66,7 +64,6 @@ require("nvim-surround").setup()
 require("nvim-autopairs").setup()
 require("guess-indent").setup()
 require("whitespace-nvim").setup()
-require("smart-paste").setup()
 
 require("gitsigns").setup()
 
@@ -95,20 +92,32 @@ require("blink.cmp").setup({
 			window = {
 				border = "rounded",
 			},
+			auto_show = true,
+			auto_show_delay_ms = 200,
 		},
+		ghost_text = {
+			enabled = true,
+		},
+		list = {
+			selection = {
+				auto_insert = false,
+			},
+		},
+	},
+	signature = {
+		enabled = true,
 	},
 	fuzzy = {
 		implementation = "lua",
 	},
 	keymap = {
+		["<C-e>"] = { "hide" },
 		["<CR>"] = { "accept", "fallback" },
 		["<Tab>"] = { "accept", "fallback" },
 		["<Up>"] = { "select_prev", "fallback" },
 		["<Down>"] = { "select_next", "fallback" },
-		["<Left>"] = { "hide", "fallback" },
-		["<Right>"] = { "hide", "fallback" },
-		["<PageDown>"] = { "scroll_documentation_down", "fallback" },
-		["<PageUp>"] = { "scroll_documentation_up", "fallback" },
+		["<C-d>"] = { "scroll_documentation_down", "fallback" },
+		["<C-u>"] = { "scroll_documentation_up", "fallback" },
 	},
 })
 
