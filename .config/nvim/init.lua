@@ -164,7 +164,12 @@ require("luasnip.loaders.from_vscode").lazy_load()
 
 require("blink.cmp").setup({
 	snippets = { preset = "luasnip" },
-	signature = { enabled = true },
+	signature = {
+		enabled = true,
+		window = {
+			border = "rounded",
+		},
+	},
 	completion = {
 		menu = {
 			border = "rounded",
@@ -297,6 +302,20 @@ end, { desc = "Open terminal buffer in git root dir or file dir" })
 vim.api.nvim_create_user_command("PackUpdate", function()
 	vim.pack.update()
 end, { desc = "Update all vim.pack plugins" })
+
+vim.api.nvim_create_autocmd("User", {
+	callback = function(ev)
+		local item = ev.data.item
+		if item.kind == 3 or item.kind == 2 then
+			vim.defer_fn(function()
+				vim.lsp.buf.signature_help()
+			end, 500)
+		end
+	end,
+	pattern = "BlinkCmpAccept",
+	group = vim.api.nvim_create_augroup("signature-completion", { clear = true }),
+	desc = "Show function signature popup after accepting completion",
+})
 
 vim.api.nvim_create_autocmd("FileType", {
 	callback = function()
