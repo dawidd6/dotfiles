@@ -95,17 +95,11 @@ require("blink.cmp").setup({
 			auto_show = true,
 			auto_show_delay_ms = 200,
 		},
-		ghost_text = {
-			enabled = true,
-		},
 		list = {
 			selection = {
 				auto_insert = false,
 			},
 		},
-	},
-	signature = {
-		enabled = true,
 	},
 	fuzzy = {
 		implementation = "lua",
@@ -239,6 +233,7 @@ vim.o.swapfile = false
 vim.o.tabstop = 4
 vim.o.undofile = true
 vim.o.updatetime = 250
+vim.o.winborder = "rounded"
 vim.o.writebackup = false
 
 vim.keymap.set({ "n", "v" }, "x", '"_x', { desc = "Cut character without yanking", silent = true })
