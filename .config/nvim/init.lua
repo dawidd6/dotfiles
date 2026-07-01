@@ -15,9 +15,9 @@ vim.pack.add({
 	{ src = "https://github.com/tzachar/local-highlight.nvim" },
 	{ src = "https://github.com/folke/todo-comments.nvim" },
 	{ src = "https://github.com/folke/which-key.nvim" },
-	{ src = "https://github.com/Bekaboo/dropbar.nvim" },
 	{ src = "https://github.com/lukas-reineke/indent-blankline.nvim" },
 	{ src = "https://github.com/kevinhwang91/nvim-ufo" },
+	{ src = "https://github.com/kosayoda/nvim-lightbulb" },
 
 	{ src = "https://github.com/kylechui/nvim-surround" },
 	{ src = "https://github.com/windwp/nvim-autopairs" },
@@ -56,9 +56,11 @@ require("todo-comments").setup()
 require("which-key").setup({
 	preset = "helix",
 })
-require("dropbar").setup()
 require("ibl").setup()
 require("ufo").setup()
+require("nvim-lightbulb").setup({
+	autocmd = { enabled = true }
+})
 
 require("nvim-surround").setup()
 require("nvim-autopairs").setup()
@@ -69,16 +71,17 @@ require("gitsigns").setup()
 
 require("oil").setup()
 
-require("conform").setup({
-	format_on_save = {
-		timeout_ms = 500,
-		lsp_format = "fallback",
-	},
-	formatters_by_ft = {
-		lua = { "stylua" },
-		fish = { "fish_indent" },
-	},
-})
+-- TODO: not needed??? to delete???
+--require("conform").setup({
+--	format_on_save = {
+--		timeout_ms = 500,
+--		lsp_format = "fallback",
+--	},
+--	formatters_by_ft = {
+--		lua = { "stylua" },
+--		fish = { "fish_indent" },
+--	},
+--})
 
 require("telescope").setup()
 require("telescope").load_extension("ui-select")
@@ -116,21 +119,7 @@ require("blink.cmp").setup({
 })
 
 vim.diagnostic.config({
-	update_in_insert = false,
-	severity_sort = true,
-	float = { border = "rounded", source = "if_many" },
-	underline = { severity = { min = vim.diagnostic.severity.WARN } },
 	virtual_text = true,
-	virtual_lines = false,
-	jump = {
-		on_jump = function(_, bufnr)
-			vim.diagnostic.open_float({
-				bufnr = bufnr,
-				scope = "cursor",
-				focus = false,
-			})
-		end,
-	},
 })
 
 vim.lsp.config("lua_ls", {
@@ -176,22 +165,78 @@ vim.lsp.config(
 vim.lsp.enable({
 	"ansiblels",
 	"bashls",
+	"fish_lsp",
 	"lua_ls",
 	"yamlls",
 })
 
-vim.api.nvim_create_autocmd("BufWritePre", {
+vim.api.nvim_create_user_command("CopyRelativeFilePath", function()
+	local path = vim.fn.expand("%")
+	vim.fn.setreg("+", path)
+	vim.notify(path)
+end, { desc = "Print and copy relative file path" })
+
+vim.api.nvim_create_user_command("CopyAbsoluteFilePath", function()
+	local path = vim.fn.expand("%:p")
+	vim.fn.setreg("+", path)
+	vim.notify(path)
+end, { desc = "Print and copy absolute file path" })
+
+vim.api.nvim_create_user_command("CopyGitRootDirPath", function()
+	if vim.b.gitsigns_status_dict then
+		local path = vim.b.gitsigns_status_dict.root
+		vim.fn.setreg("+", path)
+		vim.notify(path)
+	else
+		vim.notify("Not in git repository")
+	end
+end, { desc = "Print and copy git root path" })
+
+vim.api.nvim_create_user_command("Terminal", function()
+	local path = vim.fn.expand("%:p:h")
+	if vim.b.gitsigns_status_dict then
+		path = vim.b.gitsigns_status_dict.root
+	end
+	vim.cmd("edit term://" .. path .. "//$SHELL")
+	vim.cmd("startinsert")
+end, { desc = "Open terminal buffer in git root dir or file dir" })
+
+vim.api.nvim_create_user_command("PackUpdate", function()
+	vim.pack.update()
+end, { desc = "Update all vim.pack plugins" })
+
+vim.api.nvim_create_autocmd("FileType", {
 	callback = function()
-		require("whitespace-nvim").trim()
+		vim.cmd.wincmd("o")
 	end,
-	desc = "Trim whitespace on buffer write",
+	pattern = "help",
+	group = vim.api.nvim_create_augroup("only-help", { clear = true }),
+	desc = "Open help in current window",
 })
 
 vim.api.nvim_create_autocmd("FileType", {
 	callback = function()
 		vim.opt_local.formatoptions:remove({ "c", "r", "o" })
 	end,
+	group = vim.api.nvim_create_augroup("discontinue-comment", { clear = true }),
 	desc = "Don't continue comments on newlines",
+})
+
+vim.api.nvim_create_autocmd("BufWritePre", {
+	callback = function()
+		require("whitespace-nvim").trim()
+		vim.lsp.buf.format()
+	end,
+	group = vim.api.nvim_create_augroup("format-trim", { clear = true }),
+	desc = "Trim whitespace and format on buffer write",
+})
+
+vim.api.nvim_create_autocmd("TextYankPost", {
+	callback = function()
+		vim.highlight.on_yank()
+	end,
+	group = vim.api.nvim_create_augroup("highlight-yank", { clear = true }),
+	desc = "Highlight text briefly after yanking",
 })
 
 vim.api.nvim_create_autocmd("BufReadPost", {
@@ -202,10 +247,31 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 			pcall(vim.api.nvim_win_set_cursor, 0, mark)
 		end
 	end,
+	group = vim.api.nvim_create_augroup("return-last", { clear = true }),
 	desc = "Return to last edit position when opening files",
 })
 
+vim.api.nvim_create_autocmd("VimResized", {
+	callback = function()
+		vim.cmd("tabdo wincmd =")
+	end,
+	group = vim.api.nvim_create_augroup("resize-split", { clear = true }),
+	desc = "Auto-resize splits when window is resized",
+})
+
+vim.api.nvim_create_autocmd("TermClose", {
+	callback = function(args)
+		if vim.api.nvim_buf_is_valid(args.buf) then
+			vim.api.nvim_buf_delete(args.buf, { force = true })
+		end
+	end,
+	group = vim.api.nvim_create_augroup("terminal-autoclose", { clear = true }),
+	desc = "Terminal buffer is automatically deleted when process ends",
+})
+
 vim.cmd.colorscheme("vscode")
+
+vim.opt.iskeyword:append("-")
 
 vim.o.cmdheight = 0
 vim.o.confirm = true
