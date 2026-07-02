@@ -110,7 +110,7 @@ if status is-interactive
     zoxide init fish --cmd=cd | source
 
     # Mux
-    #if not set -q TMUX
-    #    tmux new-session -A -s main
-    #end
+    if not set -q TMUX
+        tmux new-session -A -s main
+    end
 end
