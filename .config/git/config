@@ -10,6 +10,12 @@
     gpgSign = true
     verbose = true
 
+[color "diff-highlight"]
+    oldNormal    = red
+    oldHighlight = red reverse
+    newNormal    = green
+    newHighlight = green reverse
+
 [core]
     pager = diff-so-fancy | less --tabs=4 -RFX
 
@@ -18,6 +24,9 @@
 
 [merge]
     conflictStyle = zdiff3
+
+[diff "sopsdiffer"]
+    textconv = git-sops-decrypt
 
 [fetch]
     prune = true
@@ -61,5 +70,3 @@
 [includeIf "gitdir:~/telekom/**"]
     path = telekom
 
-[diff "sopsdiffer"]
-    textconv = git-sops-decrypt
