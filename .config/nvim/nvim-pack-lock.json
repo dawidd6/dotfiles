@@ -40,6 +40,10 @@
       "rev": "6cd7280adead7f586db6fccbd15d2cac7e2188b9",
       "src": "https://github.com/rafamadriz/friendly-snippets"
     },
+    "fyler.nvim": {
+      "rev": "70e1202434a21b45649dd59ec82dc3330f79125e",
+      "src": "https://github.com/FylerOrg/fyler.nvim"
+    },
     "gitsigns.nvim": {
       "rev": "2038c666bd9d8a0b7349a0b6ee00dc83104b9ecf",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
@@ -88,6 +92,10 @@
       "rev": "8b47db616ef658b8fc27e61db2896aa2f40134de",
       "src": "https://github.com/kylechui/nvim-surround"
     },
+    "nvim-tree.lua": {
+      "rev": "7ff7040bf6c246671eb55cb1727de4fd9f92a106",
+      "src": "https://github.com/nvim-tree/nvim-tree.lua"
+    },
     "nvim-ufo": {
       "rev": "ab3eb124062422d276fae49e0dd63b3ad1062cfc",
       "src": "https://github.com/kevinhwang91/nvim-ufo"
@@ -115,6 +123,14 @@
     "sops.nvim": {
       "rev": "0fa3d0fd98e4e1b339d464cbfde25d84aac93d83",
       "src": "https://github.com/0xHolyTech/sops.nvim"
+    },
+    "telescope-file-browser.nvim": {
+      "rev": "3610dc7dc91f06aa98b11dca5cc30dfa98626b7e",
+      "src": "https://github.com/nvim-telescope/telescope-file-browser.nvim"
+    },
+    "telescope-frecency.nvim": {
+      "rev": "5479d8a269e30479280c59e44f805396127653e6",
+      "src": "https://github.com/nvim-telescope/telescope-frecency.nvim"
     },
     "telescope-ui-select.nvim": {
       "rev": "6e51d7da30bd139a6950adf2a47fda6df9fa06d2",

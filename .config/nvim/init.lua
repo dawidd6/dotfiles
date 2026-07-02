@@ -3,8 +3,6 @@ vim.loader.enable()
 vim.pack.add({
 	{ src = "https://github.com/nvim-lua/plenary.nvim" },
 	{ src = "https://github.com/nvim-tree/nvim-web-devicons" },
-	{ src = "https://github.com/kevinhwang91/promise-async" },
-	{ src = "https://github.com/MunifTanjim/nui.nvim" },
 	{ src = "https://github.com/mosheavni/yaml-companion.nvim" },
 	{ src = "https://github.com/b0o/SchemaStore.nvim" },
 
@@ -18,7 +16,6 @@ vim.pack.add({
 	{ src = "https://github.com/folke/todo-comments.nvim" },
 	{ src = "https://github.com/folke/which-key.nvim" },
 	{ src = "https://github.com/lukas-reineke/indent-blankline.nvim" },
-	{ src = "https://github.com/kevinhwang91/nvim-ufo" },
 	{ src = "https://github.com/kosayoda/nvim-lightbulb" },
 	{ src = "https://github.com/j-hui/fidget.nvim" },
 
@@ -29,14 +26,13 @@ vim.pack.add({
 
 	{ src = "https://github.com/lewis6991/gitsigns.nvim" },
 
-	{ src = "https://github.com/barrettruth/canola.nvim" },
-	{ src = "https://github.com/nvim-neo-tree/neo-tree.nvim" },
-
 	{ src = "https://github.com/stevearc/conform.nvim" },
 	{ src = "https://github.com/neovim/nvim-lspconfig" },
 
 	{ src = "https://github.com/nvim-telescope/telescope.nvim" },
 	{ src = "https://github.com/nvim-telescope/telescope-ui-select.nvim" },
+	{ src = "https://github.com/nvim-telescope/telescope-file-browser.nvim" },
+	{ src = "https://github.com/nvim-telescope/telescope-frecency.nvim" },
 
 	{ src = "https://github.com/L3MON4D3/LuaSnip" },
 	{ src = "https://github.com/rafamadriz/friendly-snippets" },
@@ -56,8 +52,12 @@ require("todo-comments").setup()
 require("which-key").setup({
 	preset = "helix",
 })
-require("ibl").setup()
-require("ufo").setup()
+require("ibl").setup({
+	scope = {
+		show_start = false,
+		show_end = false,
+	},
+})
 require("nvim-lightbulb").setup({
 	autocmd = { enabled = true },
 })
@@ -130,17 +130,6 @@ require("gitsigns").setup({
 	end,
 })
 
-require("oil").setup()
-require("neo-tree").setup({
-	filesystem = {
-		window = {
-			mappings = {
-				[" "] = "close_window",
-			},
-		},
-	},
-})
-
 require("conform").setup({
 	format_on_save = {
 		timeout_ms = 500,
@@ -153,11 +142,31 @@ require("conform").setup({
 })
 
 require("telescope").setup({
+	defaults = {
+		sorting_strategy = "ascending",
+		layout_config = {
+			prompt_position = "top",
+		},
+	},
 	extensions = {
 		["ui-select"] = { require("telescope.themes").get_dropdown() },
+		["file_browser"] = {
+			path = "%:p:h",
+			hijack_netrw = true,
+			select_buffer = true,
+			grouped = true,
+			hidden = true,
+			mappings = {
+				["n"] = {
+					["<bs>"] = require("telescope._extensions.file_browser.actions").goto_parent_dir,
+				},
+			},
+		},
 	},
 })
 require("telescope").load_extension("ui-select")
+require("telescope").load_extension("frecency")
+require("telescope").load_extension("file_browser")
 
 require("luasnip").setup()
 require("luasnip.loaders.from_vscode").lazy_load()
@@ -317,13 +326,14 @@ vim.api.nvim_create_autocmd("User", {
 	desc = "Show function signature popup after accepting completion",
 })
 
-vim.api.nvim_create_autocmd("FileType", {
+vim.api.nvim_create_autocmd("BufWinEnter", {
 	callback = function()
-		vim.cmd.wincmd("o")
+		if vim.o.filetype == "help" then
+			vim.cmd.wincmd("L")
+		end
 	end,
-	pattern = "help",
-	group = vim.api.nvim_create_augroup("only-help", { clear = true }),
-	desc = "Open help in current window",
+	pattern = { "*.txt" },
+	group = vim.api.nvim_create_augroup("help-right", { clear = true }),
 })
 
 vim.api.nvim_create_autocmd("FileType", {
@@ -496,9 +506,9 @@ vim.o.cursorline = true
 vim.o.expandtab = true
 vim.o.fillchars = "eob: ,fold: ,foldopen:,foldsep: ,foldinner: ,foldclose:"
 vim.o.foldcolumn = "1"
-vim.o.foldenable = true
 vim.o.foldlevel = 99
 vim.o.foldlevelstart = 99
+vim.o.foldmethod = "indent"
 vim.o.ignorecase = true
 vim.o.inccommand = "split"
 vim.o.list = true
@@ -555,5 +565,3 @@ end, { desc = "[/] Fuzzily search in current buffer" })
 vim.keymap.set({ "n", "v" }, "<leader>f", function()
 	require("conform").format({ async = true })
 end, { desc = "[F]ormat buffer" })
-
-vim.keymap.set("n", " ", "<Cmd>Neotree reveal<CR>", { desc = "NeoTree reveal", silent = true })
