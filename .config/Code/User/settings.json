@@ -18,8 +18,10 @@
   "search.followSymlinks": false,
   "vim.handleKeys": {
     "<C-a>": false,
-    "<C-f>": false
+    "<C-f>": false,
+    "<C-s>": false
   },
+  "vim.highlightedyank.enable": true,
   "vim.hlsearch": true,
   "vim.incsearch": true,
   "vim.normalModeKeyBindings": [
