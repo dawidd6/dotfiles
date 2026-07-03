@@ -8,21 +8,12 @@ vim.pack.add({
 
 	{ src = "https://github.com/Mofiqul/vscode.nvim" },
 
-	{ src = "https://github.com/karb94/neoscroll.nvim" },
-	{ src = "https://github.com/sphamba/smear-cursor.nvim" },
-
-	{ src = "https://github.com/akinsho/bufferline.nvim" },
 	{ src = "https://github.com/nvim-lualine/lualine.nvim" },
-	{ src = "https://github.com/folke/todo-comments.nvim" },
 	{ src = "https://github.com/folke/which-key.nvim" },
-	{ src = "https://github.com/lukas-reineke/indent-blankline.nvim" },
-	{ src = "https://github.com/kosayoda/nvim-lightbulb" },
-	{ src = "https://github.com/j-hui/fidget.nvim" },
 
 	{ src = "https://github.com/kylechui/nvim-surround" },
 	{ src = "https://github.com/windwp/nvim-autopairs" },
 	{ src = "https://github.com/NMAC427/guess-indent.nvim" },
-	{ src = "https://github.com/johnfrankmorgan/whitespace.nvim" },
 
 	{ src = "https://github.com/lewis6991/gitsigns.nvim" },
 
@@ -32,7 +23,6 @@ vim.pack.add({
 	{ src = "https://github.com/nvim-telescope/telescope.nvim" },
 	{ src = "https://github.com/nvim-telescope/telescope-ui-select.nvim" },
 	{ src = "https://github.com/nvim-telescope/telescope-file-browser.nvim" },
-	{ src = "https://github.com/nvim-telescope/telescope-frecency.nvim" },
 
 	{ src = "https://github.com/L3MON4D3/LuaSnip" },
 	{ src = "https://github.com/rafamadriz/friendly-snippets" },
@@ -43,92 +33,29 @@ vim.pack.add({
 
 require("vscode").setup()
 
-require("neoscroll").setup()
-require("smear_cursor").setup()
-
-require("bufferline").setup()
-require("lualine").setup()
-require("todo-comments").setup()
-require("which-key").setup({
-	preset = "helix",
-})
-require("ibl").setup({
-	scope = {
-		show_start = false,
-		show_end = false,
+require("lualine").setup({
+	options = {
+		section_separators = "",
+	},
+	sections = {
+		lualine_a = { "mode" },
+		lualine_b = { "branch", "diff", "diagnostics" },
+		lualine_c = { { "filename", path = 1 } },
+		lualine_x = { "encoding", "fileformat", "filetype", "lsp_status" },
+		lualine_y = { "progress" },
+		lualine_z = { "location", "searchcount", "selectioncount" },
 	},
 })
-require("nvim-lightbulb").setup({
-	autocmd = { enabled = true },
+require("which-key").setup({
+	preset = "helix",
+	delay = 0,
 })
-require("fidget").setup()
 
 require("nvim-surround").setup()
 require("nvim-autopairs").setup()
 require("guess-indent").setup()
-require("whitespace-nvim").setup()
 
-require("gitsigns").setup({
-	on_attach = function(bufnr)
-		local gitsigns = require("gitsigns")
-
-		local function map(mode, l, r, opts)
-			opts = opts or {}
-			opts.buffer = bufnr
-			vim.keymap.set(mode, l, r, opts)
-		end
-
-		-- Navigation
-		map("n", "]c", function()
-			if vim.wo.diff then
-				vim.cmd.normal({ "]c", bang = true })
-			else
-				gitsigns.nav_hunk("next")
-			end
-		end, { desc = "Jump to next git [c]hange" })
-
-		map("n", "[c", function()
-			if vim.wo.diff then
-				vim.cmd.normal({ "[c", bang = true })
-			else
-				gitsigns.nav_hunk("prev")
-			end
-		end, { desc = "Jump to previous git [c]hange" })
-
-		-- Actions
-		-- visual mode
-		map("v", "<leader>hs", function()
-			gitsigns.stage_hunk({ vim.fn.line("."), vim.fn.line("v") })
-		end, { desc = "git [s]tage hunk" })
-		map("v", "<leader>hr", function()
-			gitsigns.reset_hunk({ vim.fn.line("."), vim.fn.line("v") })
-		end, { desc = "git [r]eset hunk" })
-		-- normal mode
-		map("n", "<leader>hs", gitsigns.stage_hunk, { desc = "git [s]tage hunk" })
-		map("n", "<leader>hr", gitsigns.reset_hunk, { desc = "git [r]eset hunk" })
-		map("n", "<leader>hS", gitsigns.stage_buffer, { desc = "git [S]tage buffer" })
-		map("n", "<leader>hR", gitsigns.reset_buffer, { desc = "git [R]eset buffer" })
-		map("n", "<leader>hp", gitsigns.preview_hunk, { desc = "git [p]review hunk" })
-		map("n", "<leader>hi", gitsigns.preview_hunk_inline, { desc = "git preview hunk [i]nline" })
-		map("n", "<leader>hb", function()
-			gitsigns.blame_line({ full = true })
-		end, { desc = "git [b]lame line" })
-		map("n", "<leader>hd", gitsigns.diffthis, { desc = "git [d]iff against index" })
-		map("n", "<leader>hD", function()
-			gitsigns.diffthis("@")
-		end, { desc = "git [D]iff against last commit" })
-		map("n", "<leader>hQ", function()
-			gitsigns.setqflist("all")
-		end, { desc = "git hunk [Q]uickfix list (all files in repo)" })
-		map("n", "<leader>hq", gitsigns.setqflist, { desc = "git hunk [q]uickfix list (all changes in this file)" })
-		-- Toggles
-		map("n", "<leader>tb", gitsigns.toggle_current_line_blame, { desc = "[T]oggle git show [b]lame line" })
-		map("n", "<leader>tw", gitsigns.toggle_word_diff, { desc = "[T]oggle git intra-line [w]ord diff" })
-
-		-- Text object
-		map({ "o", "x" }, "ih", gitsigns.select_hunk)
-	end,
-})
+require("gitsigns").setup()
 
 require("conform").setup({
 	format_on_save = {
@@ -165,7 +92,6 @@ require("telescope").setup({
 	},
 })
 require("telescope").load_extension("ui-select")
-require("telescope").load_extension("frecency")
 require("telescope").load_extension("file_browser")
 
 require("luasnip").setup()
@@ -326,6 +252,18 @@ vim.api.nvim_create_autocmd("User", {
 	desc = "Show function signature popup after accepting completion",
 })
 
+vim.api.nvim_create_autocmd({ "WinNew", "WinEnter", "BufWinEnter" }, {
+	callback = function()
+		if vim.w.todo_match then
+			return
+		end
+		vim.w.todo_match = vim.fn.matchadd("Todo", [[\v<(TODO|FIXME|HACK|NOTE|WARNING|WARN|BUG)>]])
+		vim.w.todo_match = true
+	end,
+	group = vim.api.nvim_create_augroup("highlight-comments", { clear = true }),
+	desc = "Highlight common comments",
+})
+
 vim.api.nvim_create_autocmd("BufWinEnter", {
 	callback = function()
 		if vim.o.filetype == "help" then
@@ -334,6 +272,7 @@ vim.api.nvim_create_autocmd("BufWinEnter", {
 	end,
 	pattern = { "*.txt" },
 	group = vim.api.nvim_create_augroup("help-right", { clear = true }),
+	desc = "Always open help in right split",
 })
 
 vim.api.nvim_create_autocmd("FileType", {
@@ -346,7 +285,9 @@ vim.api.nvim_create_autocmd("FileType", {
 
 vim.api.nvim_create_autocmd("BufWritePre", {
 	callback = function()
-		require("whitespace-nvim").trim()
+		local save_cursor = vim.fn.getpos(".")
+		vim.cmd([[%s/\s\+$//e]])
+		vim.fn.setpos(".", save_cursor)
 	end,
 	group = vim.api.nvim_create_augroup("trim-whitespace", { clear = true }),
 	desc = "Trim whitespace on buffer write",
@@ -390,115 +331,10 @@ vim.api.nvim_create_autocmd("TermClose", {
 	desc = "Terminal buffer is automatically deleted when process ends",
 })
 
--- TODO:
-vim.api.nvim_create_autocmd("LspAttach", {
-	group = vim.api.nvim_create_augroup("telescope-lsp-attach", { clear = true }),
-	callback = function(event)
-		local buf = event.buf
-		local builtin = require("telescope.builtin")
-
-		-- Find references for the word under your cursor.
-		vim.keymap.set("n", "grr", builtin.lsp_references, { buffer = buf, desc = "[G]oto [R]eferences" })
-
-		-- Jump to the implementation of the word under your cursor.
-		-- Useful when your language has ways of declaring types without an actual implementation.
-		vim.keymap.set("n", "gri", builtin.lsp_implementations, { buffer = buf, desc = "[G]oto [I]mplementation" })
-
-		-- Jump to the definition of the word under your cursor.
-		-- This is where a variable was first declared, or where a function is defined, etc.
-		-- To jump back, press <C-t>.
-		vim.keymap.set("n", "grd", builtin.lsp_definitions, { buffer = buf, desc = "[G]oto [D]efinition" })
-
-		-- Fuzzy find all the symbols in your current document.
-		-- Symbols are things like variables, functions, types, etc.
-		vim.keymap.set("n", "gO", builtin.lsp_document_symbols, { buffer = buf, desc = "Open Document Symbols" })
-
-		-- Fuzzy find all the symbols in your current workspace.
-		-- Similar to document symbols, except searches over your entire project.
-		vim.keymap.set(
-			"n",
-			"gW",
-			builtin.lsp_dynamic_workspace_symbols,
-			{ buffer = buf, desc = "Open Workspace Symbols" }
-		)
-
-		-- Jump to the type of the word under your cursor.
-		-- Useful when you're not sure what type a variable is and you want to see
-		-- the definition of its *type*, not where it was *defined*.
-		vim.keymap.set("n", "grt", builtin.lsp_type_definitions, { buffer = buf, desc = "[G]oto [T]ype Definition" })
-	end,
-})
-
-vim.api.nvim_create_autocmd("LspAttach", {
-	group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
-	callback = function(event)
-		-- NOTE: Remember that Lua is a real programming language, and as such it is possible
-		-- to define small helper and utility functions so you don't have to repeat yourself.
-		--
-		-- In this case, we create a function that lets us more easily define mappings specific
-		-- for LSP related items. It sets the mode, buffer and description for us each time.
-		local map = function(keys, func, desc, mode)
-			mode = mode or "n"
-			vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
-		end
-
-		-- Rename the variable under your cursor.
-		--  Most Language Servers support renaming across files, etc.
-		map("grn", vim.lsp.buf.rename, "[R]e[n]ame")
-
-		-- Execute a code action, usually your cursor needs to be on top of an error
-		-- or a suggestion from your LSP for this to activate.
-		map("gra", vim.lsp.buf.code_action, "[G]oto Code [A]ction", { "n", "x" })
-
-		-- WARN: This is not Goto Definition, this is Goto Declaration.
-		--  For example, in C this would take you to the header.
-		map("grD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
-
-		-- The following two autocommands are used to highlight references of the
-		-- word under your cursor when your cursor rests there for a little while.
-		--    See `:help CursorHold` for information about when this is executed
-		--
-		-- When you move your cursor, the highlights will be cleared (the second autocommand).
-		local client = vim.lsp.get_client_by_id(event.data.client_id)
-		if client and client:supports_method("textDocument/documentHighlight", event.buf) then
-			local highlight_augroup = vim.api.nvim_create_augroup("kickstart-lsp-highlight", { clear = false })
-			vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
-				buffer = event.buf,
-				group = highlight_augroup,
-				callback = vim.lsp.buf.document_highlight,
-			})
-
-			vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
-				buffer = event.buf,
-				group = highlight_augroup,
-				callback = vim.lsp.buf.clear_references,
-			})
-
-			vim.api.nvim_create_autocmd("LspDetach", {
-				group = vim.api.nvim_create_augroup("kickstart-lsp-detach", { clear = true }),
-				callback = function(event2)
-					vim.lsp.buf.clear_references()
-					vim.api.nvim_clear_autocmds({ group = "kickstart-lsp-highlight", buffer = event2.buf })
-				end,
-			})
-		end
-
-		-- The following code creates a keymap to toggle inlay hints in your
-		-- code, if the language server you are using supports them
-		--
-		-- This may be unwanted, since they displace some of your code
-		if client and client:supports_method("textDocument/inlayHint", event.buf) then
-			map("<leader>th", function()
-				vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
-			end, "[T]oggle Inlay [H]ints")
-		end
-	end,
-})
-
 vim.cmd.colorscheme("vscode")
 
 vim.opt.iskeyword:append("-")
-vim.opt.listchars = { tab = "» ", nbsp = "␣" }
+vim.opt.listchars = { tab = "» ", nbsp = "␣", trail = "·", lead = "·", leadmultispace = "|   " }
 
 vim.o.cmdheight = 0
 vim.o.confirm = true
@@ -545,23 +381,14 @@ vim.keymap.set({ "n", "v" }, "<Leader>P", '"+P', { desc = "Paste from system cli
 vim.keymap.set("n", "s", "ys", { desc = "Surround quicker and easier", silent = true, remap = true })
 vim.keymap.set("v", "s", "S", { desc = "Surround quicker and easier", silent = true, remap = true })
 
-vim.keymap.set("n", "<leader>sh", ":Telescope help_tags<CR>", { desc = "[S]earch [H]elp" })
-vim.keymap.set("n", "<leader>sk", ":Telescope keymaps<CR>", { desc = "[S]earch [K]eymaps" })
-vim.keymap.set("n", "<leader>sf", ":Telescope find_files<CR>", { desc = "[S]earch [F]iles" })
-vim.keymap.set("n", "<leader>ss", ":Telescope builtin<CR>", { desc = "[S]earch [S]elect Telescope" })
-vim.keymap.set({ "n", "v" }, "<leader>sw", ":Telescope grep_string<CR>", { desc = "[S]earch current [W]ord" })
-vim.keymap.set("n", "<leader>sg", ":Telescope live_grep<CR>", { desc = "[S]earch by [G]rep" })
-vim.keymap.set("n", "<leader>sd", ":Telescope diagnostics<CR>", { desc = "[S]earch [D]iagnostics" })
-vim.keymap.set("n", "<leader>sr", ":Telescope resume<CR>", { desc = "[S]earch [R]esume" })
-vim.keymap.set("n", "<leader>s.", ":Telescope oldfiles<CR>", { desc = '[S]earch Recent Files ("." for repeat)' })
-vim.keymap.set("n", "<leader>sc", ":Telescope commands<CR>", { desc = "[S]earch [C]ommands" })
-vim.keymap.set("n", "<leader><leader>", ":Telescope buffers<CR>", { desc = "[ ] Find existing buffers" })
-
-vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
-vim.keymap.set("n", "<leader>/", function()
-	require("telescope.builtin").current_buffer_fuzzy_find(require("telescope.themes").get_dropdown())
-end, { desc = "[/] Fuzzily search in current buffer" })
-
-vim.keymap.set({ "n", "v" }, "<leader>f", function()
-	require("conform").format({ async = true })
-end, { desc = "[F]ormat buffer" })
+vim.keymap.set("n", "<leader><leader>", ":Telescope file_browser<CR>", { desc = "Browse files" })
+vim.keymap.set("n", "<leader>sb", ":Telescope buffers<CR>", { desc = "Search buffers" })
+vim.keymap.set("n", "<leader>sc", ":Telescope commands<CR>", { desc = "Search commands" })
+vim.keymap.set("n", "<leader>sd", ":Telescope diagnostics<CR>", { desc = "Search diagnostics" })
+vim.keymap.set("n", "<leader>sf", ":Telescope find_files<CR>", { desc = "Search files" })
+vim.keymap.set("n", "<leader>sh", ":Telescope help_tags<CR>", { desc = "Search help" })
+vim.keymap.set("n", "<leader>sk", ":Telescope keymaps<CR>", { desc = "Search keymaps" })
+vim.keymap.set("n", "<leader>so", ":Telescope oldfiles<CR>", { desc = "Search old files" })
+vim.keymap.set("n", "<leader>sr", ":Telescope resume<CR>", { desc = "Search resume" })
+vim.keymap.set("n", "<leader>ss", ":Telescope live_grep<CR>", { desc = "Search string" })
+vim.keymap.set({ "n", "v" }, "<leader>sw", ":Telescope grep_string<CR>", { desc = "Search word" })
