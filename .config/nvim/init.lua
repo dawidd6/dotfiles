@@ -216,20 +216,17 @@ vim.api.nvim_create_user_command("CopyAbsoluteFilePath", function()
 end, { desc = "Print and copy absolute file path" })
 
 vim.api.nvim_create_user_command("CopyGitRootDirPath", function()
-	if vim.b.gitsigns_status_dict then
-		local path = vim.b.gitsigns_status_dict.root
-		vim.fn.setreg("+", path)
-		vim.notify(path)
-	else
+	local path = vim.fs.root(0, { ".git" })
+	if not path then
 		vim.notify("Not in git repository")
+		return
 	end
+	vim.fn.setreg("+", path)
+	vim.notify(path)
 end, { desc = "Print and copy git root path" })
 
 vim.api.nvim_create_user_command("Terminal", function()
-	local path = vim.fn.expand("%:p:h")
-	if vim.b.gitsigns_status_dict then
-		path = vim.b.gitsigns_status_dict.root
-	end
+	local path = vim.fs.root(0, { ".git" }) or vim.fn.expand("%:p:h")
 	vim.cmd("edit term://" .. path .. "//$SHELL")
 	vim.cmd("startinsert")
 end, { desc = "Open terminal buffer in git root dir or file dir" })
@@ -258,7 +255,6 @@ vim.api.nvim_create_autocmd({ "WinNew", "WinEnter", "BufWinEnter" }, {
 			return
 		end
 		vim.w.todo_match = vim.fn.matchadd("Todo", [[\v<(TODO|FIXME|HACK|NOTE|WARNING|WARN|BUG)>]])
-		vim.w.todo_match = true
 	end,
 	group = vim.api.nvim_create_augroup("highlight-comments", { clear = true }),
 	desc = "Highlight common comments",
