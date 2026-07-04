@@ -106,6 +106,19 @@ require("blink.cmp").setup({
 			border = "rounded",
 		},
 	},
+	cmdline = {
+		completion = {
+			menu = { auto_show = false },
+			list = { selection = { auto_insert = false } },
+		},
+		keymap = {
+			["<C-e>"] = { "cancel", "fallback" },
+			["<CR>"] = { "accept", "fallback" },
+			["<Tab>"] = { "show_and_insert_or_accept_single", "select_next" },
+			["<Up>"] = { "select_prev", "fallback" },
+			["<Down>"] = { "select_next", "fallback" },
+		},
+	},
 	completion = {
 		menu = {
 			border = "rounded",
@@ -127,7 +140,7 @@ require("blink.cmp").setup({
 		implementation = "lua",
 	},
 	keymap = {
-		["<C-e>"] = { "hide" },
+		["<C-e>"] = { "cancel", "fallback" },
 		["<CR>"] = { "accept", "fallback" },
 		["<Tab>"] = { "accept", "fallback" },
 		["<Up>"] = { "select_prev", "fallback" },

@@ -11,6 +11,22 @@ vim.api.nvim_create_autocmd("User", {
 	desc = "Show function signature popup after accepting completion",
 })
 
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = {
+		"git",
+		"help",
+		"man",
+		"qf",
+		"scratch",
+	},
+	callback = function(args)
+		if args.match ~= "help" or not vim.bo[args.buf].modifiable then
+			vim.keymap.set("n", "q", ":quit<CR>", { buffer = args.buf })
+		end
+	end,
+	desc = "Close special buffer types with <q>",
+})
+
 vim.api.nvim_create_autocmd({ "WinNew", "WinEnter", "BufWinEnter" }, {
 	callback = function()
 		if vim.w.todo_match then
