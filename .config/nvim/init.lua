@@ -387,6 +387,7 @@ vim.o.tabstop = 4
 vim.o.undofile = true
 vim.o.updatetime = 250
 vim.o.winborder = "rounded"
+vim.o.wrap = false
 vim.o.writebackup = false
 
 vim.keymap.set({ "n", "v" }, "x", '"_x', { desc = "Cut character without yanking", silent = true })
