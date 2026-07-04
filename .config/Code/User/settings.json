@@ -1,14 +1,12 @@
 {
   "dev.containers.dockerPath": "podman",
   "editor.cursorBlinking": "solid",
-  "editor.cursorSmoothCaretAnimation": "on",
   "editor.cursorSurroundingLines": 10,
   "editor.fontSize": 15,
   "editor.formatOnSave": true,
   "editor.lineNumbers": "relative",
   "editor.minimap.enabled": false,
   "editor.selectionClipboard": false,
-  "editor.smoothScrolling": true,
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
   "files.autoSave": "onFocusChange",
@@ -24,201 +22,10 @@
   "vim.highlightedyank.enable": true,
   "vim.hlsearch": true,
   "vim.incsearch": true,
-  "vim.normalModeKeyBindings": [
-    {
-      "after": [
-        "y",
-        "s"
-      ],
-      "before": [
-        "s"
-      ]
-    }
-  ],
-  "vim.normalModeKeyBindingsNonRecursive": [
-    {
-      "after": [
-        "\"",
-        "_",
-        "x"
-      ],
-      "before": [
-        "x"
-      ]
-    },
-    {
-      "after": [
-        "\"",
-        "_",
-        "X"
-      ],
-      "before": [
-        "X"
-      ]
-    },
-    {
-      "before": [
-        "<Esc>"
-      ],
-      "commands": [
-        ":nohlsearch"
-      ]
-    },
-    {
-      "after": [
-        "\"",
-        "+",
-        "y"
-      ],
-      "before": [
-        "<leader>",
-        "y"
-      ]
-    },
-    {
-      "after": [
-        "\"",
-        "+",
-        "p"
-      ],
-      "before": [
-        "<leader>",
-        "p"
-      ]
-    },
-    {
-      "after": [
-        "\"",
-        "+",
-        "Y"
-      ],
-      "before": [
-        "<leader>",
-        "Y"
-      ]
-    },
-    {
-      "after": [
-        "\"",
-        "+",
-        "P"
-      ],
-      "before": [
-        "<leader>",
-        "P"
-      ]
-    },
-  ],
-  "vim.visualModeKeyBindingsNonRecursive": [
-    {
-      "after": [
-        "\"",
-        "_",
-        "x"
-      ],
-      "before": [
-        "x"
-      ]
-    },
-    {
-      "after": [
-        "\"",
-        "_",
-        "X"
-      ],
-      "before": [
-        "X"
-      ]
-    },
-    {
-      "after": [
-        "\"",
-        "_",
-        "d",
-        "P"
-      ],
-      "before": [
-        "p"
-      ]
-    },
-    {
-      "after": [
-        "<",
-        "g",
-        "v"
-      ],
-      "before": [
-        "<"
-      ]
-    },
-    {
-      "after": [
-        ">",
-        "g",
-        "v"
-      ],
-      "before": [
-        ">"
-      ]
-    },
-    {
-      "after": [
-        "\"",
-        "+",
-        "y"
-      ],
-      "before": [
-        "<C-c>"
-      ]
-    },
-    {
-      "after": [
-        "\"",
-        "+",
-        "y"
-      ],
-      "before": [
-        "<leader>",
-        "y"
-      ]
-    },
-    {
-      "after": [
-        "\"",
-        "+",
-        "p"
-      ],
-      "before": [
-        "<leader>",
-        "p"
-      ]
-    },
-    {
-      "after": [
-        "\"",
-        "+",
-        "Y"
-      ],
-      "before": [
-        "<leader>",
-        "Y"
-      ]
-    },
-    {
-      "after": [
-        "\"",
-        "+",
-        "P"
-      ],
-      "before": [
-        "<leader>",
-        "P"
-      ]
-    }
-  ],
+  "vim.vimrc.enable": true,
+  "vim.vimrc.path": "~/.config/nvim/plugin/keymaps.vim",
   "vim.visualstar": true,
   "workbench.colorTheme": "Dark Modern",
   "workbench.iconTheme": "material-icon-theme",
-  "workbench.list.smoothScrolling": true,
   "workbench.tree.indent": 20
 }
