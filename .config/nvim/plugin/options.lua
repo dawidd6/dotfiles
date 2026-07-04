@@ -1,5 +1,13 @@
 vim.opt.iskeyword:append("-")
-vim.opt.listchars = { tab = "» ", nbsp = "␣", trail = "·", lead = "·", leadmultispace = "|   " }
+vim.opt.listchars = {
+	leadmultispace = "|   ",
+	tab = "→ ",
+	nbsp = "␣",
+	lead = "␣",
+	trail = "•",
+	extends = "⟩", -- »
+	precedes = "⟨", -- «
+}
 
 vim.o.cmdheight = 0
 vim.o.confirm = true
