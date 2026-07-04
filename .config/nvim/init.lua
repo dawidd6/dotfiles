@@ -29,6 +29,8 @@ vim.pack.add({
 
 	{ src = "https://github.com/saghen/blink.lib" },
 	{ src = "https://github.com/saghen/blink.cmp" },
+
+	{ src = "https://github.com/folke/sidekick.nvim" },
 })
 
 require("vscode").setup()
@@ -136,6 +138,8 @@ require("blink.cmp").setup({
 	},
 })
 
+require("sidekick").setup()
+
 vim.diagnostic.config({
 	update_in_insert = false,
 	severity_sort = true,
@@ -203,11 +207,13 @@ vim.lsp.enable({
 	"yamlls",
 })
 
-vim.api.nvim_create_user_command("CopyRelativeFilePath", function()
-	local path = vim.fn.expand("%")
-	vim.fn.setreg("+", path)
-	vim.notify(path)
-end, { desc = "Print and copy relative file path" })
+vim.api.nvim_create_user_command("VerticalWindowResize", function(opts)
+	vim.cmd("vertical resize " .. vim.opt.columns:get() * (opts.args / 100.0))
+end, { nargs = "*", desc = "Resize window vertically by given percent" })
+
+vim.api.nvim_create_user_command("HorizontalWindowResize", function(opts)
+	vim.cmd("resize " .. ((vim.opt.lines:get() - vim.opt.cmdheight:get()) * (opts.args / 100.0)))
+end, { nargs = "*", desc = "Resize window horizontally by given percent" })
 
 vim.api.nvim_create_user_command("CopyAbsoluteFilePath", function()
 	local path = vim.fn.expand("%:p")
@@ -215,7 +221,13 @@ vim.api.nvim_create_user_command("CopyAbsoluteFilePath", function()
 	vim.notify(path)
 end, { desc = "Print and copy absolute file path" })
 
-vim.api.nvim_create_user_command("CopyGitRootDirPath", function()
+vim.api.nvim_create_user_command("CopyRelativeFilePath", function()
+	local path = vim.fn.expand("%")
+	vim.fn.setreg("+", path)
+	vim.notify(path)
+end, { desc = "Print and copy relative file path" })
+
+vim.api.nvim_create_user_command("CopyGitAbsoluteDirPath", function()
 	local path = vim.fs.root(0, { ".git" })
 	if not path then
 		vim.notify("Not in git repository")
@@ -223,11 +235,24 @@ vim.api.nvim_create_user_command("CopyGitRootDirPath", function()
 	end
 	vim.fn.setreg("+", path)
 	vim.notify(path)
-end, { desc = "Print and copy git root path" })
+end, { desc = "Print and copy git absolute dir path" })
+
+vim.api.nvim_create_user_command("CopyGitRelativeFilePath", function()
+	local git_root_path = vim.fs.root(0, { ".git" })
+	local file_path = vim.fn.expand("%:p")
+	if not git_root_path then
+		vim.notify("Not in git repository")
+		return
+	end
+	local path = file_path:gsub("^" .. vim.pesc(git_root_path) .. "/", "")
+	vim.fn.setreg("+", path)
+	vim.notify(path)
+end, { desc = "Print and copy git relative file path" })
 
 vim.api.nvim_create_user_command("Terminal", function()
 	local path = vim.fs.root(0, { ".git" }) or vim.fn.expand("%:p:h")
-	vim.cmd("edit term://" .. path .. "//$SHELL")
+	local shell = vim.fn.fnamemodify(vim.env.SHELL or vim.o.shell, ":t")
+	vim.cmd("edit " .. vim.fn.fnameescape("term://" .. path .. "//" .. shell))
 	vim.cmd("startinsert")
 end, { desc = "Open terminal buffer in git root dir or file dir" })
 
@@ -319,9 +344,11 @@ vim.api.nvim_create_autocmd("VimResized", {
 
 vim.api.nvim_create_autocmd("TermClose", {
 	callback = function(args)
-		if vim.api.nvim_buf_is_valid(args.buf) then
-			vim.api.nvim_buf_delete(args.buf, { force = true })
-		end
+		vim.schedule(function()
+			if vim.api.nvim_buf_is_valid(args.buf) then
+				pcall(vim.api.nvim_buf_delete, args.buf, { force = true })
+			end
+		end)
 	end,
 	group = vim.api.nvim_create_augroup("terminal-autoclose", { clear = true }),
 	desc = "Terminal buffer is automatically deleted when process ends",
@@ -374,17 +401,23 @@ vim.keymap.set({ "n", "v" }, "<Leader>y", '"+y', { desc = "Copy to system clipbo
 vim.keymap.set({ "n", "v" }, "<Leader>Y", '"+Y', { desc = "Copy to system clipboard", silent = true })
 vim.keymap.set({ "n", "v" }, "<Leader>p", '"+p', { desc = "Paste from system clipboard", silent = true })
 vim.keymap.set({ "n", "v" }, "<Leader>P", '"+P', { desc = "Paste from system clipboard", silent = true })
+
 vim.keymap.set("n", "s", "ys", { desc = "Surround quicker and easier", silent = true, remap = true })
 vim.keymap.set("v", "s", "S", { desc = "Surround quicker and easier", silent = true, remap = true })
 
-vim.keymap.set("n", "<leader><leader>", ":Telescope file_browser<CR>", { desc = "Browse files" })
-vim.keymap.set("n", "<leader>sb", ":Telescope buffers<CR>", { desc = "Search buffers" })
-vim.keymap.set("n", "<leader>sc", ":Telescope commands<CR>", { desc = "Search commands" })
-vim.keymap.set("n", "<leader>sd", ":Telescope diagnostics<CR>", { desc = "Search diagnostics" })
-vim.keymap.set("n", "<leader>sf", ":Telescope find_files<CR>", { desc = "Search files" })
-vim.keymap.set("n", "<leader>sh", ":Telescope help_tags<CR>", { desc = "Search help" })
-vim.keymap.set("n", "<leader>sk", ":Telescope keymaps<CR>", { desc = "Search keymaps" })
-vim.keymap.set("n", "<leader>so", ":Telescope oldfiles<CR>", { desc = "Search old files" })
-vim.keymap.set("n", "<leader>sr", ":Telescope resume<CR>", { desc = "Search resume" })
-vim.keymap.set("n", "<leader>ss", ":Telescope live_grep<CR>", { desc = "Search string" })
-vim.keymap.set({ "n", "v" }, "<leader>sw", ":Telescope grep_string<CR>", { desc = "Search word" })
+vim.keymap.set("n", "<C-Left>", "<C-w><C-h>", { desc = "Move focus to the left window" })
+vim.keymap.set("n", "<C-Right>", "<C-w><C-l>", { desc = "Move focus to the right window" })
+vim.keymap.set("n", "<C-Down>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
+vim.keymap.set("n", "<C-Up>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
+
+vim.keymap.set("n", "<Leader><Leader>", ":Telescope file_browser<CR>", { desc = "Browse files" })
+vim.keymap.set("n", "<Leader>sb", ":Telescope buffers<CR>", { desc = "Search buffers" })
+vim.keymap.set("n", "<Leader>sc", ":Telescope commands<CR>", { desc = "Search commands" })
+vim.keymap.set("n", "<Leader>sd", ":Telescope diagnostics<CR>", { desc = "Search diagnostics" })
+vim.keymap.set("n", "<Leader>sf", ":Telescope find_files<CR>", { desc = "Search files" })
+vim.keymap.set("n", "<Leader>sh", ":Telescope help_tags<CR>", { desc = "Search help" })
+vim.keymap.set("n", "<Leader>sk", ":Telescope keymaps<CR>", { desc = "Search keymaps" })
+vim.keymap.set("n", "<Leader>so", ":Telescope oldfiles<CR>", { desc = "Search old files" })
+vim.keymap.set("n", "<Leader>sr", ":Telescope resume<CR>", { desc = "Search resume" })
+vim.keymap.set("n", "<Leader>ss", ":Telescope live_grep<CR>", { desc = "Search string" })
+vim.keymap.set({ "n", "v" }, "<Leader>sw", ":Telescope grep_string<CR>", { desc = "Search word" })
