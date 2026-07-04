@@ -36,7 +36,7 @@ if status is-interactive
     abbr d 'cd ~/.dotfiles'
     abbr ef 'v ~/.config/fish/config.fish'
     abbr eg 'v ~/.config/git/config'
-    abbr en 'v ~/.config/nvim/init.lua'
+    abbr en 'v ~/.config/nvim/'
     abbr et 'v ~/.config/tmux/tmux.conf'
     abbr g git
     abbr ga 'git add'
