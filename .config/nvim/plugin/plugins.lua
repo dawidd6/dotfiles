@@ -19,8 +19,8 @@ vim.pack.add({
 	{ src = "https://github.com/neovim/nvim-lspconfig" },
 
 	{ src = "https://github.com/nvim-telescope/telescope.nvim" },
-	{ src = "https://github.com/nvim-telescope/telescope-ui-select.nvim" },
-	{ src = "https://github.com/nvim-telescope/telescope-file-browser.nvim" },
+
+	{ src = "https://github.com/nvim-tree/nvim-tree.lua" },
 
 	{ src = "https://github.com/L3MON4D3/LuaSnip" },
 	{ src = "https://github.com/rafamadriz/friendly-snippets" },
@@ -28,7 +28,7 @@ vim.pack.add({
 	{ src = "https://github.com/saghen/blink.lib" },
 	{ src = "https://github.com/saghen/blink.cmp" },
 
-	{ src = "https://github.com/folke/sidekick.nvim" },
+	{ src = "https://github.com/olimorris/codecompanion.nvim" },
 })
 
 require("vscode").setup()
@@ -37,6 +37,7 @@ vim.cmd.colorscheme("vscode")
 require("lualine").setup({
 	options = {
 		section_separators = "",
+		component_separators = "",
 	},
 	sections = {
 		lualine_a = { "mode" },
@@ -45,6 +46,10 @@ require("lualine").setup({
 		lualine_x = { "encoding", "fileformat", "filetype", "lsp_status" },
 		lualine_y = { "progress" },
 		lualine_z = { "location", "searchcount", "selectioncount" },
+	},
+	tabline = {
+		lualine_c = { { "buffers", show_filename_only = false } },
+		lualine_x = { "tabs" },
 	},
 })
 require("which-key").setup({
@@ -76,24 +81,21 @@ require("telescope").setup({
 			prompt_position = "top",
 		},
 	},
-	extensions = {
-		["ui-select"] = { require("telescope.themes").get_dropdown() },
-		["file_browser"] = {
-			path = "%:p:h",
-			hijack_netrw = true,
-			select_buffer = true,
-			grouped = true,
+	pickers = {
+		find_files = {
 			hidden = true,
-			mappings = {
-				["n"] = {
-					["<bs>"] = require("telescope._extensions.file_browser.actions").goto_parent_dir,
-				},
-			},
 		},
 	},
 })
-require("telescope").load_extension("ui-select")
-require("telescope").load_extension("file_browser")
+
+require("nvim-tree").setup({
+	update_focused_file = {
+		enable = true,
+		update_root = {
+			enable = true,
+		},
+	},
+})
 
 require("luasnip").setup()
 require("luasnip.loaders.from_vscode").lazy_load()
@@ -109,11 +111,10 @@ require("blink.cmp").setup({
 	cmdline = {
 		completion = {
 			menu = { auto_show = false },
-			list = { selection = { auto_insert = false } },
 		},
 		keymap = {
 			["<C-e>"] = { "cancel", "fallback" },
-			["<CR>"] = { "accept", "fallback" },
+			["<CR>"] = { "accept_and_enter", "fallback" },
 			["<Tab>"] = { "show_and_insert_or_accept_single", "select_next" },
 			["<Up>"] = { "select_prev", "fallback" },
 			["<Down>"] = { "select_next", "fallback" },
@@ -150,7 +151,7 @@ require("blink.cmp").setup({
 	},
 })
 
-require("sidekick").setup()
+require("codecompanion").setup()
 
 vim.diagnostic.config({
 	update_in_insert = false,
