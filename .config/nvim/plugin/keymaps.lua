@@ -1,5 +1,5 @@
-vim.keymap.set("n", "<Space>", ":Telescope buffers<CR>", { desc = "Find buffers" })
-vim.keymap.set("n", "-", ":Telescope file_browser<CR>", { desc = "Browse files" })
+vim.keymap.set("n", "<Leader>b", ":Telescope buffers<CR>", { desc = "Find buffers" })
+--vim.keymap.set("n", "-", ":Telescope file_browser<CR>", { desc = "Browse files" })
 
 vim.keymap.set("n", "<Leader>fc", ":Telescope commands<CR>", { desc = "Find commands" })
 vim.keymap.set("n", "<Leader>fd", ":Telescope diagnostics<CR>", { desc = "Find diagnostics" })

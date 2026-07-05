@@ -95,6 +95,36 @@ require("nvim-tree").setup({
 			enable = true,
 		},
 	},
+	on_attach = function(bufnr)
+		local api = require("nvim-tree.api")
+		local function opts(desc)
+			return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
+		end
+
+		api.config.mappings.default_on_attach(bufnr)
+
+		vim.keymap.set("n", "o", function()
+			api.node.open.edit(nil, { focus = true })
+		end, opts("Open No Focus"))
+
+		vim.keymap.set("x", "o", function()
+			local nodes = require("nvim-tree.utils").get_visual_nodes() or {}
+			for _, node in ipairs(nodes) do
+				if node.type == "file" or node.type == "link" then
+					api.node.open.edit(node, { focus = true })
+				end
+			end
+		end, opts("Open No Focus Selected Files"))
+
+		vim.keymap.set("x", "<CR>", function()
+			local nodes = require("nvim-tree.utils").get_visual_nodes() or {}
+			for _, node in ipairs(nodes) do
+				if node.type == "file" or node.type == "link" then
+					api.node.open.edit(node)
+				end
+			end
+		end, opts("Open Selected Files"))
+	end,
 })
 
 require("luasnip").setup()
