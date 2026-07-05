@@ -184,7 +184,30 @@ require("blink.cmp").setup({
 	},
 })
 
-require("codecompanion").setup()
+require("codecompanion").setup({
+	interactions = {
+		cli = {
+			agent = "copilot",
+			agents = {
+				claude_code = {
+					cmd = "claude",
+					args = {},
+					description = "Anthropic Claude Code",
+				},
+				codex = {
+					cmd = "codex",
+					args = {},
+					description = "OpenAI Codex",
+				},
+				copilot = {
+					cmd = "copilot",
+					args = {},
+					description = "GitHub Copilot",
+				},
+			},
+		},
+	},
+})
 
 vim.diagnostic.config({
 	update_in_insert = false,

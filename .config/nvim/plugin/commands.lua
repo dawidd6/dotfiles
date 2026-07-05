@@ -6,11 +6,18 @@ vim.api.nvim_create_user_command("HorizontalWindowResize", function(opts)
 	vim.cmd("resize " .. ((vim.opt.lines:get() - vim.opt.cmdheight:get()) * (opts.args / 100.0)))
 end, { nargs = "*", desc = "Resize window horizontally by given percent" })
 
-vim.api.nvim_create_user_command("CopyAbsoluteFilePath", function()
+vim.api.nvim_create_user_command("CopyAbsoluteFilePath", function(opts)
 	local path = vim.fn.expand("%:p")
+	if opts.range > 0 then
+		if opts.line1 == opts.line2 then
+			path = path .. ":" .. opts.line1
+		else
+			path = path .. ":" .. opts.line1 .. "-" .. opts.line2
+		end
+	end
 	vim.fn.setreg("+", path)
 	vim.notify(path)
-end, { desc = "Print and copy absolute file path" })
+end, { range = true, desc = "Print and copy absolute file path with optional line range" })
 
 vim.api.nvim_create_user_command("CopyRelativeFilePath", function()
 	local path = vim.fn.expand("%")
