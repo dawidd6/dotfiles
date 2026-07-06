@@ -108,4 +108,9 @@ if status is-interactive
     fzf --fish | source
     starship init fish | source
     zoxide init fish --cmd=cd | source
+
+    # Mux
+    if not set -q TMUX
+        tmux new-session -A -s main
+    end
 end
