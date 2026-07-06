@@ -55,6 +55,9 @@ require("lualine").setup({
 require("which-key").setup({
 	preset = "helix",
 	delay = 0,
+	filter = function(mapping)
+		return mapping.desc and mapping.desc ~= ""
+	end,
 })
 
 require("nvim-surround").setup()
@@ -91,9 +94,6 @@ require("telescope").setup({
 require("nvim-tree").setup({
 	update_focused_file = {
 		enable = true,
-		update_root = {
-			enable = true,
-		},
 	},
 	view = {
 		width = 50,
@@ -189,7 +189,7 @@ require("codecompanion").setup({
 		cli = {
 			agent = "copilot",
 			agents = {
-				claude_code = {
+				claude = {
 					cmd = "claude",
 					args = {},
 					description = "Anthropic Claude Code",
