@@ -89,7 +89,8 @@ if status is-interactive
     abbr bbd 'brew bundle -g dump --force --formula --cask'
 
     # Aliases
-    alias v nvim
+    alias c 'cd (lf -print-last-dir)'
+    alias v 'nvim (lf -print-selection)'
     alias vi nvim
     alias vim nvim
     alias eza 'eza --group-directories-first --group --header --time-style=long-iso'
