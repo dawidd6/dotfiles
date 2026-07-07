@@ -10,6 +10,7 @@ vim.opt.listchars = {
 }
 
 vim.o.cmdheight = 0
+vim.o.breakindent = true
 vim.o.confirm = true
 vim.o.cursorline = true
 vim.o.expandtab = true
@@ -20,6 +21,7 @@ vim.o.foldlevelstart = 99
 vim.o.foldmethod = "indent"
 vim.o.ignorecase = true
 vim.o.inccommand = "split"
+vim.o.linebreak = true
 vim.o.list = true
 vim.o.mouse = "a"
 vim.o.number = true
@@ -37,5 +39,4 @@ vim.o.tabstop = 4
 vim.o.undofile = true
 vim.o.updatetime = 250
 vim.o.winborder = "rounded"
-vim.o.wrap = false
 vim.o.writebackup = false

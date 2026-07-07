@@ -54,6 +54,13 @@ vim.api.nvim_create_autocmd("FileType", {
 	desc = "Don't continue comments on newlines",
 })
 
+vim.api.nvim_create_autocmd("CmdwinEnter", {
+	callback = function(args)
+		vim.b[args.buf].completion = false
+	end,
+	desc = "Disable completion in command-line window",
+})
+
 vim.api.nvim_create_autocmd("BufWritePre", {
 	callback = function()
 		local save_cursor = vim.fn.getpos(".")

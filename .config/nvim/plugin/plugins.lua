@@ -20,6 +20,7 @@ vim.pack.add({
 
 	{ src = "https://github.com/nvim-telescope/telescope.nvim" },
 
+	{ src = "https://github.com/MagicDuck/grug-far.nvim" },
 	{ src = "https://github.com/nvim-tree/nvim-tree.lua" },
 
 	{ src = "https://github.com/L3MON4D3/LuaSnip" },
@@ -27,8 +28,6 @@ vim.pack.add({
 
 	{ src = "https://github.com/saghen/blink.lib" },
 	{ src = "https://github.com/saghen/blink.cmp" },
-
-	{ src = "https://github.com/olimorris/codecompanion.nvim" },
 })
 
 require("vscode").setup()
@@ -38,17 +37,29 @@ require("lualine").setup({
 	options = {
 		section_separators = "",
 		component_separators = "",
+		disabled_filetypes = {
+			statusline = { "NvimTree" },
+		},
 	},
 	sections = {
 		lualine_a = { "mode" },
 		lualine_b = { "branch", "diff", "diagnostics" },
-		lualine_c = { { "filename", path = 1 } },
+		lualine_c = { { "filename", path = 3 } },
 		lualine_x = { "encoding", "fileformat", "filetype", "lsp_status" },
 		lualine_y = { "progress" },
 		lualine_z = { "location", "searchcount", "selectioncount" },
 	},
 	tabline = {
-		lualine_c = { { "buffers", show_filename_only = false } },
+		lualine_c = {
+			{
+				"buffers",
+				show_filename_only = true,
+				ignore_focus = { "NvimTree" },
+				filetype_names = {
+					NvimTree = "",
+				},
+			},
+		},
 		lualine_x = { "tabs" },
 	},
 })
@@ -91,6 +102,7 @@ require("telescope").setup({
 	},
 })
 
+require("grug-far").setup()
 require("nvim-tree").setup({
 	update_focused_file = {
 		enable = true,
@@ -181,31 +193,6 @@ require("blink.cmp").setup({
 		["<Down>"] = { "select_next", "fallback" },
 		["<C-d>"] = { "scroll_documentation_down", "fallback" },
 		["<C-u>"] = { "scroll_documentation_up", "fallback" },
-	},
-})
-
-require("codecompanion").setup({
-	interactions = {
-		cli = {
-			agent = "copilot",
-			agents = {
-				claude = {
-					cmd = "claude",
-					args = {},
-					description = "Anthropic Claude Code",
-				},
-				codex = {
-					cmd = "codex",
-					args = {},
-					description = "OpenAI Codex",
-				},
-				copilot = {
-					cmd = "copilot",
-					args = {},
-					description = "GitHub Copilot",
-				},
-			},
-		},
 	},
 })
 

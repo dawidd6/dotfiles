@@ -1,51 +1,51 @@
 " Keymaps in this file are for both NeoVim and VSCodeVim
 
-xnoremap p "_dP
+xnoremap <silent> p "_dP
 
-nnoremap x "_x
-xnoremap x "_x
-nnoremap X "_X
-xnoremap X "_X
+nnoremap <silent> x "_x
+xnoremap <silent> x "_x
+nnoremap <silent> X "_X
+xnoremap <silent> X "_X
 
-nnoremap c "_c
-nnoremap C "_C
-nnoremap cc "_cc
-xnoremap c "_c
+nnoremap <silent> c "_c
+nnoremap <silent> C "_C
+nnoremap <silent> cc "_cc
+xnoremap <silent> c "_c
 
-xnoremap <C-c> "+y
+xnoremap <silent> <C-c> "+y
 
-nnoremap <Esc> :nohlsearch<CR>
+nnoremap <silent> <Esc> :nohlsearch<CR>
 
-tnoremap <Esc><Esc> <C-\><C-n>
+tnoremap <silent> <Esc><Esc> <C-\><C-n>
 
-xnoremap < <gv
-xnoremap > >gv
+xnoremap <silent> < <gv
+xnoremap <silent> > >gv
 
-nnoremap <Leader>y "+y
-xnoremap <Leader>y "+y
-nnoremap <Leader>Y "+Y
-xnoremap <Leader>Y "+Y
-nnoremap <Leader>p "+p
-xnoremap <Leader>p "+p
-nnoremap <Leader>P "+P
-xnoremap <Leader>P "+P
+nnoremap <silent> <Leader>y "+y
+xnoremap <silent> <Leader>y "+y
+nnoremap <silent> <Leader>Y "+Y
+xnoremap <silent> <Leader>Y "+Y
+nnoremap <silent> <Leader>p "+p
+xnoremap <silent> <Leader>p "+p
+nnoremap <silent> <Leader>P "+P
+xnoremap <silent> <Leader>P "+P
 
-nmap s ys
-xmap s S
+nmap <silent> s ys
+xmap <silent> s S
 
-nnoremap <C-Left> <C-w><C-h>
-nnoremap <C-Right> <C-w><C-l>
-nnoremap <C-Down> <C-w><C-j>
-nnoremap <C-Up> <C-w><C-k>
+nnoremap <silent> <C-Left> <C-w><C-h>
+nnoremap <silent> <C-Right> <C-w><C-l>
+nnoremap <silent> <C-Down> <C-w><C-j>
+nnoremap <silent> <C-Up> <C-w><C-k>
 
-nnoremap <Tab> :bnext<CR>
-nnoremap <S-Tab> :bprevious<CR>
+nnoremap <silent> <Tab> :bnext<CR>
+nnoremap <silent> <S-Tab> :bprevious<CR>
 
-nnoremap n nzzzv
-nnoremap N Nzzzv
+nnoremap <silent> n nzzzv
+nnoremap <silent> N Nzzzv
 
-nnoremap <C-s> :write<CR>
-inoremap <C-s> <Esc>:write<CR>
+nnoremap <silent> <C-s> :write<CR>
+inoremap <silent> <C-s> <Esc>:write<CR>
 
-nnoremap <C-d> <C-d>zz
-nnoremap <C-u> <C-u>zz
+nnoremap <silent> <C-d> <C-d>zz
+nnoremap <silent> <C-u> <C-u>zz
