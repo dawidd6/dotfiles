@@ -34,10 +34,10 @@ if status is-interactive
     abbr P wl-paste
     abbr e exit
     abbr d 'cd ~/.dotfiles'
-    abbr ef 'v ~/.config/fish/config.fish'
-    abbr eg 'v ~/.config/git/config'
-    abbr en 'v ~/.config/nvim/'
-    abbr et 'v ~/.config/tmux/tmux.conf'
+    abbr ef 'nvim ~/.config/fish/config.fish'
+    abbr eg 'nvim ~/.config/git/config'
+    abbr en 'nvim ~/.config/nvim/'
+    abbr et 'nvim ~/.config/tmux/tmux.conf'
     abbr g git
     abbr ga 'git add'
     abbr gaa 'git add -A'
