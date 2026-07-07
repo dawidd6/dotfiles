@@ -2,11 +2,15 @@ set hidden true
 set icons true
 set promptfmt "\033[32;1m%d\033[0m\033[1m%f\033[0m"
 
-cmd quit-print ${{
+cmd enter ${{
     if [ "$lf_flag_print_selection" = "true" ]; then
         printf '%s\n' "$fx" > "/proc/$id/fd/1"
+        lf -remote "send $id quit"
+    elif [ "$lf_flag_print_last_dir" = "true" ]; then
+        lf -remote "send $id quit"
+    else
+        "$EDITOR" "$f"
     fi
-    lf -remote "send $id quit"
 }}
 
-map <enter> quit-print
+map <enter> enter
