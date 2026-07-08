@@ -112,6 +112,6 @@ if status is-interactive
 
     # Mux
     if not set -q TMUX
-        tmux new-session -A -s main
+        tmux new-session -A
     end
 end
