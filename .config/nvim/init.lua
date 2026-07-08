@@ -4,6 +4,7 @@ vim.loader.enable()
 vim.pack.add({
 	{ src = "https://github.com/nvim-lua/plenary.nvim" },
 	{ src = "https://github.com/nvim-tree/nvim-web-devicons" },
+
 	{ src = "https://github.com/mosheavni/yaml-companion.nvim" },
 	{ src = "https://github.com/b0o/SchemaStore.nvim" },
 
@@ -22,8 +23,8 @@ vim.pack.add({
 	{ src = "https://github.com/neovim/nvim-lspconfig" },
 
 	{ src = "https://github.com/nvim-telescope/telescope.nvim" },
-
 	{ src = "https://github.com/MagicDuck/grug-far.nvim" },
+
 	{ src = "https://github.com/nvim-tree/nvim-tree.lua" },
 
 	{ src = "https://github.com/L3MON4D3/LuaSnip" },
@@ -104,8 +105,16 @@ require("telescope").setup({
 		},
 	},
 })
-
 require("grug-far").setup()
+
+local nvim_tree_api = require("nvim-tree.api")
+local nvim_tree_utils = require("nvim-tree.utils")
+nvim_tree_api.events.subscribe(nvim_tree_api.events.Event.TreeOpen, function()
+	if vim.t["filetree_width"] ~= nil then
+		local winid = nvim_tree_api.tree.winid()
+		vim.api.nvim_win_set_width(winid, vim.t["filetree_width"])
+	end
+end)
 require("nvim-tree").setup({
 	update_focused_file = {
 		enable = true,
@@ -114,31 +123,30 @@ require("nvim-tree").setup({
 		width = 50,
 	},
 	on_attach = function(bufnr)
-		local api = require("nvim-tree.api")
 		local function opts(desc)
 			return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
 		end
 
-		api.config.mappings.default_on_attach(bufnr)
+		nvim_tree_api.config.mappings.default_on_attach(bufnr)
 
 		vim.keymap.set("n", "o", function()
-			api.node.open.edit(nil, { focus = true })
+			nvim_tree_api.node.open.edit(nil, { focus = true })
 		end, opts("Open No Focus"))
 
 		vim.keymap.set("x", "o", function()
-			local nodes = require("nvim-tree.utils").get_visual_nodes() or {}
+			local nodes = nvim_tree_utils.get_visual_nodes() or {}
 			for _, node in ipairs(nodes) do
 				if node.type == "file" or node.type == "link" then
-					api.node.open.edit(node, { focus = true })
+					nvim_tree_api.node.open.edit(node, { focus = true })
 				end
 			end
 		end, opts("Open No Focus Selected Files"))
 
 		vim.keymap.set("x", "<CR>", function()
-			local nodes = require("nvim-tree.utils").get_visual_nodes() or {}
+			local nodes = nvim_tree_utils.get_visual_nodes() or {}
 			for _, node in ipairs(nodes) do
 				if node.type == "file" or node.type == "link" then
-					api.node.open.edit(node)
+					nvim_tree_api.node.open.edit(node)
 				end
 			end
 		end, opts("Open Selected Files"))
@@ -267,6 +275,17 @@ vim.lsp.enable({
 })
 
 -- Autocommands
+vim.api.nvim_create_autocmd("WinResized", {
+	pattern = "*",
+	callback = function()
+		local winid = nvim_tree_api.tree.winid()
+		if winid ~= nil and vim.tbl_contains(vim.v.event["windows"], winid) then
+			vim.t["filetree_width"] = vim.api.nvim_win_get_width(winid)
+		end
+	end,
+	desc = "Remember file explorer window width",
+})
+
 vim.api.nvim_create_autocmd("User", {
 	pattern = "BlinkCmpAccept",
 	callback = function(ev)
@@ -386,13 +405,9 @@ vim.api.nvim_create_autocmd({ "BufLeave", "FocusLost" }, {
 })
 
 -- Commands
-vim.api.nvim_create_user_command("VerticalWindowResize", function(opts)
+vim.api.nvim_create_user_command("ResizeWindow", function(opts)
 	vim.cmd("vertical resize " .. vim.opt.columns:get() * (opts.args / 100.0))
 end, { nargs = "*", desc = "Resize window vertically by given percent" })
-
-vim.api.nvim_create_user_command("HorizontalWindowResize", function(opts)
-	vim.cmd("resize " .. ((vim.opt.lines:get() - vim.opt.cmdheight:get()) * (opts.args / 100.0)))
-end, { nargs = "*", desc = "Resize window horizontally by given percent" })
 
 vim.api.nvim_create_user_command("CopyAbsoluteFilePath", function(opts)
 	local path = vim.fn.expand("%:p")
