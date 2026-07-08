@@ -557,12 +557,12 @@ vim.keymap.set("n", "<Leader>H", "<cmd>Telescope help_tags<CR>", { desc = "Fuzzy
 vim.keymap.set("n", "<Leader>K", "<cmd>Telescope keymaps<CR>", { desc = "Fuzzy find keymaps" })
 vim.keymap.set("n", "<Leader>O", "<cmd>Telescope oldfiles<CR>", { desc = "Fuzzy find old files" })
 
+vim.keymap.set("n", "<Leader>b", "<cmd>Telescope buffers<CR>", { desc = "Fuzzy find buffer" })
 vim.keymap.set("n", "<Leader>f", "<cmd>Telescope find_files<CR>", { desc = "Fuzzy find files" })
 vim.keymap.set("n", "<Leader>r", "<cmd>Telescope resume<CR>", { desc = "Resume fuzzy search" })
 vim.keymap.set("n", "<Leader>s", "<cmd>Telescope live_grep<CR>", { desc = "Fuzzy find string" })
 vim.keymap.set({ "n", "x" }, "<Leader>w", "<cmd>Telescope grep_string<CR>", { desc = "Fuzzy find word" })
 
-vim.keymap.set("n", "<Space>", "<cmd>Telescope buffers<CR>", { desc = "Fuzzy find buffer" })
 vim.keymap.set("x", "<Leader>/", "<cmd>GrugFarWithin<CR>", { desc = "Search and replace" })
 vim.keymap.set("n", "<Leader>/", "<cmd>GrugFar<CR>", { desc = "Search and replace" })
 vim.keymap.set("n", "<Leader><Leader>", function()
