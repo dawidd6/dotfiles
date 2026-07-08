@@ -32,6 +32,7 @@ if status is-interactive
     # Abbrs
     abbr C wl-copy
     abbr P wl-paste
+    abbr F 'fzf | wl-copy'
     abbr e exit
     abbr d 'cd ~/.dotfiles'
     abbr ef 'nvim ~/.config/fish/config.fish'
@@ -89,8 +90,9 @@ if status is-interactive
     abbr bbd 'brew bundle -g dump --force --formula --cask'
 
     # Aliases
-    alias c 'cd (lf -print-last-dir)'
-    alias v 'nvim (lf -print-selection)'
+    alias C 'cd (lf -print-last-dir)'
+    alias V 'nvim (lf -print-selection)'
+    alias v nvim
     alias vi nvim
     alias vim nvim
     alias eza 'eza --group-directories-first --group --header --time-style=long-iso'
