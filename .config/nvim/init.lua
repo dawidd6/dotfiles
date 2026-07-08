@@ -5,6 +5,9 @@ vim.pack.add({
 	{ src = "https://github.com/nvim-lua/plenary.nvim" },
 	{ src = "https://github.com/nvim-tree/nvim-web-devicons" },
 
+	{ src = "https://github.com/OXY2DEV/markview.nvim" },
+	-- { src = "https://github.com/MeanderingProgrammer/render-markdown.nvim" },
+
 	{ src = "https://github.com/mosheavni/yaml-companion.nvim" },
 	{ src = "https://github.com/b0o/SchemaStore.nvim" },
 
