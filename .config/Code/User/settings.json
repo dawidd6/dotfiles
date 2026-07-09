@@ -14,17 +14,6 @@
   "files.trimFinalNewlines": true,
   "files.trimTrailingWhitespace": true,
   "search.followSymlinks": false,
-  "vim.handleKeys": {
-    "<C-a>": false,
-    "<C-f>": false,
-    "<C-s>": false
-  },
-  "vim.highlightedyank.enable": true,
-  "vim.hlsearch": true,
-  "vim.incsearch": true,
-  "vim.vimrc.enable": true,
-  "vim.vimrc.path": "~/.config/nvim/plugin/keymaps.vim",
-  "vim.visualstar": true,
   "workbench.colorTheme": "Dark Modern",
   "workbench.iconTheme": "material-icon-theme",
   "workbench.tree.indent": 20
