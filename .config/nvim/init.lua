@@ -6,7 +6,6 @@ vim.pack.add({
 	{ src = "https://github.com/nvim-tree/nvim-web-devicons" },
 
 	{ src = "https://github.com/OXY2DEV/markview.nvim" },
-	-- { src = "https://github.com/MeanderingProgrammer/render-markdown.nvim" },
 
 	{ src = "https://github.com/mosheavni/yaml-companion.nvim" },
 	{ src = "https://github.com/b0o/SchemaStore.nvim" },
@@ -45,7 +44,7 @@ require("lualine").setup({
 		section_separators = "",
 		component_separators = "",
 		disabled_filetypes = {
-			statusline = { "NvimTree" },
+			statusline = { "NvimTree", "grug-far" },
 		},
 	},
 	sections = {
@@ -55,19 +54,6 @@ require("lualine").setup({
 		lualine_x = { "encoding", "fileformat", "filetype", "lsp_status" },
 		lualine_y = { "progress" },
 		lualine_z = { "location", "searchcount", "selectioncount" },
-	},
-	tabline = {
-		lualine_c = {
-			{
-				"buffers",
-				show_filename_only = true,
-				ignore_focus = { "NvimTree" },
-				filetype_names = {
-					NvimTree = "",
-				},
-			},
-		},
-		lualine_x = { "tabs" },
 	},
 })
 require("which-key").setup({
@@ -108,10 +94,25 @@ require("telescope").setup({
 		},
 	},
 })
-require("grug-far").setup()
+local grug_far_instance_name = "search-and-replace"
+
+require("grug-far").setup({
+	instanceName = grug_far_instance_name,
+	transient = true,
+	visualSelectionUsage = "auto-detect",
+	windowCreationCommand = "topleft vsplit",
+	helpLine = {
+		enabled = false,
+	},
+	keymaps = {
+		close = { n = "q" },
+		applyNext = { n = "<space>" },
+	},
+})
 
 local nvim_tree_api = require("nvim-tree.api")
 local nvim_tree_utils = require("nvim-tree.utils")
+
 nvim_tree_api.events.subscribe(nvim_tree_api.events.Event.TreeOpen, function()
 	if vim.t["filetree_width"] ~= nil then
 		local winid = nvim_tree_api.tree.winid()
@@ -126,15 +127,11 @@ require("nvim-tree").setup({
 		width = 50,
 	},
 	on_attach = function(bufnr)
-		local function opts(desc)
-			return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
-		end
-
 		nvim_tree_api.config.mappings.default_on_attach(bufnr)
 
 		vim.keymap.set("n", "o", function()
 			nvim_tree_api.node.open.edit(nil, { focus = true })
-		end, opts("Open No Focus"))
+		end, { desc = "nvim-tree: Open No Focus", buffer = bufnr, noremap = true, silent = true, nowait = true })
 
 		vim.keymap.set("x", "o", function()
 			local nodes = nvim_tree_utils.get_visual_nodes() or {}
@@ -143,7 +140,13 @@ require("nvim-tree").setup({
 					nvim_tree_api.node.open.edit(node, { focus = true })
 				end
 			end
-		end, opts("Open No Focus Selected Files"))
+		end, {
+			desc = "nvim-tree: Open No Focus Selected Files",
+			buffer = bufnr,
+			noremap = true,
+			silent = true,
+			nowait = true,
+		})
 
 		vim.keymap.set("x", "<CR>", function()
 			local nodes = nvim_tree_utils.get_visual_nodes() or {}
@@ -152,7 +155,7 @@ require("nvim-tree").setup({
 					nvim_tree_api.node.open.edit(node)
 				end
 			end
-		end, opts("Open Selected Files"))
+		end, { desc = "nvim-tree: Open Selected Files", buffer = bufnr, noremap = true, silent = true, nowait = true })
 	end,
 })
 
@@ -287,6 +290,36 @@ vim.api.nvim_create_autocmd("WinResized", {
 		end
 	end,
 	desc = "Remember file explorer window width",
+})
+
+vim.api.nvim_create_autocmd({ "FileType", "BufWinEnter" }, {
+	callback = function(args)
+		local filetype = vim.bo[args.buf].filetype
+
+		if filetype == "grug-far" and nvim_tree_api.tree.is_visible() then
+			nvim_tree_api.tree.close()
+		elseif filetype == "NvimTree" then
+			local grug_far_buffers = {}
+			for _, winid in ipairs(vim.api.nvim_tabpage_list_wins(0)) do
+				local bufnr = vim.api.nvim_win_get_buf(winid)
+				if vim.bo[bufnr].filetype == "grug-far" then
+					grug_far_buffers[bufnr] = true
+				end
+			end
+			if next(grug_far_buffers) ~= nil then
+				vim.schedule(function()
+					local grug_far = require("grug-far")
+
+					for bufnr in pairs(grug_far_buffers) do
+						if vim.api.nvim_buf_is_valid(bufnr) then
+							grug_far.hide_instance(bufnr)
+						end
+					end
+				end)
+			end
+		end
+	end,
+	desc = "Keep file explorer and search and replace sidebars exclusive",
 })
 
 vim.api.nvim_create_autocmd("User", {
@@ -566,12 +599,20 @@ vim.keymap.set("n", "<Leader>r", "<cmd>Telescope resume<CR>", { desc = "Resume f
 vim.keymap.set("n", "<Leader>s", "<cmd>Telescope live_grep<CR>", { desc = "Fuzzy find string" })
 vim.keymap.set({ "n", "x" }, "<Leader>w", "<cmd>Telescope grep_string<CR>", { desc = "Fuzzy find word" })
 
-vim.keymap.set("x", "<Leader>/", "<cmd>GrugFarWithin<CR>", { desc = "Search and replace" })
-vim.keymap.set("n", "<Leader>/", "<cmd>GrugFar<CR>", { desc = "Search and replace" })
-vim.keymap.set("n", "<Leader><Leader>", function()
-	if vim.bo.filetype == "NvimTree" then
-		vim.cmd("NvimTreeClose")
+vim.keymap.set({ "n", "x" }, "<Leader><Leader>", function()
+	local grug_far = require("grug-far")
+	if vim.bo.filetype == "grug-far" then
+		grug_far.hide_instance(0)
+	elseif grug_far.has_instance(grug_far_instance_name) then
+		grug_far.get_instance(grug_far_instance_name):open()
 	else
-		vim.cmd("NvimTreeFocus")
+		grug_far.open({ instanceName = grug_far_instance_name })
+	end
+end, { desc = "Toggle search and replace" })
+vim.keymap.set("n", "<Space><Space>", function()
+	if vim.bo.filetype == "NvimTree" then
+		nvim_tree_api.tree.close()
+	else
+		nvim_tree_api.tree.open()
 	end
 end, { desc = "Toggle file tree focus" })
