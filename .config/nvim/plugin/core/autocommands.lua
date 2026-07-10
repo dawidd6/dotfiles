@@ -86,9 +86,3 @@ vim.api.nvim_create_autocmd({ "BufLeave", "FocusLost" }, {
 	end,
 	desc = "Automatically save buffer when focus is lost",
 })
-
-vim.api.nvim_create_autocmd("CursorHold", {
-	callback = function()
-		vim.diagnostic.open_float({ focus = false })
-	end,
-})
