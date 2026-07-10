@@ -41,26 +41,6 @@ vim.api.nvim_create_autocmd("FileType", {
 	desc = "Don't continue comments on newlines",
 })
 
-vim.api.nvim_create_autocmd("BufWritePre", {
-	callback = function(args)
-		local last = vim.api.nvim_buf_line_count(args.buf)
-		local last_nonblank = vim.fn.prevnonblank(last)
-		if last_nonblank < last then
-			vim.api.nvim_buf_set_lines(args.buf, last_nonblank, last, false, {})
-		end
-	end,
-	desc = "Trim excessive newlines at EOF",
-})
-
-vim.api.nvim_create_autocmd("BufWritePre", {
-	callback = function()
-		local save_cursor = vim.fn.getpos(".")
-		vim.cmd([[%s/\s\+$//e]])
-		vim.fn.setpos(".", save_cursor)
-	end,
-	desc = "Trim whitespace",
-})
-
 vim.api.nvim_create_autocmd("TextYankPost", {
 	callback = function()
 		vim.highlight.on_yank()

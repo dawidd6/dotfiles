@@ -10,5 +10,6 @@ require("conform").setup({
 	formatters_by_ft = {
 		lua = { "stylua" },
 		fish = { "fish_indent" },
+		["_"] = { "trim_whitespace", "trim_newlines" },
 	},
 })
