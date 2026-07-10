@@ -46,6 +46,16 @@ vim.api.nvim_create_user_command("Terminal", function()
 	vim.cmd("startinsert")
 end, { desc = "Open terminal buffer in git root dir or file dir" })
 
+vim.api.nvim_create_user_command("Sops", function()
+	local file_path = vim.fn.expand("%:p")
+
+	vim.cmd("enew")
+	vim.fn.termopen({ "sops", file_path }, {
+		cwd = vim.fn.fnamemodify(file_path, ":h"),
+	})
+	vim.cmd("startinsert")
+end, { desc = "Edit current file with sops" })
+
 vim.api.nvim_create_user_command("PackUpdate", function()
 	vim.pack.update()
 end, { desc = "Update all vim.pack plugins" })
