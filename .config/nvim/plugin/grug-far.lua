@@ -12,6 +12,9 @@ grug_far.setup({
 	helpLine = {
 		enabled = false,
 	},
+	openTargetWindow = {
+		preferredLocation = "right",
+	},
 	keymaps = {
 		close = { n = "q" },
 		applyNext = { n = "<space>" },
