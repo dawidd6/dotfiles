@@ -26,8 +26,9 @@ if status is-interactive
 
     # Exports
     export LANG='C.UTF-8'
-    export EDITOR='nvim'
     export PAGER='less'
+    export EDITOR='nvim'
+    export SOPS_EDITOR='nvim --cmd "let g:flatten_wait=1"'
 
     # Abbrs
     abbr C wl-copy
