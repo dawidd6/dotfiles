@@ -12,7 +12,19 @@ nvim_tree.setup({
 		enable = true,
 	},
 	view = {
-		width = 50,
+		float = {
+			enable = true,
+			open_win_config = function()
+				return {
+					relative = "editor",
+					row = 0,
+					col = 0,
+					width = vim.o.columns,
+					height = vim.o.lines - vim.o.cmdheight,
+					border = "none",
+				}
+			end,
+		},
 	},
 	on_attach = function(bufnr)
 		nvim_tree_api.config.mappings.default_on_attach(bufnr)
@@ -47,37 +59,6 @@ nvim_tree.setup({
 	end,
 })
 
-nvim_tree_api.events.subscribe(nvim_tree_api.events.Event.TreeOpen, function()
-	if vim.t["filetree_width"] ~= nil then
-		local winid = nvim_tree_api.tree.winid()
-		vim.api.nvim_win_set_width(winid, vim.t["filetree_width"])
-	end
-end)
-
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = "grug-far",
-	callback = function()
-		if nvim_tree_api.tree.is_visible() then
-			nvim_tree_api.tree.close()
-		end
-	end,
-	desc = "Keep file explorer and search and replace sidebars exclusive",
-})
-
-vim.api.nvim_create_autocmd("WinResized", {
-	pattern = "*",
-	callback = function()
-		local winid = nvim_tree_api.tree.winid()
-		if winid ~= nil and vim.tbl_contains(vim.v.event["windows"], winid) then
-			vim.t["filetree_width"] = vim.api.nvim_win_get_width(winid)
-		end
-	end,
-	desc = "Remember file explorer window width",
-})
-
-vim.keymap.set("n", "<Leader>ee", function()
+vim.keymap.set("n", "<Leader>e", function()
 	nvim_tree_api.tree.open()
-end, { desc = "Open file explorer" })
-vim.keymap.set("n", "<Leader>ec", function()
-	nvim_tree_api.tree.close()
-end, { desc = "Close file explorer" })
+end, { silent = true, desc = "Open file explorer" })

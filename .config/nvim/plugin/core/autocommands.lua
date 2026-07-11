@@ -69,9 +69,17 @@ vim.api.nvim_create_autocmd("VimResized", {
 vim.api.nvim_create_autocmd("TermClose", {
 	callback = function(args)
 		vim.schedule(function()
-			if vim.api.nvim_buf_is_valid(args.buf) then
-				pcall(vim.api.nvim_buf_delete, args.buf, { force = true })
+			if not vim.api.nvim_buf_is_valid(args.buf) then
+				return
 			end
+
+			for _, win in ipairs(vim.fn.win_findbuf(args.buf)) do
+				pcall(vim.api.nvim_win_call, win, function()
+					vim.cmd("buffer #")
+				end)
+			end
+
+			pcall(vim.api.nvim_buf_delete, args.buf, { force = true })
 		end)
 	end,
 	desc = "Terminal buffer is automatically deleted when process ends",

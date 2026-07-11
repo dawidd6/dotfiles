@@ -8,7 +8,7 @@ require("lualine").setup({
 		section_separators = "",
 		component_separators = "",
 		disabled_filetypes = {
-			statusline = { "NvimTree", "grug-far" },
+			statusline = { "NvimTree" },
 		},
 	},
 	sections = {
