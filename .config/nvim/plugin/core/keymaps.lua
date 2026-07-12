@@ -10,7 +10,7 @@ vim.keymap.set("x", "c", '"_c', { silent = true })
 vim.keymap.set("x", "<C-c>", '"+y', { silent = true })
 
 vim.keymap.set("n", "<Esc>", ":nohlsearch<CR>", { silent = true })
-vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { silent = true })
+vim.keymap.set("t", "<C-q>", "<C-\\><C-n>", { silent = true })
 
 vim.keymap.set("x", "<", "<gv", { silent = true })
 vim.keymap.set("x", ">", ">gv", { silent = true })
