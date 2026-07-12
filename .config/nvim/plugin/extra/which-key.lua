@@ -8,4 +8,7 @@ require("which-key").setup({
 	filter = function(mapping)
 		return mapping.desc and mapping.desc ~= ""
 	end,
+	icons = {
+		mappings = false,
+	},
 })
