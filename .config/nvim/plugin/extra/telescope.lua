@@ -14,19 +14,21 @@ local telescope_live_grep_args = require("telescope").extensions.live_grep_args
 
 telescope.setup({
 	defaults = {
+		initial_mode = "normal",
 		sorting_strategy = "ascending",
 		layout_config = {
 			prompt_position = "top",
 			width = 0.95,
 			height = 0.95,
 		},
+		file_ignore_patterns = {
+			"^.git/",
+			"/.git/",
+		},
 	},
 	pickers = {
 		buffers = {
 			mappings = {
-				i = {
-					["<Del>"] = telescope_actions.delete_buffer,
-				},
 				n = {
 					["<Del>"] = telescope_actions.delete_buffer,
 				},
@@ -34,6 +36,7 @@ telescope.setup({
 		},
 		find_files = {
 			hidden = true,
+			no_ignore = true,
 		},
 	},
 	extensions = {
