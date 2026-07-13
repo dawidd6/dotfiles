@@ -14,7 +14,6 @@ local telescope_live_grep_args = require("telescope").extensions.live_grep_args
 
 telescope.setup({
 	defaults = {
-		initial_mode = "normal",
 		sorting_strategy = "ascending",
 		layout_config = {
 			prompt_position = "top",
