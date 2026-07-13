@@ -1,4 +1,8 @@
 # Brew
+export HOMEBREW_BUNDLE_NO_DESCRIBE=1
+export HOMEBREW_BUNDLE_NO_UPGRADE=1
+export HOMEBREW_NO_REQUIRE_TAP_TRUST=1
+export HOMEBREW_XDG_CONFIG_HOME="$HOME/.config"
 /home/linuxbrew/.linuxbrew/bin/brew shellenv fish | source
 
 # PATH
