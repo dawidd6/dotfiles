@@ -18,8 +18,16 @@ telescope.setup({
 		sorting_strategy = "ascending",
 		layout_config = {
 			prompt_position = "top",
-			width = 0.95,
-			height = 0.95,
+			width = 0.99,
+			height = 0.99,
+		},
+		mappings = {
+			i = {
+				["<C-q>"] = telescope_actions.smart_send_to_qflist + telescope_actions.open_qflist,
+			},
+			n = {
+				["<C-q>"] = telescope_actions.smart_send_to_qflist + telescope_actions.open_qflist,
+			},
 		},
 		file_ignore_patterns = {
 			"^.git/",
@@ -29,8 +37,11 @@ telescope.setup({
 	pickers = {
 		buffers = {
 			mappings = {
+				i = {
+					["<C-d>"] = telescope_actions.delete_buffer,
+				},
 				n = {
-					["<Del>"] = telescope_actions.delete_buffer,
+					["<C-d>"] = telescope_actions.delete_buffer,
 				},
 			},
 		},
@@ -41,7 +52,6 @@ telescope.setup({
 	},
 	extensions = {
 		["file_browser"] = {
-			path = "%:p:h",
 			hide_parent_dir = true,
 			hijack_netrw = true,
 			select_buffer = true,
@@ -49,10 +59,20 @@ telescope.setup({
 			grouped = true,
 			hidden = true,
 			mappings = {
+				i = {
+					["<C-c>"] = telescope_file_browser_actions.copy,
+					["<C-a>"] = telescope_file_browser_actions.create,
+					["<C-x>"] = telescope_file_browser_actions.move,
+					["<C-d>"] = telescope_file_browser_actions.remove,
+					["<C-n>"] = telescope_file_browser_actions.rename,
+				},
 				n = {
-					["<Right>"] = telescope_actions.select_default,
-					["<Left>"] = telescope_file_browser_actions.goto_parent_dir,
-					["<Del>"] = telescope_file_browser_actions.remove,
+					["<C-c>"] = telescope_file_browser_actions.copy,
+					["<C-a>"] = telescope_file_browser_actions.create,
+					["<C-x>"] = telescope_file_browser_actions.move,
+					["<C-d>"] = telescope_file_browser_actions.remove,
+					["<C-n>"] = telescope_file_browser_actions.rename,
+					["<BS>"] = telescope_file_browser_actions.goto_parent_dir,
 				},
 			},
 		},
