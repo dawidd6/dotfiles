@@ -22,15 +22,6 @@ end, {
 	desc = "Copy current file's directory (or git repository) path",
 })
 
-vim.api.nvim_create_user_command("Terminal", function()
-	local path = vim.fs.root(0, { ".git" }) or vim.fn.expand("%:p:h")
-	local shell = vim.fn.fnamemodify(vim.env.SHELL or vim.o.shell, ":t")
-	vim.cmd("edit " .. vim.fn.fnameescape("term://" .. path .. "//" .. shell))
-	vim.cmd("startinsert")
-end, {
-	desc = "Open terminal buffer in current file's directory (or git repository)",
-})
-
 vim.api.nvim_create_user_command("Sops", function()
 	local encrypted = vim.api.nvim_buf_get_name(0)
 	local dir = vim.fs.dirname(encrypted)

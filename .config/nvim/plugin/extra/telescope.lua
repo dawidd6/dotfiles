@@ -65,9 +65,12 @@ telescope.setup({
 telescope.load_extension("file_browser")
 telescope.load_extension("live_grep_args")
 
+vim.keymap.set("n", "<Space>", telescope_file_browser.file_browser, { silent = true, desc = "Open explorer" })
+
 vim.keymap.set("n", "<Leader><Leader>", telescope_builtin.resume, { silent = true, desc = "Resume picking" })
 vim.keymap.set("n", "<Leader>b", telescope_builtin.buffers, { silent = true, desc = "Pick buffer" })
-vim.keymap.set("n", "<Leader>e", telescope_file_browser.file_browser, { silent = true, desc = "Open explorer" })
 vim.keymap.set("n", "<Leader>f", telescope_builtin.find_files, { silent = true, desc = "Pick file" })
+vim.keymap.set("n", "<Leader>j", telescope_builtin.jumplist, { silent = true, desc = "Pick jump" })
+vim.keymap.set("n", "<Leader>o", telescope_builtin.oldfiles, { silent = true, desc = "Pick oldies" })
 vim.keymap.set("n", "<Leader>s", telescope_live_grep_args.live_grep_args, { silent = true, desc = "Pick string" })
 vim.keymap.set({ "n", "x" }, "<Leader>w", telescope_builtin.grep_string, { silent = true, desc = "Pick word" })
