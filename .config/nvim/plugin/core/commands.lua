@@ -22,6 +22,10 @@ end, {
 	desc = "Copy current file's directory (or git repository) path",
 })
 
+vim.api.nvim_create_user_command("DiagnosticToggle", function()
+	vim.diagnostic.enable(not vim.diagnostic.is_enabled({ bufnr = 0 }), { bufnr = 0 })
+end, { desc = "Toggle diagnostics for current buffer" })
+
 vim.api.nvim_create_user_command("Sops", function()
 	local encrypted = vim.api.nvim_buf_get_name(0)
 	local dir = vim.fs.dirname(encrypted)
@@ -30,8 +34,7 @@ vim.api.nvim_create_user_command("Sops", function()
 
 	local decrypt_result = vim.system({ "sops", "-d", "--output", decrypted, encrypted }, { text = true }):wait()
 	if decrypt_result.code ~= 0 then
-		vim.notify(decrypt_result.stderr, vim.log.levels.ERROR)
-		return
+		error(decrypt_result.stderr)
 	end
 
 	vim.cmd.edit(vim.fn.fnameescape(decrypted))
@@ -43,11 +46,7 @@ vim.api.nvim_create_user_command("Sops", function()
 		group = group,
 		buffer = bufnr,
 		callback = function()
-			if vim.uv.fs_stat(decrypted) == nil then
-				return
-			end
-
-			local result = vim.system({ "sops", encrypted }, {
+			local encrypt_result = vim.system({ "sops", encrypted }, {
 				text = true,
 				env = {
 					SOPS_EDITOR = 'sh -c \'cat "$NVIM_SOPS_DECRYPTED_FILE_PATH" > "$1"\' sh',
@@ -55,8 +54,8 @@ vim.api.nvim_create_user_command("Sops", function()
 				},
 			}):wait()
 
-			if result.code ~= 0 then
-				error(result.stderr)
+			if encrypt_result.code ~= 0 then
+				error(encrypt_result.stderr)
 			end
 		end,
 	})
@@ -65,10 +64,7 @@ vim.api.nvim_create_user_command("Sops", function()
 		group = group,
 		buffer = bufnr,
 		callback = function()
-			if vim.uv.fs_stat(decrypted) ~= nil then
-				vim.uv.fs_unlink(decrypted)
-			end
-
+			vim.fs.rm(decrypted, { force = true })
 			vim.api.nvim_del_augroup_by_id(group)
 		end,
 	})
