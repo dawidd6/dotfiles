@@ -30,6 +30,14 @@ vim.api.nvim_create_user_command("DiagnosticDisable", function()
 	vim.diagnostic.enable(false, { bufnr = 0 })
 end, { desc = "Disable diagnostics for current buffer" })
 
+vim.api.nvim_create_user_command("VerticalWindowResize", function(opts)
+	vim.cmd("vertical resize " .. vim.opt.columns:get() * (opts.args / 100.0))
+end, { nargs = "*", desc = "Resize window vertically by given percent" })
+
+vim.api.nvim_create_user_command("HorizontalWindowResize", function(opts)
+	vim.cmd("resize " .. ((vim.opt.lines:get() - vim.opt.cmdheight:get()) * (opts.args / 100.0)))
+end, { nargs = "*", desc = "Resize window horizontally by given percent" })
+
 vim.api.nvim_create_user_command("SopsEdit", function()
 	local encrypted = vim.api.nvim_buf_get_name(0)
 	local dir = vim.fs.dirname(encrypted)
