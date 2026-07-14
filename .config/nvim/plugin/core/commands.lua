@@ -22,11 +22,15 @@ end, {
 	desc = "Copy current file's directory (or git repository) path",
 })
 
-vim.api.nvim_create_user_command("DiagnosticToggle", function()
-	vim.diagnostic.enable(not vim.diagnostic.is_enabled({ bufnr = 0 }), { bufnr = 0 })
-end, { desc = "Toggle diagnostics for current buffer" })
+vim.api.nvim_create_user_command("DiagnosticEnable", function()
+	vim.diagnostic.enable(true, { bufnr = 0 })
+end, { desc = "Enable diagnostics for current buffer" })
 
-vim.api.nvim_create_user_command("Sops", function()
+vim.api.nvim_create_user_command("DiagnosticDisable", function()
+	vim.diagnostic.enable(false, { bufnr = 0 })
+end, { desc = "Disable diagnostics for current buffer" })
+
+vim.api.nvim_create_user_command("SopsEdit", function()
 	local encrypted = vim.api.nvim_buf_get_name(0)
 	local dir = vim.fs.dirname(encrypted)
 	local name = vim.fs.basename(encrypted)
