@@ -9,7 +9,6 @@ local neo_tree = require("neo-tree")
 local neo_tree_command = require("neo-tree.command")
 
 neo_tree.setup({
-	close_if_last_window = true,
 	filesystem = {
 		find_by_full_path_words = true,
 		follow_current_file = {
