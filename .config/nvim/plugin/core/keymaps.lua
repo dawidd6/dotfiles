@@ -46,5 +46,5 @@ vim.keymap.set({ "n", "x" }, "<Leader>Y", '"+Y', { silent = true })
 vim.keymap.set({ "n", "x" }, "<Leader>p", '"+p', { silent = true })
 vim.keymap.set({ "n", "x" }, "<Leader>P", '"+P', { silent = true })
 
-vim.keymap.set("n", "!", ":CopyDirPath<CR>", { silent = true })
-vim.keymap.set({ "n", "x" }, "@", ":CopyFilePath<CR>", { silent = true })
+vim.keymap.set("n", "<Leader>!", ":CopyDirPath<CR>", { silent = true, desc = "Copy directory path" })
+vim.keymap.set({ "n", "x" }, "<Leader>@", ":CopyFilePath<CR>", { silent = true, desc = "Copy file path" })
