@@ -97,12 +97,16 @@ if status is-interactive
     abbr bl 'brew list'
     abbr bu 'brew upgrade'
     abbr bbd 'brew bundle -g dump --force --formula --cask'
+    abbr bbc 'brew bundle -g check --verbose'
+    abbr bbi 'brew bundle -g install'
     abbr t tmux
 
     # Aliases
     alias v nvim
     alias vi nvim
     alias vim nvim
+    alias fd 'fd --exclude=.git/ --no-ignore --hidden'
+    alias rg 'rg --glob=!.git/ --no-ignore --hidden --smart-case'
     alias eza 'eza --group-directories-first --group --header --time-style=long-iso'
     alias l eza
     alias ls eza
