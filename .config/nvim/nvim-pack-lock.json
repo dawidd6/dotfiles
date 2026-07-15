@@ -16,6 +16,10 @@
       "rev": "5876dd95deeb70aadbe9f1c0b7117a135061cdac",
       "src": "https://github.com/saghen/blink.lib"
     },
+    "canola.nvim": {
+      "rev": "53b0b2d4859079eaed0ff8594703e53d28853cc6",
+      "src": "https://github.com/barrettruth/canola.nvim"
+    },
     "conflict.nvim": {
       "rev": "fdc879c34c528aab90e1b90c5d408d141f31fef8",
       "src": "https://github.com/niekdomi/conflict.nvim"
@@ -67,6 +71,10 @@
     "nvim-web-devicons": {
       "rev": "0ca28b61a04fe7426cefbdd52c2647ef0e335b5f",
       "src": "https://github.com/nvim-tree/nvim-web-devicons"
+    },
+    "oil.nvim": {
+      "rev": "b73018b75affd13fa38e2fc94ef753b465f770d7",
+      "src": "https://github.com/stevearc/oil.nvim"
     },
     "plenary.nvim": {
       "rev": "74b06c6c75e4eeb3108ec01852001636d85a932b",

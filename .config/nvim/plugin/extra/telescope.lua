@@ -31,6 +31,16 @@ telescope.setup({
 		},
 	},
 	pickers = {
+		buffers = {
+			mappings = {
+				i = {
+					["<Del>"] = telescope_actions.delete_buffer,
+				},
+				n = {
+					["<Del>"] = telescope_actions.delete_buffer,
+				},
+			},
+		},
 		find_files = {
 			hidden = true,
 			no_ignore = true,
@@ -45,6 +55,7 @@ telescope.setup({
 
 telescope.load_extension("live_grep_args")
 
+vim.keymap.set("n", "<Leader>b", telescope_builtin.buffers, { silent = true, desc = "Search buffers" })
 vim.keymap.set("n", "<Leader>f", telescope_builtin.find_files, { silent = true, desc = "Search files" })
 vim.keymap.set("n", "<Leader>j", telescope_builtin.jumplist, { silent = true, desc = "Search jumps" })
 vim.keymap.set("n", "<Leader>o", telescope_builtin.oldfiles, { silent = true, desc = "Search old files" })
