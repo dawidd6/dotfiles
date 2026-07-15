@@ -41,6 +41,18 @@ vim.api.nvim_create_autocmd("FileType", {
 	desc = "Don't continue comments on newlines",
 })
 
+vim.api.nvim_create_autocmd("CmdwinEnter", {
+	pattern = { ":", ">" },
+	callback = function(args)
+		vim.opt_local.completeopt = { "menu", "menuone", "longest" }
+		vim.keymap.set("i", "<Tab>", "<C-X><C-V>", { buffer = args.buf })
+		vim.keymap.set("i", "<CR>", function()
+			return vim.fn.pumvisible() == 1 and "<C-y>" or "<CR>"
+		end, { buffer = args.buf, expr = true })
+	end,
+	desc = "Use native command completion in command-line window",
+})
+
 vim.api.nvim_create_autocmd("TextYankPost", {
 	callback = function()
 		vim.highlight.on_yank()

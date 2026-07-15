@@ -9,16 +9,7 @@ require("blink.cmp").setup({
 		enabled = true,
 	},
 	cmdline = {
-		completion = {
-			menu = { auto_show = false },
-		},
-		keymap = {
-			["<C-e>"] = { "cancel", "fallback" },
-			["<CR>"] = { "accept_and_enter", "fallback" },
-			["<Tab>"] = { "show_and_insert_or_accept_single", "select_next" },
-			["<Up>"] = { "select_prev", "fallback" },
-			["<Down>"] = { "select_next", "fallback" },
-		},
+		enabled = false,
 	},
 	completion = {
 		documentation = {

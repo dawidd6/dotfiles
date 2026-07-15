@@ -39,4 +39,6 @@ vim.o.tabstop = 4
 vim.o.undofile = true
 vim.o.updatetime = 250
 vim.o.winborder = "rounded"
+vim.o.pumborder = "rounded"
+vim.o.wildmode = "longest,full"
 vim.o.writebackup = false

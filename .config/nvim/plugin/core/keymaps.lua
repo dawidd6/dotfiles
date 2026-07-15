@@ -40,3 +40,13 @@ vim.keymap.set({ "n", "x" }, "<Leader>y", '"+y', { silent = true })
 vim.keymap.set({ "n", "x" }, "<Leader>Y", '"+Y', { silent = true })
 vim.keymap.set({ "n", "x" }, "<Leader>p", '"+p', { silent = true })
 vim.keymap.set({ "n", "x" }, "<Leader>P", '"+P', { silent = true })
+
+vim.keymap.set("c", "<Down>", function()
+	return vim.fn.wildmenumode() == 1 and "<C-n>" or "<Down>"
+end, { expr = true })
+vim.keymap.set("c", "<Up>", function()
+	return vim.fn.wildmenumode() == 1 and "<C-p>" or "<Up>"
+end, { expr = true })
+vim.keymap.set("c", "<CR>", function()
+	return vim.fn.wildmenumode() == 1 and "<C-y>" or "<CR>"
+end, { expr = true })
