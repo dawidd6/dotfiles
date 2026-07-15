@@ -46,7 +46,8 @@ vim.api.nvim_create_user_command("SopsEdit", function()
 
 	local decrypt_result = vim.system({ "sops", "-d", "--output", decrypted, encrypted }, { text = true }):wait()
 	if decrypt_result.code ~= 0 then
-		error(decrypt_result.stderr)
+		vim.notify(decrypt_result.stderr, vim.log.levels.ERROR)
+		return
 	end
 
 	vim.cmd.edit(vim.fn.fnameescape(decrypted))
@@ -67,7 +68,8 @@ vim.api.nvim_create_user_command("SopsEdit", function()
 			}):wait()
 
 			if encrypt_result.code ~= 0 then
-				error(encrypt_result.stderr)
+				vim.notify(encrypt_result.stderr, vim.log.levels.ERROR)
+				return
 			end
 		end,
 	})
@@ -83,3 +85,28 @@ vim.api.nvim_create_user_command("SopsEdit", function()
 end, {
 	desc = "Edit current sops file via temporary decrypted file",
 })
+
+vim.api.nvim_create_user_command("GitBrowse", function(opts)
+	local file = vim.api.nvim_buf_get_name(0)
+	local root = vim.fs.root(0, { ".git" })
+	if not root then
+		vim.notify("Not inside a git repository", vim.log.levels.ERROR)
+		return
+	end
+	local path = vim.fs.relpath(root, file)
+	local args = {
+		"git",
+		"-C",
+		root,
+		"browse",
+		"origin",
+		path,
+	}
+	if opts.range > 0 then
+		table.insert(args, tostring(opts.line1))
+		if opts.line2 ~= opts.line1 then
+			table.insert(args, tostring(opts.line2))
+		end
+	end
+	vim.system(args, { detach = true })
+end, { range = true })
