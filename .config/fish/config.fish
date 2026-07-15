@@ -20,6 +20,10 @@ if status is-interactive
     # Functions
     function fish_greeting
     end
+    function tere
+        set --local result (command tere $argv)
+        [ -n "$result" ] && cd -- "$result"
+    end
 
     # Completions
     complete -f -c git -n '__fish_git_using_command multi' -a '(set -l cmd (commandline -opc); set -e cmd[2]; complete -C (string join " " (string escape -- $cmd))" "(string escape -- (commandline -ct)))'
@@ -37,6 +41,7 @@ if status is-interactive
     abbr C wl-copy
     abbr P wl-paste
     abbr F 'fzf | wl-copy'
+    abbr c tere
     abbr e exit
     abbr d 'cd ~/.dotfiles'
     abbr ef 'nvim ~/.config/fish/config.fish'
@@ -92,10 +97,9 @@ if status is-interactive
     abbr bl 'brew list'
     abbr bu 'brew upgrade'
     abbr bbd 'brew bundle -g dump --force --formula --cask'
+    abbr t tmux
 
     # Aliases
-    alias C 'cd (lf -print-last-dir)'
-    alias V 'nvim (lf -print-selection)'
     alias v nvim
     alias vi nvim
     alias vim nvim
