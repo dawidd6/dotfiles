@@ -69,4 +69,3 @@
 
 [includeIf "gitdir:~/telekom/**"]
     path = telekom
-
