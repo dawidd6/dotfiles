@@ -8,7 +8,7 @@ vim.api.nvim_create_autocmd("FileType", {
 	},
 	callback = function(args)
 		if args.match ~= "help" or not vim.bo[args.buf].modifiable then
-			vim.keymap.set("n", "q", ":quit<CR>", { buffer = args.buf })
+			vim.keymap.set("n", "q", ":quit<CR>", { buffer = args.buf, silent = true })
 		end
 	end,
 	desc = "Close special buffer types with <q>",
