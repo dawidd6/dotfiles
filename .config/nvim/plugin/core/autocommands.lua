@@ -81,7 +81,13 @@ vim.api.nvim_create_autocmd("VimResized", {
 vim.api.nvim_create_autocmd({ "BufLeave", "FocusLost" }, {
 	nested = true,
 	callback = function()
-		if vim.bo.modified and vim.bo.modifiable and vim.bo.buftype == "" and vim.fn.expand("%") ~= "" then
+		if
+			vim.bo.modified
+			and vim.bo.modifiable
+			and vim.bo.buftype == ""
+			and vim.fn.expand("%") ~= ""
+			and vim.api.nvim_get_mode().mode == "n"
+		then
 			vim.cmd("write")
 		end
 	end,
