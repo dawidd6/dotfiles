@@ -54,11 +54,24 @@ vim.api.nvim_create_user_command("SopsEdit", function()
 
 	local bufnr = vim.api.nvim_get_current_buf()
 	local group = vim.api.nvim_create_augroup("SopsDecryptedBuffer" .. bufnr, { clear = true })
+	local modified = false
+
+	vim.api.nvim_create_autocmd("BufWritePre", {
+		group = group,
+		buffer = bufnr,
+		callback = function()
+			modified = vim.bo[bufnr].modified
+		end,
+	})
 
 	vim.api.nvim_create_autocmd("BufWritePost", {
 		group = group,
 		buffer = bufnr,
 		callback = function()
+			if not modified then
+				return
+			end
+
 			local encrypt_result = vim.system({ "sops", encrypted }, {
 				text = true,
 				env = {
@@ -71,6 +84,8 @@ vim.api.nvim_create_user_command("SopsEdit", function()
 				vim.notify(encrypt_result.stderr, vim.log.levels.ERROR)
 				return
 			end
+
+			modified = false
 		end,
 	})
 
