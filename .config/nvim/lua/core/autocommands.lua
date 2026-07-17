@@ -143,6 +143,38 @@ vim.api.nvim_create_autocmd("VimResized", {
 	desc = "Auto-resize splits when window is resized",
 })
 
+vim.api.nvim_create_autocmd("BufWritePre", {
+	callback = function(args)
+		if vim.b[args.buf].disable_autoformat or vim.g.vscode or vim.bo[args.buf].buftype ~= "" then
+			return
+		end
+
+		if #vim.lsp.get_clients({ bufnr = args.buf, method = "textDocument/formatting" }) > 0 then
+			vim.lsp.buf.format({ bufnr = args.buf, timeout_ms = 500 })
+		else
+			local lines = vim.api.nvim_buf_get_lines(args.buf, 0, -1, false)
+
+			for i, line in ipairs(lines) do
+				local from = line:find("%s+$")
+				if from then
+					vim.api.nvim_buf_set_text(args.buf, i - 1, from - 1, i - 1, #line, {})
+					lines[i] = line:sub(1, from - 1)
+				end
+			end
+
+			local last = #lines
+			while last > 1 and lines[last] == "" do
+				last = last - 1
+			end
+
+			if last < #lines then
+				vim.api.nvim_buf_set_lines(args.buf, last, -1, false, {})
+			end
+		end
+	end,
+	desc = "Automatically format buffer before saving",
+})
+
 vim.api.nvim_create_autocmd({ "BufLeave", "FocusLost" }, {
 	nested = true,
 	callback = function()
