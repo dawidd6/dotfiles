@@ -71,6 +71,23 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 	desc = "Return to last edit position when opening files",
 })
 
+vim.api.nvim_create_autocmd("BufReadPost", {
+	callback = function(args)
+		if vim.bo[args.buf].buftype ~= "" then
+			return
+		end
+
+		local has_conflict = vim.api.nvim_buf_call(args.buf, function()
+			return vim.fn.search([[^<<<<<<<]], "nw") > 0 and vim.fn.search([[^>>>>>>>]], "nw") > 0
+		end)
+
+		if has_conflict then
+			vim.diagnostic.enable(false, { bufnr = args.buf })
+		end
+	end,
+	desc = "Disable diagnostics while git conflict markers are present",
+})
+
 vim.api.nvim_create_autocmd("VimResized", {
 	callback = function()
 		vim.cmd("tabdo wincmd =")

@@ -28,6 +28,8 @@ vim.keymap.set("n", "<S-Tab>", ":bprevious<CR>", { silent = true })
 
 vim.keymap.set("n", "n", "nzzzv", { silent = true })
 vim.keymap.set("n", "N", "Nzzzv", { silent = true })
+vim.keymap.set("n", "]x", ":call search('^<<<<<<<')<CR>", { silent = true })
+vim.keymap.set("n", "[x", ":call search('^<<<<<<<', 'b')<CR>", { silent = true })
 
 vim.keymap.set("n", "<C-s>", ":write<CR>", { silent = true })
 vim.keymap.set("i", "<C-s>", "<Esc>:write<CR>", { silent = true })
