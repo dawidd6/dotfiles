@@ -87,6 +87,7 @@ vim.api.nvim_create_autocmd({ "BufLeave", "FocusLost" }, {
 			and vim.bo.buftype == ""
 			and vim.fn.expand("%") ~= ""
 			and vim.api.nvim_get_mode().mode == "n"
+			and not vim.g.vscode
 		then
 			vim.cmd("write")
 		end

@@ -10,7 +10,7 @@ vim.opt.listchars = {
 }
 
 vim.o.breakindent = true
-vim.o.cmdheight = 0
+vim.o.cmdheight = vim.g.vscode and 1 or 0
 vim.o.confirm = true
 vim.o.cursorline = true
 vim.o.expandtab = true
