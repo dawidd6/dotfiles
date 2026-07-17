@@ -88,6 +88,28 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 	desc = "Disable diagnostics while git conflict markers are present",
 })
 
+vim.api.nvim_create_autocmd("BufReadPost", {
+	nested = true,
+	callback = function(args)
+		if
+			vim.g.sops_auto_edit == false
+			or vim.bo[args.buf].buftype ~= ""
+			or vim.startswith(vim.fs.basename(args.file), ".decrypted~")
+		then
+			return
+		end
+
+		local is_sops_file = vim.api.nvim_buf_call(args.buf, function()
+			return vim.fn.search([[ENC\[AES256_GCM]], "nw") > 0 and vim.fn.search([[sops]], "nw") > 0
+		end)
+
+		if is_sops_file then
+			vim.cmd.SopsEdit()
+		end
+	end,
+	desc = "Open sops files decrypted",
+})
+
 if not vim.g.vscode and vim.fn.argc() == 0 then
 	local session_dir = vim.fn.stdpath("state") .. "/sessions"
 	local session_file = vim.fs.joinpath(session_dir, vim.fn.sha256(vim.uv.cwd()) .. ".vim")

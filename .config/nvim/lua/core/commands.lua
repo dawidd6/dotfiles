@@ -39,6 +39,7 @@ vim.api.nvim_create_user_command("HorizontalWindowResize", function(opts)
 end, { nargs = "*", desc = "Resize window horizontally by given percent" })
 
 vim.api.nvim_create_user_command("SopsEdit", function()
+	local encrypted_bufnr = vim.api.nvim_get_current_buf()
 	local encrypted = vim.api.nvim_buf_get_name(0)
 	local dir = vim.fs.dirname(encrypted)
 	local name = vim.fs.basename(encrypted)
@@ -53,6 +54,8 @@ vim.api.nvim_create_user_command("SopsEdit", function()
 	vim.cmd.edit(vim.fn.fnameescape(decrypted))
 
 	local bufnr = vim.api.nvim_get_current_buf()
+	vim.api.nvim_buf_delete(encrypted_bufnr, {})
+
 	local group = vim.api.nvim_create_augroup("SopsDecryptedBuffer" .. bufnr, { clear = true })
 	local modified = false
 
@@ -100,6 +103,14 @@ vim.api.nvim_create_user_command("SopsEdit", function()
 end, {
 	desc = "Edit current sops file via temporary decrypted file",
 })
+
+vim.api.nvim_create_user_command("SopsEnable", function()
+	vim.g.sops_auto_edit = true
+end, { desc = "Enable automatic sops editing" })
+
+vim.api.nvim_create_user_command("SopsDisable", function()
+	vim.g.sops_auto_edit = false
+end, { desc = "Disable automatic sops editing" })
 
 vim.api.nvim_create_user_command("GitBrowse", function(opts)
 	local file = vim.api.nvim_buf_get_name(0)
