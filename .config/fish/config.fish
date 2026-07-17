@@ -1,8 +1,13 @@
+# XDG
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_STATE_HOME="$HOME/.local/state"
+
 # Brew
 export HOMEBREW_BUNDLE_NO_DESCRIBE=1
 export HOMEBREW_BUNDLE_NO_UPGRADE=1
 export HOMEBREW_NO_REQUIRE_TAP_TRUST=1
-export HOMEBREW_XDG_CONFIG_HOME="$HOME/.config"
 /home/linuxbrew/.linuxbrew/bin/brew shellenv fish | source
 
 # PATH
@@ -125,7 +130,7 @@ if status is-interactive
     zoxide init fish --cmd=cd | source
 
     # Mux
-    if not set -q TMUX
+    if not set -q TMUX && not set -q VSCODE_INJECTION
         tmux new-session -A
     end
 end
