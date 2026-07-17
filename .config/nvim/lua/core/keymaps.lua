@@ -28,6 +28,7 @@ vim.keymap.set("n", "<S-Tab>", ":bprevious<CR>", { silent = true })
 
 vim.keymap.set("n", "n", "nzzzv", { silent = true })
 vim.keymap.set("n", "N", "Nzzzv", { silent = true })
+
 vim.keymap.set("n", "]x", ":call search('^<<<<<<<')<CR>", { silent = true })
 vim.keymap.set("n", "[x", ":call search('^<<<<<<<', 'b')<CR>", { silent = true })
 
@@ -42,6 +43,10 @@ vim.keymap.set({ "n", "x" }, "<Leader>y", '"+y', { silent = true })
 vim.keymap.set({ "n", "x" }, "<Leader>Y", '"+Y', { silent = true })
 vim.keymap.set({ "n", "x" }, "<Leader>p", '"+p', { silent = true })
 vim.keymap.set({ "n", "x" }, "<Leader>P", '"+P', { silent = true })
+
+vim.keymap.set({ "n", "x" }, "<Leader>`", ":GitBrowse<CR>", { silent = true, desc = "Browse git repo" })
+vim.keymap.set({ "n", "x" }, "<Leader>@", ":CopyFilePath<CR>", { silent = true, desc = "Copy file path" })
+vim.keymap.set("n", "<Leader>!", ":CopyDirPath<CR>", { silent = true, desc = "Copy dir path" })
 
 vim.keymap.set("c", "<Down>", function()
 	return vim.fn.wildmenumode() == 1 and "<C-n>" or "<Down>"

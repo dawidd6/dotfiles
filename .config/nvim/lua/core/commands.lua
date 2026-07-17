@@ -7,7 +7,6 @@ vim.api.nvim_create_user_command("CopyFilePath", function(opts)
 			path = path .. ":" .. opts.line1 .. "-" .. opts.line2
 		end
 	end
-	vim.print(path)
 	vim.fn.setreg("+", path)
 end, {
 	range = true,
@@ -16,7 +15,6 @@ end, {
 
 vim.api.nvim_create_user_command("CopyDirPath", function()
 	local path = vim.fs.root(0, { ".git" }) or vim.fn.expand("%:p:h")
-	vim.print(path)
 	vim.fn.setreg("+", path)
 end, {
 	desc = "Copy current file's directory (or git repository) path",

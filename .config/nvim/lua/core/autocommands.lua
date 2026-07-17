@@ -83,6 +83,7 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 
 		if has_conflict then
 			vim.diagnostic.enable(false, { bufnr = args.buf })
+			vim.notify("Conflicts detected! Diagnostics disabled.")
 		end
 	end,
 	desc = "Disable diagnostics while git conflict markers are present",
@@ -92,7 +93,8 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 	nested = true,
 	callback = function(args)
 		if
-			vim.g.sops_auto_edit == false
+			vim.g.vscode
+			or vim.g.sops_auto_edit == false
 			or vim.bo[args.buf].buftype ~= ""
 			or vim.startswith(vim.fs.basename(args.file), ".decrypted~")
 		then
@@ -111,8 +113,9 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 })
 
 if not vim.g.vscode and vim.fn.argc() == 0 then
+	local cwd = assert(vim.uv.cwd())
 	local session_dir = vim.fn.stdpath("state") .. "/sessions"
-	local session_file = vim.fs.joinpath(session_dir, vim.fn.sha256(vim.uv.cwd()) .. ".vim")
+	local session_file = vim.fs.joinpath(session_dir, vim.fn.sha256(cwd) .. ".vim")
 
 	vim.api.nvim_create_autocmd("VimEnter", {
 		nested = true,
