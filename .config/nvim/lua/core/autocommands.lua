@@ -60,6 +60,13 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	desc = "Highlight text briefly after yanking",
 })
 
+vim.api.nvim_create_autocmd("VimResized", {
+	callback = function()
+		vim.cmd("tabdo wincmd =")
+	end,
+	desc = "Auto-resize splits when window is resized",
+})
+
 vim.api.nvim_create_autocmd("BufReadPost", {
 	callback = function()
 		local mark = vim.api.nvim_buf_get_mark(0, '"')
@@ -71,91 +78,84 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 	desc = "Return to last edit position when opening files",
 })
 
-vim.api.nvim_create_autocmd("BufReadPost", {
-	callback = function(args)
-		if vim.bo[args.buf].buftype ~= "" then
-			return
-		end
+if not vim.g.vscode then
+	vim.api.nvim_create_autocmd("BufReadPost", {
+		callback = function(args)
+			if vim.bo[args.buf].buftype ~= "" then
+				return
+			end
 
-		local has_conflict = vim.api.nvim_buf_call(args.buf, function()
-			return vim.fn.search([[^<<<<<<<]], "nw") > 0 and vim.fn.search([[^>>>>>>>]], "nw") > 0
-		end)
+			local has_conflict = vim.api.nvim_buf_call(args.buf, function()
+				return vim.fn.search([[^<<<<<<<]], "nw") > 0 and vim.fn.search([[^>>>>>>>]], "nw") > 0
+			end)
 
-		if has_conflict then
-			vim.diagnostic.enable(false, { bufnr = args.buf })
-			vim.notify("Conflicts detected! Diagnostics disabled.")
-		end
-	end,
-	desc = "Disable diagnostics while git conflict markers are present",
-})
-
-vim.api.nvim_create_autocmd("BufReadPost", {
-	nested = true,
-	callback = function(args)
-		if
-			vim.g.vscode
-			or vim.g.sops_auto_edit == false
-			or vim.bo[args.buf].buftype ~= ""
-			or vim.startswith(vim.fs.basename(args.file), ".decrypted~")
-		then
-			return
-		end
-
-		local is_sops_file = vim.api.nvim_buf_call(args.buf, function()
-			return vim.fn.search([[ENC\[AES256_GCM]], "nw") > 0 and vim.fn.search([[sops]], "nw") > 0
-		end)
-
-		if is_sops_file then
-			vim.cmd.SopsEdit()
-		end
-	end,
-	desc = "Open sops files decrypted",
-})
-
-if not vim.g.vscode and vim.fn.argc() == 0 then
-	local cwd = assert(vim.uv.cwd())
-	local session_dir = vim.fn.stdpath("state") .. "/sessions"
-	local session_file = vim.fs.joinpath(session_dir, vim.fn.sha256(cwd) .. ".vim")
-
-	vim.api.nvim_create_autocmd("VimEnter", {
-		nested = true,
-		callback = function()
-			if vim.fn.filereadable(session_file) == 1 then
-				vim.cmd("source " .. vim.fn.fnameescape(session_file))
+			if has_conflict then
+				vim.diagnostic.enable(false, { bufnr = args.buf })
+				vim.notify("Conflicts detected! Diagnostics disabled.")
 			end
 		end,
-		desc = "Restore cwd session on startup",
+		desc = "Disable diagnostics while git conflict markers are present",
 	})
 
-	vim.api.nvim_create_autocmd("VimLeavePre", {
-		callback = function()
-			vim.fn.mkdir(session_dir, "p")
-			vim.cmd("mksession! " .. vim.fn.fnameescape(session_file))
+	vim.api.nvim_create_autocmd("BufReadPost", {
+		nested = true,
+		callback = function(args)
+			if
+				vim.g.sops_auto_edit == false
+				or vim.bo[args.buf].buftype ~= ""
+				or vim.startswith(vim.fs.basename(args.file), ".decrypted~")
+			then
+				return
+			end
+
+			local is_sops_file = vim.api.nvim_buf_call(args.buf, function()
+				return vim.fn.search([[ENC\[AES256_GCM]], "nw") > 0 and vim.fn.search([[sops]], "nw") > 0
+			end)
+
+			if is_sops_file then
+				vim.cmd.SopsEdit()
+			end
 		end,
-		desc = "Save cwd session on exit",
+		desc = "Open sops files decrypted",
 	})
+
+	vim.api.nvim_create_autocmd({ "BufLeave", "FocusLost" }, {
+		nested = true,
+		callback = function()
+			if
+				vim.bo.modified
+				and vim.bo.modifiable
+				and vim.bo.buftype == ""
+				and vim.fn.expand("%") ~= ""
+				and vim.api.nvim_get_mode().mode == "n"
+			then
+				vim.cmd("write")
+			end
+		end,
+		desc = "Automatically save buffer when focus is lost",
+	})
+
+	if vim.fn.argc() == 0 then
+		local cwd = assert(vim.uv.cwd())
+		local session_dir = vim.fn.stdpath("state") .. "/sessions"
+		local session_file = vim.fs.joinpath(session_dir, vim.fn.sha256(cwd) .. ".vim")
+
+		vim.api.nvim_create_autocmd("VimEnter", {
+			nested = true,
+			callback = function()
+				if vim.fn.filereadable(session_file) == 1 then
+					vim.cmd("source " .. vim.fn.fnameescape(session_file))
+				end
+			end,
+			desc = "Restore cwd session on startup",
+		})
+
+		vim.api.nvim_create_autocmd("VimLeavePre", {
+			callback = function()
+				vim.fn.mkdir(session_dir, "p")
+				vim.cmd("mksession! " .. vim.fn.fnameescape(session_file))
+			end,
+			desc = "Save cwd session on exit",
+		})
+	end
 end
-
-vim.api.nvim_create_autocmd("VimResized", {
-	callback = function()
-		vim.cmd("tabdo wincmd =")
-	end,
-	desc = "Auto-resize splits when window is resized",
-})
-
-vim.api.nvim_create_autocmd({ "BufLeave", "FocusLost" }, {
-	nested = true,
-	callback = function()
-		if
-			vim.bo.modified
-			and vim.bo.modifiable
-			and vim.bo.buftype == ""
-			and vim.fn.expand("%") ~= ""
-			and vim.api.nvim_get_mode().mode == "n"
-			and not vim.g.vscode
-		then
-			vim.cmd("write")
-		end
-	end,
-	desc = "Automatically save buffer when focus is lost",
-})
