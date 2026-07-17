@@ -88,6 +88,29 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 	desc = "Disable diagnostics while git conflict markers are present",
 })
 
+if not vim.g.vscode and vim.fn.argc() == 0 then
+	local session_dir = vim.fn.stdpath("state") .. "/sessions"
+	local session_file = vim.fs.joinpath(session_dir, vim.fn.sha256(vim.uv.cwd()) .. ".vim")
+
+	vim.api.nvim_create_autocmd("VimEnter", {
+		nested = true,
+		callback = function()
+			if vim.fn.filereadable(session_file) == 1 then
+				vim.cmd("source " .. vim.fn.fnameescape(session_file))
+			end
+		end,
+		desc = "Restore cwd session on startup",
+	})
+
+	vim.api.nvim_create_autocmd("VimLeavePre", {
+		callback = function()
+			vim.fn.mkdir(session_dir, "p")
+			vim.cmd("mksession! " .. vim.fn.fnameescape(session_file))
+		end,
+		desc = "Save cwd session on exit",
+	})
+end
+
 vim.api.nvim_create_autocmd("VimResized", {
 	callback = function()
 		vim.cmd("tabdo wincmd =")
