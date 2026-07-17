@@ -14,7 +14,7 @@ vim.diagnostic.config({
 })
 
 vim.lsp.config("lua_ls", {
-	root_markers = { ".stylua.toml", "stylua.toml", ".editorconfig", "init.lua", ".git" },
+	root_markers = { "init.lua" },
 	settings = {
 		Lua = {
 			format = { enable = false },
@@ -35,10 +35,6 @@ vim.lsp.config("lua_ls", {
 			},
 		},
 	},
-})
-
-vim.lsp.config("stylua", {
-	root_markers = { ".stylua.toml", "stylua.toml", ".editorconfig", "init.lua", ".git" },
 })
 
 vim.lsp.config(
@@ -67,6 +63,5 @@ vim.lsp.enable({
 	"bashls",
 	"fish_lsp",
 	"lua_ls",
-	"stylua",
 	"yamlls",
 })

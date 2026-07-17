@@ -28,18 +28,6 @@ vim.api.nvim_create_user_command("DiagnosticDisable", function()
 	vim.diagnostic.enable(false, { bufnr = 0 })
 end, { desc = "Disable diagnostics for current buffer" })
 
-vim.api.nvim_create_user_command("FormatDisable", function()
-	vim.b.disable_autoformat = true
-end, { desc = "Disable autoformat-on-save" })
-
-vim.api.nvim_create_user_command("FormatEnable", function()
-	vim.b.disable_autoformat = false
-end, { desc = "Enable autoformat-on-save" })
-
-vim.api.nvim_create_user_command("Format", function()
-	vim.lsp.buf.format({ async = true })
-end, { desc = "Format current buffer with LSP" })
-
 vim.api.nvim_create_user_command("VerticalWindowResize", function(opts)
 	vim.cmd("vertical resize " .. vim.opt.columns:get() * (opts.args / 100.0))
 end, { nargs = "*", desc = "Resize window vertically by given percent" })
