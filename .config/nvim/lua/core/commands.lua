@@ -1,24 +1,3 @@
-vim.api.nvim_create_user_command("CopyGitLink", function(opts)
-	local file = vim.api.nvim_buf_get_name(0)
-	local root = vim.fs.root(0, { ".git" })
-	if not root then
-		vim.notify("Not inside a git repository", vim.log.levels.ERROR)
-		return
-	end
-	local path = vim.fs.relpath(root, file)
-	local args = { "git", "-C", root, "browse", path }
-	if opts.range > 0 then
-		table.insert(args, tostring(opts.line1))
-		if opts.line2 ~= opts.line1 then
-			table.insert(args, tostring(opts.line2))
-		end
-	end
-	local result = vim.system(args, { detach = true }):wait()
-	local url = vim.trim(result.stdout)
-	vim.print(url)
-	vim.fn.setreg("+", url)
-end, { range = true })
-
 vim.api.nvim_create_user_command("CopyFilePath", function(opts)
 	local path = vim.fn.expand("%:p")
 	if opts.range > 0 then
@@ -132,3 +111,21 @@ end, { desc = "Enable automatic sops editing" })
 vim.api.nvim_create_user_command("SopsDisable", function()
 	vim.g.sops_auto_edit = false
 end, { desc = "Disable automatic sops editing" })
+
+vim.api.nvim_create_user_command("GitBrowse", function(opts)
+	local file = vim.api.nvim_buf_get_name(0)
+	local root = vim.fs.root(0, { ".git" })
+	if not root then
+		vim.notify("Not inside a git repository", vim.log.levels.ERROR)
+		return
+	end
+	local path = vim.fs.relpath(root, file)
+	local args = { "git", "-C", root, "browse", path }
+	if opts.range > 0 then
+		table.insert(args, tostring(opts.line1))
+		if opts.line2 ~= opts.line1 then
+			table.insert(args, tostring(opts.line2))
+		end
+	end
+	vim.system(args)
+end, { range = true })
