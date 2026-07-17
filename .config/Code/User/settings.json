@@ -22,5 +22,9 @@
   "terminal.integrated.sendKeybindingsToShell": true,
   "workbench.colorTheme": "Dark Modern",
   "workbench.iconTheme": "material-icon-theme",
-  "workbench.tree.indent": 20
+  "workbench.tree.indent": 20,
+  "vscode-neovim.useWSL": true,
+  "extensions.experimental.affinity": {
+    "asvetliakov.vscode-neovim": 1
+  }
 }
