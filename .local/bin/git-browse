@@ -1,0 +1,59 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+filename="${1:-}"
+line1="${2:-}"
+line2="${3:-}"
+
+repo_root="$(git rev-parse --show-toplevel 2>/dev/null)"
+branch="$(git -C "${repo_root}" rev-parse --abbrev-ref HEAD)"
+remote="$(git -C "${repo_root}" config branch."${branch}".remote || echo "origin")"
+remote_url="$(git -C "${repo_root}" remote get-url "${remote}")"
+remote_url="${remote_url%.git}"
+remote_url="${remote_url#ssh://}"
+remote_url="${remote_url#git@}"
+if [[ "${remote_url}" != *://* ]]; then
+    remote_url="${remote_url/:/\/}"
+    remote_url="https://${remote_url}"
+fi
+
+if [[ -n "${filename}" ]]; then
+    if [[ "${filename}" = /* ]]; then
+        filename="$(realpath -m --relative-to="${repo_root}" "${filename}")"
+    else
+        filename="$(realpath -m --relative-to="${repo_root}" "${PWD}/${filename}")"
+    fi
+fi
+
+case "${remote_url}" in
+    *gitlab*)
+        # https://gitlab.com/<user_or_group>/<repo>/-/blob/<branch>/<filename>#L<line1>-<line2>
+        if [[ -n ${filename} ]]; then
+            remote_url="${remote_url}/-/blob/${branch}/${filename}"
+            if [[ -n "${line1}" ]]; then
+                remote_url="${remote_url}#L${line1}"
+                if [[ -n "${line2}" ]]; then
+                    remote_url="${remote_url}-${line2}"
+                fi
+            fi
+        fi
+        ;;
+    *github*)
+        # https://github.com/<user_or_org>/<repo>/blob/<branch>/<filename>#L<line1>-L<line2>
+        if [[ -n "${filename}" ]]; then
+            remote_url="${remote_url}/blob/${branch}/${filename}"
+            if [[ -n "${line1}" ]]; then
+                remote_url="${remote_url}#L${line1}"
+                if [[ -n "${line2}" ]]; then
+                    remote_url="${remote_url}-L${line2}"
+                fi
+            fi
+        fi
+        ;;
+    *)
+        echo "Unsupported hoster ${remote_url}"
+        exit 1
+esac
+
+echo "${remote_url}"
