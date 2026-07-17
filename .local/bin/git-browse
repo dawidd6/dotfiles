@@ -56,4 +56,19 @@ case "${remote_url}" in
         exit 1
 esac
 
-echo "${remote_url}"
+case "${OSTYPE}" in
+    darwin*)
+        open "${remote_url}"
+        ;;
+    linux*)
+        if uname -a | grep -i -q Microsoft; then
+            powershell.exe -NoProfile start "${remote_url}"
+        else
+            xdg-open "${remote_url}"
+        fi
+        ;;
+    *)
+        echo "Unsupported OS ${OSTYPE}"
+        exit 1
+        ;;
+esac
