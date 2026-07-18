@@ -53,6 +53,7 @@ if status is-interactive
     abbr eg 'nvim ~/.config/git/config'
     abbr en 'nvim --cmd "cd ~/.config/nvim"'
     abbr et 'nvim ~/.config/tmux/tmux.conf'
+    abbr es 'nvim --cmd "cd ~/.local/bin"'
     abbr g git
     abbr ga 'git add'
     abbr gaa 'git add -A'
