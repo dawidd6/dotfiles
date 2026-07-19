@@ -28,3 +28,10 @@ vim.api.nvim_create_autocmd("VimResized", {
 	end,
 	desc = "Auto-resize splits when window is resized",
 })
+
+vim.api.nvim_create_autocmd("VimEnter", {
+	callback = function()
+		vim.cmd("packadd nvim.undotree")
+	end,
+	desc = "Load built-in optional nvim plugins",
+})

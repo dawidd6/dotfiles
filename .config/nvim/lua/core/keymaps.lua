@@ -32,6 +32,8 @@ vim.keymap.set("i", "<C-a>", "<Esc>ggVG", { silent = true })
 vim.keymap.set("n", "<C-d>", "<C-d>zz", { silent = true })
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { silent = true })
 
+vim.keymap.set("n", "<Leader>u", ":Undotree<CR>", { silent = true, desc = "Explore undo tree" })
+
 vim.keymap.set({ "n", "x" }, "<Leader>y", '"+y', { silent = true, desc = "Copy system clipboard" })
 vim.keymap.set({ "n", "x" }, "<Leader>Y", '"+Y', { silent = true, desc = "Copy system clipboard" })
 vim.keymap.set({ "n", "x" }, "<Leader>p", '"+p', { silent = true, desc = "Paste system clipboard" })
