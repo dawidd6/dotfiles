@@ -113,7 +113,7 @@ if status is-interactive
     alias vim nvim
     alias fd 'fd --exclude=.git/ --no-ignore --hidden'
     alias rg 'rg --glob=!.git/ --no-ignore --hidden --smart-case'
-    alias eza 'eza --group-directories-first --group --header --time-style=long-iso'
+    alias eza 'eza --group-directories-first --group --header --time-style=long-iso --icons'
     alias l eza
     alias ls eza
     alias la 'eza -a'
