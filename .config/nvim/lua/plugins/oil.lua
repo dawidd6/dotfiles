@@ -24,10 +24,9 @@ oil.setup({
 	},
 	keymaps = {
 		["<Bs>"] = { oil_actions.parent, mode = "n" },
-		["q"] = { oil_actions.close, mode = "n" },
 	},
 })
 
-vim.keymap.set("n", "<leader>e", function()
+vim.keymap.set("n", "<Leader><Space>", function()
 	oil.open_float()
 end, { desc = "Explore file tree" })

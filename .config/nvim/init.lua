@@ -1,10 +1,15 @@
 vim.loader.enable()
 
-vim.cmd("runtime! lua/core/*.lua")
+require("core.autocommands")
+require("core.commands")
+require("core.keymaps")
+require("core.options")
 
 if vim.g.vscode then
-	vim.cmd("runtime! lua/extra/autopairs.lua")
-	vim.cmd("runtime! lua/extra/surround.lua")
+	require("plugins.autopairs")
+	require("plugins.surround")
 else
-	vim.cmd("runtime! lua/extra/*.lua")
+	require("vim._core.ui2").enable()
+	-- TODO: switch to lua require
+	vim.cmd("runtime! lua/plugins/*.lua")
 end

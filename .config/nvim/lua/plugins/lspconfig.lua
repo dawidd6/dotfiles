@@ -60,7 +60,6 @@ vim.lsp.config(
 
 vim.lsp.enable({
 	"ansiblels",
-	"bashls",
 	"fish_lsp",
 	"lua_ls",
 	"yamlls",

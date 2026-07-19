@@ -8,6 +8,14 @@
       "rev": "0df41ab13b54151fcb6ab023cc2a761482070f76",
       "src": "https://github.com/b0o/SchemaStore.nvim"
     },
+    "auto-save.nvim": {
+      "rev": "9aabcb8396224dcbf8d51c0c1d620d88a46e89d7",
+      "src": "https://github.com/okuuva/auto-save.nvim"
+    },
+    "auto-session": {
+      "rev": "6cde3874a9283c2db55627acca5f28e4fa402320",
+      "src": "https://github.com/rmagatti/auto-session"
+    },
     "blink.cmp": {
       "rev": "0f54bd78892f587db4dcf100a23eaddfc2a9df7d",
       "src": "https://github.com/saghen/blink.cmp"
@@ -16,9 +24,9 @@
       "rev": "5876dd95deeb70aadbe9f1c0b7117a135061cdac",
       "src": "https://github.com/saghen/blink.lib"
     },
-    "conform.nvim": {
-      "rev": "619363c30309d29ffa631e67c8183f2a72caa373",
-      "src": "https://github.com/stevearc/conform.nvim"
+    "conflict.nvim": {
+      "rev": "fdc879c34c528aab90e1b90c5d408d141f31fef8",
+      "src": "https://github.com/niekdomi/conflict.nvim"
     },
     "friendly-snippets": {
       "rev": "6cd7280adead7f586db6fccbd15d2cac7e2188b9",
@@ -32,6 +40,14 @@
       "rev": "84a4987ff36798c2fc1169cbaff67960aed9776f",
       "src": "https://github.com/NMAC427/guess-indent.nvim"
     },
+    "lastplace.nvim": {
+      "rev": "0fcf07c5f1b44c3de2c06a77811a852e77672bbb",
+      "src": "https://github.com/nxhung2304/lastplace.nvim"
+    },
+    "lsp-format.nvim": {
+      "rev": "e2b4ae87545c1aadebcf1dfc1b5dffe28dcf2ffb",
+      "src": "https://github.com/lukas-reineke/lsp-format.nvim"
+    },
     "lualine.nvim": {
       "rev": "221ce6b2d999187044529f49da6554a92f740a96",
       "src": "https://github.com/nvim-lualine/lualine.nvim"
@@ -40,17 +56,29 @@
       "rev": "2471f4097f8561a6880a0fe05ee0f21cbc82b374",
       "src": "https://github.com/OXY2DEV/markview.nvim"
     },
+    "none-ls-shellcheck.nvim": {
+      "rev": "0f84461241e76e376a95fb7391deac82dc3efdbf",
+      "src": "https://github.com/gbprod/none-ls-shellcheck.nvim"
+    },
+    "none-ls.nvim": {
+      "rev": "01f8e62ea11603e59ad9ff7afcfa94fd183f76d6",
+      "src": "https://github.com/nvimtools/none-ls.nvim"
+    },
     "nvim-autopairs": {
       "rev": "7b9923abad60b903ece7c52940e1321d39eccc79",
       "src": "https://github.com/windwp/nvim-autopairs"
     },
     "nvim-lspconfig": {
-      "rev": "b386c50cd7816f8c8a2b13b298a218af1f5a75c6",
+      "rev": "e7ca2c95ba316a8b846d3f3546d407908c5c4ccb",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-surround": {
       "rev": "8b47db616ef658b8fc27e61db2896aa2f40134de",
       "src": "https://github.com/kylechui/nvim-surround"
+    },
+    "nvim-toggler": {
+      "rev": "467808600882fd6c9e33b9dbc4889b1b80cfd917",
+      "src": "https://github.com/nguyenvukhang/nvim-toggler"
     },
     "nvim-web-devicons": {
       "rev": "0ca28b61a04fe7426cefbdd52c2647ef0e335b5f",
@@ -68,13 +96,29 @@
       "rev": "4a6883cb13fe097a20a046eb55f6dffd239276e3",
       "src": "https://github.com/stevearc/quicker.nvim"
     },
+    "smart-paste.nvim": {
+      "rev": "bb46e9a06a728d65f004ad709ff7ee0249717e5e",
+      "src": "https://github.com/nemanjamalesija/smart-paste.nvim"
+    },
     "telescope-live-grep-args.nvim": {
       "rev": "53e9df55b3651dd7cf77e172f1e8c9a17407acca",
       "src": "https://github.com/nvim-telescope/telescope-live-grep-args.nvim"
     },
+    "telescope-ui-select.nvim": {
+      "rev": "6e51d7da30bd139a6950adf2a47fda6df9fa06d2",
+      "src": "https://github.com/nvim-telescope/telescope-ui-select.nvim"
+    },
     "telescope.nvim": {
       "rev": "427b576c16792edad01a92b89721d923c19ad60f",
       "src": "https://github.com/nvim-telescope/telescope.nvim"
+    },
+    "todo-comments.nvim": {
+      "rev": "31e3c38ce9b29781e4422fc0322eb0a21f4e8668",
+      "src": "https://github.com/folke/todo-comments.nvim"
+    },
+    "trim.nvim": {
+      "rev": "765360a6f6ac732f4c78c5c694f4b892a55b53ec",
+      "src": "https://github.com/cappyzawa/trim.nvim"
     },
     "vscode.nvim": {
       "rev": "aa1102a7e15195c9cca22730b09224a7f7745ba8",

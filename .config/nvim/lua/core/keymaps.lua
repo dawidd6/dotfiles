@@ -1,4 +1,5 @@
 vim.keymap.set("x", "p", '"_dP', { silent = true })
+
 vim.keymap.set({ "n", "x" }, "x", '"_x', { silent = true })
 vim.keymap.set({ "n", "x" }, "X", '"_X', { silent = true })
 
@@ -7,15 +8,10 @@ vim.keymap.set("n", "C", '"_C', { silent = true })
 vim.keymap.set("n", "cc", '"_cc', { silent = true })
 vim.keymap.set("x", "c", '"_c', { silent = true })
 
-vim.keymap.set("x", "<C-c>", '"+y', { silent = true })
-
 vim.keymap.set("n", "<Esc>", ":nohlsearch<CR>", { silent = true })
 
 vim.keymap.set("x", "<", "<gv", { silent = true })
 vim.keymap.set("x", ">", ">gv", { silent = true })
-
-vim.keymap.set("n", "s", "ys", { remap = true, silent = true })
-vim.keymap.set("x", "s", "S", { remap = true, silent = true })
 
 vim.keymap.set("n", "<C-Left>", "<C-w><C-h>", { silent = true })
 vim.keymap.set("n", "<C-Right>", "<C-w><C-l>", { silent = true })
@@ -29,9 +25,6 @@ vim.keymap.set("n", "<S-Tab>", ":bprevious<CR>", { silent = true })
 vim.keymap.set("n", "n", "nzzzv", { silent = true })
 vim.keymap.set("n", "N", "Nzzzv", { silent = true })
 
-vim.keymap.set("n", "]x", ":call search('^<<<<<<<')<CR>", { silent = true })
-vim.keymap.set("n", "[x", ":call search('^<<<<<<<', 'b')<CR>", { silent = true })
-
 vim.keymap.set("n", "<C-s>", ":write<CR>", { silent = true })
 vim.keymap.set("i", "<C-s>", "<Esc>:write<CR>", { silent = true })
 vim.keymap.set("n", "<C-a>", "ggVG", { silent = true })
@@ -39,21 +32,12 @@ vim.keymap.set("i", "<C-a>", "<Esc>ggVG", { silent = true })
 vim.keymap.set("n", "<C-d>", "<C-d>zz", { silent = true })
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { silent = true })
 
-vim.keymap.set({ "n", "x" }, "<Leader>y", '"+y', { silent = true })
-vim.keymap.set({ "n", "x" }, "<Leader>Y", '"+Y', { silent = true })
-vim.keymap.set({ "n", "x" }, "<Leader>p", '"+p', { silent = true })
-vim.keymap.set({ "n", "x" }, "<Leader>P", '"+P', { silent = true })
+vim.keymap.set({ "n", "x" }, "<Leader>y", '"+y', { silent = true, desc = "Copy system clipboard" })
+vim.keymap.set({ "n", "x" }, "<Leader>Y", '"+Y', { silent = true, desc = "Copy system clipboard" })
+vim.keymap.set({ "n", "x" }, "<Leader>p", '"+p', { silent = true, desc = "Paste system clipboard" })
+vim.keymap.set({ "n", "x" }, "<Leader>P", '"+P', { silent = true, desc = "Paste system clipboard" })
 
-vim.keymap.set({ "n", "x" }, "<Leader>`", ":GitBrowse<CR>", { silent = true, desc = "Browse git repo" })
-vim.keymap.set({ "n", "x" }, "<Leader>@", ":CopyFilePath<CR>", { silent = true, desc = "Copy file path" })
-vim.keymap.set("n", "<Leader>!", ":CopyDirPath<CR>", { silent = true, desc = "Copy dir path" })
-
-vim.keymap.set("c", "<Down>", function()
-	return vim.fn.wildmenumode() == 1 and "<C-n>" or "<Down>"
-end, { expr = true })
-vim.keymap.set("c", "<Up>", function()
-	return vim.fn.wildmenumode() == 1 and "<C-p>" or "<Up>"
-end, { expr = true })
-vim.keymap.set("c", "<CR>", function()
-	return vim.fn.wildmenumode() == 1 and "<C-y>" or "<CR>"
-end, { expr = true })
+vim.keymap.set("n", "<Leader>R", ":restart<CR>", { silent = true, desc = "Restart neovim instance" })
+vim.keymap.set({ "n", "x" }, "<Leader>cc", ":CopyContextPath<CR>", { silent = true, desc = "Copy context path" })
+vim.keymap.set("n", "<Leader>cd", ":CopyDirectoryPath<CR>", { silent = true, desc = "Copy directory path" })
+vim.keymap.set("n", "<Leader>cf", ":CopyFilePath<CR>", { silent = true, desc = "Copy file path" })
