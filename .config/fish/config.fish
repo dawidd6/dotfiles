@@ -45,6 +45,7 @@ if status is-interactive
     export LANG='C.UTF-8'
     export PAGER='less'
     export EDITOR='nvim'
+    export NVIM_LOG_FILE='/dev/null'
 
     # Abbrs
     abbr C wl-copy
