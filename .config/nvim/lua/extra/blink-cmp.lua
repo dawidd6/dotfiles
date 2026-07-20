@@ -29,7 +29,8 @@ require("blink.cmp").setup({
 	keymap = {
 		["<C-e>"] = { "cancel", "fallback" },
 		["<CR>"] = { "accept", "fallback" },
-		["<Tab>"] = { "accept", "fallback" },
+		["<Tab>"] = { "accept", "snippet_forward", "fallback" },
+		["<S-Tab>"] = { "snippet_backward", "fallback" },
 		["<Up>"] = { "select_prev", "fallback" },
 		["<Down>"] = { "select_next", "fallback" },
 		["<C-d>"] = { "scroll_documentation_down", "fallback" },

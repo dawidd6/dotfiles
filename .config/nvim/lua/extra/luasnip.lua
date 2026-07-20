@@ -5,3 +5,4 @@ vim.pack.add({
 
 require("luasnip").setup()
 require("luasnip.loaders.from_vscode").lazy_load()
+require("luasnip.loaders.from_vscode").load_standalone({ path = "snippets.json" })

@@ -1,0 +1,20 @@
+{
+    "vim.pack.add": {
+        "prefix": "pack",
+        "body": [
+            "vim.pack.add({",
+            "   { src = \"${1:url}\" }",
+            "})"
+        ],
+        "description": "Add a plugin",
+        "scope": "lua"
+    },
+    "vim.keymap.set": {
+        "prefix": "keymap",
+        "body": [
+            "vim.keymap.set(\"${1:mode}\", \"${2:lhs}\", ${3:rhs}, { silent = true, desc = \"${4:desc}\"})"
+        ],
+        "description": "Add a keymap",
+        "scope": "lua"
+    }
+}
