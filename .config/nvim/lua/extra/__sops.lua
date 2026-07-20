@@ -1,3 +1,14 @@
+-- local path = vim.fn.expand("~/repos/nvim-sops")
+-- vim.opt.runtimepath:prepend(path)
+-- vim.opt.runtimepath:prepend(path)
+-- vim.cmd.source(vim.fs.joinpath(path, "plugin/*.lua"))
+--
+-- vim.pack.add({
+-- 	{ src = "https://github.com/dawidd6/nvim-sops" },
+-- })
+--
+-- require("sops").setup()
+
 -- TODO: find a plugin or make my own?
 vim.api.nvim_create_user_command("SopsEdit", function()
 	local encrypted_bufnr = vim.api.nvim_get_current_buf()
