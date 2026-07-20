@@ -27,6 +27,4 @@ oil.setup({
 	},
 })
 
-vim.keymap.set("n", "<Leader>e", function()
-	oil.open_float()
-end, { desc = "Explore file tree" })
+vim.keymap.set("n", "<Leader>e", ":Oil --float<CR>", { desc = "Explore file tree" })
