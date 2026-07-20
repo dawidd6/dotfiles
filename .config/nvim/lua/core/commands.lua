@@ -11,15 +11,11 @@ vim.api.nvim_create_user_command("CopyLLMContext", function(opts)
 		local diagnostic_end = (diagnostic.end_lnum or diagnostic.lnum) + 1
 
 		if diagnostic_start <= end_line and diagnostic_end >= start_line then
-			local severity = vim.diagnostic.severity[diagnostic.severity] or "UNKNOWN"
-			local source = diagnostic.source and (" " .. diagnostic.source) or ""
-			local code = diagnostic.code and (" [" .. diagnostic.code .. "]") or ""
-
 			diagnostics[#diagnostics + 1] = string.format(
 				"- %s%s%s at %d:%d: %s",
-				severity,
-				source,
-				code,
+				vim.diagnostic.severity[diagnostic.severity] or "UNKNOWN",
+				diagnostic.source and (" " .. diagnostic.source) or "",
+				diagnostic.code and (" [" .. diagnostic.code .. "]") or "",
 				diagnostic_start,
 				diagnostic.col + 1,
 				diagnostic.message
