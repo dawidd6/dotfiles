@@ -1,5 +1,4 @@
 -- TODO: find a plugin or make my own?
--- FIXME: breaks on :e command
 vim.api.nvim_create_user_command("SopsEdit", function()
 	local encrypted_bufnr = vim.api.nvim_get_current_buf()
 	local encrypted = vim.api.nvim_buf_get_name(0)
@@ -20,6 +19,11 @@ vim.api.nvim_create_user_command("SopsEdit", function()
 
 	local group = vim.api.nvim_create_augroup("SopsDecryptedBuffer" .. bufnr, { clear = true })
 	local modified = false
+
+	local cleanup = function()
+		vim.fs.rm(decrypted, { force = true })
+		pcall(vim.api.nvim_del_augroup_by_id, group)
+	end
 
 	vim.api.nvim_create_autocmd("BufWritePre", {
 		group = group,
@@ -54,12 +58,20 @@ vim.api.nvim_create_user_command("SopsEdit", function()
 		end,
 	})
 
-	vim.api.nvim_create_autocmd({ "BufDelete", "BufWipeout", "BufUnload" }, {
+	vim.api.nvim_create_autocmd({ "BufDelete", "BufWipeout" }, {
 		group = group,
 		buffer = bufnr,
+		callback = cleanup,
+	})
+
+	vim.api.nvim_create_autocmd("QuitPre", {
+		group = group,
 		callback = function()
-			vim.fs.rm(decrypted, { force = true })
-			vim.api.nvim_del_augroup_by_id(group)
+			if vim.bo[bufnr].modified and vim.v.cmdbang ~= 1 then
+				return
+			end
+			pcall(vim.api.nvim_buf_delete, bufnr, { force = vim.v.cmdbang == 1 })
+			cleanup()
 		end,
 	})
 end, {
