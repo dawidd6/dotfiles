@@ -60,12 +60,22 @@ telescope.load_extension("live_grep_args")
 telescope.load_extension("ui-select")
 telescope.load_extension("todo-comments")
 
+vim.keymap.set(
+	"n",
+	"<Leader>/",
+	":Telescope current_buffer_fuzzy_find<CR>",
+	{ silent = true, desc = "Search current buffer" }
+)
+vim.keymap.set("n", "<Leader><Leader>", ":Telescope resume<CR>", { silent = true, desc = "Resume last search" })
+
 vim.keymap.set("n", "<Leader>b", ":Telescope buffers<CR>", { silent = true, desc = "Search open buffers" })
 vim.keymap.set("n", "<Leader>c", ":Telescope commands<CR>", { silent = true, desc = "Search available commands" })
+vim.keymap.set("n", "<Leader>d", ":Telescope diagnostics<CR>", { silent = true, desc = "Search current diagnostics" })
 vim.keymap.set("n", "<Leader>f", ":Telescope find_files<CR>", { silent = true, desc = "Search workspace files" })
+vim.keymap.set("n", "<Leader>h", ":Telescope search_history<CR>", { silent = true, desc = "Search searching history" })
 vim.keymap.set("n", "<Leader>j", ":Telescope jumplist<CR>", { silent = true, desc = "Search jump list" })
 vim.keymap.set("n", "<Leader>o", ":Telescope oldfiles<CR>", { silent = true, desc = "Search old files" })
-vim.keymap.set("n", "<Leader>r", ":Telescope resume<CR>", { silent = true, desc = "Resume last search" })
+vim.keymap.set("n", "<Leader>r", ":Telescope registers<CR>", { silent = true, desc = "Search clipboard registers" })
 vim.keymap.set("n", "<Leader>s", ":Telescope live_grep_args<CR>", { silent = true, desc = "Search given string" })
 vim.keymap.set(
 	{ "n", "x" },
