@@ -25,8 +25,12 @@ if status is-interactive
     # Functions
     function fish_greeting
     end
-    function tere
+    function cdt
         set --local result (command tere $argv)
+        [ -n "$result" ] && cd -- "$result"
+    end
+    function cdr
+        set --local result (command git rev-parse --show-toplevel)
         [ -n "$result" ] && cd -- "$result"
     end
 
@@ -46,7 +50,6 @@ if status is-interactive
     abbr C wl-copy
     abbr P wl-paste
     abbr F 'fzf | wl-copy'
-    abbr c tere
     abbr e exit
     abbr d 'cd ~/.dotfiles'
     abbr ef 'nvim ~/.config/fish/config.fish'
