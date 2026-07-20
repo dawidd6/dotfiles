@@ -22,9 +22,6 @@
 [interactive]
     diffFilter = diff-so-fancy --patch
 
-[merge]
-    conflictStyle = zdiff3
-
 [diff "sopsdiffer"]
     textconv = git-sops-decrypt
 
