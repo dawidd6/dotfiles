@@ -40,6 +40,6 @@ vim.keymap.set({ "n", "x" }, "<Leader>p", '"+p', { silent = true, desc = "Paste 
 vim.keymap.set({ "n", "x" }, "<Leader>P", '"+P', { silent = true, desc = "Paste system clipboard" })
 
 vim.keymap.set("n", "<Leader>R", ":restart<CR>", { silent = true, desc = "Restart neovim instance" })
-vim.keymap.set({ "n", "x" }, "<Leader>cc", ":CopyContextPath<CR>", { silent = true, desc = "Copy context path" })
-vim.keymap.set("n", "<Leader>cd", ":CopyDirectoryPath<CR>", { silent = true, desc = "Copy directory path" })
-vim.keymap.set("n", "<Leader>cf", ":CopyFilePath<CR>", { silent = true, desc = "Copy file path" })
+vim.keymap.set({ "n", "x" }, "<Leader>`", ":CopyLLMContext<CR>", { silent = true, desc = "Copy LLM context" })
+vim.keymap.set("n", "<Leader>!", ":CopyDirectoryPath<CR>", { silent = true, desc = "Copy directory path" })
+vim.keymap.set("n", "<Leader>@", ":CopyFilePath<CR>", { silent = true, desc = "Copy file path" })

@@ -60,12 +60,17 @@ telescope.load_extension("live_grep_args")
 telescope.load_extension("ui-select")
 telescope.load_extension("todo-comments")
 
-vim.keymap.set("n", "<Leader>sb", ":Telescope buffers<CR>", { silent = true, desc = "Search buffers" })
-vim.keymap.set("n", "<Leader>sc", ":Telescope commands<CR>", { silent = true, desc = "Search commands" })
-vim.keymap.set("n", "<Leader>sf", ":Telescope find_files<CR>", { silent = true, desc = "Search files" })
-vim.keymap.set("n", "<Leader>sj", ":Telescope jumplist<CR>", { silent = true, desc = "Search jumps" })
-vim.keymap.set("n", "<Leader>so", ":Telescope oldfiles<CR>", { silent = true, desc = "Search oldies" })
-vim.keymap.set("n", "<Leader>sr", ":Telescope resume<CR>", { silent = true, desc = "Search resume" })
-vim.keymap.set("n", "<Leader>ss", ":Telescope live_grep_args<CR>", { silent = true, desc = "Search string" })
-vim.keymap.set({ "n", "x" }, "<Leader>sw", ":Telescope grep_string<CR>", { silent = true, desc = "Search word" })
-vim.keymap.set("n", "<Leader>st", ":Telescope todo-comments<CR>", { silent = true, desc = "Search TODOs" })
+vim.keymap.set("n", "<Leader>b", ":Telescope buffers<CR>", { silent = true, desc = "Search open buffers" })
+vim.keymap.set("n", "<Leader>c", ":Telescope commands<CR>", { silent = true, desc = "Search available commands" })
+vim.keymap.set("n", "<Leader>f", ":Telescope find_files<CR>", { silent = true, desc = "Search workspace files" })
+vim.keymap.set("n", "<Leader>j", ":Telescope jumplist<CR>", { silent = true, desc = "Search jump list" })
+vim.keymap.set("n", "<Leader>o", ":Telescope oldfiles<CR>", { silent = true, desc = "Search old files" })
+vim.keymap.set("n", "<Leader>r", ":Telescope resume<CR>", { silent = true, desc = "Resume last search" })
+vim.keymap.set("n", "<Leader>s", ":Telescope live_grep_args<CR>", { silent = true, desc = "Search given string" })
+vim.keymap.set(
+	{ "n", "x" },
+	"<Leader>w",
+	":Telescope grep_string<CR>",
+	{ silent = true, desc = "Search selected word" }
+)
+vim.keymap.set("n", "<Leader>t", ":Telescope todo-comments<CR>", { silent = true, desc = "Search TODO comments" })

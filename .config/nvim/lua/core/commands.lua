@@ -1,4 +1,4 @@
-vim.api.nvim_create_user_command("CopyContextPath", function(opts)
+vim.api.nvim_create_user_command("CopyLLMContext", function(opts)
 	local path = vim.fn.expand("%:p")
 	local start_line = opts.range > 0 and opts.line1 or vim.fn.line(".")
 	local end_line = opts.range > 0 and opts.line2 or start_line
@@ -50,7 +50,7 @@ vim.api.nvim_create_user_command("CopyContextPath", function(opts)
 	vim.notify(path)
 end, {
 	range = true,
-	desc = "Copy context path",
+	desc = "Copy LLM context",
 })
 
 vim.api.nvim_create_user_command("CopyFilePath", function()
