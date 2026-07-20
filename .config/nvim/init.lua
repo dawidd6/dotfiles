@@ -11,9 +11,9 @@ end
 require_all("core")
 
 if vim.g.vscode then
-	require("plugins.autopairs")
-	require("plugins.surround")
+	require("extra.autopairs")
+	require("extra.surround")
 else
 	require("vim._core.ui2").enable()
-	require_all("plugins")
+	require_all("extra")
 end
