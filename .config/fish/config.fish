@@ -75,6 +75,7 @@ if status is-interactive
     abbr gd 'git diff'
     abbr gdc 'git diff --cached'
     abbr gl 'git lg'
+    abbr gpl 'git preview-log'
     abbr gp 'git push'
     abbr gpf 'git push -f'
     abbr gpp 'git preview-pull'
