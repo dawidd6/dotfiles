@@ -7,9 +7,10 @@ require("lualine").setup({
 	options = {
 		section_separators = "",
 		component_separators = "",
-		disabled_filetypes = {
-			statusline = { "NvimTree", "neo-tree" },
-		},
+		globalstatus = true,
+		-- disabled_filetypes = {
+		-- 	statusline = { "NvimTree", "neo-tree" },
+		-- },
 	},
 	sections = {
 		lualine_a = { "mode" },
@@ -27,6 +28,24 @@ require("lualine").setup({
 				cond = function()
 					return vim.t["simple-zoom"] == "zoom"
 				end,
+			},
+			{
+				function()
+					return "󰿇 SOPS"
+				end,
+				cond = function()
+					return vim.b["sops"] == "decrypted"
+				end,
+				color = { fg = "red" },
+			},
+			{
+				function()
+					return "󰍁 SOPS"
+				end,
+				cond = function()
+					return vim.b["sops"] == "encrypted"
+				end,
+				color = { fg = "yellow" },
 			},
 		},
 		lualine_y = { "progress" },

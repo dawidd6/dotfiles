@@ -2,6 +2,8 @@ vim.pack.add({
 	{ src = "https://github.com/fasterius/simple-zoom.nvim" },
 })
 
-require("simple-zoom").setup()
+require("simple-zoom").setup({
+	hide_tabline = false,
+})
 
 vim.keymap.set("n", "<Leader>z", ":SimpleZoomToggle<CR>", { desc = "Zoom current window" })
