@@ -56,6 +56,10 @@
       "rev": "2471f4097f8561a6880a0fe05ee0f21cbc82b374",
       "src": "https://github.com/OXY2DEV/markview.nvim"
     },
+    "neo-tree.nvim": {
+      "rev": "b01ee1769144c4491ea44bc329cb84040e9793be",
+      "src": "https://github.com/nvim-neo-tree/neo-tree.nvim"
+    },
     "none-ls-shellcheck.nvim": {
       "rev": "0f84461241e76e376a95fb7391deac82dc3efdbf",
       "src": "https://github.com/gbprod/none-ls-shellcheck.nvim"
@@ -63,6 +67,10 @@
     "none-ls.nvim": {
       "rev": "01f8e62ea11603e59ad9ff7afcfa94fd183f76d6",
       "src": "https://github.com/nvimtools/none-ls.nvim"
+    },
+    "nui.nvim": {
+      "rev": "de740991c12411b663994b2860f1a4fd0937c130",
+      "src": "https://github.com/MunifTanjim/nui.nvim"
     },
     "nvim-autopairs": {
       "rev": "7b9923abad60b903ece7c52940e1321d39eccc79",
@@ -83,10 +91,6 @@
     "nvim-web-devicons": {
       "rev": "0ca28b61a04fe7426cefbdd52c2647ef0e335b5f",
       "src": "https://github.com/nvim-tree/nvim-web-devicons"
-    },
-    "oil.nvim": {
-      "rev": "b73018b75affd13fa38e2fc94ef753b465f770d7",
-      "src": "https://github.com/stevearc/oil.nvim"
     },
     "plenary.nvim": {
       "rev": "74b06c6c75e4eeb3108ec01852001636d85a932b",
