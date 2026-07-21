@@ -33,6 +33,10 @@ if status is-interactive
         set --local result (command git rev-parse --show-toplevel)
         [ -n "$result" ] && cd -- "$result"
     end
+    function cdp
+        set --local result (command wl-paste)
+        [ -n "$result" ] && cd -- "$result"
+    end
 
     # Completions
     complete -f -c git -n '__fish_git_using_command multi' -a '(set -l cmd (commandline -opc); set -e cmd[2]; complete -C (string join " " (string escape -- $cmd))" "(string escape -- (commandline -ct)))'
