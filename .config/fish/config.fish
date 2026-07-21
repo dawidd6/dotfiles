@@ -75,10 +75,10 @@ if status is-interactive
     abbr gd 'git diff'
     abbr gdc 'git diff --cached'
     abbr gl 'git lg'
-    abbr gpl 'git preview-log'
+    abbr glp 'git log-preview'
     abbr gp 'git push'
     abbr gpf 'git push -f'
-    abbr gpp 'git preview-pull'
+    abbr gpp 'git pull-preview'
     abbr gs 'git status -u'
     abbr gt 'git tag'
     abbr p podman
