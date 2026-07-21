@@ -15,7 +15,20 @@ require("lualine").setup({
 		lualine_a = { "mode" },
 		lualine_b = { "branch", "diff", "diagnostics" },
 		lualine_c = { { "filename", path = 3 } },
-		lualine_x = { "encoding", "fileformat", "filetype", "lsp_status" },
+		lualine_x = {
+			"encoding",
+			"fileformat",
+			"filetype",
+			"lsp_status",
+			{
+				function()
+					return "󰊓 Z"
+				end,
+				cond = function()
+					return vim.t["simple-zoom"] == "zoom"
+				end,
+			},
+		},
 		lualine_y = { "progress" },
 		lualine_z = { "location", "searchcount", "selectioncount" },
 	},
