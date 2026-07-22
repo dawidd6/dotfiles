@@ -21,7 +21,6 @@ vim.keymap.set("n", "<C-Up>", "<C-w><C-k>", { silent = true })
 vim.keymap.set("n", "n", "nzzzv", { silent = true })
 vim.keymap.set("n", "N", "Nzzzv", { silent = true })
 
-vim.keymap.set("n", "<Del>", ":bwipeout<CR>", { silent = true })
 vim.keymap.set("n", "<C-s>", ":write<CR>", { silent = true })
 vim.keymap.set("i", "<C-s>", "<Esc>:write<CR>", { silent = true })
 vim.keymap.set("n", "<C-a>", "ggVG", { silent = true })
@@ -37,6 +36,5 @@ vim.keymap.set({ "n", "x" }, "<Leader>p", '"+p', { silent = true, desc = "Paste 
 vim.keymap.set({ "n", "x" }, "<Leader>P", '"+P', { silent = true, desc = "Paste system clipboard" })
 
 vim.keymap.set("n", "<Leader>R", ":restart<CR>", { silent = true, desc = "Restart neovim instance" })
-vim.keymap.set({ "n", "x" }, "<Leader>`", ":CopyLLMContext<CR>", { silent = true, desc = "Copy LLM context" })
 vim.keymap.set("n", "<Leader>!", ":CopyDirectoryPath<CR>", { silent = true, desc = "Copy directory path" })
 vim.keymap.set("n", "<Leader>@", ":CopyFilePath<CR>", { silent = true, desc = "Copy file path" })

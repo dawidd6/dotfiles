@@ -11,4 +11,4 @@ toggler.setup({
 	remove_default_keybinds = true,
 })
 
-vim.keymap.set({ "n", "v" }, "<Leader>I", toggler.toggle, { silent = true, desc = "Invert current word" })
+vim.keymap.set({ "n", "v" }, "<Leader>i", toggler.toggle, { silent = true, desc = "Invert current word" })

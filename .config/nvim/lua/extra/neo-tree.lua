@@ -17,6 +17,7 @@ require("neo-tree").setup({
 		show_unloaded = true,
 	},
 	filesystem = {
+		use_libuv_file_watcher = true,
 		find_by_full_path_words = true,
 		follow_current_file = {
 			enabled = true,
