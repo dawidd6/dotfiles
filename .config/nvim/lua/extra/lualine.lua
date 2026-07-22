@@ -35,7 +35,7 @@ require("lualine").setup({
 				cond = function()
 					return vim.b["sops"] == "decrypted"
 				end,
-				color = { fg = "red" },
+				color = { fg = "yellow" },
 			},
 			{
 				function()
@@ -44,7 +44,7 @@ require("lualine").setup({
 				cond = function()
 					return vim.b["sops"] == "encrypted"
 				end,
-				color = { fg = "yellow" },
+				color = { fg = "green" },
 			},
 		},
 		lualine_y = { "progress" },
