@@ -18,10 +18,6 @@ vim.keymap.set("n", "<C-Right>", "<C-w><C-l>", { silent = true })
 vim.keymap.set("n", "<C-Down>", "<C-w><C-j>", { silent = true })
 vim.keymap.set("n", "<C-Up>", "<C-w><C-k>", { silent = true })
 
-vim.keymap.set("n", "<Del>", ":bwipeout<CR>", { silent = true })
-vim.keymap.set("n", "<Tab>", ":bnext<CR>", { silent = true })
-vim.keymap.set("n", "<S-Tab>", ":bprevious<CR>", { silent = true })
-
 vim.keymap.set("n", "n", "nzzzv", { silent = true })
 vim.keymap.set("n", "N", "Nzzzv", { silent = true })
 
