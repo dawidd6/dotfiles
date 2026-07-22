@@ -6,4 +6,4 @@ require("simple-zoom").setup({
 	hide_tabline = false,
 })
 
-vim.keymap.set("n", "<Leader>z", ":SimpleZoomToggle<CR>", { desc = "Zoom current window" })
+vim.keymap.set("n", "<Leader>z", ":SimpleZoomToggle<CR>", { silent = true, desc = "Zoom current window" })

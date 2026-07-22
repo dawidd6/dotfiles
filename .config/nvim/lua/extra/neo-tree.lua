@@ -5,10 +5,7 @@ vim.pack.add({
 	{ src = "https://github.com/nvim-neo-tree/neo-tree.nvim" },
 })
 
-local neo_tree = require("neo-tree")
-local neo_tree_command = require("neo-tree.command")
-
-neo_tree.setup({
+require("neo-tree").setup({
 	buffers = {
 		show_unloaded = true,
 	},
@@ -30,9 +27,5 @@ neo_tree.setup({
 	},
 })
 
-vim.keymap.set("n", "<leader>b", function()
-	neo_tree_command.execute({ source = "buffers", focus = true })
-end, { desc = "Explore buffer tree" })
-vim.keymap.set("n", "<leader>e", function()
-	neo_tree_command.execute({ focus = true })
-end, { desc = "Explore file tree" })
+vim.keymap.set("n", "<leader>b", ":Neotree buffers focus<CR>", { silent = true, desc = "Explore buffer tree" })
+vim.keymap.set("n", "<leader>e", ":Neotree focus<CR>", { silent = true, desc = "Explore file tree" })
