@@ -100,6 +100,10 @@
       "rev": "4a6883cb13fe097a20a046eb55f6dffd239276e3",
       "src": "https://github.com/stevearc/quicker.nvim"
     },
+    "sidekick.nvim": {
+      "rev": "208e1c5b8170c01fd1d07df0139322a76479b235",
+      "src": "https://github.com/folke/sidekick.nvim"
+    },
     "simple-zoom.nvim": {
       "rev": "318aef7c894aab4bc90dfbe82fee01b130540afd",
       "src": "https://github.com/fasterius/simple-zoom.nvim"
