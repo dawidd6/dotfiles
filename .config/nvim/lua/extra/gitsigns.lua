@@ -2,16 +2,8 @@ vim.pack.add({
 	{ src = "https://github.com/lewis6991/gitsigns.nvim" },
 })
 
-local gitsigns = require("gitsigns")
+require("gitsigns").setup()
 
-gitsigns.setup()
-
-vim.api.nvim_create_user_command("GitToggleLineBlame", function()
-	gitsigns.toggle_current_line_blame({ full = true })
-end, {
-	desc = "Toggle git line blame",
-})
-
-vim.keymap.set("n", "gb", function()
-	gitsigns.blame_line({ full = true })
-end, { silent = true, desc = "Blame line" })
+vim.keymap.set("n", "gb", ":Gitsigns blame_line --full<CR>", { silent = true, desc = "Git blame line" })
+vim.keymap.set("n", "[h", ":Gitsigns prev_hunk<CR>", { silent = true, desc = "Previous git hunk" })
+vim.keymap.set("n", "]h", ":Gitsigns next_hunk<CR>", { silent = true, desc = "Next git hunk" })
