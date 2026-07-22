@@ -4,13 +4,6 @@ vim.pack.add({
 
 require("sidekick").setup({
 	cli = {
-		win = {
-			layout = "float",
-			float = {
-				width = 0.95,
-				height = 0.95,
-			},
-		},
 		-- mux = {
 		-- 	enabled = true,
 		-- 	backend = "tmux",

@@ -26,27 +26,18 @@ require("neo-tree").setup({
 			},
 		},
 	},
-	window = {
-		position = "float",
-		popup = {
-			size = {
-				height = "95%",
-				width = "95%",
-			},
-		},
-	},
 })
 
 vim.keymap.set("n", "<leader>b", ":Neotree buffers focus dir=.<CR>", { silent = true, desc = "Explore buffer tree" })
 vim.keymap.set("n", "<leader>e", ":Neotree focus dir=.<CR>", { silent = true, desc = "Explore file tree" })
 
--- vim.api.nvim_create_autocmd("VimEnter", {
--- 	callback = function()
--- 		if vim.fn.argc() == 0 then
--- 			vim.schedule(function()
--- 				vim.cmd("Neotree focus dir=.")
--- 			end)
--- 		end
--- 	end,
--- 	desc = "Open neo-tree on startup",
--- })
+vim.api.nvim_create_autocmd("VimEnter", {
+	callback = function()
+		if vim.fn.argc() == 0 then
+			vim.schedule(function()
+				vim.cmd("Neotree focus dir=.")
+			end)
+		end
+	end,
+	desc = "Open neo-tree on startup",
+})
