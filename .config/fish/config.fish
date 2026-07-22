@@ -120,6 +120,7 @@ if status is-interactive
     alias v nvim
     alias vi nvim
     alias vim nvim
+    alias diffoscope 'diffoscope --text-color=always  --exclude-directory-metadata=recursive'
     alias fd 'fd --exclude=.git/ --no-ignore --hidden'
     alias rg 'rg --glob=!.git/ --no-ignore --hidden --smart-case'
     alias eza 'eza --group-directories-first --group --header --time-style=long-iso'
