@@ -15,6 +15,21 @@ vim.api.nvim_create_autocmd("FileType", {
 	desc = "Don't continue comments on newlines",
 })
 
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = { "help", "man", "qf", "git", "scratch", "checkhealth", "lspinfo" },
+	callback = function(args)
+		vim.keymap.set("n", "q", ":q<CR>", { buffer = args.buf, silent = true })
+	end,
+	desc = "Close special buffers with <q>",
+})
+
+vim.api.nvim_create_autocmd("CmdwinEnter", {
+	callback = function(args)
+		vim.keymap.set("n", "q", ":q<CR>", { buffer = args.buf, silent = true })
+	end,
+	desc = "Close command-line window with <q>",
+})
+
 vim.api.nvim_create_autocmd("TextYankPost", {
 	callback = function()
 		vim.highlight.on_yank()
