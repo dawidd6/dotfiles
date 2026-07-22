@@ -7,6 +7,12 @@ vim.pack.add({
 
 require("neo-tree").setup({
 	auto_clean_after_session_restore = true,
+	default_component_configs = {
+		indent = {
+			highlight = "NonText",
+			expander_highlight = "NonText",
+		},
+	},
 	buffers = {
 		show_unloaded = true,
 	},

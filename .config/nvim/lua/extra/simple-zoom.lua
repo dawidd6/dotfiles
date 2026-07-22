@@ -3,7 +3,7 @@ vim.pack.add({
 })
 
 require("simple-zoom").setup({
-	hide_tabline = false,
+	hide_tabline = true,
 })
 
 vim.keymap.set("n", "<Leader>z", ":SimpleZoomToggle<CR>", { silent = true, desc = "Zoom current window" })
