@@ -27,5 +27,5 @@ require("neo-tree").setup({
 	},
 })
 
-vim.keymap.set("n", "<leader>b", ":Neotree buffers focus<CR>", { silent = true, desc = "Explore buffer tree" })
-vim.keymap.set("n", "<leader>e", ":Neotree focus<CR>", { silent = true, desc = "Explore file tree" })
+vim.keymap.set("n", "<leader>b", ":Neotree buffers focus dir=.<CR>", { silent = true, desc = "Explore buffer tree" })
+vim.keymap.set("n", "<leader>e", ":Neotree focus dir=.<CR>", { silent = true, desc = "Explore file tree" })
