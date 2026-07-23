@@ -16,8 +16,8 @@ require("oil").setup({
 		show_hidden_when_empty = true,
 	},
 	float = {
-		max_width = 0.99,
-		max_height = 0.99,
+		max_width = 0.95,
+		max_height = 0.95,
 	},
 	keymaps = {
 		["q"] = { "actions.close", mode = "n" },
