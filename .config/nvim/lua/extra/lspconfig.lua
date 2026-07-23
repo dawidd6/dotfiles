@@ -1,7 +1,6 @@
 vim.pack.add({
 	{ src = "https://github.com/b0o/SchemaStore.nvim" },
 	{ src = "https://github.com/mosheavni/yaml-companion.nvim" },
-
 	{ src = "https://github.com/neovim/nvim-lspconfig" },
 })
 
@@ -13,8 +12,12 @@ vim.diagnostic.config({
 	underline = { severity = { min = vim.diagnostic.severity.WARN } },
 })
 
+vim.lsp.config("dockerls", {
+	root_markers = vim.list_extend({ "Containerfile" }, vim.lsp.config.dockerls.root_markers),
+})
+
 vim.lsp.config("lua_ls", {
-	root_markers = { "init.lua" },
+	root_markers = vim.list_extend({ "init.lua" }, vim.lsp.config.lua_ls.root_markers),
 	settings = {
 		Lua = {
 			format = { enable = false },
@@ -60,6 +63,7 @@ vim.lsp.config(
 
 vim.lsp.enable({
 	"ansiblels",
+	"dockerls",
 	"fish_lsp",
 	"lua_ls",
 	"yamlls",

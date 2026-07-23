@@ -28,6 +28,10 @@
       "rev": "fdc879c34c528aab90e1b90c5d408d141f31fef8",
       "src": "https://github.com/niekdomi/conflict.nvim"
     },
+    "conform.nvim": {
+      "rev": "619363c30309d29ffa631e67c8183f2a72caa373",
+      "src": "https://github.com/stevearc/conform.nvim"
+    },
     "friendly-snippets": {
       "rev": "6cd7280adead7f586db6fccbd15d2cac7e2188b9",
       "src": "https://github.com/rafamadriz/friendly-snippets"
@@ -44,10 +48,6 @@
       "rev": "0fcf07c5f1b44c3de2c06a77811a852e77672bbb",
       "src": "https://github.com/nxhung2304/lastplace.nvim"
     },
-    "lsp-format.nvim": {
-      "rev": "e2b4ae87545c1aadebcf1dfc1b5dffe28dcf2ffb",
-      "src": "https://github.com/lukas-reineke/lsp-format.nvim"
-    },
     "lualine.nvim": {
       "rev": "221ce6b2d999187044529f49da6554a92f740a96",
       "src": "https://github.com/nvim-lualine/lualine.nvim"
@@ -56,17 +56,13 @@
       "rev": "2471f4097f8561a6880a0fe05ee0f21cbc82b374",
       "src": "https://github.com/OXY2DEV/markview.nvim"
     },
-    "none-ls-shellcheck.nvim": {
-      "rev": "0f84461241e76e376a95fb7391deac82dc3efdbf",
-      "src": "https://github.com/gbprod/none-ls-shellcheck.nvim"
-    },
-    "none-ls.nvim": {
-      "rev": "01f8e62ea11603e59ad9ff7afcfa94fd183f76d6",
-      "src": "https://github.com/nvimtools/none-ls.nvim"
-    },
     "nvim-autopairs": {
       "rev": "7b9923abad60b903ece7c52940e1321d39eccc79",
       "src": "https://github.com/windwp/nvim-autopairs"
+    },
+    "nvim-lint": {
+      "rev": "a219b2c9e5b4765e5c845aba119dad55806fcaf1",
+      "src": "https://github.com/mfussenegger/nvim-lint"
     },
     "nvim-lspconfig": {
       "rev": "d592c1e6ad9a0a01b3d5ed3f0345d68407167181",
@@ -123,10 +119,6 @@
     "todo-comments.nvim": {
       "rev": "31e3c38ce9b29781e4422fc0322eb0a21f4e8668",
       "src": "https://github.com/folke/todo-comments.nvim"
-    },
-    "trim.nvim": {
-      "rev": "765360a6f6ac732f4c78c5c694f4b892a55b53ec",
-      "src": "https://github.com/cappyzawa/trim.nvim"
     },
     "vscode.nvim": {
       "rev": "aa1102a7e15195c9cca22730b09224a7f7745ba8",

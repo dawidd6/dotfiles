@@ -4,11 +4,11 @@ vim.pack.add({
 
 require("sidekick").setup({
 	cli = {
-		-- mux = {
-		-- 	enabled = true,
-		-- 	backend = "tmux",
-		-- 	create = "window",
-		-- },
+		mux = {
+			enabled = true,
+			backend = "tmux",
+			create = "split",
+		},
 	},
 })
 

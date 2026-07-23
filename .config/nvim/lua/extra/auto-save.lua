@@ -3,9 +3,11 @@ vim.pack.add({
 })
 
 require("auto-save").setup({
-	noautocmd = true,
 	trigger_events = {
 		defer_save = {},
 		cancel_deferred_save = {},
 	},
+	condition = function()
+		return vim.api.nvim_get_mode().mode == "n"
+	end,
 })
