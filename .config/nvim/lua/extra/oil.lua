@@ -2,10 +2,7 @@ vim.pack.add({
 	{ src = "https://github.com/stevearc/oil.nvim" },
 })
 
-local oil = require("oil")
-local oil_actions = require("oil.actions")
-
-oil.setup({
+require("oil").setup({
 	delete_to_trash = true,
 	cleanup_buffers_on_delete = true,
 	columns = {
@@ -23,8 +20,11 @@ oil.setup({
 		max_height = 0.99,
 	},
 	keymaps = {
-		["<Bs>"] = { oil_actions.parent, mode = "n" },
+		["q"] = { "actions.close", mode = "n" },
+		["<Bs>"] = { "actions.parent", mode = "n" },
+		["<C-d>"] = { "actions.preview_scroll_down", mode = "n" },
+		["<C-u>"] = { "actions.preview_scroll_up", mode = "n" },
 	},
 })
 
-vim.keymap.set("n", "<Leader>e", ":Oil --float<CR>", { desc = "Explore file tree" })
+vim.keymap.set("n", "<Leader>e", ":Oil --float --preview<CR>", { desc = "Explore file tree" })
