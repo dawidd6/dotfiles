@@ -126,7 +126,8 @@ abbr rm trash
 
 # Aliases
 alias fd 'fd --exclude=.git/ --no-ignore --hidden'
-alias rg 'rg --glob=!.git/ --heading --line-number --no-ignore --hidden --smart-case'
+alias rg 'rg --glob=!.git/ --heading --line-number --hidden --smart-case --no-ignore'
+alias ug 'ug --glob=!.git/ --heading --line-number --hidden --smart-case'
 alias ls 'eza --group-directories-first --group --header --time-style=long-iso --all'
 alias ll 'ls --long --icons'
 alias lt 'll --level=2 --tree --ignore-glob=.git'
