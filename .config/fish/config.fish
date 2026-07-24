@@ -118,20 +118,16 @@ if status is-interactive
     abbr bbc 'brew bundle -g check --verbose'
     abbr bbi 'brew bundle -g install'
     abbr t tmux
+    abbr l ls
 
     # Aliases
-    alias v nvim
     alias vi nvim
     alias vim nvim
     alias fd 'fd --exclude=.git/ --no-ignore --hidden'
     alias rg 'rg --glob=!.git/ --heading --line-number --no-ignore --hidden --smart-case'
-    alias ls 'eza --group-directories-first --group --header --time-style=long-iso'
-    alias l ls
-    alias la 'ls -a'
+    alias ls 'eza --group-directories-first --group --header --time-style=long-iso --all'
     alias ll 'ls --long --icons'
-    alias lla 'll -a'
-    alias lt 'll --level=2 --tree'
-    alias lta 'lt -a'
+    alias lt 'll --level=2 --tree --ignore-glob=.git'
     alias rm trash
     alias ghub gh
 
