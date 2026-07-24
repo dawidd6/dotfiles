@@ -25,15 +25,15 @@ if status is-interactive
     # Functions
     function fish_greeting
     end
-    function cdt
+    function cdt --description 'Tere based cd command'
         set --local result (command tere $argv)
         [ -n "$result" ] && cd -- "$result"
     end
-    function cdr
+    function cdr --description 'Git root based cd command'
         set --local result (command git rev-parse --show-toplevel)
         [ -n "$result" ] && cd -- "$result"
     end
-    function cdp
+    function cdp --description 'Clipboard based cd command'
         set --local result (command wl-paste)
         [ -n "$result" ] && cd -- "$result"
     end
@@ -57,6 +57,7 @@ if status is-interactive
     abbr L 'less -RFXS'
     abbr D 'diff-so-fancy | less -RFX'
     abbr F 'fzf | wl-copy'
+    abbr r 'exec fish'
     abbr e exit
     abbr d 'cd ~/.dotfiles'
     abbr ef 'nvim ~/.config/fish/config.fish'
