@@ -4,6 +4,7 @@ vim.pack.add({
 	{ src = "https://github.com/nvim-telescope/telescope-live-grep-args.nvim" },
 	{ src = "https://github.com/nvim-telescope/telescope-ui-select.nvim" },
 	{ src = "https://github.com/folke/todo-comments.nvim" },
+	{ src = "https://github.com/debugloop/telescope-undo.nvim" },
 })
 
 local telescope = require("telescope")
@@ -59,6 +60,7 @@ telescope.setup({
 telescope.load_extension("live_grep_args")
 telescope.load_extension("ui-select")
 telescope.load_extension("todo-comments")
+telescope.load_extension("undo")
 
 vim.keymap.set(
 	"n",
@@ -84,3 +86,4 @@ vim.keymap.set(
 	{ silent = true, desc = "Search selected word" }
 )
 vim.keymap.set("n", "<Leader>t", ":Telescope todo-comments<CR>", { silent = true, desc = "Search TODO comments" })
+vim.keymap.set("n", "<Leader>u", ":Telescope undo<CR>", { silent = true, desc = "Search undo tree" })
