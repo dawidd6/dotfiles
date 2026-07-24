@@ -124,15 +124,13 @@ if status is-interactive
     alias vim nvim
     alias fd 'fd --exclude=.git/ --no-ignore --hidden'
     alias rg 'rg --glob=!.git/ --heading --line-number --no-ignore --hidden --smart-case'
-    alias eza 'eza --group-directories-first --group --header --time-style=long-iso'
-    alias l eza
-    alias ls eza
-    alias la 'eza -a'
-    alias ll 'eza -l'
-    alias lla 'eza -la'
-    alias lt 'eza --tree'
-    alias lta 'eza --tree -a'
-    alias tree 'eza --tree'
+    alias ls 'eza --group-directories-first --group --header --time-style=long-iso'
+    alias l ls
+    alias la 'ls -a'
+    alias ll 'ls --long --icons'
+    alias lla 'll -a'
+    alias lt 'll --level=2 --tree'
+    alias lta 'lt -a'
     alias rm trash
     alias ghub gh
 
