@@ -119,7 +119,7 @@ abbr bbc 'brew bundle -g check --verbose'
 abbr bbi 'brew bundle -g install'
 abbr t tmux
 abbr l ls
-abbr vi nvim
+abbr v nvim
 abbr vi nvim
 abbr vim nvim
 abbr rm trash
