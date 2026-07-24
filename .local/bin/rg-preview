@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+rg --color=always --line-number --no-heading --smart-case "${@}" |
+    fzf --ansi \
+        --layout=reverse \
+        --exact \
+        --delimiter=':' \
+        --nth=3.. \
+        --preview="bat --color=always --pager=never --highlight-line {2} -- {1}" \
+        --preview-window='right:60%:+{2}+3/3:wrap'
