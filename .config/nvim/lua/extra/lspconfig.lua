@@ -7,6 +7,7 @@ vim.pack.add({
 vim.diagnostic.config({
 	virtual_text = true,
 	virtual_lines = false,
+	signs = { priority = 20 },
 	severity_sort = true,
 	float = { source = true },
 	underline = { severity = { min = vim.diagnostic.severity.WARN } },
