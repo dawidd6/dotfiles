@@ -9,8 +9,9 @@
       "src": "https://github.com/b0o/SchemaStore.nvim"
     },
     "auto-save.nvim": {
-      "rev": "9aabcb8396224dcbf8d51c0c1d620d88a46e89d7",
-      "src": "https://github.com/okuuva/auto-save.nvim"
+      "rev": "829df8181d7b4eac15cb7a594870db27aafa0714",
+      "src": "https://github.com/dawidd6/auto-save.nvim",
+      "version": "'nested'"
     },
     "auto-session": {
       "rev": "6cde3874a9283c2db55627acca5f28e4fa402320",
