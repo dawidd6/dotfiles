@@ -37,3 +37,15 @@ vim.api.nvim_create_user_command("CopyProjectRelativeDirectoryPath", function()
 end, {
 	desc = "Copy project relative directory path",
 })
+
+vim.api.nvim_create_user_command("PackUpdate", function()
+	vim.pack.update()
+end, {
+	desc = "Update plugins online",
+})
+
+vim.api.nvim_create_user_command("PackClean", function()
+	vim.pack.update(nil, { offline = true })
+end, {
+	desc = "Clean plugins",
+})
