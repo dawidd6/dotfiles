@@ -52,7 +52,13 @@ telescope.setup({
 			auto_quoting = true,
 		},
 		["ui-select"] = {
-			require("telescope.themes").get_dropdown(),
+			previewer = require("telescope.previewers").new_buffer_previewer({
+				define_preview = function(self, entry)
+					local item = entry.value.text
+					local text = type(item) == "table" and item.preview and item.preview.text or ""
+					vim.api.nvim_buf_set_lines(self.state.bufnr, 0, -1, false, vim.split(text, "\n"))
+				end,
+			}),
 		},
 	},
 })

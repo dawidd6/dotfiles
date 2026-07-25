@@ -22,6 +22,7 @@ vim.keymap.set("n", "n", "nzzzv", { silent = true })
 vim.keymap.set("n", "N", "Nzzzv", { silent = true })
 
 vim.keymap.set("n", "<Del>", ":bwipeout<CR>", { silent = true })
+vim.keymap.set("n", "<Bs>", ":b#<CR>", { silent = true })
 
 vim.keymap.set("n", "<C-s>", ":write<CR>", { silent = true })
 vim.keymap.set("i", "<C-s>", "<Esc>:write<CR>", { silent = true })
