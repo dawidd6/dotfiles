@@ -77,7 +77,6 @@ vim.keymap.set(
 vim.keymap.set("n", "<Leader><Leader>", ":Telescope resume<CR>", { silent = true, desc = "Resume last search" })
 
 vim.keymap.set("n", "<Leader>b", ":Telescope buffers<CR>", { silent = true, desc = "Search open buffers" })
-vim.keymap.set("n", "<Leader>c", ":Telescope commands<CR>", { silent = true, desc = "Search available commands" })
 vim.keymap.set("n", "<Leader>d", ":Telescope diagnostics<CR>", { silent = true, desc = "Search current diagnostics" })
 vim.keymap.set("n", "<Leader>f", ":Telescope find_files<CR>", { silent = true, desc = "Search workspace files" })
 vim.keymap.set("n", "<Leader>h", ":Telescope search_history<CR>", { silent = true, desc = "Search searching history" })
