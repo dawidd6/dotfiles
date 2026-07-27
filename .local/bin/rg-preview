@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-rg --color=always --line-number --no-heading --smart-case "${@}" |
+rg --glob=!.git/ --line-number --hidden --smart-case --no-ignore --color=always "${@}" |
     fzf --ansi \
         --layout=reverse \
         --exact \
