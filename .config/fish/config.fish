@@ -15,7 +15,7 @@ export HOMEBREW_NO_REQUIRE_TAP_TRUST=1
 /home/linuxbrew/.linuxbrew/bin/brew shellenv fish | source
 fzf --fish | source
 starship init fish | source
-zoxide init fish --cmd=cd | source
+zoxide init fish --cmd cd | source
 
 # PATH
 fish_add_path --path --global --move ~/.local/bin
@@ -127,12 +127,12 @@ abbr vim nvim
 abbr rm trash
 
 # Aliases
-alias fd 'fd --exclude=.git/ --no-ignore --hidden'
-alias rg 'rg --glob=!.git/ --heading --line-number --hidden --smart-case --no-ignore'
-alias ug 'ug --glob=!.git/ --heading --line-number --hidden --smart-case'
-alias ls 'eza --group-directories-first --group --header --time-style=long-iso --all'
+alias fd 'fd --exclude .git --no-ignore --hidden'
+alias rg 'rg --glob "!**/.git/**" --heading --line-number --hidden --smart-case --no-ignore'
+alias ug 'ug --glob "!**/.git/**" --heading --line-number --hidden --smart-case'
+alias ls 'eza --group-directories-first --group --header --time-style long-iso --all'
 alias ll 'ls --long --icons'
-alias lt 'll --level=2 --tree --ignore-glob=.git'
+alias lt 'll --tree --level 2 --ignore-glob .git'
 alias ghub gh
 
 # Mux
