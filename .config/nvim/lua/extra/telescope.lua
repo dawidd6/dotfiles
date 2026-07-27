@@ -9,6 +9,13 @@ vim.pack.add({
 
 local telescope = require("telescope")
 local telescope_actions = require("telescope.actions")
+local telescope_config = require("telescope.config").values
+local rg_args = {
+	"--hidden",
+	"--no-ignore",
+	"--glob",
+	"!**/.git/**",
+}
 
 telescope.setup({
 	defaults = {
@@ -26,10 +33,7 @@ telescope.setup({
 				["<C-q>"] = telescope_actions.smart_send_to_qflist + telescope_actions.open_qflist,
 			},
 		},
-		file_ignore_patterns = {
-			"^.git/",
-			"/.git/",
-		},
+		vimgrep_arguments = vim.list_extend(vim.deepcopy(telescope_config.vimgrep_arguments), rg_args),
 	},
 	pickers = {
 		buffers = {
@@ -43,8 +47,7 @@ telescope.setup({
 			},
 		},
 		find_files = {
-			hidden = true,
-			no_ignore = true,
+			find_command = vim.list_extend({ "rg", "--files" }, vim.deepcopy(rg_args)),
 		},
 	},
 	extensions = {
