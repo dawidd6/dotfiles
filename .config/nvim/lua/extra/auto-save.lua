@@ -6,8 +6,9 @@ vim.pack.add({
 
 require("auto-save").setup({
 	trigger_events = {
-		defer_save = {},
+		immediate_save = { "BufLeave", "FocusLost", "VimSuspend" },
 		cancel_deferred_save = {},
+		defer_save = {},
 	},
 	condition = function(buf)
 		return vim.api.nvim_get_mode().mode == "n" and vim.bo[buf].buftype == ""

@@ -33,7 +33,7 @@ require("lualine").setup({
 					return "󰿇 SOPS"
 				end,
 				cond = function()
-					return vim.b["sops"] == "decrypted"
+					return vim.b["sops"] == "d"
 				end,
 			},
 			{
@@ -41,7 +41,7 @@ require("lualine").setup({
 					return "󰍁 SOPS"
 				end,
 				cond = function()
-					return vim.b["sops"] == "encrypted"
+					return vim.b["sops"] == "e"
 				end,
 			},
 		},
