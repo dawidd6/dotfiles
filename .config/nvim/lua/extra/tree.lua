@@ -47,6 +47,4 @@ nvim_tree.setup({
 	end,
 })
 
-vim.keymap.set("n", "<Leader>e", function()
-	nvim_tree_api.tree.open()
-end, { silent = true, desc = "Explore file tree" })
+vim.keymap.set("n", "<Leader>e", ":NvimTreeFocus<CR>", { silent = true, desc = "Explore file tree" })
