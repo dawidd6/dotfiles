@@ -50,6 +50,8 @@ complete -f -c git -n '__fish_git_using_command multi' -a '(set -l cmd (commandl
 # Binds
 bind ctrl-g edit_command_buffer
 bind ctrl-s 'fish_commandline_prepend sudo'
+bind \e\[1\;5C nextd-or-forward-word
+bind \e\[1\;5D prevd-or-backward-word
 
 # Abbrs
 abbr C wl-copy
