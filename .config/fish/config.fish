@@ -137,5 +137,5 @@ alias ghub gh
 
 # Mux
 if status is-interactive && not set -q TMUX && not set -q VSCODE_INJECTION
-    tmux new-session -A
+    tmux new-session -A -s main
 end
