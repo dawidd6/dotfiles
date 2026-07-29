@@ -45,6 +45,10 @@
       "rev": "84a4987ff36798c2fc1169cbaff67960aed9776f",
       "src": "https://github.com/NMAC427/guess-indent.nvim"
     },
+    "hydra.nvim": {
+      "rev": "8c4a9f621ec7cdc30411a1f3b6d5eebb12b469dc",
+      "src": "https://github.com/nvimtools/hydra.nvim"
+    },
     "lastplace.nvim": {
       "rev": "0fcf07c5f1b44c3de2c06a77811a852e77672bbb",
       "src": "https://github.com/nxhung2304/lastplace.nvim"

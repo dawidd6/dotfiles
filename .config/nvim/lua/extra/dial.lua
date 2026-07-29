@@ -21,6 +21,3 @@ require("dial.config").augends:register_group({
 		}),
 	},
 })
-
-vim.keymap.set({ "n", "x" }, "<Leader>+", "<Plug>(dial-increment)", { silent = true, desc = "Increment selected text" })
-vim.keymap.set({ "n", "x" }, "<Leader>-", "<Plug>(dial-decrement)", { silent = true, desc = "Decrement selected text" })

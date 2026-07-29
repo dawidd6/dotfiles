@@ -13,11 +13,6 @@ vim.keymap.set("n", "<Esc>", ":nohlsearch<CR>", { silent = true })
 vim.keymap.set("x", "<", "<gv", { silent = true })
 vim.keymap.set("x", ">", ">gv", { silent = true })
 
-vim.keymap.set("n", "<C-Left>", "<C-w><C-h>", { silent = true })
-vim.keymap.set("n", "<C-Right>", "<C-w><C-l>", { silent = true })
-vim.keymap.set("n", "<C-Down>", "<C-w><C-j>", { silent = true })
-vim.keymap.set("n", "<C-Up>", "<C-w><C-k>", { silent = true })
-
 vim.keymap.set("n", "n", "nzzzv", { silent = true })
 vim.keymap.set("n", "N", "Nzzzv", { silent = true })
 

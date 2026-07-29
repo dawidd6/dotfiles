@@ -5,7 +5,6 @@ vim.pack.add({
 require("which-key").setup({
 	preset = "helix",
 	delay = 0,
-	sort = { "desc" },
 	filter = function(mapping)
 		return mapping.desc and mapping.desc ~= ""
 	end,
