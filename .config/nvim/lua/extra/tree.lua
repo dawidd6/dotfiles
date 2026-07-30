@@ -11,11 +11,6 @@ nvim_tree.setup({
 	update_focused_file = {
 		enable = true,
 	},
-	actions = {
-		open_file = {
-			resize_window = false,
-		},
-	},
 	view = {
 		width = {
 			min = 30,
@@ -54,21 +49,5 @@ nvim_tree.setup({
 		end, { desc = "nvim-tree: Open Selected Files", buffer = bufnr, noremap = true, silent = true, nowait = true })
 	end,
 })
-
-vim.api.nvim_create_autocmd("WinResized", {
-	callback = function()
-		local winid = nvim_tree_api.tree.winid()
-		if winid ~= nil and vim.tbl_contains(vim.v.event["windows"], winid) then
-			vim.t["filetree_width"] = vim.api.nvim_win_get_width(winid)
-		end
-	end,
-})
-
-nvim_tree_api.events.subscribe(nvim_tree_api.events.Event.TreeOpen, function()
-	if vim.t["filetree_width"] ~= nil then
-		local winid = nvim_tree_api.tree.winid()
-		vim.api.nvim_win_set_width(winid, vim.t["filetree_width"])
-	end
-end)
 
 vim.keymap.set("n", "<Leader>e", ":NvimTreeFocus<CR>", { silent = true, desc = "Explore file tree" })
