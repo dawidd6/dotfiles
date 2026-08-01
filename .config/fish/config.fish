@@ -2,6 +2,7 @@
 status is-interactive && export LANG='C.UTF-8'
 export PAGER='less'
 export EDITOR='nvim'
+export LESS='--tabs 4 -RFX'
 export NVIM_LOG_FILE='/dev/null'
 export FZF_DEFAULT_OPTS='--reverse'
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -57,9 +58,7 @@ bind \e\[1\;5D prevd-or-backward-word
 # Abbrs
 abbr C wl-copy
 abbr P wl-paste
-abbr L 'less -RFXS'
-abbr D 'diff-so-fancy | less -RFX'
-abbr F 'fzf | wl-copy'
+abbr D 'diff-so-fancy | less'
 abbr r 'exec fish'
 abbr e exit
 abbr d 'cd ~/.dotfiles'
@@ -82,6 +81,7 @@ abbr gcae 'git commit --amend --edit'
 abbr gd 'git diff'
 abbr gdc 'git diff --cached'
 abbr gdn 'git diff --no-index'
+abbr gg 'git grep'
 abbr gl 'git lg'
 abbr glp 'git log-preview'
 abbr gp 'git push'
@@ -128,16 +128,15 @@ abbr l ls
 abbr v nvim
 abbr vi nvim
 abbr vim nvim
-abbr rm trash
 
 # Aliases
+alias rm 'command trash'
+alias ghub 'command gh'
 alias fd 'fd --exclude .git --no-ignore --hidden'
-alias rg 'rg --glob "!**/.git/**" --heading --line-number --hidden --smart-case --no-ignore'
-alias ug 'ug --glob "!**/.git/**" --heading --line-number --hidden --smart-case'
+alias rg 'rg --glob "!**/.git/**" --no-ignore --hidden --smart-case'
 alias ls 'eza --group-directories-first --group --header --time-style long-iso --all'
 alias ll 'ls --long --icons'
 alias lt 'll --tree --level 2 --ignore-glob .git'
-alias ghub gh
 
 # Mux
 if status is-interactive && not set -q TMUX && not set -q VSCODE_INJECTION
