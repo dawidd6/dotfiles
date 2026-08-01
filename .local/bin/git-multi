@@ -1,25 +1,23 @@
 #!/usr/bin/env bash
 
 set -euo pipefail
-shopt -s globstar nullglob
 
-failures=()
+shopt -s globstar nullglob
 
 while read -r -d '' repo; do
     if [[ -z "$repo" ]]; then
         continue
     fi
+    if [[ "$repo" == ".git/" ]]; then
+        continue
+    fi
     repo="${repo%/.git/}"
-    echo -e "\e[96m\e[1m==> \e[39m$repo\e[0m"
-    if ! git -C "$repo" "$@"; then
-        failures+=("$repo")
+    if out="$(git -c color.ui=always -C "$repo" "$@")"; then
+        echo -e "\e[96m\e[1m==> \e[39m$repo\e[0m"
+    else
+        echo -e "\e[31m\e[1m==> \e[39m$repo\e[0m"
+    fi
+    if [[ -n "$out" ]]; then
+        printf '\n\t%s\n\n' "${out//$'\n'/$'\n\t'}"
     fi
 done < <(printf '%s\0' **/.git/ | sort -fz)
-
-if [[ ${#failures[@]} -gt 0 ]]; then
-    echo
-fi
-
-for failure in "${failures[@]}"; do
-    echo -e "\e[31m\e[1m==> \e[39m$failure\e[0m"
-done
