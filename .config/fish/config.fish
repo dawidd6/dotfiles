@@ -59,7 +59,8 @@ bind \e\[1\;5D prevd-or-backward-word
 abbr C wl-copy
 abbr P wl-paste
 abbr D 'diff-so-fancy | less'
-abbr r 'exec fish'
+abbr R 'exec fish'
+abbr r reset
 abbr e exit
 abbr d 'cd ~/.dotfiles'
 abbr ef 'nvim ~/.config/fish/config.fish'
