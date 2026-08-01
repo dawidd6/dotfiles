@@ -1,6 +1,8 @@
 brew "age"
+brew "agg"
 brew "ansible"
 brew "ansible-lint"
+brew "asciinema"
 brew "bash-language-server"
 brew "bat"
 brew "curl"
