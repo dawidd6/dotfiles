@@ -21,6 +21,10 @@
       "rev": "2789206e10a0e4880f808c2aaf52bc57d876b481",
       "src": "https://github.com/saghen/blink.lib"
     },
+    "browsher.nvim": {
+      "rev": "50d537a0a517505a6eb97288be5e789d89ba658c",
+      "src": "https://github.com/claydugo/browsher.nvim"
+    },
     "conflict.nvim": {
       "rev": "fdc879c34c528aab90e1b90c5d408d141f31fef8",
       "src": "https://github.com/niekdomi/conflict.nvim"
