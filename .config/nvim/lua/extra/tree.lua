@@ -8,6 +8,9 @@ local nvim_tree_api = require("nvim-tree.api")
 local nvim_tree_utils = require("nvim-tree.utils")
 
 nvim_tree.setup({
+	disable_netrw = true,
+	hijack_cursor = true,
+	sync_root_with_cwd = true,
 	update_focused_file = {
 		enable = true,
 	},
