@@ -2,7 +2,7 @@
 status is-interactive && export LANG='C.UTF-8'
 export PAGER='less'
 export EDITOR='nvim'
-export LESS='--tabs 4 -RFX'
+export LESS='--tabs 4 -R'
 export NVIM_LOG_FILE='/dev/null'
 export FZF_DEFAULT_OPTS='--reverse'
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -20,7 +20,7 @@ starship init fish | source
 zoxide init fish --cmd cd | source
 
 # PATH
-fish_add_path --path --global --move ~/.local/bin
+fish_add_path --path --global --move "$HOME/.local/bin"
 
 # Colors
 set fish_color_command green
@@ -35,15 +35,29 @@ function fish_greeting
 end
 function cdt --description 'Tere based cd command'
     set --local result (command tere $argv)
-    [ -n "$result" ] && cd -- "$result"
+    test -n "$result" && cd -- "$result"
 end
 function cdr --description 'Git root based cd command'
     set --local result (command git rev-parse --show-toplevel)
-    [ -n "$result" ] && cd -- "$result"
+    test -n "$result" && cd -- "$result"
 end
 function cdp --description 'Clipboard based cd command'
     set --local result (command wl-paste)
-    [ -n "$result" ] && cd -- "$result"
+    test -n "$result" && cd -- "$result"
+end
+function git --wraps git
+    if test "$PWD" = "$HOME/.dotfiles"
+        GIT_DIR="$HOME/.dotfiles" command git -C "$HOME" $argv
+    else
+        command git $argv
+    end
+end
+function tig --wraps tig
+    if test "$PWD" = "$HOME/.dotfiles"
+        GIT_DIR="$HOME/.dotfiles" command tig -C "$HOME" $argv
+    else
+        command tig $argv
+    end
 end
 
 # Completions
