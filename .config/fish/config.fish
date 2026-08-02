@@ -12,6 +12,8 @@ export XDG_STATE_HOME="$HOME/.local/state"
 export HOMEBREW_BUNDLE_NO_DESCRIBE=1
 export HOMEBREW_BUNDLE_NO_UPGRADE=1
 export HOMEBREW_NO_REQUIRE_TAP_TRUST=1
+export FORGIT_LOG_FORMAT='%Cred%h%Creset %Cgreen(%cr)%Creset %C(bold blue)<%an>%Creset %s %C(yellow)%d%Creset'
+export FORGIT_LOG_GRAPH_ENABLE=false
 
 # Sources
 /home/linuxbrew/.linuxbrew/bin/brew shellenv fish | source
@@ -55,6 +57,7 @@ end
 
 # Completions
 complete -c git-multi -w git
+complete -c git-forgit -n '__fish_seen_subcommand_from log' -a '(complete -C "git log "(commandline -ct))'
 
 # Binds
 bind ctrl-g edit_command_buffer
@@ -79,10 +82,12 @@ abbr g git
 abbr ga 'git add'
 abbr gaa 'git add -A'
 abbr gaf 'git add -f'
+abbr gap 'git add -p'
 abbr gb 'git branch -a'
 abbr gh 'git checkout'
 abbr ghb 'git checkout -b'
 abbr ghm 'git checkout-main-branch'
+abbr ghp 'git checkout -p'
 abbr gc 'git commit -m'
 abbr gca 'git commit --amend --no-edit'
 abbr gcae 'git commit --amend --edit'
