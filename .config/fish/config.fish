@@ -2,7 +2,7 @@
 status is-interactive && export LANG='C.UTF-8'
 export PAGER='less'
 export EDITOR='nvim'
-export LESS='--tabs 4 -R'
+export LESS='--tabs 4 -RFX'
 export NVIM_LOG_FILE='/dev/null'
 export FZF_DEFAULT_OPTS='--reverse'
 export XDG_CONFIG_HOME="$HOME/.config"
