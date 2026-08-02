@@ -47,16 +47,9 @@ function cdp --description 'Clipboard based cd command'
 end
 function git --wraps git
     if test "$PWD" = "$HOME/.dotfiles"
-        GIT_DIR="$HOME/.dotfiles" command git -C "$HOME" $argv
+        GIT_DIR="$PWD" command git -C "$HOME" $argv
     else
         command git $argv
-    end
-end
-function tig --wraps tig
-    if test "$PWD" = "$HOME/.dotfiles"
-        GIT_DIR="$HOME/.dotfiles" command tig -C "$HOME" $argv
-    else
-        command tig $argv
     end
 end
 
