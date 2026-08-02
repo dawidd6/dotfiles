@@ -24,18 +24,3 @@ hydra({
 		{ "<Down>", "<C-w>-", { desc = "shorter" } },
 	},
 })
-
-hydra({
-	name = "Invert current word",
-	mode = "n",
-	body = "<Leader>i",
-	config = {
-		hint = {
-			type = "statusline",
-		},
-	},
-	heads = {
-		{ "<Up>", "<Plug>(dial-increment)", { desc = "increment" } },
-		{ "<Down>", "<Plug>(dial-decrement)", { desc = "decrement" } },
-	},
-})

@@ -12,4 +12,4 @@ require("sidekick").setup({
 	},
 })
 
-vim.keymap.set({ "n", "x" }, "<Leader>a", ":Sidekick cli prompt<CR>", { silent = true, desc = "Send LLM prompt" })
+vim.keymap.set({ "n", "x" }, "ga", ":Sidekick cli prompt<CR>", { silent = true, desc = "Go ask AI" })
