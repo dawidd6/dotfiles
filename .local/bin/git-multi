@@ -12,7 +12,7 @@ while read -r -d '' repo; do
         continue
     fi
     repo="${repo%/.git/}"
-    if out="$(git -c color.ui=always -C "$repo" "$@")"; then
+    if out="$(git -c color.ui=always -C "$repo" "$@" 2>&1)"; then
         echo -e "\e[96m\e[1m==> \e[39m$repo\e[0m"
     else
         echo -e "\e[31m\e[1m==> \e[39m$repo\e[0m"
