@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+conflicted_files=()
+
+while IFS= read -r -d '' file; do
+   conflicted_files+=("$file")
+done < <(git diff --name-only --diff-filter=U -z)
+
+if ((${#conflicted_files[@]} == 0)); then
+   printf '%s\n' 'No conflicted files.'
+   exit 0
+fi
+
+"$EDITOR" -- "${conflicted_files[@]}"
