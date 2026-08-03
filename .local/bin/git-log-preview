@@ -2,15 +2,15 @@
 
 set -euo pipefail
 
-git log --pretty=format:'%Cred%h%Creset %Cgreen(%cr)%Creset %C(bold blue)<%an>%Creset %s %C(yellow)%d%Creset' --color "$@" |
+git lg --color "$@" |
 	fzf \
 		--ansi \
 		--no-sort \
-		--reverse \
 		--multi \
+		--print0 \
+		--accept-nth 1 \
+		--header 'Tab - select commits, Enter - copy commits, Space - show commit' \
+		--bind 'space:execute(git show --color {+1} | diff-so-fancy | less --tabs 4 -R)' \
 		--preview 'git show --color {1} | diff-so-fancy' \
-		--preview-window 'right:60%:wrap' \
-		--bind 'space:execute(git show --color {+1} | diff-so-fancy | less -R)' \
-		--bind 'home:first,end:last' \
-		--bind 'ctrl-u:preview-up,ctrl-d:preview-down' |
-	awk '{print $1}' | tr '\n' ' ' | wl-copy -n
+		--preview-window 'right:60%:wrap' |
+	tr '\0' ' ' | wl-copy -n
