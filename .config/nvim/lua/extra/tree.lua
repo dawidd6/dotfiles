@@ -16,6 +16,9 @@ require("nvim-tree").setup({
 			max = -1,
 		},
 	},
+	filters = {
+		enable = false,
+	},
 })
 
 vim.keymap.set("n", "<Space>", ":NvimTreeFocus<CR>", { silent = true, desc = "Explore file tree" })
