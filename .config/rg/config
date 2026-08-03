@@ -1,6 +1,5 @@
 --glob
 !**/.git/**
+--no-ignore
 --hidden
 --smart-case
---no-require-git
---no-ignore-parent
