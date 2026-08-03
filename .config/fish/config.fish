@@ -14,6 +14,7 @@ export HOMEBREW_NO_REQUIRE_TAP_TRUST=1
 
 # Sources
 /home/linuxbrew/.linuxbrew/bin/brew shellenv fish | source
+direnv hook fish | source
 fzf --fish | source
 starship init fish | source
 zoxide init fish --cmd cd | source
@@ -43,13 +44,6 @@ end
 function cdp --description 'Clipboard based cd command'
     set --local result (command wl-paste)
     test -n "$result" && cd -- "$result"
-end
-function git --wraps git
-    if test "$PWD" = "$HOME/.dotfiles"
-        GIT_DIR="$PWD" command git -C "$HOME" $argv
-    else
-        command git $argv
-    end
 end
 
 # Completions
