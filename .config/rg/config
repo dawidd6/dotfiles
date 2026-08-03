@@ -1,0 +1,5 @@
+--glob
+!**/.git/**
+--no-ignore
+--hidden
+--smart-case
