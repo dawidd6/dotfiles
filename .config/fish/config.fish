@@ -2,9 +2,6 @@
 status is-interactive && export LANG='C.UTF-8'
 export PAGER='less'
 export EDITOR='nvim'
-export FZF_DEFAULT_OPTS='--reverse'
-export NVIM_LOG_FILE='/dev/null'
-export RIPGREP_CONFIG_PATH="$HOME/.config/rg/config"
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
@@ -12,6 +9,9 @@ export XDG_STATE_HOME="$HOME/.local/state"
 export HOMEBREW_BUNDLE_NO_DESCRIBE=1
 export HOMEBREW_BUNDLE_NO_UPGRADE=1
 export HOMEBREW_NO_REQUIRE_TAP_TRUST=1
+export FZF_DEFAULT_OPTS='--reverse'
+export NVIM_LOG_FILE='/dev/null'
+export RIPGREP_CONFIG_PATH="$HOME/.config/rg/config"
 
 # Sources
 /home/linuxbrew/.linuxbrew/bin/brew shellenv fish | source
