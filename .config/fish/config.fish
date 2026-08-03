@@ -45,6 +45,16 @@ function cdp --description 'Clipboard based cd command'
     set --local result (command wl-paste)
     test -n "$result" && cd -- "$result"
 end
+function __home_git_env --on-variable PWD
+    if test "$PWD" = "$HOME"
+        set -gx GIT_DIR "$HOME/.dotfiles"
+        set -gx GIT_WORK_TREE "$HOME"
+    else
+        set -q GIT_DIR && test "$GIT_DIR" = "$HOME/.dotfiles" && set -e GIT_DIR
+        set -q GIT_WORK_TREE && test "$GIT_WORK_TREE" = "$HOME" && set -e GIT_WORK_TREE
+    end
+end
+__home_git_env
 
 # Completions
 complete -c git-multi -w git
@@ -132,8 +142,6 @@ abbr vim nvim
 # Aliases
 alias rm 'command trash'
 alias ghub 'command gh'
-alias fd 'fd --exclude .git --no-ignore --hidden'
-alias rg 'rg --glob "!**/.git/**" --no-ignore --hidden --smart-case'
 alias ls 'eza --group-directories-first --group --header --time-style long-iso --all'
 alias ll 'ls --long --icons'
 alias lt 'll --tree --level 2 --ignore-glob .git'
