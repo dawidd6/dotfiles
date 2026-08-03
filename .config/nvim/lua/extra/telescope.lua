@@ -57,8 +57,12 @@ telescope.setup({
 			}),
 		},
 	},
-	load_extensions = { "live_grep_args", "ui-select", "todo-comments", "undo" },
 })
+
+require("telescope").load_extension("live_grep_args")
+require("telescope").load_extension("ui-select")
+require("telescope").load_extension("todo-comments")
+require("telescope").load_extension("undo")
 
 vim.keymap.set(
 	"n",
