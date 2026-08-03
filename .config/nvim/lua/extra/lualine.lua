@@ -5,11 +5,7 @@ vim.pack.add({
 
 require("lualine").setup({
 	options = {
-		section_separators = "",
-		component_separators = "",
-		disabled_filetypes = {
-			statusline = { "NvimTree", "neo-tree", "oil", "scratch" },
-		},
+		globalstatus = true,
 	},
 	sections = {
 		lualine_a = { "mode" },
@@ -56,12 +52,12 @@ require("lualine").setup({
 		lualine_y = {},
 		lualine_z = {},
 	},
-	-- tabline = {
-	-- 	lualine_a = {},
-	-- 	lualine_b = {},
-	-- 	lualine_c = { "buffers" },
-	-- 	lualine_x = {},
-	-- 	lualine_y = {},
-	-- 	lualine_z = { "tabs" },
-	-- },
+	tabline = {
+		lualine_a = {},
+		lualine_b = {},
+		lualine_c = { "buffers" },
+		lualine_x = {},
+		lualine_y = {},
+		lualine_z = { "tabs" },
+	},
 })
