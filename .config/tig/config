@@ -7,3 +7,6 @@ set diff-highlight = true
 bind main P >sh -c 'git show --color %(commit) | diff-so-fancy | less --tabs 4 -R'
 bind diff <Up> move-up
 bind diff <Down> move-down
+bind stage <Up> move-up
+bind stage <Down> move-down
+bind tree <Backspace> parent
