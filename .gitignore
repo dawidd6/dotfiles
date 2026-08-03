@@ -1,1 +1,9 @@
-*
+/*
+
+/.config/*
+!/.config
+!/.config/nvim
+
+/.local/*
+!/.local
+!/.local/bin
