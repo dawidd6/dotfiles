@@ -133,6 +133,8 @@ abbr vim nvim
 # Aliases
 alias rm 'command trash'
 alias ghub 'command gh'
+alias fd 'fd --exclude .git --no-ignore --hidden'
+alias rg 'rg --glob "!**/.git/**" --no-ignore --hidden --smart-case'
 alias ls 'eza --group-directories-first --group --header --time-style long-iso --all'
 alias ll 'ls --long --icons'
 alias lt 'll --tree --level 2 --ignore-glob .git'
