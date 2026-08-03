@@ -9,13 +9,6 @@ vim.pack.add({
 
 local telescope = require("telescope")
 local telescope_actions = require("telescope.actions")
-local telescope_config = require("telescope.config").values
-local rg_args = {
-	"--hidden",
-	"--no-ignore",
-	"--glob",
-	"!**/.git/**",
-}
 
 telescope.setup({
 	defaults = {
@@ -28,12 +21,15 @@ telescope.setup({
 		mappings = {
 			i = {
 				["<C-q>"] = telescope_actions.smart_send_to_qflist + telescope_actions.open_qflist,
+				["<C-Up>"] = telescope_actions.cycle_history_prev,
+				["<C-Down>"] = telescope_actions.cycle_history_next,
 			},
 			n = {
 				["<C-q>"] = telescope_actions.smart_send_to_qflist + telescope_actions.open_qflist,
+				["<C-Up>"] = telescope_actions.cycle_history_prev,
+				["<C-Down>"] = telescope_actions.cycle_history_next,
 			},
 		},
-		vimgrep_arguments = vim.list_extend(vim.deepcopy(telescope_config.vimgrep_arguments), rg_args),
 	},
 	pickers = {
 		buffers = {
@@ -45,9 +41,6 @@ telescope.setup({
 					["<Del>"] = telescope_actions.delete_buffer,
 				},
 			},
-		},
-		find_files = {
-			find_command = vim.list_extend({ "rg", "--files" }, vim.deepcopy(rg_args)),
 		},
 	},
 	extensions = {
@@ -64,12 +57,8 @@ telescope.setup({
 			}),
 		},
 	},
+	load_extensions = { "live_grep_args", "ui-select", "todo-comments", "undo" },
 })
-
-telescope.load_extension("live_grep_args")
-telescope.load_extension("ui-select")
-telescope.load_extension("todo-comments")
-telescope.load_extension("undo")
 
 vim.keymap.set(
 	"n",
@@ -82,6 +71,7 @@ vim.keymap.set("n", "<Leader><Leader>", ":Telescope resume<CR>", { silent = true
 vim.keymap.set("n", "<Leader>b", ":Telescope buffers<CR>", { silent = true, desc = "Search open buffers" })
 vim.keymap.set("n", "<Leader>d", ":Telescope diagnostics<CR>", { silent = true, desc = "Search current diagnostics" })
 vim.keymap.set("n", "<Leader>f", ":Telescope find_files<CR>", { silent = true, desc = "Search workspace files" })
+vim.keymap.set("n", "<Leader>g", ":Telescope git_files<CR>", { silent = true, desc = "Search git files" })
 vim.keymap.set("n", "<Leader>h", ":Telescope search_history<CR>", { silent = true, desc = "Search searching history" })
 vim.keymap.set("n", "<Leader>j", ":Telescope jumplist<CR>", { silent = true, desc = "Search jump list" })
 vim.keymap.set("n", "<Leader>o", ":Telescope oldfiles<CR>", { silent = true, desc = "Search old files" })
