@@ -4,6 +4,7 @@ export PAGER='less'
 export EDITOR='nvim'
 export FZF_DEFAULT_OPTS='--reverse'
 export NVIM_LOG_FILE='/dev/null'
+export RIPGREP_CONFIG_PATH="$HOME/.config/rg/config"
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
@@ -63,7 +64,7 @@ abbr D 'diff-so-fancy | less --tabs 4 -RFX'
 abbr R 'exec fish'
 abbr r reset
 abbr e exit
-abbr d 'cd ~/.dotfiles && nvim --cmd "cd $HOME"'
+abbr d 'cd ~/.dotfiles'
 abbr g git
 abbr ga 'git add'
 abbr gaa 'git add -A'
@@ -132,8 +133,6 @@ abbr vim nvim
 # Aliases
 alias rm 'command trash'
 alias ghub 'command gh'
-alias fd 'fd --exclude .git --no-ignore --hidden'
-alias rg 'rg --glob "!**/.git/**" --no-ignore --hidden --smart-case'
 alias ls 'eza --group-directories-first --group --header --time-style long-iso --all'
 alias ll 'ls --long --icons'
 alias lt 'll --tree --level 2 --ignore-glob .git'
