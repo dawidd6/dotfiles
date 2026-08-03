@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+old="$1"
+new="$2"
+
+esc() { printf '%s' "$1" | sed 's/[&|\\]/\\&/g'; }
+
+old_sed=$(esc "$old")
+new_sed=$(esc "$new")
+
+git grep --textconv -l -e "$old" |
+  while IFS= read -r file; do
+    if sops filestatus "$file" &>/dev/null; then
+      SOPS_EDITOR="sed -i 's|$old_sed|$new_sed|g'" sops "$file"
+    else
+      echo "Skipping not sops file: $file"
+    fi
+  done
