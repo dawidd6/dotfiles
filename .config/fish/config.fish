@@ -58,7 +58,6 @@ if status is-interactive
             set -q GIT_WORK_TREE && test "$GIT_WORK_TREE" = "$HOME" && set -e GIT_WORK_TREE
         end
     end
-    __home_git_env
 
     # Completions
     complete -c git-multi -w git
