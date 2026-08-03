@@ -6,7 +6,9 @@ vim.pack.add({
 require("nvim-tree").setup({
 	disable_netrw = true,
 	hijack_cursor = true,
+	hijack_unnamed_buffer_when_opening = true,
 	sync_root_with_cwd = true,
+	reload_on_bufenter = true,
 	update_focused_file = {
 		enable = true,
 	},
@@ -15,9 +17,24 @@ require("nvim-tree").setup({
 			min = 30,
 			max = -1,
 		},
+		signcolumn = "no",
 	},
 	filters = {
 		enable = false,
+	},
+	renderer = {
+		group_empty = true,
+		root_folder_label = ":~",
+		indent_markers = {
+			enable = true,
+			inline_arrows = true,
+		},
+	},
+	actions = {
+		change_dir = {
+			global = true,
+			restrict_above_cwd = true,
+		},
 	},
 })
 
