@@ -2,12 +2,16 @@
   "dev.containers.dockerPath": "podman",
   "editor.cursorBlinking": "solid",
   "editor.cursorSurroundingLines": 10,
+  "editor.fontFamily": "DejaVuSansM Nerd Font",
   "editor.fontSize": 15,
   "editor.formatOnSave": true,
   "editor.minimap.enabled": false,
   "editor.selectionClipboard": false,
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
+  "extensions.experimental.affinity": {
+    "asvetliakov.vscode-neovim": 1
+  },
   "files.autoSave": "onFocusChange",
   "files.insertFinalNewline": true,
   "files.trimFinalNewlines": true,
@@ -18,13 +22,11 @@
   "terminal.integrated.defaultLocation": "editor",
   "terminal.integrated.drawBoldTextInBrightColors": false,
   "terminal.integrated.fontSize": 15,
-  "terminal.integrated.fontWeightBold": "normal",
+  "terminal.integrated.scrollback": 10000,
+  // "terminal.integrated.fontWeightBold": "normal",
   "terminal.integrated.sendKeybindingsToShell": true,
+  "vscode-neovim.useWSL": true,
   "workbench.colorTheme": "Dark Modern",
   "workbench.iconTheme": "material-icon-theme",
-  "workbench.tree.indent": 20,
-  "vscode-neovim.useWSL": true,
-  "extensions.experimental.affinity": {
-    "asvetliakov.vscode-neovim": 1
-  }
+  "workbench.tree.indent": 20
 }
