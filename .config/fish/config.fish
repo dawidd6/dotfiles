@@ -63,12 +63,7 @@ abbr D 'diff-so-fancy | less --tabs 4 -RFX'
 abbr R 'exec fish'
 abbr r reset
 abbr e exit
-abbr d 'cd ~/.dotfiles'
-abbr ef 'nvim ~/.config/fish/config.fish'
-abbr eg 'nvim ~/.config/git/config'
-abbr en 'nvim --cmd "cd ~/.config/nvim"'
-abbr et 'nvim ~/.config/tmux/tmux.conf'
-abbr es 'nvim --cmd "cd ~/.local/bin"'
+abbr d 'cd ~/.dotfiles && nvim --cmd "cd $HOME"'
 abbr g git
 abbr ga 'git add'
 abbr gaa 'git add -A'
