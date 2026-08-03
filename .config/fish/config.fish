@@ -8,7 +8,6 @@ export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_STATE_HOME="$HOME/.local/state"
 export HOMEBREW_BUNDLE_NO_DESCRIBE=1
 export HOMEBREW_BUNDLE_NO_UPGRADE=1
-export HOMEBREW_NO_REQUIRE_TAP_TRUST=1
 export FZF_DEFAULT_OPTS='--reverse'
 export NVIM_LOG_FILE='/dev/null'
 export RIPGREP_CONFIG_PATH="$HOME/.config/rg/config"
