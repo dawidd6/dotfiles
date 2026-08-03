@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-git log --color "$@" |
+git lg --color "$@" |
 	fzf \
 		--ansi \
 		--no-sort \
