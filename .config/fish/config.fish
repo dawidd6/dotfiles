@@ -49,15 +49,6 @@ if status is-interactive
         set --local result (command wl-paste)
         test -n "$result" && cd -- "$result"
     end
-    function __home_git_env --on-variable PWD
-        if test "$PWD" = "$HOME"
-            set -gx GIT_DIR "$HOME/.dotfiles"
-            set -gx GIT_WORK_TREE "$HOME"
-        else
-            set -q GIT_DIR && test "$GIT_DIR" = "$HOME/.dotfiles" && set -e GIT_DIR
-            set -q GIT_WORK_TREE && test "$GIT_WORK_TREE" = "$HOME" && set -e GIT_WORK_TREE
-        end
-    end
 
     # Completions
     complete -c git-multi -w git
@@ -142,6 +133,7 @@ if status is-interactive
     abbr vim nvim
 
     # Aliases
+    alias dot 'GIT_DIR="$HOME/.dotfiles" GIT_WORK_TREE="$HOME" fish -i -l'
     alias rm 'command trash'
     alias ghub 'command gh'
     alias ls 'eza --group-directories-first --group --header --time-style long-iso --all'
