@@ -2,6 +2,7 @@
     lg = log --pretty=format:'%Cred%h%Creset %Cgreen(%cr)%Creset %C(bold blue)<%an>%Creset %s %C(yellow)%d%Creset'
     ls = ls-files
     sv = show --patch --stat
+    mt = mergetool
     unadd = restore --staged
 
 [branch]
@@ -22,6 +23,17 @@
 
 [interactive]
     diffFilter = diff-so-fancy --patch
+
+[merge]
+	tool = nvim
+
+[mergetool "nvim"]
+	cmd = nvim \"$MERGED\"
+
+[mergetool]
+	keepBackup = false
+	keepTemporaries = false
+	prompt = false
 
 [diff "sopsdiffer"]
     textconv = git-sops-decrypt
