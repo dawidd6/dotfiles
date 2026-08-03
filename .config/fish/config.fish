@@ -14,7 +14,6 @@ export RIPGREP_CONFIG_PATH="$HOME/.config/rg/config"
 
 # Sources
 /home/linuxbrew/.linuxbrew/bin/brew shellenv fish | source
-direnv hook fish | source
 fzf --fish | source
 starship init fish | source
 zoxide init fish --cmd cd | source
@@ -73,7 +72,6 @@ abbr D 'diff-so-fancy | less --tabs 4 -RFX'
 abbr R 'exec fish'
 abbr r reset
 abbr e exit
-abbr d 'cd ~/.dotfiles'
 abbr g git
 abbr ga 'git add'
 abbr gaa 'git add -A'
