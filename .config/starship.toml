@@ -20,5 +20,5 @@ disabled = false
 disabled = true
 
 [custom.dot]
-command = "echo dotfiles"
+command = "echo '(dotfiles)'"
 when = ''' test "$GIT_DIR" = "$HOME/.dotfiles" '''
