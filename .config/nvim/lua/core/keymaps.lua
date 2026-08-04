@@ -26,6 +26,11 @@ vim.keymap.set("i", "<C-a>", "<Esc>ggVG", { silent = true })
 vim.keymap.set("n", "<C-d>", "<C-d>zz", { silent = true })
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { silent = true })
 
+vim.keymap.set("n", "<C-Left>", "<C-w>h", { silent = true })
+vim.keymap.set("n", "<C-Right>", "<C-w>l", { silent = true })
+vim.keymap.set("n", "<C-Up>", "<C-w>k", { silent = true })
+vim.keymap.set("n", "<C-Down>", "<C-w>j", { silent = true })
+
 vim.keymap.set({ "n", "x" }, "<Leader>y", '"+y', { silent = true })
 vim.keymap.set({ "n", "x" }, "<Leader>Y", '"+Y', { silent = true })
 vim.keymap.set({ "n", "x" }, "<Leader>p", '"+p', { silent = true })

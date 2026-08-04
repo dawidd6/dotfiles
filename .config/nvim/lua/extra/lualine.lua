@@ -54,12 +54,4 @@ require("lualine").setup({
 		lualine_y = {},
 		lualine_z = {},
 	},
-	tabline = {
-		lualine_a = {},
-		lualine_b = {},
-		lualine_c = { "buffers" },
-		lualine_x = {},
-		lualine_y = {},
-		lualine_z = { "tabs" },
-	},
 })
