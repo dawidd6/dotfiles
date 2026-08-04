@@ -133,7 +133,7 @@ if status is-interactive
     abbr vim nvim
 
     # Aliases
-    alias dot 'GIT_DIR="$HOME/.dotfiles" GIT_WORK_TREE="$HOME" fish -i -l'
+    alias dot 'GIT_DIR="$HOME/.dotfiles" GIT_WORK_TREE="$HOME" fish -i -l -C cd'
     alias rm 'command trash'
     alias ghub 'command gh'
     alias ls 'eza --group-directories-first --group --header --time-style long-iso --all'
