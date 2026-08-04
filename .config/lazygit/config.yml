@@ -1,0 +1,3 @@
+git:
+  diffRenderers:
+    - command: diff-so-fancy
