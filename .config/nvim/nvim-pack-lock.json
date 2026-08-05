@@ -4,6 +4,10 @@
       "rev": "9f98b46e1dd61aeb666989c344d76517df63af55",
       "src": "https://github.com/b0o/SchemaStore.nvim"
     },
+    "agentic.nvim": {
+      "rev": "267b86224f9931bde47225852a58b21f9d153a9f",
+      "src": "https://github.com/carlos-algms/agentic.nvim"
+    },
     "auto-save.nvim": {
       "rev": "829df8181d7b4eac15cb7a594870db27aafa0714",
       "src": "https://github.com/dawidd6/auto-save.nvim",
@@ -109,9 +113,9 @@
       "rev": "4a6883cb13fe097a20a046eb55f6dffd239276e3",
       "src": "https://github.com/stevearc/quicker.nvim"
     },
-    "sidekick.nvim": {
-      "rev": "208e1c5b8170c01fd1d07df0139322a76479b235",
-      "src": "https://github.com/folke/sidekick.nvim"
+    "render-markdown.nvim": {
+      "rev": "f422cb5c6855f150e2ddcfaf44e7157b98b34f6a",
+      "src": "https://github.com/meanderingprogrammer/render-markdown.nvim"
     },
     "simple-zoom.nvim": {
       "rev": "318aef7c894aab4bc90dfbe82fee01b130540afd",
@@ -136,10 +140,6 @@
     "todo-comments.nvim": {
       "rev": "31e3c38ce9b29781e4422fc0322eb0a21f4e8668",
       "src": "https://github.com/folke/todo-comments.nvim"
-    },
-    "touchup.nvim": {
-      "rev": "e035c3941a829331a410906762c0773235aa35b5",
-      "src": "https://github.com/noisesfromspace/touchup.nvim"
     },
     "vscode.nvim": {
       "rev": "aa1102a7e15195c9cca22730b09224a7f7745ba8",
