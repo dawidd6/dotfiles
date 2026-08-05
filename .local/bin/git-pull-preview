@@ -2,8 +2,8 @@
 
 set -euo pipefail
 
-REMOTE="${1:-origin}"
 BRANCH="${2:-"$(git branch --show-current)"}"
+REMOTE="${1:-"$(git config --local --get "branch.$BRANCH.remote")"}"
 
 git fetch "$REMOTE" "$BRANCH" --quiet
 
@@ -12,18 +12,18 @@ REMOTE_HEAD="$(git rev-parse "$REMOTE/$BRANCH")"
 
 if [[ "$LOCAL" = "$REMOTE_HEAD" ]]; then
     echo "Repository is already up to date."
-    exit 0
+    exit
 fi
 
 git lg --stat HEAD.."$REMOTE/$BRANCH"
 
-read -rp "==> Diff? [y/N]: " SHOW_DIFF
+read -rp $'\e[96m\e[1m==> \e[39mDiff? [y/N]\e[0m ' SHOW_DIFF
 
 if [[ "$SHOW_DIFF" =~ ^[Yy]$ ]]; then
     git diff HEAD.."$REMOTE/$BRANCH"
 fi
 
-read -rp "==> Rebase? [y/N]: " PULL
+read -rp $'\e[96m\e[1m==> \e[39mRebase? [y/N]\e[0m ' PULL
 
 if [[ "$PULL" =~ ^[Yy]$ ]]; then
     git rebase "$REMOTE/$BRANCH" --quiet

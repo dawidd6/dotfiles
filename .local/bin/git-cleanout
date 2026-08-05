@@ -2,10 +2,11 @@
 
 set -euo pipefail
 
-read -r -p '==> Clean?'
+read -rp $'\e[96m\e[1m==> \e[39mClean? [y/N]\e[0m ' CLEAN
 
-root="$(git rev-parse --show-cdup)"
-root="${root:-.}"
-
-git clean -fd
-git checkout -- "${root}"
+if [[ "$CLEAN" =~ ^[Yy]$ ]]; then
+    root="$(git rev-parse --show-cdup)"
+    root="${root:-.}"
+    git clean -fd
+    git checkout -- "${root}"
+fi

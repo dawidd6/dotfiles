@@ -9,8 +9,8 @@ while IFS= read -r -d '' file; do
 done < <(git diff --name-only --diff-filter=U -z)
 
 if ((${#conflicted_files[@]} == 0)); then
-   printf '%s\n' 'No conflicted files.'
-   exit 0
+   echo 'No conflicted files.'
+   exit
 fi
 
 "$EDITOR" -- "${conflicted_files[@]}"

@@ -3,6 +3,6 @@
 set -euo pipefail
 
 if test -n "$(git status -s 2>/dev/null)"; then
-    echo dirty
+    echo 'Workspace is dirty.'
     exit 1
 fi
