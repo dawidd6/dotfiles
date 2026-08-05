@@ -1,9 +1,5 @@
 {
   "plugins": {
-    "SchemaStore.nvim": {
-      "rev": "9f98b46e1dd61aeb666989c344d76517df63af55",
-      "src": "https://github.com/b0o/SchemaStore.nvim"
-    },
     "agentic.nvim": {
       "rev": "267b86224f9931bde47225852a58b21f9d153a9f",
       "src": "https://github.com/carlos-algms/agentic.nvim"
@@ -148,10 +144,6 @@
     "which-key.nvim": {
       "rev": "3aab2147e74890957785941f0c1ad87d0a44c15a",
       "src": "https://github.com/folke/which-key.nvim"
-    },
-    "yaml-companion.nvim": {
-      "rev": "93a5f121a78d535b9451609d1c54fdde6ce3c8b6",
-      "src": "https://github.com/mosheavni/yaml-companion.nvim"
     }
   }
 }

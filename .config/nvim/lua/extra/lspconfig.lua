@@ -1,6 +1,4 @@
 vim.pack.add({
-	{ src = "https://github.com/b0o/SchemaStore.nvim" },
-	{ src = "https://github.com/mosheavni/yaml-companion.nvim" },
 	{ src = "https://github.com/neovim/nvim-lspconfig" },
 })
 
@@ -41,26 +39,26 @@ vim.lsp.config("lua_ls", {
 	},
 })
 
-vim.lsp.config(
-	"yamlls",
-	require("yaml-companion").setup({
-		lspconfig = {
-			settings = {
-				yaml = {
-					format = {
-						enable = false,
-					},
-					schemaStore = {
-						enable = false,
-						url = "",
-					},
-					schemaDownload = { enable = false },
-					schemas = require("schemastore").yaml.schemas(),
-				},
+vim.lsp.config("yamlls", {
+	settings = {
+		yaml = {
+			schemas = {
+				kubernetes = "*.{yml,yaml}",
+				["http://json.schemastore.org/github-workflow"] = ".github/workflows/*.{yml,yaml}",
+				["http://json.schemastore.org/github-action"] = "action.{yml,yaml}",
+				["http://json.schemastore.org/kustomization"] = "kustomization.{yml,yaml}",
+				["http://json.schemastore.org/chart"] = "Chart.{yml,yaml}",
+			},
+			format = {
+				enable = false,
+			},
+			schemaStore = {
+				enable = true,
+				url = "https://www.schemastore.org/api/json/catalog.json",
 			},
 		},
-	})
-)
+	},
+})
 
 vim.lsp.enable({
 	"ansiblels",
