@@ -46,7 +46,7 @@ if status is-interactive
         test -n "$result" && cd -- "$result"
     end
     function cdp --description 'Clipboard based cd command'
-        set --local result (command wl-paste)
+        set --local result (command wl-paste -n)
         test -n "$result" && cd -- "$result"
     end
 
