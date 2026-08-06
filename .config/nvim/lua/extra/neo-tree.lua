@@ -11,9 +11,8 @@ require("neo-tree").setup({
 	popup_border_style = "",
 	default_component_configs = {
 		indent = {
-			with_markers = false,
-			-- highlight = "NonText",
-			-- expander_highlight = "NonText",
+			highlight = "NonText",
+			expander_highlight = "NonText",
 		},
 	},
 	buffers = {
