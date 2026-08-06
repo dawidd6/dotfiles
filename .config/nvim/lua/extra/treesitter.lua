@@ -4,13 +4,19 @@ vim.pack.add({
 
 require("nvim-treesitter")
 	.install({
+		"bash",
 		"diff",
+		"dockerfile",
+		"fish",
 		"git_config",
 		"git_rebase",
 		"gitattributes",
 		"gitcommit",
 		"gitignore",
 		"go",
+		"python",
+		"ruby",
+		"ssh_config",
 		"yaml",
 	})
 	:wait(300000)
