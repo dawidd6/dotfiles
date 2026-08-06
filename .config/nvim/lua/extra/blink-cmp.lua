@@ -9,23 +9,14 @@ require("blink.cmp").setup({
 	cmdline = {
 		enabled = false,
 	},
-	completion = {
-		documentation = {
-			auto_show = true,
-		},
-		list = {
-			selection = {
-				auto_insert = false,
-			},
-		},
-	},
 	fuzzy = {
 		implementation = "lua",
 	},
 	keymap = {
-		["<C-e>"] = { "cancel", "fallback" },
+		["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
+		["<C-e>"] = { "hide", "fallback" },
 		["<CR>"] = { "accept", "fallback" },
-		["<Tab>"] = { "accept", "snippet_forward", "fallback" },
+		["<Tab>"] = { "snippet_forward", "accept", "fallback" },
 		["<S-Tab>"] = { "snippet_backward", "fallback" },
 		["<Up>"] = { "select_prev", "fallback" },
 		["<Down>"] = { "select_next", "fallback" },
