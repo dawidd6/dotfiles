@@ -23,7 +23,7 @@ vim.api.nvim_create_autocmd("FileType", {
 vim.api.nvim_create_autocmd("PackChanged", {
 	callback = function(event)
 		if event.data.spec.name == "nvim-treesitter" and event.data.kind == "update" then
-			require("nvim-treesitter").update():wait(300000)
+			require("nvim-treesitter").update()
 		end
 	end,
 })
