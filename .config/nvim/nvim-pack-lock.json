@@ -1,5 +1,9 @@
 {
   "plugins": {
+    "SchemaStore.nvim": {
+      "rev": "a652fcc01bf03946ab94b815be8c80ee157cbe1a",
+      "src": "https://github.com/b0o/SchemaStore.nvim"
+    },
     "auto-save.nvim": {
       "rev": "829df8181d7b4eac15cb7a594870db27aafa0714",
       "src": "https://github.com/dawidd6/auto-save.nvim",
@@ -97,6 +101,10 @@
       "rev": "8b47db616ef658b8fc27e61db2896aa2f40134de",
       "src": "https://github.com/kylechui/nvim-surround"
     },
+    "nvim-treesitter": {
+      "rev": "3d3321b560a63ff92a8692401f303a5123336b86",
+      "src": "https://github.com/nvim-treesitter/nvim-treesitter"
+    },
     "nvim-web-devicons": {
       "rev": "2ae6958df7ced50baac5035cec0c15799eedfbf7",
       "src": "https://github.com/nvim-tree/nvim-web-devicons"
@@ -144,6 +152,10 @@
     "which-key.nvim": {
       "rev": "3aab2147e74890957785941f0c1ad87d0a44c15a",
       "src": "https://github.com/folke/which-key.nvim"
+    },
+    "yaml-companion.nvim": {
+      "rev": "93a5f121a78d535b9451609d1c54fdde6ce3c8b6",
+      "src": "https://github.com/mosheavni/yaml-companion.nvim"
     }
   }
 }
