@@ -1,9 +1,5 @@
 {
   "plugins": {
-    "agentic.nvim": {
-      "rev": "267b86224f9931bde47225852a58b21f9d153a9f",
-      "src": "https://github.com/carlos-algms/agentic.nvim"
-    },
     "auto-save.nvim": {
       "rev": "829df8181d7b4eac15cb7a594870db27aafa0714",
       "src": "https://github.com/dawidd6/auto-save.nvim",
@@ -61,6 +57,10 @@
       "rev": "0fcf07c5f1b44c3de2c06a77811a852e77672bbb",
       "src": "https://github.com/nxhung2304/lastplace.nvim"
     },
+    "live-preview.nvim": {
+      "rev": "a30e54e51e7480d7060c8c8185f2a963ad3518b4",
+      "src": "https://github.com/brianhuster/live-preview.nvim"
+    },
     "lsp_signature.nvim": {
       "rev": "b7ace9ddb1640ce266012a45a672dfdaedfa5ec6",
       "src": "https://github.com/ray-x/lsp_signature.nvim"
@@ -109,9 +109,9 @@
       "rev": "4a6883cb13fe097a20a046eb55f6dffd239276e3",
       "src": "https://github.com/stevearc/quicker.nvim"
     },
-    "render-markdown.nvim": {
-      "rev": "f422cb5c6855f150e2ddcfaf44e7157b98b34f6a",
-      "src": "https://github.com/meanderingprogrammer/render-markdown.nvim"
+    "sidekick.nvim": {
+      "rev": "208e1c5b8170c01fd1d07df0139322a76479b235",
+      "src": "https://github.com/folke/sidekick.nvim"
     },
     "simple-zoom.nvim": {
       "rev": "318aef7c894aab4bc90dfbe82fee01b130540afd",
