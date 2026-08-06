@@ -4,6 +4,12 @@ vim.pack.add({
 
 require("nvim-treesitter")
 	.install({
+		"diff",
+		"git_config",
+		"git_rebase",
+		"gitattributes",
+		"gitcommit",
+		"gitignore",
 		"go",
 		"yaml",
 	})
