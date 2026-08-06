@@ -1,15 +1,16 @@
 vim.opt.iskeyword:append("-")
-vim.opt.listchars = {
-	leadmultispace = "|   ",
-	tab = "→ ",
-	nbsp = "␣",
-	lead = "␣",
-	trail = "•",
-	extends = "⟩", -- »
-	precedes = "⟨", -- «
-}
+-- vim.opt.listchars = {
+-- 	leadmultispace = "|   ",
+-- 	tab = "→ ",
+-- 	nbsp = "␣",
+-- 	lead = "␣",
+-- 	trail = "•",
+-- 	extends = "⟩", -- »
+-- 	precedes = "⟨", -- «
+-- }
 
 vim.o.breakindent = true
+vim.o.clipboard = "unnamedplus"
 vim.o.cmdheight = vim.g.vscode and 1 or 0
 vim.o.confirm = true
 vim.o.cursorline = true
@@ -22,7 +23,7 @@ vim.o.foldtext = ""
 vim.o.ignorecase = true
 vim.o.inccommand = "split"
 vim.o.linebreak = true
-vim.o.list = true
+-- vim.o.list = true
 vim.o.mouse = "a"
 vim.o.number = true
 vim.o.scrolloff = 10
@@ -35,6 +36,7 @@ vim.o.smartindent = true
 vim.o.splitbelow = true
 vim.o.splitright = true
 vim.o.swapfile = false
+vim.o.statuscolumn = "%l%s%C "
 vim.o.tabstop = 4
 vim.o.undofile = true
 vim.o.updatetime = 250

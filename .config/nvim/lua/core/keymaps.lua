@@ -31,14 +31,9 @@ vim.keymap.set("n", "<C-Right>", "<C-w>l", { silent = true })
 vim.keymap.set("n", "<C-Up>", "<C-w>k", { silent = true })
 vim.keymap.set("n", "<C-Down>", "<C-w>j", { silent = true })
 
-vim.keymap.set({ "n", "x" }, "<Leader>y", '"+y', { silent = true })
-vim.keymap.set({ "n", "x" }, "<Leader>Y", '"+Y', { silent = true })
-vim.keymap.set({ "n", "x" }, "<Leader>p", '"+p', { silent = true })
-vim.keymap.set({ "n", "x" }, "<Leader>P", '"+P', { silent = true })
-
-vim.keymap.set("n", "<Leader>R", ":restart<CR>", { silent = true })
-
 vim.keymap.set("n", "<S-Up>", ":move .-2<CR>==", { silent = true })
 vim.keymap.set("n", "<S-Down>", ":move .+1<CR>==", { silent = true })
 vim.keymap.set("x", "<S-Up>", ":move '<-2<CR>gv=gv", { silent = true })
 vim.keymap.set("x", "<S-Down>", ":move '>+1<CR>gv=gv", { silent = true })
+
+vim.keymap.set("n", "<Leader>R", ":restart<CR>", { silent = true })
