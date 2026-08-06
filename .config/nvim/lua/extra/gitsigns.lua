@@ -2,7 +2,9 @@ vim.pack.add({
 	{ src = "https://github.com/lewis6991/gitsigns.nvim" },
 })
 
-require("gitsigns").setup()
+require("gitsigns").setup({
+	sign_priority = 30,
+})
 
 vim.keymap.set("n", "ghp", ":Gitsigns preview_hunk<CR>", { silent = true, desc = "Git preview hunk" })
 vim.keymap.set("n", "ghr", ":Gitsigns reset_hunk<CR>", { silent = true, desc = "Git reset hunk" })

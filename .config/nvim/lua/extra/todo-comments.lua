@@ -4,5 +4,5 @@ vim.pack.add({
 })
 
 require("todo-comments").setup({
-	signs = false,
+	sign_priority = 10,
 })
