@@ -68,6 +68,10 @@ if status is-interactive
     abbr r reset
     abbr e exit
     abbr g git
+    abbr ef 'nvim ~/.config/fish/config.fish'
+    abbr en 'nvim --cmd "cd ~/.config/nvim"'
+    abbr es 'nvim --cmd "cd ~/.local/bin"'
+    abbr et 'nvim ~/.config/tmux/tmux.conf'
     abbr ga 'git add'
     abbr gaa 'git add -A'
     abbr gaf 'git add -f'
