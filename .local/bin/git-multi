@@ -12,10 +12,11 @@ while read -r -d '' repo; do
         continue
     fi
     repo="${repo%/.git/}"
+    branch="$(git -C "$repo" branch --show-current)"
     if out="$(git -c color.ui=always -C "$repo" "$@" 2>&1)"; then
-        echo -e "\e[96m\e[1m==> \e[39m$repo\e[0m"
+        echo -e "\e[32m\e[1m==>\e[0m $repo\t($branch)"
     else
-        echo -e "\e[31m\e[1m==> \e[39m$repo\e[0m"
+        echo -e "\e[31m\e[1m==>\e[0m $repo\t($branch)"
     fi
     if [[ -n "$out" ]]; then
         printf '\n\t%s\n\n' "${out//$'\n'/$'\n\t'}"
