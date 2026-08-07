@@ -7,12 +7,28 @@ vim.pack.add({
 
 require("neo-tree").setup({
 	auto_clean_after_session_restore = true,
+	enable_cursor_hijack = true,
 	close_if_last_window = true,
 	popup_border_style = "",
 	default_component_configs = {
 		indent = {
 			highlight = "NonText",
 			expander_highlight = "NonText",
+		},
+	},
+	sources = {
+		"filesystem",
+		"buffers",
+		"git_status",
+		"document_symbols",
+	},
+	source_selector = {
+		winbar = true,
+		sources = {
+			{ source = "filesystem" },
+			{ source = "buffers" },
+			{ source = "git_status" },
+			{ source = "document_symbols" },
 		},
 	},
 	buffers = {
@@ -32,18 +48,10 @@ require("neo-tree").setup({
 			hide_gitignored = false,
 			hide_ignored = false,
 		},
-		window = {
-			auto_expand_width = true,
-			mappings = {
-				-- TODO: Copy path?
-				["`"] = function(state)
-					local node = state.tree:get_node()
-					local path = node.path
-				end,
-			},
-		},
 	},
 	window = {
+		width = 50,
+		auto_expand_width = true,
 		mappings = {
 			["C"] = "",
 			["z"] = "",

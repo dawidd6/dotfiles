@@ -1,5 +1,6 @@
 vim.pack.add({
 	{ src = "https://github.com/nvim-treesitter/nvim-treesitter" },
+	{ src = "https://github.com/nvim-treesitter/nvim-treesitter-context" },
 })
 
 require("nvim-treesitter").install({
@@ -28,8 +29,6 @@ vim.api.nvim_create_autocmd("FileType", {
 		local lang = vim.treesitter.language.get_lang(vim.bo[event.buf].filetype)
 		if lang and vim.treesitter.language.add(lang) then
 			vim.treesitter.start(event.buf, lang)
-			vim.wo[0][0].foldexpr = "v:lua.vim.treesitter.foldexpr()"
-			vim.wo[0][0].foldmethod = "expr"
 		end
 	end,
 })

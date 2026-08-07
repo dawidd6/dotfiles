@@ -4,13 +4,11 @@ vim.pack.add({
 
 require("bufferline").setup({
 	options = {
-		style_preset = require("bufferline").style_preset.minimal,
 		offsets = {
 			{
 				filetype = "neo-tree",
-				text = "File explorer",
-				highlight = "Directory",
-				separator = true,
+				text = "Neotree",
+				highlight = "NeotreeTabInactive",
 			},
 		},
 	},

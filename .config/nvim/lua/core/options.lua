@@ -1,13 +1,5 @@
+vim.opt.sessionoptions:append("localoptions")
 vim.opt.iskeyword:append("-")
--- vim.opt.listchars = {
--- 	leadmultispace = "|   ",
--- 	tab = "→ ",
--- 	nbsp = "␣",
--- 	lead = "␣",
--- 	trail = "•",
--- 	extends = "⟩", -- »
--- 	precedes = "⟨", -- «
--- }
 
 vim.o.breakindent = true
 vim.o.clipboard = "unnamedplus"
@@ -17,13 +9,14 @@ vim.o.cursorline = true
 vim.o.expandtab = true
 vim.o.fillchars = "eob: ,fold: ,foldopen:,foldsep: ,foldinner: ,foldclose:"
 vim.o.foldcolumn = "1"
+vim.o.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 vim.o.foldlevel = 99
 vim.o.foldlevelstart = 99
+vim.o.foldmethod = "expr"
 vim.o.foldtext = ""
 vim.o.ignorecase = true
 vim.o.inccommand = "split"
 vim.o.linebreak = true
--- vim.o.list = true
 vim.o.mouse = "a"
 vim.o.number = true
 vim.o.scrolloff = 10
