@@ -1,25 +1,11 @@
-vim.api.nvim_create_user_command("CopyLLMContext", function(opts)
+vim.api.nvim_create_user_command("CopyAbsoluteFilePath", function(opts)
 	local path = vim.fn.expand("%:p")
-	local ref = path
-
 	if opts.line1 ~= opts.line2 then
-		ref = path .. ":" .. opts.line1 .. ":" .. opts.line2
+		path = path .. ":" .. opts.line1 .. ":" .. opts.line2
 	end
-
-	local note = vim.fn.input("Prompt (optional): ")
-	if note ~= "" then
-		ref = ref .. "\n" .. note
-	end
-
-	vim.fn.setreg("+", ref)
-	vim.notify(ref)
-end, { desc = "Copy LLM context", range = true })
-
-vim.api.nvim_create_user_command("CopyAbsoluteFilePath", function()
-	local path = vim.fn.expand("%:p")
 	vim.fn.setreg("+", path)
 	vim.notify(path)
-end, { desc = "Copy absolute file path" })
+end, { desc = "Copy absolute file path", range = true })
 
 vim.api.nvim_create_user_command("CopyRelativeFilePath", function()
 	local path = vim.fn.expand("%:.")

@@ -2,24 +2,26 @@ vim.pack.add({
 	{ src = "https://github.com/nvim-treesitter/nvim-treesitter" },
 })
 
-require("nvim-treesitter")
-	.install({
-		"bash",
-		"diff",
-		"dockerfile",
-		"fish",
-		"git_config",
-		"git_rebase",
-		"gitattributes",
-		"gitcommit",
-		"gitignore",
-		"go",
-		"python",
-		"ruby",
-		"ssh_config",
-		"yaml",
-	})
-	:wait(300000)
+require("nvim-treesitter").install({
+	"bash",
+	"diff",
+	"dockerfile",
+	"fish",
+	"git_config",
+	"git_rebase",
+	"gitattributes",
+	"gitcommit",
+	"gitignore",
+	"go",
+	"javascript",
+	"json",
+	"python",
+	"ruby",
+	"ssh_config",
+	"toml",
+	"typescript",
+	"yaml",
+})
 
 vim.api.nvim_create_autocmd("FileType", {
 	callback = function(event)
