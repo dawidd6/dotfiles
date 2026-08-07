@@ -16,20 +16,9 @@ require("neo-tree").setup({
 			expander_highlight = "NonText",
 		},
 	},
-	sources = {
-		"filesystem",
-		"buffers",
-		"git_status",
-		"document_symbols",
-	},
 	source_selector = {
 		winbar = true,
-		sources = {
-			{ source = "filesystem" },
-			{ source = "buffers" },
-			{ source = "git_status" },
-			{ source = "document_symbols" },
-		},
+		content_layout = "center",
 	},
 	buffers = {
 		show_unloaded = true,
@@ -50,7 +39,6 @@ require("neo-tree").setup({
 		},
 	},
 	window = {
-		width = 50,
 		auto_expand_width = true,
 		mappings = {
 			["C"] = "",
