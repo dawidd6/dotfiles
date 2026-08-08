@@ -26,6 +26,7 @@ vim.api.nvim_create_autocmd("FileType", {
 vim.api.nvim_create_autocmd("CmdwinEnter", {
 	callback = function(args)
 		vim.keymap.set("n", "q", ":q<CR>", { buffer = args.buf, silent = true })
+		vim.keymap.set("n", "<CR>", "<CR>", { buffer = args.buf, silent = true })
 	end,
 	desc = "Close command-line window with <q>",
 })
