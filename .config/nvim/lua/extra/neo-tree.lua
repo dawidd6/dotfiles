@@ -7,7 +7,6 @@ vim.pack.add({
 
 require("neo-tree").setup({
 	auto_clean_after_session_restore = true,
-	enable_cursor_hijack = true,
 	close_if_last_window = true,
 	popup_border_style = "",
 	default_component_configs = {
@@ -15,10 +14,6 @@ require("neo-tree").setup({
 			highlight = "NonText",
 			expander_highlight = "NonText",
 		},
-	},
-	source_selector = {
-		winbar = true,
-		content_layout = "center",
 	},
 	buffers = {
 		show_unloaded = true,
