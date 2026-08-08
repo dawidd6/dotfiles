@@ -1,6 +1,3 @@
-vim.opt.sessionoptions:append("localoptions")
-vim.opt.iskeyword:append("-")
-
 vim.o.breakindent = true
 vim.o.clipboard = "unnamedplus"
 vim.o.cmdheight = vim.g.vscode and 1 or 0
@@ -20,12 +17,14 @@ vim.o.linebreak = true
 vim.o.mouse = "a"
 vim.o.number = true
 vim.o.scrolloff = 10
+vim.o.sessionoptions = "buffers,curdir,folds,help,tabpages,terminal,winpos,winsize"
 vim.o.shiftwidth = 4
 vim.o.showbreak = "↪ "
 vim.o.showmode = false
 vim.o.signcolumn = "yes"
 vim.o.smartcase = true
 vim.o.smartindent = true
+vim.o.smoothscroll = true
 vim.o.splitbelow = true
 vim.o.splitright = true
 vim.o.swapfile = false

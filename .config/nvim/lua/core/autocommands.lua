@@ -30,11 +30,21 @@ vim.api.nvim_create_autocmd("CmdwinEnter", {
 	desc = "Close command-line window with <q>",
 })
 
+-- TODO: neovim 0.13+
+-- vim.api.nvim_create_autocmd({ "TextYankPost", "TextPutPost" }, {
 vim.api.nvim_create_autocmd("TextYankPost", {
 	callback = function()
 		vim.highlight.on_yank()
+		-- vim.hl.hl_op({ higroup = "Visual", timeout = 300 })
 	end,
 	desc = "Highlight text briefly after yanking",
+})
+
+vim.api.nvim_create_autocmd("TermOpen", {
+	callback = function()
+		vim.cmd.startinsert()
+	end,
+	desc = "Enter insert mode in terminal automatically",
 })
 
 vim.api.nvim_create_autocmd("VimResized", {

@@ -13,11 +13,9 @@ vim.keymap.set("n", "<Esc>", ":nohlsearch<CR>", { silent = true })
 vim.keymap.set("x", "<", "<gv", { silent = true })
 vim.keymap.set("x", ">", ">gv", { silent = true })
 
-vim.keymap.set("n", "n", "nzzzv", { silent = true })
-vim.keymap.set("n", "N", "Nzzzv", { silent = true })
-
-vim.keymap.set("n", "<Del>", ":bwipeout<CR>", { silent = true })
 vim.keymap.set("n", "<Bs>", ":b#<CR>", { silent = true })
+vim.keymap.set("n", "<Tab>", ":bnext<CR>", { silent = true })
+vim.keymap.set("n", "<S-Tab>", ":bprev<CR>", { silent = true })
 
 vim.keymap.set("n", "<C-s>", ":write<CR>", { silent = true })
 vim.keymap.set("i", "<C-s>", "<Esc>:write<CR>", { silent = true })
@@ -36,4 +34,8 @@ vim.keymap.set("n", "<S-Down>", ":move .+1<CR>==", { silent = true })
 vim.keymap.set("x", "<S-Up>", ":move '<-2<CR>gv=gv", { silent = true })
 vim.keymap.set("x", "<S-Down>", ":move '>+1<CR>gv=gv", { silent = true })
 
+vim.keymap.set("n", "<CR>", "o<Esc>", { silent = true })
+
 vim.keymap.set("n", "<Leader>R", ":restart<CR>", { silent = true })
+
+vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { silent = true })

@@ -8,12 +8,7 @@ local function require_all(directory)
 	end
 end
 
+-- TODO: move files to plugin/ dir?
+require("vim._core.ui2").enable()
 require_all("core")
-
-if vim.g.vscode then
-	require("extra.autopairs")
-	require("extra.surround")
-else
-	require("vim._core.ui2").enable()
-	require_all("extra")
-end
+require_all("extra")
