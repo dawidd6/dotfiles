@@ -43,4 +43,4 @@ require("neo-tree").setup({
 	},
 })
 
-vim.keymap.set("n", "<Space>", ":Neotree focus dir=.<CR>", { silent = true, desc = "Explore file tree" })
+vim.keymap.set("n", "<Space>", ":Neotree last dir=.<CR>", { silent = true, desc = "Explore neo tree" })
