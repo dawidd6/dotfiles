@@ -8,6 +8,21 @@ vim.api.nvim_create_autocmd("BufWinEnter", {
 	desc = "Always open help in right split",
 })
 
+vim.api.nvim_create_autocmd("BufEnter", {
+	callback = function(args)
+		local alternate = vim.fn.bufnr("#")
+		if
+			alternate > 0
+			and alternate ~= args.buf
+			and vim.api.nvim_buf_get_name(alternate) == ""
+			and not vim.bo[alternate].modified
+		then
+			vim.api.nvim_buf_delete(alternate, {})
+		end
+	end,
+	desc = "Delete the previous unnamed buffer",
+})
+
 vim.api.nvim_create_autocmd("FileType", {
 	callback = function()
 		vim.opt_local.formatoptions:remove({ "c", "r", "o" })
