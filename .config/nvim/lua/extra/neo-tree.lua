@@ -44,7 +44,7 @@ require("neo-tree").setup({
 	},
 })
 
-vim.keymap.set("n", "<Space>", ":Neotree last dir=.<CR>", { silent = true, desc = "Explore neo tree" })
+vim.keymap.set("n", "<Space>", "<cmd>Neotree last dir=.<CR>", { silent = true, desc = "Explore neo tree" })
 
 vim.api.nvim_create_autocmd("VimEnter", {
 	callback = function()
