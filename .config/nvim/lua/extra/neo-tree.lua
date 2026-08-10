@@ -7,6 +7,7 @@ vim.pack.add({
 
 require("neo-tree").setup({
 	popup_border_style = "",
+	close_if_last_window = true,
 	default_component_configs = {
 		indent = {
 			highlight = "NonText",
