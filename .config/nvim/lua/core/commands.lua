@@ -1,6 +1,6 @@
 vim.api.nvim_create_user_command("CopyAbsoluteFilePath", function(opts)
 	local path = vim.fn.expand("%:p")
-	if opts.line1 ~= opts.line2 then
+	if opts.range > 0 then
 		path = path .. ":" .. opts.line1 .. ":" .. opts.line2
 	end
 	vim.fn.setreg("+", path)
@@ -26,7 +26,7 @@ vim.api.nvim_create_user_command("CopyProjectAbsoluteDirectoryPath", function()
 end, { desc = "Copy project absolute directory path" })
 
 vim.api.nvim_create_user_command("CopyProjectRelativeDirectoryPath", function()
-	local path = vim.fs.relpath(vim.fn.getcwd(), vim.fs.root(0, { ".git" }) or vim.fn.getcwd()) or ""
+	local path = vim.fs.relpath(vim.fs.root(0, { ".git" }) or vim.fn.getcwd(), vim.fn.getcwd()) or ""
 	vim.fn.setreg("+", path)
 	vim.notify(path)
 end, { desc = "Copy project relative directory path" })
