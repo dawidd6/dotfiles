@@ -135,6 +135,7 @@ if status is-interactive
     abbr v nvim
     abbr vi nvim
     abbr vim nvim
+    abbr cat bat
 
     # Aliases
     alias dot 'GIT_DIR="$HOME/.dotfiles" GIT_WORK_TREE="$HOME" fish -i -l -C cd'
@@ -145,7 +146,7 @@ if status is-interactive
     alias lt 'll --tree --level 2 --ignore-glob .git'
 
     # Mux
-    if not set -q TMUX && not set -q VSCODE_INJECTION
+    if not set -q TMUX && not set -q VSCODE_INJECTION && not set -q HERDR_ENV
         tmux new-session -A -s main
     end
 end
