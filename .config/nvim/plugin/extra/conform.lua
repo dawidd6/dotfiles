@@ -5,7 +5,7 @@ vim.pack.add({
 require("conform").setup({
 	format_on_save = function()
 		if not vim.g.disable_autoformat then
-			return { timeout_ms = 1000, lsp_format = "fallback" }
+			return { timeout_ms = 1000, lsp_format = "never" }
 		end
 	end,
 	formatters_by_ft = {

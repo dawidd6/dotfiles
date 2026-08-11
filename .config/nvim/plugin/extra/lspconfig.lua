@@ -4,24 +4,22 @@ vim.pack.add({
 	{ src = "https://github.com/neovim/nvim-lspconfig" },
 })
 
+-- vim.lsp.codelens.enable(true)
+vim.lsp.inlay_hint.enable(true)
+vim.lsp.inline_completion.enable(true)
+
 vim.diagnostic.config({
 	virtual_text = true,
 	virtual_lines = false,
-	signs = { priority = 20 },
 	severity_sort = true,
 	float = { source = true },
+	signs = { priority = 20 },
 	underline = { severity = { min = vim.diagnostic.severity.WARN } },
 })
 
-vim.lsp.config("dockerls", {
-	root_markers = vim.list_extend({ "Containerfile" }, vim.lsp.config.dockerls.root_markers),
-})
-
 vim.lsp.config("lua_ls", {
-	root_markers = vim.list_extend({ "init.lua" }, vim.lsp.config.lua_ls.root_markers),
 	settings = {
 		Lua = {
-			format = { enable = false },
 			runtime = {
 				version = "LuaJIT",
 			},
@@ -34,9 +32,6 @@ vim.lsp.config("lua_ls", {
 				},
 				checkThirdParty = false,
 			},
-			telemetry = {
-				enable = false,
-			},
 		},
 	},
 })
@@ -47,9 +42,6 @@ vim.lsp.config(
 		lspconfig = {
 			settings = {
 				yaml = {
-					format = {
-						enable = false,
-					},
 					schemaStore = {
 						enable = false,
 						url = "",
