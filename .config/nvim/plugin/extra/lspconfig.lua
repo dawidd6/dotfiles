@@ -13,7 +13,6 @@ vim.diagnostic.config({
 	virtual_lines = false,
 	severity_sort = true,
 	float = { source = true },
-	signs = { priority = 20 },
 	underline = { severity = { min = vim.diagnostic.severity.WARN } },
 })
 
