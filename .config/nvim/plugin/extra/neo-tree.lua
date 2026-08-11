@@ -7,7 +7,6 @@ vim.pack.add({
 
 require("neo-tree").setup({
 	popup_border_style = "",
-	close_if_last_window = true,
 	default_component_configs = {
 		indent = {
 			highlight = "NonText",
@@ -18,7 +17,7 @@ require("neo-tree").setup({
 		show_unloaded = true,
 	},
 	filesystem = {
-		use_libuv_file_watcher = true,
+		-- use_libuv_file_watcher = true,
 		find_by_full_path_words = true,
 		follow_current_file = {
 			enabled = true,
@@ -50,12 +49,4 @@ vim.api.nvim_create_autocmd("ColorScheme", {
 	end,
 })
 
-vim.keymap.set("n", "<Space>", "<cmd>Neotree focus dir=.<CR>", { silent = true, desc = "Explore neo tree" })
-
-vim.api.nvim_create_autocmd("VimEnter", {
-	callback = function()
-		if vim.fn.argc() == 0 then
-			vim.cmd("Neotree show dir=.")
-		end
-	end,
-})
+vim.keymap.set("n", "<Space>", "<cmd>Neotree float dir=.<CR>", { silent = true, desc = "Explore neo tree" })
