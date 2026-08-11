@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+podman run -it --rm --userns keep-id --pull newer \
+    -v /home/linuxbrew/.linuxbrew/Homebrew/Library/Taps:/home/linuxbrew/.linuxbrew/Homebrew/Library/Taps \
+    -e HOMEBREW_NO_INSTALL_FROM_API=1 \
+    -e HOMEBREW_NO_REQUIRE_TAP_TRUST=1 \
+    -e HOMEBREW_DEVELOPER=1 \
+    ghcr.io/homebrew/brew \
+    bash -c '
+    git config --global --add safe.directory /home/linuxbrew/.linuxbrew/Homebrew/Library/Taps/homebrew/homebrew-core
+    exec bash -li
+    '
