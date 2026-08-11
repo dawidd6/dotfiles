@@ -35,6 +35,8 @@ vim.lsp.config("lua_ls", {
 	},
 })
 
+vim.lsp.config("tsgo", { cmd = { "tsc", "--lsp", "--stdio" } })
+
 vim.lsp.config(
 	"yamlls",
 	require("yaml-companion").setup({
@@ -73,5 +75,6 @@ vim.lsp.enable({
 	"dockerls",
 	"fish_lsp",
 	"lua_ls",
+	"tsgo",
 	"yamlls",
 })
