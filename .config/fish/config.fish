@@ -147,7 +147,7 @@ if status is-interactive
     alias lt 'll --tree --level 2 --ignore-glob .git'
 
     # Mux
-    if not set -q TMUX && not set -q VSCODE_INJECTION && not set -q HERDR_ENV
+    if not set -q TMUX && not set -q VSCODE_INJECTION
         tmux new-session -A -s main
     end
 end
