@@ -4,9 +4,6 @@
 
 !/.config/
 /.config/**
-!/.config/Code/
-!/.config/Code/User/
-!/.config/Code/User/settings.json
 !/.config/bat/
 !/.config/bat/config
 !/.config/containers/
