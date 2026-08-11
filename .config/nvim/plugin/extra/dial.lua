@@ -22,5 +22,5 @@ require("dial.config").augends:register_group({
 	},
 })
 
-vim.keymap.set("n", "gs", "<Plug>(dial-increment)", { silent = true, desc = "Increment current word" })
-vim.keymap.set("n", "gS", "<Plug>(dial-decrement)", { silent = true, desc = "Decrement current word" })
+vim.keymap.set("n", "+", "<Plug>(dial-increment)", { silent = true, desc = "Increment current word" })
+vim.keymap.set("n", "-", "<Plug>(dial-decrement)", { silent = true, desc = "Decrement current word" })
