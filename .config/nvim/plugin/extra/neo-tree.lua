@@ -44,6 +44,12 @@ require("neo-tree").setup({
 	},
 })
 
+vim.api.nvim_create_autocmd("ColorScheme", {
+	callback = function()
+		vim.api.nvim_set_hl(0, "NeoTreeDimText", { link = "NonText" })
+	end,
+})
+
 vim.keymap.set("n", "<Space>", "<cmd>Neotree focus dir=.<CR>", { silent = true, desc = "Explore neo tree" })
 
 vim.api.nvim_create_autocmd("VimEnter", {
