@@ -19,8 +19,6 @@
 !/.config/git/ignore
 !/.config/homebrew/
 !/.config/homebrew/Brewfile
-!/.config/lazygit/
-!/.config/lazygit/config.yml
 !/.config/nvim/
 !/.config/nvim/**
 !/.config/rg/
@@ -30,6 +28,8 @@
 !/.config/tig/config
 !/.config/tmux/
 !/.config/tmux/tmux.conf
+!/.config/tmuxinator/
+!/.config/tmuxinator/**
 
 !/.local/
 /.local/*
