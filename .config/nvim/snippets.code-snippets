@@ -1,5 +1,6 @@
 {
     "vim.pack.add": {
+        "scope": "lua",
         "prefix": "pack",
         "body": [
             "vim.pack.add({",
@@ -9,6 +10,7 @@
         "description": "Add a plugin"
     },
     "vim.keymap.set": {
+        "scope": "lua",
         "prefix": "keymap",
         "body": [
             "vim.keymap.set(\"${1:mode}\", \"${2:lhs}\", ${3:rhs}, { silent = true, desc = \"${4:desc}\"})"
