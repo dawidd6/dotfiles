@@ -112,7 +112,7 @@ if status is-interactive
     abbr ke 'kubectl exec -it'
     abbr kg 'kubectl get'
     abbr kgy 'kubectl get -o yaml'
-    abbr kr 'kubectl run -it --rm --restart=Never --image'
+    abbr kri 'kubectl run -it --rm --restart=Never --image'
     abbr kc kubectx
     abbr kn kubens
     abbr i incus
