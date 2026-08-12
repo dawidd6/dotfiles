@@ -65,9 +65,10 @@ abbr R 'exec fish'
 abbr r reset
 abbr e exit
 abbr g git
+abbr eb 'nvim --cmd "cd ~/.bin"'
 abbr ef 'nvim ~/.config/fish/config.fish'
-abbr en 'nvim --cmd "cd ~/.config/nvim"'
-abbr es 'nvim --cmd "cd ~/.local/bin"'
+abbr eg 'nvim ~/.config/git/config'
+abbr en 'nvim ~/.config/nvim/init.lua'
 abbr et 'nvim ~/.config/tmux/tmux.conf'
 abbr ga 'git add'
 abbr gaa 'git add -A'
@@ -93,7 +94,7 @@ abbr gpd 'git push --delete'
 abbr gpp 'git pull-preview'
 abbr gs 'git status -u'
 abbr gt 'git tag'
-abbr gu 'git unadd'
+abbr gu 'git restore --staged'
 abbr p podman
 abbr pp 'podman ps'
 abbr pi 'podman images'
