@@ -4,10 +4,6 @@ vim.pack.add({
 	{ src = "https://github.com/neovim/nvim-lspconfig" },
 })
 
--- vim.lsp.codelens.enable(true)
-vim.lsp.inlay_hint.enable(true)
-vim.lsp.inline_completion.enable(true)
-
 vim.diagnostic.config({
 	virtual_text = true,
 	virtual_lines = false,
@@ -15,45 +11,6 @@ vim.diagnostic.config({
 	float = { source = true },
 	underline = { severity = { min = vim.diagnostic.severity.WARN } },
 })
-
-vim.lsp.config("lua_ls", {
-	settings = {
-		Lua = {
-			runtime = {
-				version = "LuaJIT",
-			},
-			diagnostics = {
-				globals = { "vim" },
-			},
-			workspace = {
-				library = {
-					vim.env.VIMRUNTIME .. "/lua",
-				},
-				checkThirdParty = false,
-			},
-		},
-	},
-})
-
-vim.lsp.config("tsgo", { cmd = { "tsc", "--lsp", "--stdio" } })
-
-vim.lsp.config(
-	"yamlls",
-	require("yaml-companion").setup({
-		lspconfig = {
-			settings = {
-				yaml = {
-					schemaStore = {
-						enable = false,
-						url = "",
-					},
-					schemaDownload = { enable = false },
-					schemas = require("schemastore").yaml.schemas(),
-				},
-			},
-		},
-	})
-)
 
 vim.filetype.add({
 	pattern = {
@@ -70,11 +27,51 @@ vim.filetype.add({
 	},
 })
 
-vim.lsp.enable({
-	"ansiblels",
-	"dockerls",
-	"fish_lsp",
-	"lua_ls",
-	"tsgo",
-	"yamlls",
-})
+local lsp = {
+	ansiblels = {},
+	dockerls = {},
+	fish_lsp = {},
+	lua_ls = {
+		settings = {
+			Lua = {
+				runtime = {
+					version = "LuaJIT",
+				},
+				diagnostics = {
+					globals = { "vim" },
+				},
+				workspace = {
+					library = {
+						vim.env.VIMRUNTIME .. "/lua",
+					},
+					checkThirdParty = false,
+				},
+			},
+		},
+	},
+	tsgo = {
+		cmd = { "tsc", "--lsp", "--stdio" },
+	},
+	yamlls = require("yaml-companion").setup({
+		lspconfig = {
+			settings = {
+				yaml = {
+					schemaStore = {
+						enable = false,
+						url = "",
+					},
+					schemaDownload = { enable = false },
+					schemas = require("schemastore").yaml.schemas(),
+				},
+			},
+		},
+	}),
+}
+
+for name, config in pairs(lsp) do
+	vim.lsp.config(name, config)
+end
+vim.lsp.enable(vim.tbl_keys(lsp))
+-- vim.lsp.codelens.enable(true)
+vim.lsp.inlay_hint.enable(true)
+-- vim.lsp.inline_completion.enable(true)
