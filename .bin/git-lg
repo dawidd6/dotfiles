@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+exec git log --pretty=format:'%Cred%h%Creset %Cgreen(%cr)%Creset %C(bold blue)<%an>%Creset %s %C(yellow)%d%Creset' "$@"
