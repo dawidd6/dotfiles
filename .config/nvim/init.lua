@@ -240,17 +240,10 @@ do -- blink.cmp
 	vim.pack.add({
 		{ src = "https://github.com/saghen/blink.lib" },
 		{ src = "https://github.com/saghen/blink.cmp" },
-		{ src = "https://github.com/L3MON4D3/LuaSnip" },
-
 		{ src = "https://github.com/rafamadriz/friendly-snippets" },
 	})
 
-	local vscode_snippets = require("luasnip.loaders.from_vscode")
-	vscode_snippets.lazy_load()
-	vscode_snippets.load_standalone({ path = vim.fn.stdpath("config") .. "/snippets.code-snippets" })
-
 	require("blink.cmp").setup({
-		snippets = { preset = "luasnip" },
 		cmdline = {
 			enabled = false,
 		},
