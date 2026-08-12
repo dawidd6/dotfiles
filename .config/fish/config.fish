@@ -50,6 +50,7 @@ end
 # Completions
 complete -c git-multi -w git
 complete -c git-log-preview -w 'git log'
+complete -c git-lg -w 'git log'
 
 # Binds
 bind ctrl-g edit_command_buffer
