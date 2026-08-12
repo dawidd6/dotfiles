@@ -17,7 +17,7 @@ export RIPGREP_CONFIG_PATH="$HOME/.config/rg/config"
 /home/linuxbrew/.linuxbrew/bin/brew shellenv fish | source
 
 # PATH
-fish_add_path --path --global --move "$HOME/.local/bin"
+fish_add_path --path --global --move "$HOME/.bin"
 
 if status is-interactive
     # Exports
