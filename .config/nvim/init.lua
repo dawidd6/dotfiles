@@ -640,6 +640,7 @@ do -- neo-tree.nvim
 			},
 		},
 		window = {
+			position = "float",
 			mappings = {
 				["C"] = "",
 				["z"] = "",
@@ -657,7 +658,7 @@ do -- neo-tree.nvim
 		end,
 	})
 
-	vim.keymap.set("n", "<Space>", "<cmd>Neotree float dir=.<CR>", { silent = true, desc = "Explore neo tree" })
+	vim.keymap.set("n", "<Space>", "<cmd>Neotree last dir=.<CR>", { silent = true, desc = "Explore neo tree" })
 end
 
 do -- nvim-autopairs
