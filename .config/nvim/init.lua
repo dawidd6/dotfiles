@@ -307,6 +307,7 @@ do -- browsher.nvim
 	})
 
 	require("browsher").setup({
+		default_pin = "branch",
 		providers = {
 			["gitlab"] = require("browsher").providers["gitlab.com"],
 			["salsa"] = require("browsher").providers["gitlab.com"],
