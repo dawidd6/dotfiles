@@ -26,7 +26,7 @@
       "src": "https://github.com/saghen/blink.lib"
     },
     "browsher.nvim": {
-      "rev": "4c60512f5d83d5f30d0e22df672703a04eb2a769",
+      "rev": "07acd799d5ffaf18aa54d5faf27012a293eec1f9",
       "src": "https://github.com/claydugo/browsher.nvim"
     },
     "bufferline.nvim": {
