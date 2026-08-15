@@ -153,6 +153,6 @@ alias ll 'ls --long --icons always'
 alias lt 'll --tree --level 2 --ignore-glob .git'
 
 # Mux
-# if status is-interactive && not set -q TMUX && not set -q VSCODE_INJECTION
-#     tmux -N attach || tmux -N new-session -A -s main
-# end
+if status is-interactive && not set -q TMUX && not set -q VSCODE_INJECTION
+    tmux -N new-session -As main
+end
