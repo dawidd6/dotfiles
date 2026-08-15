@@ -1,0 +1,12 @@
+[Unit]
+Description=tmux
+
+[Service]
+ExecSearchPath=/home/linuxbrew/.linuxbrew/bin:%h/.bin:/usr/bin
+ExecStart=tmux -D
+ExecStartPost=tmux-resurrect restore
+ExecStop=tmux-resurrect save
+ExecStop=tmux kill-server
+
+[Install]
+WantedBy=default.target
