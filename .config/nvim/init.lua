@@ -754,6 +754,7 @@ do -- nvim-lspconfig
 				},
 			},
 		},
+		systemd_lsp = {},
 		tsgo = {
 			cmd = { "tsc", "--lsp", "--stdio" },
 		},
