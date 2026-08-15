@@ -8,6 +8,10 @@ pane_format+=$'\t#{window_layout}\t#{window_zoomed_flag}\t#{window_active}'
 pane_format+=$'\t#{pane_index}\t#{pane_current_path}\t#{pane_active}'
 pane_format+=$'\t#{@resurrect-command}'
 
+clean() {
+    rm -f "$state_file"
+}
+
 save() {
     if ! tmux -N start-server &>/dev/null; then
         echo 'Server is not running. Exiting doing nothing.'
@@ -95,9 +99,9 @@ restore() {
 }
 
 case "${1:-}" in
-save | restore) "$1" ;;
+save | restore | clean) "$1" ;;
 *)
-    echo "usage: $0 {save|restore}" >&2
+    echo "usage: $0 {save|restore|clean}" >&2
     exit 2
     ;;
 esac
