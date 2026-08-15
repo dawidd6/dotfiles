@@ -772,6 +772,7 @@ do -- nvim-lspconfig
 				},
 			},
 		}),
+		zizmor = {},
 	}
 
 	for name, config in pairs(lsp) do
