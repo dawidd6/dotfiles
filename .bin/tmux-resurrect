@@ -99,6 +99,7 @@ restore() {
         target="$session:$window_index"
         if [[ "$target" != "$previous_target" ]]; then
             tmux select-layout -t "$target" "$layout"
+            tmux set-option -wt "$target" automatic-rename on
             previous_target="$target"
         fi
     done <"$state_file"
