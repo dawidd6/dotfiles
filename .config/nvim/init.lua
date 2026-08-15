@@ -755,7 +755,7 @@ do -- nvim-lspconfig
 			},
 		},
 		systemd_lsp = {},
-		tsgo = {
+		tsc = {
 			cmd = { "tsc", "--lsp", "--stdio" },
 		},
 		yamlls = require("yaml-companion").setup({
