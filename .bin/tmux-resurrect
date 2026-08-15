@@ -2,85 +2,110 @@
 
 set -euo pipefail
 
+umask 077
+
 state_file="$HOME/.local/state/tmux-resurrect"
-pane_format=$'#{session_name}\t#{window_index}\t#{window_name}'
-pane_format+=$'\t#{window_layout}\t#{window_zoomed_flag}\t#{window_active}'
-pane_format+=$'\t#{pane_index}\t#{pane_current_path}\t#{pane_active}'
-pane_format+=$'\t#{@resurrect-command}'
+delimiter=$'\x1f'
+pane_format="#{session_name}${delimiter}#{window_index}${delimiter}#{window_name}"
+pane_format+="${delimiter}#{window_layout}${delimiter}#{window_zoomed_flag}${delimiter}#{window_active}"
+pane_format+="${delimiter}#{pane_index}${delimiter}#{pane_current_path}${delimiter}#{pane_active}"
+pane_format+="${delimiter}#{@resurrect-command}"
 
 clean() {
-    rm -f "$state_file"
+    if [[ -f "$state_file" ]]; then
+        rm "$state_file"
+        echo "Removed saved state file."
+    else
+        echo "No saved state file found."
+    fi
 }
 
 save() {
+    local pane_id pane contents encoded tmp
+
     if ! tmux -N start-server &>/dev/null; then
         echo 'Server is not running. Exiting doing nothing.'
-        exit
+        exit 0
     fi
 
-    if [[ -f "$state_file" ]]; then
-        cp "$state_file" "$state_file.bak"
+    tmp="$(mktemp "$state_file.XXXXXX")"
+    if ! tmux list-panes -a -F "#{pane_id}${delimiter}${pane_format}" |
+        while IFS="$delimiter" read -r pane_id pane; do
+            contents="$(tmux capture-pane -epJ -S 0 -t "$pane_id")" || exit 1
+            encoded="$(printf '%s\n' "$contents" | base64 -w0)" || exit 1
+            printf '%s%s%s\n' "$pane" "$delimiter" "$encoded"
+        done >"$tmp"; then
+        rm -f "$tmp"
+        exit 1
     fi
-
-    if ! tmux list-panes -a -F "$pane_format" >"$state_file"; then
-        mv "$state_file.bak" "$state_file"
-    fi
+    mv "$tmp" "$state_file"
 }
 
 restore() {
     local session window_index window_name layout zoomed window_active
-    local pane_index directory pane_active last_command target actual_index
+    local pane_index directory pane_active last_command scrollback target actual_index
+    local default_shell replay="sed -n \"\$1p\" \"\$2\" | cut -d \"\$3\" -f 11 | base64 -d; exec \"\$4\""
+    local line_number=0
+    local -a pane_command
     local previous_session='' previous_window='' previous_target=''
 
     if ! [[ -f "$state_file" ]]; then
         echo 'State file does not exist. Exiting doing nothing.'
-        exit
+        exit 0
     fi
 
     until tmux -N start-server &>/dev/null; do
         echo 'Waiting for tmux server to start...'
         sleep 1
     done
+    default_shell="$(tmux show-options -gv default-shell)"
 
-    while IFS=$'\t' read -r \
+    while IFS="$delimiter" read -r \
         session window_index window_name layout zoomed window_active \
-        pane_index directory pane_active last_command; do
+        pane_index directory pane_active last_command scrollback; do
+        ((++line_number))
         if ! [[ -n "$session" ]]; then
             continue
+        fi
+        if [[ -n "$scrollback" ]]; then
+            pane_command=(/bin/sh -c "$replay" tmux-resurrect
+                "$line_number" "$state_file" "$delimiter" "$default_shell")
+        else
+            pane_command=()
         fi
         if ! [[ -d "$directory" ]]; then
             directory="$HOME"
         fi
         target="$session:$window_index"
         if [[ "$session" != "$previous_session" ]]; then
-            tmux new-session -d -s "$session" -n "$window_name" -c "$directory"
-            actual_index=$(tmux list-windows -t "$session" -F '#{window_index}')
+            tmux new-session -d -s "$session" -n "$window_name" -c "$directory" "${pane_command[@]}"
+            actual_index="$(tmux list-windows -t "$session" -F '#{window_index}')"
             if [[ "$actual_index" != "$window_index" ]]; then
                 tmux move-window -s "$session:$actual_index" -t "$target"
             fi
         elif [[ "$window_index" != "$previous_window" ]]; then
-            tmux new-window -d -t "$target" -n "$window_name" -c "$directory"
+            tmux new-window -d -t "$target" -n "$window_name" -c "$directory" "${pane_command[@]}"
         else
-            tmux split-window -d -t "$target" -c "$directory"
+            tmux split-window -d -t "$target" -c "$directory" "${pane_command[@]}"
             tmux resize-pane -t "$target" -U 999
         fi
-        previous_session=$session
-        previous_window=$window_index
+        previous_session="$session"
+        previous_window="$window_index"
     done <"$state_file"
 
-    while IFS=$'\t' read -r \
+    while IFS="$delimiter" read -r \
         session window_index window_name layout zoomed window_active \
-        pane_index directory pane_active last_command; do
+        pane_index directory pane_active last_command scrollback; do
         target="$session:$window_index"
         if [[ "$target" != "$previous_target" ]]; then
             tmux select-layout -t "$target" "$layout"
-            previous_target=$target
+            previous_target="$target"
         fi
     done <"$state_file"
 
-    while IFS=$'\t' read -r \
+    while IFS="$delimiter" read -r \
         session window_index window_name layout zoomed window_active \
-        pane_index directory pane_active last_command; do
+        pane_index directory pane_active last_command scrollback; do
         target="$session:$window_index.$pane_index"
         if [[ "$pane_active" == 1 ]]; then
             tmux select-pane -t "$target"
