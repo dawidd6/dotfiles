@@ -46,6 +46,12 @@ function cdp --description 'Clipboard based cd command'
     set --local result (command wl-paste -n)
     test -n "$result" && cd -- "$result"
 end
+function __tmux_record_command --on-event fish_preexec
+    if test -n "$TMUX_PANE"
+        set --local command (printf '%s' "$argv[1]" | base64 -w0)
+        tmux set-option -pq -t "$TMUX_PANE" @resurrect-command "$command"
+    end
+end
 
 # Completions
 complete -c git-multi -w git
@@ -146,5 +152,5 @@ alias lt 'll --tree --level 2 --ignore-glob .git'
 
 # Mux
 if status is-interactive && not set -q TMUX && not set -q VSCODE_INJECTION
-    tmux new-session -A -s main
+    tmux -N attach || tmux -N new-session -A -s main
 end
