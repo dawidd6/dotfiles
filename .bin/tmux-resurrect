@@ -1,0 +1,103 @@
+#!/usr/bin/bash
+
+set -euo pipefail
+
+state_file="$HOME/.local/state/tmux-resurrect"
+pane_format=$'#{session_name}\t#{window_index}\t#{window_name}'
+pane_format+=$'\t#{window_layout}\t#{window_zoomed_flag}\t#{window_active}'
+pane_format+=$'\t#{pane_index}\t#{pane_current_path}\t#{pane_active}'
+pane_format+=$'\t#{@resurrect-command}'
+
+save() {
+    if ! tmux -N start-server &>/dev/null; then
+        echo 'Server is not running. Exiting doing nothing.'
+        exit
+    fi
+
+    if [[ -f "$state_file" ]]; then
+        cp "$state_file" "$state_file.bak"
+    fi
+
+    if ! tmux list-panes -a -F "$pane_format" >"$state_file"; then
+        mv "$state_file.bak" "$state_file"
+    fi
+}
+
+restore() {
+    local session window_index window_name layout zoomed window_active
+    local pane_index directory pane_active last_command target actual_index
+    local previous_session='' previous_window='' previous_target=''
+
+    if ! [[ -f "$state_file" ]]; then
+        echo 'State file does not exist. Exiting doing nothing.'
+        exit
+    fi
+
+    until tmux -N start-server &>/dev/null; do
+        echo 'Waiting for tmux server to start...'
+        sleep 1
+    done
+
+    while IFS=$'\t' read -r \
+        session window_index window_name layout zoomed window_active \
+        pane_index directory pane_active last_command; do
+        if ! [[ -n "$session" ]]; then
+            continue
+        fi
+        if ! [[ -d "$directory" ]]; then
+            directory="$HOME"
+        fi
+        target="$session:$window_index"
+        if [[ "$session" != "$previous_session" ]]; then
+            tmux new-session -d -s "$session" -n "$window_name" -c "$directory"
+            actual_index=$(tmux list-windows -t "$session" -F '#{window_index}')
+            if [[ "$actual_index" != "$window_index" ]]; then
+                tmux move-window -s "$session:$actual_index" -t "$target"
+            fi
+        elif [[ "$window_index" != "$previous_window" ]]; then
+            tmux new-window -d -t "$target" -n "$window_name" -c "$directory"
+        else
+            tmux split-window -d -t "$target" -c "$directory"
+            tmux resize-pane -t "$target" -U 999
+        fi
+        previous_session=$session
+        previous_window=$window_index
+    done <"$state_file"
+
+    while IFS=$'\t' read -r \
+        session window_index window_name layout zoomed window_active \
+        pane_index directory pane_active last_command; do
+        target="$session:$window_index"
+        if [[ "$target" != "$previous_target" ]]; then
+            tmux select-layout -t "$target" "$layout"
+            previous_target=$target
+        fi
+    done <"$state_file"
+
+    while IFS=$'\t' read -r \
+        session window_index window_name layout zoomed window_active \
+        pane_index directory pane_active last_command; do
+        target="$session:$window_index.$pane_index"
+        if [[ "$pane_active" == 1 ]]; then
+            tmux select-pane -t "$target"
+            if [[ "$zoomed" == 1 ]]; then
+                tmux resize-pane -Z -t "$target"
+            fi
+            if [[ "$window_active" == 1 ]]; then
+                tmux select-window -t "$session:$window_index"
+            fi
+        fi
+        if [[ -n "$last_command" ]]; then
+            printf '%s' "$last_command" | base64 -d | tmux load-buffer -b tmux-resurrect -
+            tmux paste-buffer -d -b tmux-resurrect -t "$target"
+        fi
+    done <"$state_file"
+}
+
+case "${1:-}" in
+save | restore) "$1" ;;
+*)
+    echo "usage: $0 {save|restore}" >&2
+    exit 2
+    ;;
+esac
