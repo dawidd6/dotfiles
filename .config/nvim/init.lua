@@ -757,6 +757,7 @@ do -- nvim-lspconfig
 				},
 			},
 		},
+		ruby_lsp = {},
 		systemd_lsp = {},
 		tsc = {
 			cmd = { "tsc", "--lsp", "--stdio" },
