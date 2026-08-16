@@ -360,6 +360,7 @@ do -- conform.nvim
 			dockerfile = { "dockerfmt" },
 			fish = { "fish_indent" },
 			lua = { "stylua" },
+			ruby = { "rubocop" },
 			sh = { "shfmt" },
 			["_"] = { "trim_whitespace", "trim_newlines" },
 		},
