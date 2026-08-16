@@ -730,6 +730,9 @@ do -- nvim-lspconfig
 			[".*/tasks/.*%.ya?ml"] = "yaml.ansible",
 			[".*/molecule/.*%.ya?ml"] = "yaml.ansible",
 		},
+		extension = {
+			service = "systemd",
+		},
 	})
 
 	local lsp = {
