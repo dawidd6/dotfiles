@@ -95,6 +95,10 @@ do -- Commands
 		vim.notify(path)
 	end, { desc = "Copy project relative directory path" })
 
+	vim.api.nvim_create_user_command("PackSync", function()
+		vim.pack.update(nil, { target = "lockfile", force = true })
+	end, { desc = "Sync plugins" })
+
 	vim.api.nvim_create_user_command("PackUpdate", function()
 		vim.pack.update()
 	end, { desc = "Update plugins" })
