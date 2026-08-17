@@ -21,6 +21,7 @@ starship init fish | source
 zoxide init fish --cmd cd | source
 
 # PATH
+grep -qi microsoft /proc/sys/kernel/osrelease && fish_add_path --path --global --move /mnt/c/WINDOWS/system32
 fish_add_path --path --global --move "$HOME/.bin"
 
 # Colors
