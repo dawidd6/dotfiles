@@ -740,6 +740,91 @@ do -- nvim-lspconfig
 		},
 	})
 
+	-- TODO: create a plugin with this???
+	-- local kubernetes_schema =
+	-- 	"https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.35.3-standalone-strict/all.json"
+	-- local yaml_schemas = require("schemastore").yaml.schemas()
+	--
+	-- vim.lsp.config("yamlls", {
+	-- 	settings = {
+	-- 		yaml = {
+	-- 			schemaStore = {
+	-- 				enable = false,
+	-- 				url = "",
+	-- 			},
+	-- 			schemas = yaml_schemas,
+	-- 		},
+	-- 	},
+	--
+	-- 	handlers = {
+	-- 		["custom/schema/request"] = function(_, uri)
+	-- 			local bufnr = vim.uri_to_bufnr(uri)
+	--
+	-- 			if not vim.api.nvim_buf_is_loaded(bufnr) then
+	-- 				return vim.NIL
+	-- 			end
+	--
+	-- 			if vim.b[bufnr].yamlls_schema then
+	-- 				return vim.b[bufnr].yamlls_schema
+	-- 			end
+	--
+	-- 			local api_version, kind = false, false
+	--
+	-- 			for _, line in ipairs(vim.api.nvim_buf_get_lines(bufnr, 0, -1, false)) do
+	-- 				if line:match("^%-%-%-%s*$") then
+	-- 					api_version, kind = false, false
+	-- 				elseif line:match("^apiVersion:%s*%S+") then
+	-- 					api_version = true
+	-- 				elseif line:match("^kind:%s*%S+") then
+	-- 					kind = true
+	-- 				end
+	--
+	-- 				if api_version and kind then
+	-- 					return kubernetes_schema
+	-- 				end
+	-- 			end
+	--
+	-- 			return vim.NIL
+	-- 		end,
+	-- 	},
+	--
+	-- 	on_init = function(client)
+	-- 		client:notify("yaml/registerCustomSchemaRequest")
+	-- 	end,
+	-- })
+	--
+	-- vim.api.nvim_create_user_command("YamlSchemaSelect", function()
+	-- 	local bufnr = vim.api.nvim_get_current_buf()
+	-- 	local choices = vim.list_extend({
+	-- 		{ name = "Automatic", url = false },
+	-- 		{ name = "Kubernetes", url = kubernetes_schema },
+	-- 	}, vim.deepcopy(yaml_schemas))
+	--
+	-- 	vim.ui.select(choices, {
+	-- 		prompt = "YAML schema",
+	-- 		format_item = function(item)
+	-- 			return item.name or item.url
+	-- 		end,
+	-- 	}, function(choice)
+	-- 		if not choice then
+	-- 			return
+	-- 		end
+	--
+	-- 		vim.b[bufnr].yamlls_schema = choice.url or nil
+	--
+	-- 		for _, client in
+	-- 			ipairs(vim.lsp.get_clients({
+	-- 				bufnr = bufnr,
+	-- 				name = "yamlls",
+	-- 			}))
+	-- 		do
+	-- 			client:notify("workspace/didChangeConfiguration", {
+	-- 				settings = {},
+	-- 			})
+	-- 		end
+	-- 	end)
+	-- end, {})
+
 	local lsp = {
 		ansiblels = {},
 		dockerls = {},
