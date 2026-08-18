@@ -4,8 +4,8 @@ Description=tmux
 [Service]
 ExecSearchPath=/home/linuxbrew/.linuxbrew/bin:%h/.bin:/usr/bin
 ExecStart=tmux -D
-ExecStartPost=tmux-resurrect restore
-ExecStop=-tmux-resurrect save
+ExecStartPost=tmux-rr restore
+ExecStop=-tmux-rr save
 ExecStop=tmux kill-server
 RestartSec=5
 Restart=always
