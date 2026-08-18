@@ -1,48 +1,50 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 
 set -euo pipefail
 
 state_file="${XDG_STATE_HOME:-$HOME/.local/state}/tmux-rr.sh"
 
 function save() {
-    printf '%s\n' '#!/usr/bin/env bash' >"$state_file"
+    : >"$state_file"
     for pane_id in $(tmux list-panes -a -F '#{pane_id}'); do
-        cat >>"$state_file" <<SCRIPT
+        cat >>"$state_file" <<EOF
+$(tmux list-panes -t "$pane_id" -f "#{==:#{pane_id},$pane_id}" -F "
+session_name='#{session_name}'
+window_name='#{window_name}'
+window_layout='#{window_layout}'
+window_panes='#{window_panes}'
+pane_index='#{pane_index}'
+pane_current_path='#{pane_current_path}'
+pane_current_command='#{pane_current_command}'
+pane_base_index='#{pane-base-index}'")
+command='$(tmux show-options -t "$pane_id" -pqv @resurrect-command)'
 scrollback='$(tmux capture-pane -epJ -S 0 -t "$pane_id" | base64 -w120)'
-SCRIPT
-        tmux list-panes -t "$pane_id" -f "#{==:#{pane_id},$pane_id}" -F "$(
-            cat <<'SCRIPT'
-if (( #{pane_index} == #{pane-base-index} )); then
-    if tmux has-session -t '=#{session_name}' 2>/dev/null; then
-        pane="$(tmux new-window -dP -F '##{pane_id} ##{pane_tty}' -t '=#{session_name}' -n '#{window_name}' -c '#{pane_current_path}' sh -c "tmux wait-for tmux-rr; exec $SHELL -li")"
-    else
-        pane="$(tmux new-session -dP -F '##{pane_id} ##{pane_tty}' -s '#{session_name}' -n '#{window_name}' -c '#{pane_current_path}' sh -c "tmux wait-for tmux-rr; exec $SHELL -li")"
-    fi
-else
-    pane=$(tmux split-window -dP -F '##{pane_id} ##{pane_tty}' -t "$pane" -T -c '#{pane_current_path}' sh -c "tmux wait-for tmux-rr; exec $SHELL -li")
-fi
-read -r pane_id pane_tty <<< "$pane"
-base64 -d <<< "$scrollback" > "$pane_tty"
-tmux wait-for -S tmux-rr
-if (( #{pane_index} == #{pane-base-index} + #{window_panes} - 1 )); then
-    tmux select-layout -t "$pane_id" '#{window_layout}'
-fi
-    
-    
-SCRIPT
-        )" >>"$state_file"
+process
+EOF
     done
 }
 
-# TODO: is this needed?
-# command="$(printf '%s' '#{@resurrect-command}' | base64 -d)"
-# if [[ -n "$command" ]]; then
-#     tmux send-keys -l -t "$pane_id" "$command"
-# fi
-
+# shellcheck disable=2154,2329,1090
 function restore() {
-    # shellcheck disable=SC1090
-    source "$state_file"
+    function process() {
+        if ((pane_index == pane_base_index)); then
+            if ! tmux has-session -t "=$session_name" &>/dev/null; then
+                pane="$(tmux new-session -dP -F '#{pane_id} #{pane_tty}' -s "$session_name" -n "$window_name" -c "$pane_current_path" sh -c "tmux wait-for tmux-rr; exec $SHELL -li")"
+            else
+                pane="$(tmux new-window -dP -F '#{pane_id} #{pane_tty}' -t "=$session_name" -n "$window_name" -c "$pane_current_path" sh -c "tmux wait-for tmux-rr; exec $SHELL -li")"
+            fi
+        else
+            pane="$(tmux split-window -dP -F '#{pane_id} #{pane_tty}' -t "=$session_name:{current}" -c "$pane_current_path" sh -c "tmux wait-for tmux-rr; exec $SHELL -li")"
+        fi
+        read -r pane_id pane_tty <<<"$pane"
+        base64 -d <<<"$scrollback" >"$pane_tty"
+        if ((pane_index == pane_base_index + window_panes - 1)); then
+            tmux select-layout -t "$pane_id" "$window_layout"
+        fi
+        tmux wait-for -S tmux-rr
+        tmux send-keys -l -t "$pane_id" "$command"
+    }
+    test -f "$state_file" && source "$state_file"
 }
 
 function clear() {
