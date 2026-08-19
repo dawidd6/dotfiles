@@ -95,6 +95,16 @@ do -- Commands
 		vim.notify(path)
 	end, { desc = "Copy project relative directory path" })
 
+	vim.api.nvim_create_user_command("IndentWithTab", function()
+		vim.bo.expandtab = false
+		vim.cmd("normal! gg=G")
+	end, { desc = "Reindent with tabs" })
+
+	vim.api.nvim_create_user_command("IndentWithSpace", function()
+		vim.bo.expandtab = true
+		vim.cmd("normal! gg=G")
+	end, { desc = "Reindent with spaces" })
+
 	vim.api.nvim_create_user_command("PackSync", function()
 		vim.pack.update(nil, { target = "lockfile", force = true })
 	end, { desc = "Sync plugins" })
