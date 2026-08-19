@@ -36,11 +36,11 @@ function restore() {
 		else
 			pane="$(tmux split-window -dP -F '#{pane_id} #{pane_tty}' -t "$session_name:{end}" -c "$pane_current_path" sh -c "tmux wait-for tmux-rr; exec $SHELL -li")"
 		fi
-		tmux resize-pane -t "$session_name:{end}" -U 999
-		read -r pane_id pane_tty <<<"$pane"
 		if ((pane_index == pane_base_index + window_panes - 1)); then
 			tmux select-layout -t "$session_name:{end}" "$window_layout"
+			tmux list-panes -t "$session_name:{end}" -F '-F #{pane_tty} cols #{pane_width} rows #{pane_height}' | xargs -n6 stty
 		fi
+		read -r pane_id pane_tty <<<"$pane"
 		base64 -d <<<"$scrollback" >"$pane_tty"
 		tmux wait-for -S tmux-rr
 		if [[ -n "$command" ]]; then
