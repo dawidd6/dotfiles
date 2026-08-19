@@ -16,12 +16,13 @@ status is-interactive && export LANG='C.UTF-8'
 
 # Sources
 /home/linuxbrew/.linuxbrew/bin/brew shellenv fish | source
+tmux-rr init-fish | source
 fzf --fish | source
 starship init fish | source
 zoxide init fish --cmd cd | source
 
 # PATH
-grep -qi microsoft /proc/sys/kernel/osrelease && fish_add_path --path --global --move /mnt/c/WINDOWS/system32 /mnt/c/WINDOWS
+# grep -qi microsoft /proc/sys/kernel/osrelease && fish_add_path --path --global --move /mnt/c/WINDOWS/system32 /mnt/c/WINDOWS
 fish_add_path --path --global --move "$HOME/.bin"
 
 # Colors
@@ -46,12 +47,6 @@ end
 function cdp --description 'Clipboard based cd command'
     set --local result (command wl-paste -n)
     test -n "$result" && cd -- "$result"
-end
-function __tmux_record_command --on-event fish_preexec
-    if test -n "$TMUX_PANE"
-        set --local command (printf '%s' "$argv[1]" | base64 -w0)
-        tmux set-option -pq -t "$TMUX_PANE" @resurrect-command "$command"
-    end
 end
 
 # Completions
