@@ -43,7 +43,9 @@ function restore() {
 		fi
 		base64 -d <<<"$scrollback" >"$pane_tty"
 		tmux wait-for -S tmux-rr
-		tmux send-keys -l -t "$pane_id" "$(base64 -d <<<"$command")"
+		if [[ -n "$command" ]]; then
+			tmux send-keys -l -t "$pane_id" "$(base64 -d <<<"$command")"
+		fi
 	}
 	test -f "$state_file" && source "$state_file"
 }
@@ -56,6 +58,7 @@ function init-bash() {
 	cat <<-'EOF'
 		__tmux_preexec() {
 		    local cmd encoded
+		    [[ -v TMUX_PANE ]] || return 0
 
 		    cmd=$(fc -ln -1)
 		    cmd=${cmd#"${cmd%%[![:space:]]*}"}
@@ -65,6 +68,7 @@ function init-bash() {
 		}
 
 		__tmux_precmd() {
+		    [[ -v TMUX_PANE ]] || return 0
 		    tmux set-option -pu -t "$TMUX_PANE" @rr-command 2>/dev/null
 		}
 
@@ -76,11 +80,13 @@ function init-bash() {
 function init-fish() {
 	cat <<-'EOF'
 		function __tmux_preexec --on-event fish_preexec
+		    set -q TMUX_PANE; or return 0
 		    set encoded (printf %s "$argv[1]" | base64 | tr -d '\n')
 		    tmux set-option -pt "$TMUX_PANE" @rr_command "$encoded"
 		end
 
 		function __tmux_postexec --on-event fish_postexec
+		    set -q TMUX_PANE; or return 0
 		    tmux set-option -pu -t "$TMUX_PANE" @rr-command 2>/dev/null
 		end
 	EOF
@@ -92,11 +98,13 @@ function init-zsh() {
 
 		__tmux_preexec() {
 		    local encoded
+		    (( ${+TMUX_PANE} )) || return 0
 		    encoded=$(printf %s "$1" | base64 | tr -d '\n')
 		    tmux set-option -pt "$TMUX_PANE" @rr-command "$encoded"
 		}
 
 		__tmux_precmd() {
+		    (( ${+TMUX_PANE} )) || return 0
 		    tmux set-option -pu -t "$TMUX_PANE" @rr-command 2>/dev/null
 		}
 
