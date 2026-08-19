@@ -17,7 +17,7 @@ function save() {
 			pane_current_path='#{pane_current_path}'
 			pane_current_command='#{pane_current_command}'
 			pane_base_index='#{pane-base-index}'")
-			command='$(tmux show-options -t "$pane_id" -pqv @resurrect-command)'
+			command='$(tmux show-options -t "$pane_id" -pqv @rr-command)'
 			scrollback='$(tmux capture-pane -epJ -S 0 -t "$pane_id" | base64 -w120)'
 			process
 		EOF
@@ -52,66 +52,57 @@ function clear() {
 	rm -f "$state_file"
 }
 
-function init() {
-	case "${1:-}" in
-	bash)
-		cat <<-'EOF'
-			__tmux_preexec() {
-				local cmd encoded
+function init-bash() {
+	cat <<-'EOF'
+		__tmux_preexec() {
+		    local cmd encoded
 
-				cmd=$(fc -ln -1)
-				cmd=${cmd#"${cmd%%[![:space:]]*}"}
-				encoded=$(printf %s "$cmd" | base64 | tr -d '\n')
+		    cmd=$(fc -ln -1)
+		    cmd=${cmd#"${cmd%%[![:space:]]*}"}
+		    encoded=$(printf %s "$cmd" | base64 | tr -d '\n')
 
-				tmux set-option -pt "$TMUX_PANE" @full_command "$encoded"
-			}
+		    tmux set-option -pt "$TMUX_PANE" @rr-command "$encoded"
+		}
 
-			__tmux_precmd() {
-				tmux set-option -pu -t "$TMUX_PANE" @full_command 2>/dev/null
-			}
+		__tmux_precmd() {
+		    tmux set-option -pu -t "$TMUX_PANE" @rr-command 2>/dev/null
+		}
 
-			PS0='$(__tmux_preexec)'
-			PROMPT_COMMAND="__tmux_precmd${PROMPT_COMMAND:+;$PROMPT_COMMAND}"
-		EOF
-		;;
+		PS0='$(__tmux_preexec)'
+		PROMPT_COMMAND="__tmux_precmd${PROMPT_COMMAND:+;$PROMPT_COMMAND}"
+	EOF
+}
 
-	zsh)
-		cat <<-'EOF'
-			autoload -Uz add-zsh-hook
+function init-fish() {
+	cat <<-'EOF'
+		function __tmux_preexec --on-event fish_preexec
+		    set encoded (printf %s "$argv[1]" | base64 | tr -d '\n')
+		    tmux set-option -pt "$TMUX_PANE" @rr_command "$encoded"
+		end
 
-			__tmux_preexec() {
-				local encoded
-				encoded=$(printf %s "$1" | base64 | tr -d '\n')
-				tmux set-option -pt "$TMUX_PANE" @full_command "$encoded"
-			}
+		function __tmux_postexec --on-event fish_postexec
+		    tmux set-option -pu -t "$TMUX_PANE" @rr-command 2>/dev/null
+		end
+	EOF
+}
 
-			__tmux_precmd() {
-				tmux set-option -pu -t "$TMUX_PANE" @full_command 2>/dev/null
-			}
+function init-zsh() {
+	cat <<-'EOF'
+		autoload -Uz add-zsh-hook
 
-			add-zsh-hook preexec __tmux_preexec
-			add-zsh-hook precmd __tmux_precmd
-		EOF
-		;;
+		__tmux_preexec() {
+		    local encoded
+		    encoded=$(printf %s "$1" | base64 | tr -d '\n')
+		    tmux set-option -pt "$TMUX_PANE" @rr-command "$encoded"
+		}
 
-	fish)
-		cat <<-'EOF'
-			function __tmux_preexec --on-event fish_preexec
-				set encoded (printf %s "$argv[1]" | base64 | tr -d '\n')
-				tmux set-option -pt "$TMUX_PANE" @full_command "$encoded"
-			end
+		__tmux_precmd() {
+		    tmux set-option -pu -t "$TMUX_PANE" @rr-command 2>/dev/null
+		}
 
-			function __tmux_postexec --on-event fish_postexec
-				tmux set-option -pu -t "$TMUX_PANE" @full_command 2>/dev/null
-			end
-		EOF
-		;;
-
-	*)
-		printf 'Unsupported shell: %s\n' "${1:-}" >&2
-		exit 1
-		;;
-	esac
+		add-zsh-hook preexec __tmux_preexec
+		add-zsh-hook precmd __tmux_precmd
+	EOF
 }
 
 function help() {
