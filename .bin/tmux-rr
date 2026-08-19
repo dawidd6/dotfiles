@@ -82,7 +82,7 @@ function init-fish() {
 		function __tmux_preexec --on-event fish_preexec
 		    set -q TMUX_PANE; or return 0
 		    set encoded (printf %s "$argv[1]" | base64 | tr -d '\n')
-		    tmux set-option -pt "$TMUX_PANE" @rr_command "$encoded"
+		    tmux set-option -pt "$TMUX_PANE" @rr-command "$encoded"
 		end
 
 		function __tmux_postexec --on-event fish_postexec
