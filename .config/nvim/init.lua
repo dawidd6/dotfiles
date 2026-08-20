@@ -374,7 +374,9 @@ do -- conform.nvim
 			dockerfile = { "dockerfmt" },
 			fish = { "fish_indent" },
 			lua = { "stylua" },
-			ruby = { "rubocop" },
+			python = { "ruff_fix", "ruff_format", "ruff_organize_imports" },
+			-- TODO: uncomment when rubocop is in brew?
+			-- ruby = { "rubocop" },
 			sh = { "shfmt" },
 			["_"] = { "trim_whitespace", "trim_newlines" },
 		},
@@ -784,6 +786,7 @@ do -- nvim-lspconfig
 		tsc = {
 			cmd = { "tsc", "--lsp", "--stdio" },
 		},
+		ty = {},
 		yamlls = require("yaml-companion").setup({
 			lspconfig = {
 				handlers = {
@@ -838,7 +841,8 @@ end
 do -- nvim-treesitter
 	vim.pack.add({
 		{ src = "https://github.com/nvim-treesitter/nvim-treesitter" },
-		{ src = "https://github.com/nvim-treesitter/nvim-treesitter-context" },
+		-- TODO: this is annoying?
+		-- { src = "https://github.com/nvim-treesitter/nvim-treesitter-context" },
 	})
 
 	require("nvim-treesitter").install({
