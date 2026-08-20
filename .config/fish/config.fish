@@ -20,7 +20,8 @@ status is-interactive && export LANG='C.UTF-8'
 
 # Sources
 /home/linuxbrew/.linuxbrew/bin/brew shellenv fish | source
-tmux-rr init-fish | source
+# TODO: tmux-rr
+# tmux-rr init-fish | source
 fzf --fish | source
 starship init fish | source
 zoxide init fish --cmd cd | source
@@ -150,5 +151,7 @@ alias lt 'll --tree --level 2 --ignore-glob .git'
 
 # Mux
 if status is-interactive && not set -q TMUX && not set -q VSCODE_INJECTION
-    tmux -N new-session -As main
+    # TODO: tmux-rr
+    # tmux -N new-session -As main
+    tmux new-session -As main
 end
