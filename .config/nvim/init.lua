@@ -373,6 +373,7 @@ do -- conform.nvim
 		formatters_by_ft = {
 			dockerfile = { "dockerfmt" },
 			fish = { "fish_indent" },
+			go = { "gofumpt", "goimports" },
 			lua = { "stylua" },
 			python = { "ruff_fix", "ruff_format", "ruff_organize_imports" },
 			-- TODO: uncomment when rubocop is in brew?
@@ -501,17 +502,18 @@ do -- lsp_signature.nvim
 	})
 end
 
-do -- lspsaga.nvim
-	vim.pack.add({
-		{ src = "https://github.com/nvimdev/lspsaga.nvim" },
-	})
-
-	require("lspsaga").setup({
-		lightbulb = {
-			virtual_text = false,
-		},
-	})
-end
+-- TODO: is this needed?
+-- do -- lspsaga.nvim
+-- 	vim.pack.add({
+-- 		{ src = "https://github.com/nvimdev/lspsaga.nvim" },
+-- 	})
+--
+-- 	require("lspsaga").setup({
+-- 		lightbulb = {
+-- 			virtual_text = false,
+-- 		},
+-- 	})
+-- end
 
 do -- lualine.nvim
 	vim.pack.add({
@@ -755,6 +757,13 @@ do -- nvim-lspconfig
 		},
 	})
 
+	vim.api.nvim_create_autocmd("LspAttach", {
+		callback = function()
+			vim.keymap.set("n", "grd", vim.lsp.buf.declaration, { silent = true, desc = "vim.lsp.buf.declaration()" })
+			vim.keymap.set("n", "K", vim.lsp.buf.hover, { silent = true, desc = "vim.lsp.buf.hover()" })
+		end,
+	})
+
 	vim.api.nvim_create_user_command("YamlChooseSchema", function()
 		require("yaml-companion").open_ui_select()
 	end, { desc = "Choose YAML schema" })
@@ -763,6 +772,7 @@ do -- nvim-lspconfig
 		ansiblels = {},
 		dockerls = {},
 		fish_lsp = {},
+		gopls = {},
 		lua_ls = {
 			settings = {
 				Lua = {
@@ -781,7 +791,7 @@ do -- nvim-lspconfig
 				},
 			},
 		},
-		ruby_lsp = {},
+		solargraph = {},
 		systemd_lsp = {},
 		tsc = {
 			cmd = { "tsc", "--lsp", "--stdio" },
