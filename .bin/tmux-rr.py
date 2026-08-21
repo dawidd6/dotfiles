@@ -28,12 +28,13 @@ WINDOWS_FORMAT = {
 }
 
 PANES_FORMAT = {
+    "pane_id": "#{pane_id}",
     "pane_index": "#{pane_index}",
     "pane_current_path": "#{pane_current_path}",
     "pane_current_command": "#{pane_current_command}",
     "pane_width": "#{pane_width}",
     "pane_height": "#{pane_height}",
-    "command": "#{@rr-command}}",
+    "command": "#{@rr-command}",
 }
 
 
@@ -49,7 +50,8 @@ def save():
                 ["tmux", "list-sessions", "-F", json.dumps(SESSIONS_FORMAT)],
                 text=True,
             ).splitlines()
-        ]
+        ],
+        "scrollbacks": {},
     }
     for session_state in state["sessions"]:
         session_state["windows"] = [
@@ -82,7 +84,7 @@ def save():
                 ).splitlines()
             ]
             for pane_state in window_state["panes"]:
-                pane_state["scrollback"] = base64.b64encode(
+                state["scrollbacks"][pane_state["pane_id"]] = base64.b64encode(
                     subprocess.check_output(
                         [
                             "tmux",
@@ -101,13 +103,16 @@ def save():
     STATE_FILE.write_text(json.dumps(state, indent=2), encoding="utf-8")
 
 
-def replay():
-
+def replay(pane_id):
+    scrollback = json.loads(STATE_FILE.read_text(encoding="utf-8"))["scrollbacks"][pane_id]  # fmt: skip
+    sys.stdout.buffer.write(base64.b64decode(scrollback, validate=True))
 
 
 def restore():
+    def command(pane_id):
+        return ["sh", "-c", f"{sys.argv[0]} replay {pane_id}; exec $SHELL -li"]
+
     state = json.loads(STATE_FILE.read_text(encoding="utf-8"))
-    command = ["sh", "-c", f"{sys.argv[0]} replay {pane_id}; exec $SHELL -li"]
     for session_state in state["sessions"]:
         for window_state in session_state["windows"]:
             for pane_state in window_state["panes"][:1]:
@@ -134,7 +139,7 @@ def restore():
                             "-c",
                             pane_state["pane_current_path"],
                         ]
-                        + command,
+                        + command(pane_state["pane_id"]),
                     )
                 else:
                     subprocess.check_call(
@@ -149,7 +154,7 @@ def restore():
                             "-c",
                             pane_state["pane_current_path"],
                         ]
-                        + command,
+                        + command(pane_state["pane_id"]),
                     )
             for pane_state in window_state["panes"][1:]:
                 subprocess.check_call(
@@ -162,7 +167,7 @@ def restore():
                         "-c",
                         pane_state["pane_current_path"],
                     ]
-                    + command,
+                    + command(pane_state["pane_id"]),
                 )
                 subprocess.check_call(
                     [
@@ -173,7 +178,6 @@ def restore():
                         "-U",
                         "999",
                     ]
-                    + command,
                 )
             subprocess.check_call(
                 [
@@ -192,10 +196,9 @@ def help():
     Usage: tmux-rr <COMMAND>
 
     Commands:
-      clear    TODO
-      save     TODO
-      replay   TODO
-      restore  TODO
+      clear     TODO
+      save      TODO
+      restore   TODO
     """).strip()
     )
     exit(1)
@@ -206,11 +209,13 @@ if __name__ == "__main__":
         case 1:
             help()
         case 2:
-            match sys.argv[-1]:
+            match sys.argv[1]:
                 case "clear":
                     clear()
                 case "save":
                     save()
+                case "replay":
+                    replay(sys.argv[2])
                 case "restore":
                     restore()
                 case _:
