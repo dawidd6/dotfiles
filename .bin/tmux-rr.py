@@ -110,7 +110,7 @@ def replay(pane_id):
 
 def restore():
     def command(pane_id):
-        return ["sh", "-c", f"{sys.argv[0]} replay {pane_id}; exec $SHELL -li"]
+        return ["sh", "-c", f"'{sys.argv[0]}' replay '{pane_id}'; exec \"$SHELL\" -li"]
 
     state = json.loads(STATE_FILE.read_text(encoding="utf-8"))
     for session_state in state["sessions"]:
@@ -214,11 +214,13 @@ if __name__ == "__main__":
                     clear()
                 case "save":
                     save()
-                case "replay":
-                    replay(sys.argv[2])
                 case "restore":
                     restore()
                 case _:
                     help()
+        case 3:
+            match sys.argv[1]:
+                case "replay":
+                    replay(sys.argv[2])
         case _:
             help()
