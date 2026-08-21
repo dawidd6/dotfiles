@@ -24,6 +24,8 @@ WINDOWS_FORMAT = {
     "window_name": "#{window_name}",
     "window_layout": "#{window_layout}",
     "window_panes": "#{window_panes}",
+    "window_width": "#{window_width}",
+    "window_height": "#{window_height}",
     "panes": [],
 }
 
@@ -110,7 +112,7 @@ def replay(pane_id):
 
 def restore():
     def command(pane_id):
-        return ["sh", "-c", f"'{sys.argv[0]}' replay '{pane_id}'; exec \"$SHELL\" -li"]
+        return ["sh", "-c", f"'{sys.argv[0]}' replay '{pane_id}' && exec \"$SHELL\" -li"]
 
     state = json.loads(STATE_FILE.read_text(encoding="utf-8"))
     for session_state in state["sessions"]:
@@ -132,6 +134,10 @@ def restore():
                             "tmux",
                             "new-session",
                             "-d",
+                            "-x",
+                            window_state["window_width"],
+                            "-y",
+                            window_state["window_height"],
                             "-s",
                             session_state["session_name"],
                             "-n",
@@ -139,7 +145,7 @@ def restore():
                             "-c",
                             pane_state["pane_current_path"],
                         ]
-                        + command(pane_state["pane_id"]),
+                        + ["sleep", "infinity"],
                     )
                 else:
                     subprocess.check_call(
@@ -154,7 +160,7 @@ def restore():
                             "-c",
                             pane_state["pane_current_path"],
                         ]
-                        + command(pane_state["pane_id"]),
+                        + ["sleep", "infinity"],
                     )
             for pane_state in window_state["panes"][1:]:
                 subprocess.check_call(
@@ -167,7 +173,7 @@ def restore():
                         "-c",
                         pane_state["pane_current_path"],
                     ]
-                    + command(pane_state["pane_id"]),
+                    + ["sleep", "infinity"],
                 )
                 subprocess.check_call(
                     [
@@ -188,6 +194,33 @@ def restore():
                     window_state["window_layout"],
                 ]
             )
+            for pane_state, pane_id in zip(
+                window_state["panes"],
+                subprocess.check_output(
+                    [
+                        "tmux",
+                        "list-panes",
+                        "-t",
+                        f"={session_state['session_name']}:{{end}}",
+                        "-F",
+                        "#{pane_id}",
+                    ],
+                    text=True,
+                ).splitlines(),
+                strict=True,
+            ):
+                subprocess.check_call(
+                    [
+                        "tmux",
+                        "respawn-pane",
+                        "-k",
+                        "-t",
+                        pane_id,
+                        "-c",
+                        pane_state["pane_current_path"],
+                    ]
+                    + command(pane_state["pane_id"])
+                )
 
 
 def help():
