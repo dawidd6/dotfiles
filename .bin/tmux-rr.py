@@ -13,6 +13,29 @@ STATE_FILE = (
     / "tmux-rr.json"
 )
 
+SESSIONS_FORMAT = {
+    "session_name": "#{session_name}",
+    "session_windows": "#{session_windows}",
+    "windows": [],
+}
+
+WINDOWS_FORMAT = {
+    "window_index": "#{window_index}",
+    "window_name": "#{window_name}",
+    "window_layout": "#{window_layout}",
+    "window_panes": "#{window_panes}",
+    "panes": [],
+}
+
+PANES_FORMAT = {
+    "pane_index": "#{pane_index}",
+    "pane_current_path": "#{pane_current_path}",
+    "pane_current_command": "#{pane_current_command}",
+    "pane_width": "#{pane_width}",
+    "pane_height": "#{pane_height}",
+    "command": "#{@rr-command}}",
+}
+
 
 def clear():
     STATE_FILE.unlink(missing_ok=True)
@@ -23,84 +46,68 @@ def save():
         "sessions": [
             json.loads(session)
             for session in subprocess.check_output(
-                [
-                    "tmux",
-                    "list-sessions",
-                    "-F",
-                    '{"session_name": "#{session_name}", "session_windows": #{session_windows}, "windows": []}',
-                ],
+                ["tmux", "list-sessions", "-F", json.dumps(SESSIONS_FORMAT)],
                 text=True,
             ).splitlines()
         ]
     }
-    for session in state["sessions"]:
-        session["windows"] = [
+    for session_state in state["sessions"]:
+        session_state["windows"] = [
             json.loads(window)
             for window in subprocess.check_output(
                 [
                     "tmux",
                     "list-windows",
                     "-t",
-                    f"={state['sessions'][-1]['session_name']}",
+                    f"={session_state['session_name']}",
                     "-F",
-                    '{"window_index": #{window_index}, "window_name": "#{window_name}", "window_layout": "#{window_layout}", "window_panes": {window_panes}, "panes": []}',
+                    json.dumps(WINDOWS_FORMAT),
                 ],
                 text=True,
             ).splitlines()
         ]
-        for window in session["windows"]:
-            panes = subprocess.check_output(
-                [
-                    "tmux",
-                    "list-panes",
-                    "-t",
-                    f"={session_state['session_name']}:{window_state['window_index']}",
-                    "-F",
-                    "#{pane_index}\t#{pane_current_path}\t#{pane_current_command}\t#{pane_width}\t#{pane_height}\t#{@rr-command}",
-                ],
-                text=True,
-            ).splitlines()
-            session_state["windows"].append(window_state)
-            for pane in panes:
-                (
-                    pane_index,
-                    pane_current_path,
-                    pane_current_command,
-                    pane_width,
-                    pane_height,
-                    command,
-                ) = pane.split("\t")
-                scrollback = base64.b64encode(
+        for window_state in session_state["windows"]:
+            window_state["panes"] = [
+                json.loads(pane)
+                for pane in subprocess.check_output(
+                    [
+                        "tmux",
+                        "list-panes",
+                        "-t",
+                        f"={session_state['session_name']}:{window_state['window_index']}",
+                        "-F",
+                        json.dumps(PANES_FORMAT),
+                    ],
+                    text=True,
+                ).splitlines()
+            ]
+            for pane_state in window_state["panes"]:
+                pane_state["scrollback"] = base64.b64encode(
                     subprocess.check_output(
                         [
                             "tmux",
                             "capture-pane",
                             "-t",
-                            f"={session_state['session_name']}:{window_state['window_index']}.{pane_index}",
+                            f"={session_state['session_name']}:{window_state['window_index']}.{pane_state['pane_index']}",
                             "-epJ",
                             "-S",
                             "0",
                         ]
                     )
                 ).decode()
-                pane_state = {
-                    "pane_index": pane_index,
-                    "pane_current_path": pane_current_path,
-                    "pane_current_command": pane_current_command,
-                    "pane_width": pane_width,
-                    "pane_height": pane_height,
-                    "command": command,
-                    "scrollback": scrollback,
-                }
-                window_state["panes"].append(pane_state)
     STATE_FILE.parent.mkdir(parents=True, exist_ok=True)
     STATE_FILE.touch(mode=0o600, exist_ok=True)
     STATE_FILE.chmod(0o600)
     STATE_FILE.write_text(json.dumps(state, indent=2), encoding="utf-8")
 
 
+def replay():
+
+
+
 def restore():
     state = json.loads(STATE_FILE.read_text(encoding="utf-8"))
+    command = ["sh", "-c", f"{sys.argv[0]} replay {pane_id}; exec $SHELL -li"]
     for session_state in state["sessions"]:
         for window_state in session_state["windows"]:
             for pane_state in window_state["panes"][:1]:
@@ -126,10 +133,8 @@ def restore():
                             window_state["window_name"],
                             "-c",
                             pane_state["pane_current_path"],
-                            "sh",
-                            "-c",
-                            "tmux wait-for tmux-rr; exec $SHELL -li",
-                        ],
+                        ]
+                        + command,
                     )
                 else:
                     subprocess.check_call(
@@ -143,10 +148,8 @@ def restore():
                             window_state["window_name"],
                             "-c",
                             pane_state["pane_current_path"],
-                            "sh",
-                            "-c",
-                            "tmux wait-for tmux-rr; exec $SHELL -li",
-                        ],
+                        ]
+                        + command,
                     )
             for pane_state in window_state["panes"][1:]:
                 subprocess.check_call(
@@ -158,10 +161,19 @@ def restore():
                         f"={session_state['session_name']}:{{end}}",
                         "-c",
                         pane_state["pane_current_path"],
-                        "sh",
-                        "-c",
-                        "tmux wait-for tmux-rr; exec $SHELL -li",
-                    ],
+                    ]
+                    + command,
+                )
+                subprocess.check_call(
+                    [
+                        "tmux",
+                        "resize-pane",
+                        "-t",
+                        f"={session_state['session_name']}:{{end}}",
+                        "-U",
+                        "999",
+                    ]
+                    + command,
                 )
             subprocess.check_call(
                 [
@@ -172,36 +184,6 @@ def restore():
                     window_state["window_layout"],
                 ]
             )
-            for pane_state, pane_tty in zip(
-                window_state["panes"],
-                subprocess.check_output(
-                    [
-                        "tmux",
-                        "list-panes",
-                        "-t",
-                        f"={session_state['session_name']}:{{end}}",
-                        "-F",
-                        "#{pane_tty}",
-                    ],
-                    text=True,
-                ).splitlines(),
-                strict=True,
-            ):
-                subprocess.check_call(
-                    [
-                        "stty",
-                        "-F",
-                        pane_tty,
-                        "cols",
-                        pane_state["pane_width"],
-                        "rows",
-                        pane_state["pane_height"],
-                    ]
-                )
-                Path(pane_tty).write_bytes(
-                    base64.b64decode(pane_state["scrollback"], validate=True)
-                )
-            subprocess.check_call(["tmux", "wait-for", "-S", "tmux-rr"])
 
 
 def help():
@@ -210,7 +192,9 @@ def help():
     Usage: tmux-rr <COMMAND>
 
     Commands:
+      clear    TODO
       save     TODO
+      replay   TODO
       restore  TODO
     """).strip()
     )
