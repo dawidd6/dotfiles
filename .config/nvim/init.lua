@@ -727,7 +727,6 @@ end
 
 do -- nvim-lspconfig
 	vim.pack.add({
-		{ src = "https://github.com/b0o/SchemaStore.nvim" },
 		{ src = "https://github.com/mosheavni/yaml-companion.nvim" },
 		{ src = "https://github.com/neovim/nvim-lspconfig" },
 	})
@@ -806,16 +805,6 @@ do -- nvim-lspconfig
 		ty = {},
 		yamlls = require("yaml-companion").setup({
 			lspconfig = {
-				settings = {
-					yaml = {
-						schemaStore = {
-							enable = false,
-							url = "",
-						},
-						schemaDownload = { enable = false },
-						schemas = require("schemastore").yaml.schemas(),
-					},
-				},
 				handlers = {
 					["yaml/schema/store/initialized"] = function(...)
 						local result = require("yaml-companion.lsp.handler").store_initialized(...)
