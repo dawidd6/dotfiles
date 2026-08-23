@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-exec podman run -it --rm --userns keep-id --pull newer \
+exec podman run -it --rm --userns keep-id \
     -v /home/linuxbrew/.linuxbrew/Homebrew/Library/Taps:/home/linuxbrew/.linuxbrew/Homebrew/Library/Taps \
     -e HOMEBREW_GITHUB_API_TOKEN="$(gh auth token)" \
     -e HOMEBREW_NO_INSTALL_FROM_API=1 \
@@ -11,5 +11,6 @@ exec podman run -it --rm --userns keep-id --pull newer \
     ghcr.io/homebrew/brew \
     bash -c '
     git config --global --add safe.directory /home/linuxbrew/.linuxbrew/Homebrew/Library/Taps/homebrew/homebrew-core
+    git config --global --add safe.directory /home/linuxbrew/.linuxbrew/Homebrew/Library/Taps/dawidd6/homebrew-tap
     exec bash -li
     '
