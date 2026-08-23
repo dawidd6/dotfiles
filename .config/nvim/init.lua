@@ -502,19 +502,6 @@ do -- lsp_signature.nvim
 	})
 end
 
--- TODO: is this needed?
--- do -- lspsaga.nvim
--- 	vim.pack.add({
--- 		{ src = "https://github.com/nvimdev/lspsaga.nvim" },
--- 	})
---
--- 	require("lspsaga").setup({
--- 		lightbulb = {
--- 			virtual_text = false,
--- 		},
--- 	})
--- end
-
 do -- lualine.nvim
 	vim.pack.add({
 		{ src = "https://github.com/nvim-lualine/lualine.nvim" },
@@ -857,8 +844,6 @@ end
 do -- nvim-treesitter
 	vim.pack.add({
 		{ src = "https://github.com/nvim-treesitter/nvim-treesitter" },
-		-- TODO: this is annoying?
-		-- { src = "https://github.com/nvim-treesitter/nvim-treesitter-context" },
 	})
 
 	require("nvim-treesitter").install({
