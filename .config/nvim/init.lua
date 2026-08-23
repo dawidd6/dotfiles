@@ -731,14 +731,6 @@ do -- nvim-lspconfig
 		{ src = "https://github.com/neovim/nvim-lspconfig" },
 	})
 
-	vim.diagnostic.config({
-		virtual_text = true,
-		virtual_lines = false,
-		severity_sort = true,
-		float = { source = true },
-		underline = { severity = { min = vim.diagnostic.severity.WARN } },
-	})
-
 	vim.filetype.add({
 		pattern = {
 			[".*/defaults/.*%.ya?ml"] = "yaml.ansible",
@@ -755,6 +747,20 @@ do -- nvim-lspconfig
 		extension = {
 			service = "systemd",
 		},
+	})
+
+	vim.diagnostic.config({
+		virtual_text = true,
+		virtual_lines = false,
+		severity_sort = true,
+		float = { source = true },
+		underline = { severity = { min = vim.diagnostic.severity.WARN } },
+	})
+
+	vim.api.nvim_create_autocmd({ "CursorHold" }, {
+		callback = function()
+			vim.diagnostic.open_float()
+		end,
 	})
 
 	vim.api.nvim_create_autocmd("LspAttach", {
