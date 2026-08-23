@@ -1,5 +1,9 @@
 {
   "plugins": {
+    "SchemaStore.nvim": {
+      "rev": "6bcdcb22f02b43b990b650b3ab40c65aa193c3f8",
+      "src": "https://github.com/b0o/SchemaStore.nvim"
+    },
     "auto-save.nvim": {
       "rev": "829df8181d7b4eac15cb7a594870db27aafa0714",
       "src": "https://github.com/dawidd6/auto-save.nvim",
