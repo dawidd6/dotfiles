@@ -168,8 +168,6 @@ do -- Keymaps
 
 	vim.keymap.set("n", "<CR>", "o<Esc>", { silent = true })
 
-	vim.keymap.set("n", "<Leader>R", ":restart<CR>", { silent = true })
-
 	vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { silent = true })
 end
 
