@@ -1,7 +1,3 @@
-# PATH
-# grep -qi microsoft /proc/sys/kernel/osrelease && fish_add_path --path --global --move /mnt/c/WINDOWS/system32 /mnt/c/WINDOWS
-fish_add_path --path --global --move "$HOME/.bin"
-
 # Exports
 export PAGER='less'
 export EDITOR='nvim'
@@ -25,6 +21,9 @@ status is-interactive && export LANG='C.UTF-8'
 fzf --fish | source
 starship init fish | source
 zoxide init fish --cmd cd | source
+
+# PATH
+fish_add_path --path --global --move "$HOME/.bin" "$HOMEBREW_PREFIX/opt/mise/bin"
 
 # Colors
 set fish_color_command green
