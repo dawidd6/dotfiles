@@ -98,6 +98,7 @@ abbr gpp 'git pull-preview'
 abbr gs 'git status -u'
 abbr gt 'git tag'
 abbr gu 'git restore --staged'
+abbr gn 'git nuke'
 abbr p podman
 abbr pp 'podman ps'
 abbr pi 'podman images'
