@@ -365,7 +365,7 @@ do -- conform.nvim
 	require("conform").setup({
 		format_on_save = function()
 			if not vim.g.disable_autoformat then
-				return { timeout_ms = 1000, lsp_format = "never" }
+				return { timeout_ms = 1000 }
 			end
 		end,
 		formatters_by_ft = {
@@ -374,6 +374,7 @@ do -- conform.nvim
 			go = { "gofumpt", "goimports" },
 			lua = { "stylua" },
 			python = { "ruff_fix", "ruff_format", "ruff_organize_imports" },
+			robot = { lsp_format = "prefer" },
 			-- TODO: uncomment when rubocop is in brew?
 			-- ruby = { "rubocop" },
 			sh = { "shfmt" },
@@ -742,9 +743,16 @@ do -- nvim-lspconfig
 		underline = { severity = { min = vim.diagnostic.severity.WARN } },
 	})
 
-	vim.api.nvim_create_autocmd({ "CursorHold" }, {
+	-- vim.api.nvim_create_autocmd({ "CursorHold" }, {
+	-- 	callback = function()
+	-- 		vim.diagnostic.open_float()
+	-- 	end,
+	-- })
+
+	vim.api.nvim_create_autocmd("FileType", {
+		pattern = "robot",
 		callback = function()
-			vim.diagnostic.open_float()
+			vim.bo.commentstring = "# %s"
 		end,
 	})
 
@@ -782,6 +790,7 @@ do -- nvim-lspconfig
 				},
 			},
 		},
+		robotcode = {},
 		solargraph = {},
 		systemd_lsp = {},
 		tsc = {
@@ -858,6 +867,7 @@ do -- nvim-treesitter
 		"javascript",
 		"json",
 		"python",
+		"robot",
 		"ruby",
 		"ssh_config",
 		"toml",
