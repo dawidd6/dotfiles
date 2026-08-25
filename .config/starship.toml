@@ -19,6 +19,9 @@ disabled = false
 [aws]
 disabled = true
 
+[mise]
+disabled = false
+
 [custom.dot]
 command = "echo '(dotfiles)'"
 when = ''' test "$GIT_DIR" = "$HOME/.dotfiles" '''
