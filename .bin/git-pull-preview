@@ -20,7 +20,7 @@ git lg --stat HEAD.."$REMOTE/$BRANCH"
 read -rp $'\e[96m\e[1m==> \e[39mDiff? [y/N]\e[0m ' SHOW_DIFF
 
 if [[ "$SHOW_DIFF" =~ ^[Yy]$ ]]; then
-    git diff HEAD.."$REMOTE/$BRANCH"
+    git diff HEAD..."$REMOTE/$BRANCH"
 fi
 
 read -rp $'\e[96m\e[1m==> \e[39mRebase? [y/N]\e[0m ' PULL
