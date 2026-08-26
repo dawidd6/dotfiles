@@ -3,7 +3,7 @@ brew "agg"
 brew "ansible"
 brew "ansible-language-server"
 brew "ansible-lint"
-brew "tmux", args: ["HEAD"]
+brew "tmux"
 brew "aoe"
 brew "asciinema"
 brew "bash-language-server"
