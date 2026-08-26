@@ -46,13 +46,6 @@ do -- Autocommands
 		desc = "Highlight text briefly after yanking",
 	})
 
-	vim.api.nvim_create_autocmd("TermOpen", {
-		callback = function()
-			vim.cmd.startinsert()
-		end,
-		desc = "Enter insert mode in terminal automatically",
-	})
-
 	vim.api.nvim_create_autocmd("VimResized", {
 		callback = function()
 			vim.cmd("tabdo wincmd =")
