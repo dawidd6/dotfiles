@@ -133,8 +133,8 @@ abbr bbd 'brew bundle -g dump --force --formula --cask'
 abbr bbc 'brew bundle -g check --verbose'
 abbr bbi 'brew bundle -g install'
 abbr t tmux
-abbr ta 'tmux -N attach'
-abbr tan 'tmux -N new-session -As main'
+abbr ta 'tmux attach'
+abbr tan 'tmux new-session -As main'
 abbr l ls
 abbr v nvim
 abbr vi nvim
@@ -148,10 +148,3 @@ alias ghub 'command gh'
 alias ls 'eza --group-directories-first --group --header --time-style long-iso --all'
 alias ll 'ls --long --icons always'
 alias lt 'll --tree --level 2 --ignore-glob .git'
-
-# Mux
-if status is-interactive && not set -q TMUX && not set -q VSCODE_INJECTION
-    # TODO: tmux-rr
-    # tmux -N new-session -As main
-    tmux new-session -As main
-end
