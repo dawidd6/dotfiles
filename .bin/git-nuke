@@ -2,9 +2,9 @@
 
 set -euo pipefail
 
-read -rp $'\e[96m\e[1m==> \e[39mClean? [y/N]\e[0m ' CLEAN
+read -rp $'\e[96m\e[1m==> \e[39mNuke unstaged changes? [y/N]\e[0m ' NUKE
 
-if [[ "$CLEAN" =~ ^[Yy]$ ]]; then
+if [[ "$NUKE" =~ ^[Yy]$ ]]; then
     root="$(git rev-parse --show-cdup)"
     root="${root:-.}"
     git clean -fd
