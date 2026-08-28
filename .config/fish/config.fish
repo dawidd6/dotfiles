@@ -1,3 +1,7 @@
+# Universals
+# @fish-lsp-disable-next-line 2003
+set -Ux MISE_FISH_AUTO_ACTIVATE 0
+
 # Exports
 export PAGER='less'
 export EDITOR='nvim'
@@ -16,8 +20,6 @@ status is-interactive && export LANG='C.UTF-8'
 
 # Sources
 /home/linuxbrew/.linuxbrew/bin/brew shellenv fish | source
-# TODO: tmux-rr
-# tmux-rr init-fish | source
 fzf --fish | source
 starship init fish | source
 zoxide init fish --cmd cd | source
