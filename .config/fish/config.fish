@@ -21,6 +21,7 @@ status is-interactive && export LANG='C.UTF-8'
 # Sources
 /home/linuxbrew/.linuxbrew/bin/brew shellenv fish | source
 fzf --fish | source
+status is-interactive && mise activate fish | source
 starship init fish | source
 zoxide init fish --cmd cd | source
 
