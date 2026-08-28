@@ -38,14 +38,14 @@ if ! grep -q /home/linuxbrew/.linuxbrew/bin/fish /etc/shells; then
 fi
 
 # Install podman
-if ! dpkg -s podman; then
+if ! dpkg -s podman &>/dev/null; then
     sudo apt install -y podman
 fi
 
 # If on desktop then do these
 if command -v gnome-shell &>/dev/null; then
     # Install incus
-    if ! dpkg -s incus; then
+    if ! dpkg -s incus &>/dev/null; then
         sudo apt install -y incus spice-client-gtk
         sudo incus admin init --auto
     fi
