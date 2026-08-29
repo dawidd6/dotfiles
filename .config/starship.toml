@@ -22,6 +22,6 @@ disabled = true
 [mise]
 disabled = false
 
-[custom.dot]
-command = "echo '(dotfiles)'"
-when = ''' test "$GIT_DIR" = "$HOME/.dotfiles" '''
+[env_var]
+variable = "DOTFILES"
+format = "[\\(dotfiles\\)](bold green) "
