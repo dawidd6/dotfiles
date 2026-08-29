@@ -1,7 +1,3 @@
-# Universals
-# @fish-lsp-disable-next-line 2003
-set -Ux MISE_FISH_AUTO_ACTIVATE 0
-
 # Exports
 export PAGER='less'
 export EDITOR='nvim'
@@ -21,7 +17,6 @@ status is-interactive && export LANG='C.UTF-8'
 # Sources
 /home/linuxbrew/.linuxbrew/bin/brew shellenv fish | source
 fzf --fish | source
-status is-interactive && mise activate fish | source
 starship init fish | source
 zoxide init fish --cmd cd | source
 
@@ -145,7 +140,7 @@ abbr vim nvim
 abbr cat bat
 
 # Aliases
-alias dot 'GIT_DIR="$HOME/.dotfiles" GIT_WORK_TREE="$HOME" fish -i -l -C cd'
+alias dot 'GIT_DIR="$HOME/.dotfiles" GIT_WORK_TREE="$HOME" DOTFILES=1 fish -i -l -C cd'
 alias rm 'command trash'
 alias ghub 'command gh'
 alias ls 'eza --group-directories-first --group --header --time-style long-iso --all'
