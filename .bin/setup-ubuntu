@@ -48,6 +48,7 @@ if command -v gnome-shell &>/dev/null; then
     if ! dpkg -s incus &>/dev/null; then
         sudo apt install -y incus spice-client-gtk
         sudo incus admin init --auto
+        sudo adduser "$USER" incus
     fi
 
     # Swap snapped software management with gnome software
