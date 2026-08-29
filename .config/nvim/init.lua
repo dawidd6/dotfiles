@@ -165,6 +165,8 @@ do -- Keymaps
 end
 
 do -- Options
+	vim.opt.guicursor:append("i:blinkwait700-blinkon500-blinkoff500")
+
 	vim.o.breakindent = true
 	vim.o.clipboard = "unnamedplus"
 	vim.o.cmdheight = vim.g.vscode and 1 or 0
@@ -182,6 +184,7 @@ do -- Options
 	vim.o.inccommand = "split"
 	vim.o.linebreak = true
 	vim.o.mouse = "a"
+	vim.o.mousescroll = "ver:1,hor:1"
 	vim.o.number = true
 	vim.o.scrolloff = 10
 	vim.o.sessionoptions = "buffers,curdir,folds,help,localoptions,tabpages,terminal,winpos,winsize"
@@ -252,19 +255,23 @@ do -- blink.cmp
 		cmdline = {
 			enabled = false,
 		},
+		signature = {
+			enabled = true,
+		},
 		fuzzy = {
 			implementation = "lua",
 		},
 		keymap = {
-			["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
+			["<C-space>"] = { "show", "show_documentation", "hide_documentation", "fallback" },
+			["<C-k>"] = { "show_signature", "hide_signature", "fallback" },
 			["<C-e>"] = { "hide", "fallback" },
 			["<CR>"] = { "accept", "fallback" },
 			["<Tab>"] = { "snippet_forward", "accept", "fallback" },
 			["<S-Tab>"] = { "snippet_backward", "fallback" },
 			["<Up>"] = { "select_prev", "fallback" },
 			["<Down>"] = { "select_next", "fallback" },
-			["<C-d>"] = { "scroll_documentation_down", "fallback" },
-			["<C-u>"] = { "scroll_documentation_up", "fallback" },
+			["<C-d>"] = { "scroll_documentation_down", "scroll_signature_down", "fallback" },
+			["<C-u>"] = { "scroll_documentation_up", "scroll_signature_up", "fallback" },
 		},
 	})
 
@@ -481,16 +488,6 @@ end
 do -- live-preview.nvim
 	vim.pack.add({
 		{ src = "https://github.com/brianhuster/live-preview.nvim" },
-	})
-end
-
-do -- lsp_signature.nvim
-	vim.pack.add({
-		{ src = "https://github.com/ray-x/lsp_signature.nvim" },
-	})
-
-	require("lsp_signature").setup({
-		hint_enable = false,
 	})
 end
 
