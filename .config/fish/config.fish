@@ -124,7 +124,7 @@ abbr ie 'incus exec -it $NAME -- sh'
 abbr is 'incus shell'
 abbr id 'incus delete'
 abbr il 'incus list'
-abbr ir 'incus launch --vm -c limits.cpu=4 -c limits.memory=4GiB -d root,size=50GiB $NAME images:'
+abbr ir 'incus launch --vm --console=vga -c limits.cpu=4 -c limits.memory=4GiB -d root,size=50GiB $NAME images:'
 abbr im 'incus config device add $NAME share disk source=$PWD path=$PWD'
 abbr ic 'incus console --type vga'
 abbr b brew
