@@ -51,20 +51,14 @@ if command -v gnome-shell &>/dev/null; then
         sudo adduser "$USER" incus
     fi
 
-    # Swap snapped software management with gnome software
-    if snap list snap-store &>/dev/null; then
-        sudo snap remove --purge snap-store
-    fi
-    if snap list firmware-updater &>/dev/null; then
-        sudo snap remove --purge firmware-updater
-    fi
-    if ! dpkg -s gnome-software &>/dev/null; then
-        sudo apt install -y gnome-software-plugin-deb gnome-software-plugin-snap gnome-software-plugin-flatpak gnome-software-plugin-fwupd
+    # Remove snap
+    if dpkg -s snapd &>/dev/null; then
+        sudo apt autopurge snapd
     fi
 
-    # Add flathub flatpak remote globally
-    if ! flatpak remotes --columns=name | grep -qx flathub; then
-        sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+    # Remove gamemode
+    if dpkg -s gamemode &>/dev/null; then
+        sudo apt autopurge gamemode
     fi
 
     # Fingerprint authentication everywhere with more tries
