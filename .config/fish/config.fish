@@ -152,3 +152,8 @@ alias ghub 'command gh'
 alias ls 'eza --group-directories-first --group --header --time-style long-iso --all'
 alias ll 'ls --long --icons always'
 alias lt 'll --tree --level 2 --ignore-glob .git'
+
+# Mux
+if status is-interactive && test -z "$TMUX"
+    tmux new-session -As main
+end
