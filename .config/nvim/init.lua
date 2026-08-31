@@ -182,7 +182,6 @@ do -- Options
 	vim.o.inccommand = "split"
 	vim.o.linebreak = true
 	vim.o.mouse = "a"
-	vim.o.mousescroll = "ver:1,hor:1"
 	vim.o.number = true
 	vim.o.scrolloff = 10
 	vim.o.sessionoptions = "buffers,curdir,folds,help,localoptions,tabpages,terminal,winpos,winsize"
