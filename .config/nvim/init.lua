@@ -237,9 +237,7 @@ do -- auto-session
 		{ src = "https://github.com/rmagatti/auto-session" },
 	})
 
-	require("auto-session").setup({
-		close_filetypes_on_save = { "neo-tree" },
-	})
+	require("auto-session").setup()
 end
 
 do -- blink.cmp
@@ -330,19 +328,7 @@ do -- bufferline.nvim
 		{ src = "https://github.com/akinsho/bufferline.nvim" },
 	})
 
-	require("bufferline").setup({
-		options = {
-			style_preset = require("bufferline").style_preset.minimal,
-			offsets = {
-				{
-					filetype = "neo-tree",
-					text = "Explorer",
-					highlight = "Directory",
-					separator = true,
-				},
-			},
-		},
-	})
+	require("bufferline").setup()
 end
 
 do -- conflict.nvim
