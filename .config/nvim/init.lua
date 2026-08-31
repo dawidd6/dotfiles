@@ -165,8 +165,6 @@ do -- Keymaps
 end
 
 do -- Options
-	vim.opt.guicursor:append("i:blinkwait700-blinkon500-blinkoff500")
-
 	vim.o.breakindent = true
 	vim.o.clipboard = "unnamedplus"
 	vim.o.cmdheight = vim.g.vscode and 1 or 0
