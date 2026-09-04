@@ -132,7 +132,10 @@ do -- Keymaps
 	vim.keymap.set("n", "cc", '"_cc', { silent = true })
 	vim.keymap.set("x", "c", '"_c', { silent = true })
 
-	vim.keymap.set("n", "<Esc>", ":nohlsearch<CR>", { silent = true })
+	vim.keymap.set("n", "<Esc>", function()
+		vim.snippet.stop()
+		vim.cmd("nohlsearch")
+	end, { silent = true })
 
 	vim.keymap.set("x", "<", "<gv", { silent = true })
 	vim.keymap.set("x", ">", ">gv", { silent = true })
@@ -213,21 +216,18 @@ end
 
 do -- auto-save
 	vim.pack.add({
-		-- TODO: switch back when https://github.com/okuuva/auto-save.nvim/pull/83 is merged
-		-- { src = "https://github.com/okuuva/auto-save.nvim" },
-		{ src = "https://github.com/dawidd6/auto-save.nvim", version = "nested" },
+		{ src = "https://github.com/okuuva/auto-save.nvim" },
 	})
 
 	require("auto-save").setup({
 		trigger_events = {
-			immediate_save = { "BufLeave", "FocusLost", "VimSuspend" },
-			cancel_deferred_save = {},
+			immediate_save = { "FocusLost", "WinLeave", "BufLeave", "VimSuspend" },
 			defer_save = {},
+			cancel_deferred_save = {},
 		},
 		condition = function(buf)
 			return vim.api.nvim_get_mode().mode == "n" and vim.bo[buf].buftype == ""
 		end,
-		nested = true,
 	})
 end
 
