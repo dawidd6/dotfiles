@@ -247,6 +247,15 @@ do -- blink.cmp
 	})
 
 	require("blink.cmp").setup({
+		completion = {
+			accept = {
+				auto_brackets = {
+					override_brackets_for_filetypes = {
+						robot = { " ", "" },
+					},
+				},
+			},
+		},
 		cmdline = {
 			enabled = false,
 		},
@@ -672,6 +681,7 @@ do -- nvim-lint
 
 	lint.linters_by_ft = {
 		dockerfile = { "hadolint" },
+		go = { "golangcilint" },
 		sh = { "shellcheck" },
 	}
 
@@ -722,6 +732,7 @@ do -- nvim-lspconfig
 	-- 	end,
 	-- })
 
+	-- TODO: remove once https://github.com/neovim/neovim/pull/41704 is released
 	vim.api.nvim_create_autocmd("FileType", {
 		pattern = "robot",
 		callback = function()
@@ -921,15 +932,6 @@ do -- telescope.nvim
 		extensions = {
 			["live_grep_args"] = {
 				auto_quoting = true,
-			},
-			["ui-select"] = {
-				previewer = require("telescope.previewers").new_buffer_previewer({
-					define_preview = function(self, entry)
-						local item = entry.value.text
-						local text = type(item) == "table" and item.preview and item.preview.text or ""
-						vim.api.nvim_buf_set_lines(self.state.bufnr, 0, -1, false, vim.split(text, "\n"))
-					end,
-				}),
 			},
 		},
 	})
