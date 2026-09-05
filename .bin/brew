@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+function stamp() {
+    find "$HOMEBREW_PREFIX/Cellar" "$HOMEBREW_PREFIX/Caskroom" -mindepth 1 -maxdepth 1 -type d -printf '%f %T@\n' | sort
+}
+
+function print() {
+    printf "\033[90m==> \033[0m\033[1m%s\033[0m\n" "$*"
+}
+
+before="$(stamp)"
+
+if "$HOMEBREW_PREFIX/bin/brew" "$@"; then
+    :
+else
+    exit $?
+fi
+
+after="$(stamp)"
+
+if test "$before" = "$after"; then
+    exit 0
+fi
+
+print 'Generating mandb cache'
+mandb -qu "$HOMEBREW_PREFIX/share/man"
+
+print 'Dumping bundle state'
+"$HOMEBREW_PREFIX/bin/brew" bundle -g dump --force --formula --cask
