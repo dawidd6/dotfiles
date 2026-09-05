@@ -1,0 +1,6 @@
+name: dotfiles
+root: '~'
+
+windows:
+  - shell: dot
+  - llm: copilot
