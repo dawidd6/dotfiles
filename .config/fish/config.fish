@@ -17,7 +17,7 @@ export FZF_DEFAULT_OPTS='--reverse'
 export NVIM_LOG_FILE='/dev/null'
 export RIPGREP_CONFIG_PATH="$HOME/.config/rg/config"
 export GOPATH="$HOME/.cache/go"
-status is-interactive && export LANG='C.UTF-8'
+export LANG='C.UTF-8'
 
 # Sources
 /home/linuxbrew/.linuxbrew/bin/brew shellenv fish | source
