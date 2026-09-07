@@ -1,0 +1,47 @@
+[window]
+decorations = "None" # Full
+startup_mode = "Maximized"
+
+[font]
+normal = { family = "UbuntuMono Nerd Font", style = "Regular" }
+size = 13
+
+[cursor]
+style = { shape = "Beam" }
+
+[mouse]
+hide_when_typing = true
+
+
+# Matches Ghostty's bundled "Adwaita Dark" theme.
+[colors.primary]
+background = "#1d1d20"
+foreground = "#ffffff"
+
+[colors.cursor]
+cursor = "#ffffff"
+text = "#1d1d20"
+
+[colors.selection]
+background = "#ffffff"
+text = "#5e5c64"
+
+[colors.normal]
+black = "#241f31"
+red = "#c01c28"
+green = "#2ec27e"
+yellow = "#f5c211"
+blue = "#1e78e4"
+magenta = "#9841bb"
+cyan = "#0ab9dc"
+white = "#c0bfbc"
+
+[colors.bright]
+black = "#5e5c64"
+red = "#ed333b"
+green = "#57e389"
+yellow = "#f8e45c"
+blue = "#51a1ff"
+magenta = "#c061cb"
+cyan = "#4fd2fd"
+white = "#f6f5f4"
