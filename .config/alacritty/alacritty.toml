@@ -15,8 +15,9 @@ hide_when_typing = true
 
 
 # Matches Ghostty's bundled "Adwaita Dark" theme.
+# With a "Dark+" theme twist (background).
 [colors.primary]
-background = "#1d1d20"
+background = "#1e1e1e" # "#1d1d20"
 foreground = "#ffffff"
 
 [colors.cursor]
