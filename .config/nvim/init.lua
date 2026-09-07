@@ -190,6 +190,8 @@ do -- Keymaps
 end
 
 do -- Options
+	vim.g.clipboard = "osc52"
+
 	vim.o.breakindent = true
 	vim.o.clipboard = "unnamedplus"
 	vim.o.cmdheight = vim.g.vscode and 1 or 0
