@@ -240,12 +240,15 @@ end
 
 do -- auto-save
 	vim.pack.add({
-		{ src = "https://github.com/okuuva/auto-save.nvim" },
+		-- TODO: switch back when https://github.com/okuuva/auto-save.nvim/pull/83 is merged
+		-- { src = "https://github.com/okuuva/auto-save.nvim" },
+		{ src = "https://github.com/dawidd6/auto-save.nvim", version = "nested" },
 	})
 
 	require("auto-save").setup({
+		nested = true,
 		trigger_events = {
-			immediate_save = { "FocusLost", "WinLeave", "BufLeave", "VimSuspend" },
+			immediate_save = { "BufLeave", "WinLeave", "FocusLost", "VimSuspend" },
 			defer_save = {},
 			cancel_deferred_save = {},
 		},
