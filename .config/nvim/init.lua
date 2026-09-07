@@ -99,15 +99,7 @@ do -- Commands
 	end, { desc = "Reindent with spaces" })
 
 	vim.api.nvim_create_user_command("PackSync", function()
-		vim.pack.update(nil, { target = "lockfile", force = true })
-	end, { desc = "Sync plugins" })
-
-	vim.api.nvim_create_user_command("PackUpdate", function()
-		vim.pack.update()
-	end, { desc = "Update plugins" })
-
-	vim.api.nvim_create_user_command("PackClean", function()
-		local inactive = vim.iter(vim.pack.get())
+		local inactive = vim.iter(vim.pack.get(nil, { info = false }))
 			:filter(function(x)
 				return not x.active
 			end)
@@ -118,7 +110,37 @@ do -- Commands
 		if #inactive > 0 then
 			vim.pack.del(inactive)
 		end
-	end, { desc = "Clean plugins" })
+		for _, plugin in ipairs(vim.pack.get(nil, { info = false })) do
+			local result = vim.system({
+				"git",
+				"-C",
+				plugin.path,
+				"remote",
+				"set-url",
+				"origin",
+				plugin.spec.src,
+			}):wait()
+			assert(result.code == 0, result.stderr)
+		end
+		vim.pack.update(nil, { target = "lockfile", force = true })
+	end, { desc = "Sync plugins" })
+
+	vim.api.nvim_create_user_command("PackUpdate", function(opts)
+		vim.pack.update(#opts.fargs > 0 and opts.fargs or nil)
+	end, {
+		desc = "Update plugins",
+		nargs = "*",
+		complete = function(arglead)
+			return vim.iter(vim.pack.get(nil, { info = false }))
+				:map(function(plugin)
+					return plugin.spec.name
+				end)
+				:filter(function(name)
+					return vim.startswith(name, arglead)
+				end)
+				:totable()
+		end,
+	})
 end
 
 do -- Keymaps
