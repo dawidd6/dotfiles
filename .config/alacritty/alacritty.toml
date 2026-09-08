@@ -13,6 +13,8 @@ style = { shape = "Beam" }
 [mouse]
 hide_when_typing = true
 
+[terminal]
+osc52 = "CopyPaste"
 
 # Matches Ghostty's bundled "Adwaita Dark" theme.
 # With a "Dark+" theme twist (background).
