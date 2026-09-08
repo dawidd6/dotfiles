@@ -142,13 +142,10 @@ abbr tan 'tmux new-session -As main'
 abbr l ls
 abbr v nvim
 abbr vi nvim
-abbr vim nvim
-abbr cat bat
 
 # Aliases
 alias dot 'GIT_DIR="$HOME/.dotfiles" GIT_WORK_TREE="$HOME" DOTFILES=1 fish -i -l -C cd'
-alias rm 'command trash'
-alias ghub 'command gh'
+alias rm trash
 alias ls 'eza --group-directories-first --group --header --time-style long-iso --all'
 alias ll 'ls --long --icons always'
 alias lt 'll --tree --level 2 --ignore-glob .git'
