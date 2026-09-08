@@ -72,6 +72,7 @@ abbr R 'exec fish'
 abbr r reset
 abbr e exit
 abbr g git
+abbr ea 'nvim ~/.config/alacritty/alacritty.toml'
 abbr eb 'nvim --cmd "cd ~/.bin"'
 abbr ef 'nvim ~/.config/fish/config.fish'
 abbr eg 'nvim ~/.config/git/config'
