@@ -110,18 +110,6 @@ do -- Commands
 		if #inactive > 0 then
 			vim.pack.del(inactive)
 		end
-		for _, plugin in ipairs(vim.pack.get(nil, { info = false })) do
-			local result = vim.system({
-				"git",
-				"-C",
-				plugin.path,
-				"remote",
-				"set-url",
-				"origin",
-				plugin.spec.src,
-			}):wait()
-			assert(result.code == 0, result.stderr)
-		end
 		vim.pack.update(nil, { target = "lockfile", force = true })
 	end, { desc = "Sync plugins" })
 
