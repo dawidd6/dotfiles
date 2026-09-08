@@ -63,6 +63,7 @@ brew "tig"
 brew "tmux", args: ["HEAD"]
 brew "tmux-fingers"
 brew "tmuxinator"
+brew "tombi"
 brew "trash-cli"
 brew "tree-sitter-cli"
 brew "ty"
