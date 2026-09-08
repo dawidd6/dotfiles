@@ -77,6 +77,7 @@ if command -v gnome-shell &>/dev/null; then
     fi
 
     # Tweak gnome desktop settings
+    gsettings set org.gnome.desktop.interface gtk-theme 'Yaru-dark'
     gsettings set org.gnome.desktop.interface font-name 'Ubuntu 11'
     gsettings set org.gnome.desktop.interface monospace-font-name 'UbuntuMono Nerd Font 13'
     gsettings set org.gnome.desktop.interface document-font-name 'Sans 11'
