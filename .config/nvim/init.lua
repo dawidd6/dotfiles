@@ -21,7 +21,7 @@ do -- Autocommands
 	})
 
 	vim.api.nvim_create_autocmd("FileType", {
-		pattern = { "help", "man", "qf", "git", "scratch", "checkhealth", "lspinfo", "gitsigns-blame" },
+		pattern = { "help", "man", "qf", "git", "scratch", "gitsigns-blame" },
 		callback = function(args)
 			vim.keymap.set("n", "q", ":q<CR>", { buffer = args.buf, silent = true })
 		end,
@@ -792,6 +792,7 @@ do -- nvim-lspconfig
 		robotcode = {},
 		solargraph = {},
 		systemd_lsp = {},
+		tombi = {},
 		tsc = {
 			cmd = { "tsc", "--lsp", "--stdio" },
 		},
