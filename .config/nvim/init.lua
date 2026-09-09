@@ -178,22 +178,6 @@ do -- Keymaps
 end
 
 do -- Options
-	-- wl-clipboard steals focus on copy/paste causing auto-save to kick in
-	if vim.fn.has("wsl") == 0 then
-		vim.g.clipboard = {
-			name = "xsel",
-			cache_enabled = true,
-			copy = {
-				["+"] = { "xsel", "--nodetach", "-i", "-b" },
-				["*"] = { "xsel", "--nodetach", "-i", "-p" },
-			},
-			paste = {
-				["+"] = { "xsel", "-o", "-b" },
-				["*"] = { "xsel", "-o", "-p" },
-			},
-		}
-	end
-
 	vim.o.breakindent = true
 	vim.o.clipboard = "unnamedplus"
 	vim.o.cmdheight = vim.g.vscode and 1 or 0
