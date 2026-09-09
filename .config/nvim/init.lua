@@ -178,7 +178,9 @@ do -- Keymaps
 end
 
 do -- Options
-	vim.g.clipboard = "osc52"
+	if vim.fn.has("wsl") == 0 then
+		vim.g.clipboard = "osc52"
+	end
 
 	vim.o.breakindent = true
 	vim.o.clipboard = "unnamedplus"
