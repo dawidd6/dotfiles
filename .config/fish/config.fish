@@ -40,15 +40,15 @@ set fish_color_quote yellow
 function fish_greeting
 end
 function cdt --description 'Tere based cd command'
-    set --local result (command tere $argv)
+    set --local result (tere $argv)
     test -n "$result" && cd -- "$result"
 end
 function cdr --description 'Git root based cd command'
-    set --local result (command git rev-parse --show-toplevel)
+    set --local result (git rev-parse --show-toplevel)
     test -n "$result" && cd -- "$result"
 end
 function cdp --description 'Clipboard based cd command'
-    set --local result (command wl-paste -n)
+    set --local result (xsel --clipboard --output)
     test -n "$result" && cd -- "$result"
 end
 
