@@ -65,8 +65,8 @@ bind \e\[1\;5C nextd-or-forward-word
 bind \e\[1\;5D prevd-or-backward-word
 
 # Abbrs
-abbr C wl-copy
-abbr P wl-paste
+abbr C 'wl-copy -n'
+abbr P 'wl-paste -n'
 abbr D 'diff-so-fancy | less --tabs 4 -RFX'
 abbr R 'exec fish'
 abbr r reset
