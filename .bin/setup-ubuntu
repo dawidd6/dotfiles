@@ -37,9 +37,22 @@ if ! grep -q /home/linuxbrew/.linuxbrew/bin/fish /etc/shells; then
     sudo chsh --shell /home/linuxbrew/.linuxbrew/bin/fish "$(whoami)"
 fi
 
-# Install podman
-if ! dpkg -s podman &>/dev/null; then
-    sudo apt install -y podman
+# Install uidmap for containers
+if ! dpkg -s uidmap &>/dev/null; then
+    sudo apt install -y uidmap
+fi
+
+# Fix apparmor for brewed podman
+if ! test -f /etc/apparmor.d/podman-brew; then
+    sudo tee /etc/apparmor.d/podman-brew <<EOF
+abi <abi/5.0>,
+include <tunables/global>
+
+profile podman-brew /home/linuxbrew/.linuxbrew/Cellar/podman/*/bin/podman flags=(unconfined) {
+    userns,
+    @{exec_path} mr,
+}
+EOF
 fi
 
 # If on desktop then do these
