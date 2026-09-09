@@ -8,4 +8,4 @@ git lg --color "$@" |
 		--bind 'space:execute(git show --color {+1} | diff-so-fancy | less --tabs 4 -R)' \
 		--bind 'ctrl-p:toggle-preview' \
 		--preview 'git show --color {1} | diff-so-fancy' |
-	tr '\0' ' ' | wl-copy -n
+	tr '\0' ' ' | xsel --clipboard
