@@ -695,7 +695,17 @@ do -- nvim-lint
 		sh = { "shellcheck" },
 	}
 
-	vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave", "TextChanged" }, {
+	-- while typing, only linters that read the buffer over stdin see unsaved
+	-- changes; disk-based ones (golangci-lint) would just re-lint the old file
+	vim.api.nvim_create_autocmd({ "InsertLeave", "TextChanged" }, {
+		callback = function()
+			if vim.bo.modifiable then
+				lint.try_lint(nil, { filter = "stdin" })
+			end
+		end,
+	})
+
+	vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost" }, {
 		callback = function()
 			if vim.bo.modifiable then
 				lint.try_lint()
