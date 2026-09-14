@@ -207,6 +207,8 @@ do -- Options
 	vim.o.smartcase = true
 	vim.o.smartindent = true
 	vim.o.smoothscroll = true
+	vim.o.spell = true
+	vim.o.spelllang = "en_us"
 	vim.o.splitbelow = true
 	vim.o.splitright = true
 	vim.o.swapfile = false
