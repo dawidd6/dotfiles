@@ -179,7 +179,9 @@ end
 
 do -- Options
 	vim.o.breakindent = true
-	vim.o.clipboard = "unnamedplus"
+	vim.schedule(function()
+		vim.o.clipboard = "unnamedplus"
+	end)
 	vim.o.cmdheight = vim.g.vscode and 1 or 0
 	vim.o.confirm = true
 	vim.o.cursorline = true
