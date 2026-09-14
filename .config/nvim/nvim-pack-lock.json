@@ -60,13 +60,13 @@
       "rev": "bc377971a38d13f73b7c0f6693d7ed121a59bc98",
       "src": "https://github.com/nxhung2304/lastplace.nvim"
     },
-    "live-preview.nvim": {
-      "rev": "a30e54e51e7480d7060c8c8185f2a963ad3518b4",
-      "src": "https://github.com/brianhuster/live-preview.nvim"
-    },
     "lualine.nvim": {
       "rev": "221ce6b2d999187044529f49da6554a92f740a96",
       "src": "https://github.com/nvim-lualine/lualine.nvim"
+    },
+    "markview.nvim": {
+      "rev": "5d9fc2aa6dd1c2fbdc7a68bc79b300e9967b21ff",
+      "src": "https://github.com/OXY2DEV/markview.nvim"
     },
     "neo-tree.nvim": {
       "rev": "47a8e3e58d5b8d478d3342c8bdad067a01b59336",
@@ -123,10 +123,6 @@
     "sidekick.nvim": {
       "rev": "208e1c5b8170c01fd1d07df0139322a76479b235",
       "src": "https://github.com/folke/sidekick.nvim"
-    },
-    "simple-zoom.nvim": {
-      "rev": "318aef7c894aab4bc90dfbe82fee01b130540afd",
-      "src": "https://github.com/fasterius/simple-zoom.nvim"
     },
     "telescope-live-grep-args.nvim": {
       "rev": "53e9df55b3651dd7cf77e172f1e8c9a17407acca",

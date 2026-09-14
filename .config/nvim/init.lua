@@ -504,12 +504,6 @@ do -- lastplace.nvim
 	require("lastplace").setup()
 end
 
-do -- live-preview.nvim
-	vim.pack.add({
-		{ src = "https://github.com/brianhuster/live-preview.nvim" },
-	})
-end
-
 do -- lualine.nvim
 	vim.pack.add({
 		{ src = "https://github.com/nvim-lualine/lualine.nvim" },
@@ -570,6 +564,12 @@ do -- lualine.nvim
 			lualine_y = {},
 			lualine_z = {},
 		},
+	})
+end
+
+do -- markview.nvim
+	vim.pack.add({
+		{ src = "https://github.com/OXY2DEV/markview.nvim" },
 	})
 end
 
