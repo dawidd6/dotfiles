@@ -175,6 +175,19 @@ do -- Keymaps
 	vim.keymap.set("n", "<CR>", "o<Esc>", { silent = true })
 
 	vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { silent = true })
+
+	vim.keymap.set("n", "<C-w>z", function()
+		if vim.t.window_zoomed then
+			local pos = vim.api.nvim_win_get_cursor(0)
+			vim.o.showtabline = 1
+			vim.cmd("tabclose")
+			pcall(vim.api.nvim_win_set_cursor, 0, pos)
+		else
+			vim.cmd("tab split")
+			vim.o.showtabline = 0
+			vim.t.window_zoomed = "y"
+		end
+	end, { silent = true, desc = "Zoom window" })
 end
 
 do -- Options
@@ -542,7 +555,7 @@ do -- lualine.nvim
 						return "󰊓 Z"
 					end,
 					cond = function()
-						return vim.t["simple-zoom"] == "zoom"
+						return vim.t.window_zoomed == "y"
 					end,
 				},
 			},
@@ -596,18 +609,6 @@ do -- sidekick.nvim
 	})
 
 	vim.keymap.set({ "n", "x" }, "ga", "<cmd>Sidekick cli prompt<CR>", { silent = true, desc = "Go ask AI" })
-end
-
-do -- simple-zoom.nvim
-	vim.pack.add({
-		{ src = "https://github.com/fasterius/simple-zoom.nvim" },
-	})
-
-	require("simple-zoom").setup({
-		hide_tabline = true,
-	})
-
-	vim.keymap.set("n", "<C-w>z", "<cmd>SimpleZoomToggle<CR>", { silent = true, desc = "Zoom window" })
 end
 
 do -- neo-tree.nvim
