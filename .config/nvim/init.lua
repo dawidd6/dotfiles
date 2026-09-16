@@ -643,6 +643,7 @@ do -- neo-tree.nvim
 				hide_dotfiles = false,
 				hide_gitignored = false,
 				hide_ignored = false,
+				never_show = { ".git" },
 			},
 		},
 		window = {
