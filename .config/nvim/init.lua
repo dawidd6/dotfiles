@@ -678,7 +678,8 @@ end
 
 do -- nvim-early-retirement
 	vim.pack.add({
-		{ src = "https://github.com/chrisgrieser/nvim-early-retirement" },
+		-- TODO: fork until https://github.com/chrisgrieser/nvim-early-retirement/pull/29 is merged
+		{ src = "https://github.com/dawidd6/nvim-early-retirement", version = "fix/new-file-not-deleted" },
 	})
 
 	require("early-retirement").setup({
