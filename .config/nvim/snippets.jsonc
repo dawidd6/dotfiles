@@ -1,16 +1,11 @@
 // VSCode snippet format, one file for all languages.
 // "scope": comma-separated filetypes; omit it for a global snippet.
 {
-	"date": {
-		"prefix": "date",
-		"body": "$CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE",
+	"shebang": {
+		"prefix": "shebang",
+		"body": "#!/usr/bin/env ${1:bash}",
 	},
-	"require": {
-		"scope": "lua",
-		"prefix": "req",
-		"body": "local ${1:name} = require(\"${1}\")",
-	},
-	"if err": {
+	"iferr": {
 		"scope": "go",
 		"prefix": "iferr",
 		"body": ["if err != nil {", "\treturn ${1:err}", "}"],
