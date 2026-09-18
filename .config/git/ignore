@@ -3,3 +3,5 @@
 *.iml
 result
 .ansible
+
+**/.claude/settings.local.json
