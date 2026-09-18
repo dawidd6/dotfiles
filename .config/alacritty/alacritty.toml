@@ -18,7 +18,7 @@ hide_when_typing = true
 # With a "Dark+" theme twist (background).
 [colors.primary]
 background = "#1e1e1e" # "#1d1d20"
-foreground = "#ffffff"
+foreground = "#eeeeee"
 
 [colors.cursor]
 cursor = "#ffffff"
