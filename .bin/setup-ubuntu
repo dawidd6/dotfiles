@@ -63,9 +63,9 @@ if command -v gnome-shell &>/dev/null; then
     fi
 
     # Fingerprint authentication everywhere with more tries
-    if ! grep -q 'max-tries=5' /etc/pam.d/common-auth; then
+    if ! grep -q 'pam_fprintd.so max-tries=5 timeout=300$' /etc/pam.d/common-auth; then
         sudo pam-auth-update --enable fprintd
-        sudo sed -i 's/max-tries=1/max-tries=5/' /etc/pam.d/common-auth
+        sudo sed -i 's/pam_fprintd.so.*/pam_fprintd.so max-tries=5 timeout=300/' /etc/pam.d/common-auth
     fi
 
     # Match gdm scaling to user session settings
