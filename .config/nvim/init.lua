@@ -143,7 +143,6 @@ do -- Keymaps
 	vim.keymap.set("x", "c", '"_c', { silent = true })
 
 	vim.keymap.set("n", "<Esc>", function()
-		vim.snippet.stop()
 		vim.cmd("nohlsearch")
 	end, { silent = true })
 
@@ -271,9 +270,20 @@ do -- blink.cmp
 		{ src = "https://github.com/saghen/blink.lib" },
 		{ src = "https://github.com/saghen/blink.cmp" },
 		{ src = "https://github.com/rafamadriz/friendly-snippets" },
+		{ src = "https://github.com/L3MON4D3/LuaSnip" },
 	})
 
+	require("luasnip").setup({
+		-- drop the snippet session once the cursor leaves it, so <Tab> can't jump back in
+		region_check_events = "CursorMoved",
+	})
+	require("luasnip.loaders.from_vscode").lazy_load()
+	require("luasnip.loaders.from_vscode").load_standalone({ path = "./snippets.jsonc" })
+
 	require("blink.cmp").setup({
+		snippets = {
+			preset = "luasnip",
+		},
 		completion = {
 			accept = {
 				auto_brackets = {
