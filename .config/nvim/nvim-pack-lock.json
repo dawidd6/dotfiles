@@ -85,9 +85,8 @@
       "src": "https://github.com/windwp/nvim-autopairs"
     },
     "nvim-early-retirement": {
-      "rev": "8867f5cba4d6452b4ea2d405a3f482d673181ef4",
-      "src": "https://github.com/dawidd6/nvim-early-retirement",
-      "version": "'fix/new-file-not-deleted'"
+      "rev": "d73ddf7b8b776aa917947142873a05f733103757",
+      "src": "https://github.com/chrisgrieser/nvim-early-retirement"
     },
     "nvim-lint": {
       "rev": "3d55c8f67c6ae5c15e1042571e107c7a3d5c5f4e",
