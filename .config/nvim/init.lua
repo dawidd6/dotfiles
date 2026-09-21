@@ -934,6 +934,7 @@ do -- telescope.nvim
 
 	local telescope = require("telescope")
 	local telescope_actions = require("telescope.actions")
+	local telescope_layout_actions = require("telescope.actions.layout")
 
 	telescope.setup({
 		defaults = {
@@ -943,11 +944,13 @@ do -- telescope.nvim
 			},
 			mappings = {
 				i = {
+					["<C-p>"] = telescope_layout_actions.toggle_preview,
 					["<C-q>"] = telescope_actions.smart_send_to_qflist + telescope_actions.open_qflist,
 					["<C-Up>"] = telescope_actions.cycle_history_prev,
 					["<C-Down>"] = telescope_actions.cycle_history_next,
 				},
 				n = {
+					["<C-p>"] = telescope_layout_actions.toggle_preview,
 					["<C-q>"] = telescope_actions.smart_send_to_qflist + telescope_actions.open_qflist,
 					["<C-Up>"] = telescope_actions.cycle_history_prev,
 					["<C-Down>"] = telescope_actions.cycle_history_next,
