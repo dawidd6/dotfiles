@@ -3,4 +3,4 @@ root: '~'
 
 windows:
   - shell: dot
-  - llm: copilot
+  - llm: claude

@@ -31,7 +31,7 @@ root: /home/linuxbrew/.linuxbrew/Homebrew/Library/Taps/homebrew/homebrew-core
 # attach: false
 
 windows:
+  - shell: ''
   - container: brew-container
   - editor: nvim
-  - llm: codex
-  - shell: ''
+  - llm: claude
