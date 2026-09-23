@@ -146,6 +146,7 @@ abbr vi nvim
 
 # Aliases
 alias dot 'GIT_DIR="$HOME/.dotfiles" GIT_WORK_TREE="$HOME" DOTFILES=1 fish -i -l -C cd'
+alias kubectl kubecolor
 alias rm trash
 alias ls 'eza --group-directories-first --group --header --time-style long-iso --all'
 alias ll 'ls --long --icons always'
