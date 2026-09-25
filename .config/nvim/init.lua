@@ -143,7 +143,7 @@ do -- Keymaps
 	vim.keymap.set("x", ">", ">gv", { silent = true })
 
 	vim.keymap.set("n", "<Bs>", ":b#<CR>", { silent = true })
-	vim.keymap.set("n", "<Del>", ":bnext | bdelete #<CR>", { silent = true })
+	vim.keymap.set("n", "<Del>", ":bdelete", { silent = true })
 	vim.keymap.set("n", "<Tab>", ":bnext<CR>", { silent = true })
 	vim.keymap.set("n", "<S-Tab>", ":bprev<CR>", { silent = true })
 
