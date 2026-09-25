@@ -9,6 +9,7 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_STATE_HOME="$HOME/.local/state"
+export HOMEBREW_BAT=1
 export HOMEBREW_BUNDLE_NO_DESCRIBE=1
 export HOMEBREW_BUNDLE_NO_UPGRADE=1
 export HOMEBREW_FORCE_VENDOR_RUBY=1
