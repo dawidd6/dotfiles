@@ -13,42 +13,40 @@ style = { shape = "Beam" }
 [mouse]
 hide_when_typing = true
 
-
-# Matches Ghostty's bundled "Adwaita Dark" theme.
-# With a "Dark+" theme twist (background).
-[colors.primary]
-background = "#1e1e1e" # "#1d1d20"
-foreground = "#eeeeee"
-
-[colors.cursor]
-cursor = "#ffffff"
-text = "#1d1d20"
-
-[colors.selection]
-# background = "#ffffff"
-text = "#5e5c64"
-
-[colors.normal]
-black = "#241f31"
-red = "#c01c28"
-green = "#2ec27e"
-yellow = "#f5c211"
-blue = "#1e78e4"
-magenta = "#9841bb"
-cyan = "#0ab9dc"
-white = "#c0bfbc"
-
-[colors.bright]
-black = "#5e5c64"
-red = "#ed333b"
-green = "#57e389"
-yellow = "#f8e45c"
-blue = "#51a1ff"
-magenta = "#c061cb"
-cyan = "#4fd2fd"
-white = "#f6f5f4"
-
 [[keyboard.bindings]]
 key = "Return"
 mods = "Shift"
 chars = "\u001B\r"
+
+# VS Code "Dark+" / Windows Terminal "Dark+".
+[colors.primary]
+background = "#1e1e1e"
+foreground = "#eeeeee"
+
+[colors.cursor]
+cursor = "#ffffff"
+text = "#1e1e1e"
+
+[colors.selection]
+background = "#264f78"
+text = "CellForeground"
+
+[colors.normal]
+black = "#000000"
+red = "#cd3131"
+green = "#0dbc79"
+yellow = "#e5e510"
+blue = "#2472c8"
+magenta = "#bc3fbc"
+cyan = "#11a8cd"
+white = "#e5e5e5"
+
+[colors.bright]
+black = "#666666"
+red = "#f14c4c"
+green = "#23d18b"
+yellow = "#f5f543"
+blue = "#3b8eea"
+magenta = "#d670d6"
+cyan = "#29b8db"
+white = "#e5e5e5"
