@@ -1,0 +1,53 @@
+plugins:
+  flux-reconcile-gitrepository:
+    shortCut: Shift-R
+    description: Reconcile Flux GitRepository
+    scopes:
+      - gitrepositories
+    command: flux
+    args:
+      - reconcile
+      - source
+      - git
+      - $NAME
+      - --namespace
+      - $NAMESPACE
+      - --context
+      - $CONTEXT
+    confirm: true
+    dangerous: true
+    background: false
+  flux-reconcile-kustomization:
+    shortCut: Shift-R
+    description: Reconcile Flux Kustomization
+    scopes:
+      - kustomizations
+    command: flux
+    args:
+      - reconcile
+      - kustomization
+      - $NAME
+      - --namespace
+      - $NAMESPACE
+      - --context
+      - $CONTEXT
+    confirm: true
+    dangerous: true
+    background: false
+  flux-reconcile-helmrelease:
+    shortCut: Shift-R
+    description: Reconcile Flux HelmRelease
+    scopes:
+      - helmreleases
+    command: flux
+    args:
+      - reconcile
+      - helmrelease
+      - $NAME
+      - --namespace
+      - $NAMESPACE
+      - --context
+      - $CONTEXT
+    confirm: true
+    dangerous: true
+    background: false

@@ -1,0 +1,13 @@
+aliases:
+  dp: deployments
+  jo: jobs
+  po: pods
+  sv: services
+  ss: secrets
+
+  gr: gitrepositories
+  ku: kustomizations
+  hr: helmreleases
+  hr-: helmreleases /!True
+
+  hp: httproutes

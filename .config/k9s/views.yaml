@@ -1,0 +1,23 @@
+views:
+  kustomize.toolkit.fluxcd.io/v1/kustomizations:
+    sortColumn: NAMESPACE:asc
+    columns:
+      - NAMESPACE
+      - NAME
+      - READY
+      - SUSPENDED:.spec.suspend
+      - STATUS
+      - AGE
+
+  helm.toolkit.fluxcd.io/v2/helmreleases:
+    sortColumn: NAMESPACE:asc
+    columns:
+      - NAMESPACE
+      - NAME
+      - READY
+      - STATUS
+      - CHART:.spec.chart.spec.chart
+      - VERSION:.spec.chart.spec.version
+      - REVISION:.status.lastAttemptedRevision
+      - SUSPENDED:.spec.suspend
+      - AGE
