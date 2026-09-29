@@ -135,6 +135,7 @@ abbr b brew
 abbr bi 'brew install'
 abbr br 'brew uninstall'
 abbr bl 'brew list'
+abbr bo 'brew outdated'
 abbr bu 'brew upgrade'
 abbr bb 'brew bundle -g cleanup && brew bundle -g install'
 abbr t tmux
