@@ -1,0 +1,14 @@
+[keys.navigation]
+back = ["esc", "q"]
+close = []
+
+[keys.table]
+back = ["esc", "q"]
+exit = []
+
+[keys.help]
+close = "?"
+
+[skin]
+name = "monokai"
+background = true
