@@ -97,7 +97,7 @@
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-sops": {
-      "rev": "9ec17e3ef85abe8c072ab1846e57b01fffb99c8e",
+      "rev": "d9366b41426c966458bc8ba08a314a9573ee2d29",
       "src": "https://github.com/dawidd6/nvim-sops"
     },
     "nvim-surround": {
