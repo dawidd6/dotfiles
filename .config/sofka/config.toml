@@ -11,4 +11,4 @@ close = "?"
 
 [skin]
 name = "monokai"
-background = true
+background = false
