@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+old="$1"
+new="$2"
+shift 2
+
+esc() { printf '%s' "$1" | sed 's/[&|\\]/\\&/g'; }
+
+old_sed=$(esc "$old")
+new_sed=$(esc "$new")
+
+git grep --textconv -l -e "$old" -- "$@" |
+  while IFS= read -r file; do
+    if stat="$(sops filestatus "$file" 2>/dev/null)"; then
+      if test "$(jq -re .encrypted <<<"$stat")" = "true"; then
+        SOPS_EDITOR="sed -i 's|$old_sed|$new_sed|g'" sops "$file"
+        continue
+      fi
+    fi
+    sed -i "s|$old_sed|$new_sed|g" "$file"
+  done
