@@ -7,8 +7,8 @@ padding = { x = 2, y = 1 }
 normal = { family = "UbuntuMono Nerd Font", style = "Regular" }
 size = 13
 
-[cursor]
-style = { shape = "Beam" }
+# [cursor]
+# style = { shape = "Beam" }
 
 [mouse]
 hide_when_typing = true
