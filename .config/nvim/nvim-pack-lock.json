@@ -64,13 +64,13 @@
       "rev": "bf2e2cf05246dd707aebfdabe67e606e5392931d",
       "src": "https://github.com/nxhung2304/lastplace.nvim"
     },
+    "live-preview.nvim": {
+      "rev": "a6307fa340ed7c0d96f5c567afc8c991aad94ce0",
+      "src": "https://github.com/brianhuster/live-preview.nvim"
+    },
     "lualine.nvim": {
       "rev": "221ce6b2d999187044529f49da6554a92f740a96",
       "src": "https://github.com/nvim-lualine/lualine.nvim"
-    },
-    "markview.nvim": {
-      "rev": "190bb227c9d3eb4451b81fa16ea3d2efde2d67c5",
-      "src": "https://github.com/OXY2DEV/markview.nvim"
     },
     "neo-tree.nvim": {
       "rev": "162f9b953a692b559afe43e38d60afee81e8e79b",

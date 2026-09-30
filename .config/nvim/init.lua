@@ -99,6 +99,18 @@ do -- Commands
 	end, { desc = "Reindent with spaces" })
 
 	vim.api.nvim_create_user_command("PackSync", function()
+		local inactive = vim.iter(vim.pack.get(nil, { info = false }))
+			:filter(function(x)
+				return not x.active
+			end)
+			:map(function(x)
+				return x.spec.name
+			end)
+			:totable()
+		if #inactive > 0 then
+			vim.pack.del(inactive)
+		end
+		vim.pack.update(nil, { target = "lockfile", force = true })
 		vim.fs.rm(vim.fs.joinpath(vim.fn.stdpath("data"), "site", "pack", "core", "opt"), {
 			recursive = true,
 			force = true,
@@ -507,6 +519,12 @@ do -- lastplace.nvim
 	require("lastplace").setup()
 end
 
+do -- live-preview.nvim
+	vim.pack.add({
+		{ src = "https://github.com/brianhuster/live-preview.nvim" },
+	})
+end
+
 do -- lualine.nvim
 	vim.pack.add({
 		{ src = "https://github.com/nvim-lualine/lualine.nvim" },
@@ -567,12 +585,6 @@ do -- lualine.nvim
 			lualine_y = {},
 			lualine_z = {},
 		},
-	})
-end
-
-do -- markview.nvim
-	vim.pack.add({
-		{ src = "https://github.com/OXY2DEV/markview.nvim" },
 	})
 end
 
