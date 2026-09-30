@@ -1,6 +1,6 @@
 vim.loader.enable()
 
-require("vim._core.ui2").enable()
+require("vim._core.ui2").enable({ msg = { targets = "msg" } })
 
 do -- Autocommands
 	vim.api.nvim_create_autocmd("BufWinEnter", {
