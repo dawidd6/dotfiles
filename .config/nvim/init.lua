@@ -753,6 +753,12 @@ do -- nvim-lspconfig
 			[".*/roles/.*/handlers/.*%.ya?ml"] = "yaml.ansible",
 			[".*/tasks/.*%.ya?ml"] = "yaml.ansible",
 			[".*/molecule/.*%.ya?ml"] = "yaml.ansible",
+			[".*/templates/.*%.ya?ml"] = function(path)
+				if vim.fs.root(path, "Chart.yaml") then
+					return "helm"
+				end
+			end,
+			[".*/templates/.*%.tpl"] = "helm",
 		},
 		extension = {
 			service = "systemd",
@@ -797,6 +803,7 @@ do -- nvim-lspconfig
 		dockerls = {},
 		fish_lsp = {},
 		gopls = {},
+		helm_ls = {},
 		lua_ls = {
 			settings = {
 				Lua = {
@@ -890,6 +897,7 @@ do -- nvim-treesitter
 		"gitcommit",
 		"gitignore",
 		"go",
+		"helm",
 		"javascript",
 		"json",
 		"python",
