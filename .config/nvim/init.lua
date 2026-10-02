@@ -21,7 +21,7 @@ do -- Autocommands
 	})
 
 	vim.api.nvim_create_autocmd("FileType", {
-		pattern = { "help", "man", "qf", "git", "scratch", "gitsigns-blame" },
+		pattern = { "help", "man", "qf", "git", "scratch", "gitsigns-blame", "grug-far" },
 		callback = function(args)
 			vim.keymap.set("n", "q", ":q<CR>", { buffer = args.buf, silent = true })
 		end,
