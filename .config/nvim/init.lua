@@ -474,6 +474,18 @@ do -- gitsigns.nvim
 	vim.keymap.set("n", "]h", "<cmd>Gitsigns next_hunk<CR>", { silent = true, desc = "Next git hunk" })
 end
 
+do -- grug-far.nvim
+	vim.pack.add({
+		{ src = "https://github.com/MagicDuck/grug-far.nvim" },
+	})
+
+	require("grug-far").setup({ transient = true })
+
+	vim.keymap.set("n", "<Leader><Leader>", function()
+		require("grug-far").open({ prefills = { paths = vim.fn.expand("%") } })
+	end, { silent = true, desc = "Search and replace" })
+end
+
 do -- guess-indent.nvim
 	vim.pack.add({
 		{ src = "https://github.com/NMAC427/guess-indent.nvim" },
@@ -588,18 +600,6 @@ do -- lualine.nvim
 	})
 end
 
-do -- quicker.nvim
-	vim.pack.add({
-		{ src = "https://github.com/stevearc/quicker.nvim" },
-	})
-
-	require("quicker").setup({
-		keys = {
-			{ "<CR>", "<CR>", desc = "Open quickfix item" },
-		},
-	})
-end
-
 do -- rainbow-delimiters.nvim
 	vim.pack.add({
 		{ src = "https://github.com/hiphish/rainbow-delimiters.nvim" },
@@ -645,8 +645,7 @@ do -- neo-tree.nvim
 			show_unloaded = true,
 		},
 		filesystem = {
-			-- TODO: is this needed?
-			-- use_libuv_file_watcher = true,
+			use_libuv_file_watcher = true,
 			find_by_full_path_words = true,
 			follow_current_file = {
 				enabled = true,
@@ -662,7 +661,7 @@ do -- neo-tree.nvim
 			},
 		},
 		window = {
-			position = "float",
+			width = "50%",
 			mappings = {
 				["C"] = "",
 				["z"] = "",
@@ -670,6 +669,14 @@ do -- neo-tree.nvim
 				["W"] = "close_all_nodes",
 				["e"] = "expand_all_subnodes",
 				["E"] = "expand_all_nodes",
+			},
+		},
+		event_handlers = {
+			{
+				event = "file_open_requested",
+				handler = function()
+					require("neo-tree.command").execute({ action = "close" })
+				end,
 			},
 		},
 	})
@@ -680,7 +687,9 @@ do -- neo-tree.nvim
 		end,
 	})
 
-	vim.keymap.set("n", "<Space>", "<cmd>Neotree last dir=.<CR>", { silent = true, desc = "Explore neo tree" })
+	vim.keymap.set("n", "<Space>", function()
+		require("neo-tree.command").execute({ source = "last", dir = vim.fn.getcwd() })
+	end, { desc = "Explore neo tree" })
 end
 
 do -- nvim-autopairs
@@ -934,121 +943,6 @@ do -- todo-comments.nvim
 	})
 
 	require("todo-comments").setup()
-end
-
-do -- telescope.nvim
-	vim.pack.add({
-		{ src = "https://github.com/nvim-lua/plenary.nvim" },
-		{ src = "https://github.com/nvim-telescope/telescope.nvim" },
-		{ src = "https://github.com/nvim-telescope/telescope-live-grep-args.nvim" },
-		{ src = "https://github.com/nvim-telescope/telescope-ui-select.nvim" },
-		{ src = "https://github.com/debugloop/telescope-undo.nvim" },
-	})
-
-	local telescope = require("telescope")
-	local telescope_actions = require("telescope.actions")
-	local telescope_layout_actions = require("telescope.actions.layout")
-
-	telescope.setup({
-		defaults = {
-			sorting_strategy = "ascending",
-			layout_config = {
-				prompt_position = "top",
-			},
-			mappings = {
-				i = {
-					["<C-p>"] = telescope_layout_actions.toggle_preview,
-					["<C-q>"] = telescope_actions.smart_send_to_qflist + telescope_actions.open_qflist,
-					["<C-Up>"] = telescope_actions.cycle_history_prev,
-					["<C-Down>"] = telescope_actions.cycle_history_next,
-				},
-				n = {
-					["<C-p>"] = telescope_layout_actions.toggle_preview,
-					["<C-q>"] = telescope_actions.smart_send_to_qflist + telescope_actions.open_qflist,
-					["<C-Up>"] = telescope_actions.cycle_history_prev,
-					["<C-Down>"] = telescope_actions.cycle_history_next,
-				},
-			},
-		},
-		pickers = {
-			buffers = {
-				mappings = {
-					i = {
-						["<Del>"] = telescope_actions.delete_buffer,
-					},
-					n = {
-						["<Del>"] = telescope_actions.delete_buffer,
-					},
-				},
-			},
-		},
-		extensions = {
-			["live_grep_args"] = {
-				auto_quoting = true,
-			},
-		},
-	})
-
-	require("telescope").load_extension("live_grep_args")
-	require("telescope").load_extension("ui-select")
-	require("telescope").load_extension("todo-comments")
-	require("telescope").load_extension("undo")
-
-	vim.keymap.set(
-		"n",
-		"<Leader>/",
-		"<cmd>Telescope current_buffer_fuzzy_find<CR>",
-		{ silent = true, desc = "Search current buffer" }
-	)
-	vim.keymap.set("n", "<Leader><Leader>", "<cmd>Telescope resume<CR>", { silent = true, desc = "Resume last search" })
-
-	vim.keymap.set("n", "<Leader>b", "<cmd>Telescope buffers<CR>", { silent = true, desc = "Search open buffers" })
-	vim.keymap.set(
-		"n",
-		"<Leader>d",
-		"<cmd>Telescope diagnostics<CR>",
-		{ silent = true, desc = "Search current diagnostics" }
-	)
-	vim.keymap.set(
-		"n",
-		"<Leader>f",
-		"<cmd>Telescope find_files<CR>",
-		{ silent = true, desc = "Search workspace files" }
-	)
-	vim.keymap.set("n", "<Leader>g", "<cmd>Telescope git_files<CR>", { silent = true, desc = "Search git files" })
-	vim.keymap.set(
-		"n",
-		"<Leader>h",
-		"<cmd>Telescope search_history<CR>",
-		{ silent = true, desc = "Search searching history" }
-	)
-	vim.keymap.set("n", "<Leader>j", "<cmd>Telescope jumplist<CR>", { silent = true, desc = "Search jump list" })
-	vim.keymap.set("n", "<Leader>o", "<cmd>Telescope oldfiles<CR>", { silent = true, desc = "Search old files" })
-	vim.keymap.set(
-		"n",
-		"<Leader>r",
-		"<cmd>Telescope registers<CR>",
-		{ silent = true, desc = "Search clipboard registers" }
-	)
-	vim.keymap.set(
-		"n",
-		"<Leader>s",
-		"<cmd>Telescope live_grep_args<CR>",
-		{ silent = true, desc = "Search given string" }
-	)
-	vim.keymap.set(
-		{ "n", "x" },
-		"<Leader>w",
-		"<cmd>Telescope grep_string<CR>",
-		{ silent = true, desc = "Search selected word" }
-	)
-	vim.keymap.set(
-		"n",
-		"<Leader>t",
-		"<cmd>Telescope todo-comments<CR>",
-		{ silent = true, desc = "Search TODO comments" }
-	)
-	vim.keymap.set("n", "<Leader>u", "<cmd>Telescope undo<CR>", { silent = true, desc = "Search undo tree" })
 end
 
 do -- vscode.nvim
