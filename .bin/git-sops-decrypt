@@ -2,7 +2,6 @@
 
 set -euo pipefail
 
-if ! sops decrypt "$1" 2>/dev/null; then
+if ! sops decrypt --ignore-mac "$1" 2>/dev/null; then
     cat "$1"
 fi
-
