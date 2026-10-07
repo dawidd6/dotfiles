@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+author="$(git config user.email)"
+
+read -ra commits <<<"$(git log-preview --author "$author" --since '1 month' --no-merges)"
+
+git show --no-textconv "${commits[@]}" >commits.diff
+trap 'rm commits.diff' EXIT
+
+read -rp $'\e[96m\e[1m==> \e[39mCreate zip archive? [y/N]\e[0m ' ZIP
+
+if [[ "$ZIP" =~ ^[Yy]$ ]]; then
+    zip KUP.zip commits.diff
+fi
