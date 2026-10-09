@@ -61,7 +61,7 @@ brew "tealdeer"
 brew "tere"
 brew "tig"
 brew "tinyproxy"
-brew "tmux", args: ["HEAD"]
+brew "tmux"
 brew "tmux-fingers"
 brew "tmuxinator"
 brew "trash-cli"
