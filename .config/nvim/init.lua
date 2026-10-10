@@ -486,9 +486,11 @@ do -- grug-far.nvim
 	})
 
 	vim.keymap.set("n", "<Leader><Leader>", function()
+		require("neo-tree.command").execute({ action = "close" })
 		require("grug-far").open()
 	end, { silent = true, desc = "Search and replace workspace" })
 	vim.keymap.set("n", "<Leader>/", function()
+		require("neo-tree.command").execute({ action = "close" })
 		require("grug-far").open({ prefills = { paths = vim.fn.expand("%") } })
 	end, { silent = true, desc = "Search and replace current" })
 end
@@ -695,6 +697,13 @@ do -- neo-tree.nvim
 	})
 
 	vim.keymap.set("n", "<Space>", function()
+		for _, win in ipairs(vim.api.nvim_tabpage_list_wins(0)) do
+			if vim.bo[vim.api.nvim_win_get_buf(win)].filetype == "grug-far" then
+				if not pcall(vim.api.nvim_win_close, win, false) then
+					vim.api.nvim_win_call(win, vim.cmd.enew) -- last window: swap in empty buffer
+				end
+			end
+		end
 		require("neo-tree.command").execute({ source = "last", dir = vim.fn.getcwd() })
 	end, { desc = "Explore neo tree" })
 end
