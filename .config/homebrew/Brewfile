@@ -1,4 +1,5 @@
 brew "agg"
+brew "argocd"
 brew "asciinema"
 brew "bat"
 brew "boring"
