@@ -1,4 +1,5 @@
 brew "agg"
+brew "ansible-language-server"
 brew "argocd"
 brew "asciinema"
 brew "bat"
