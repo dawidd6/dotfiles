@@ -828,7 +828,17 @@ do -- nvim-lspconfig
 		dockerls = {},
 		fish_lsp = {},
 		gopls = {},
-		helm_ls = {},
+		helm_ls = {
+			settings = {
+				["helm-ls"] = {
+					yamlls = {
+						config = {
+							validate = false, -- templates aren't YAML until Helm renders them; Helm's own lint still reports real errors
+						},
+					},
+				},
+			},
+		},
 		lua_ls = {
 			settings = {
 				Lua = {
