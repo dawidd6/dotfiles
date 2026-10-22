@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+kubectl get "$(kubectl api-resources --verbs=list -o name --namespaced | paste -sd, -)" --ignore-not-found -n "$1"
