@@ -784,6 +784,7 @@ do -- nvim-lspconfig
 				end
 			end,
 			[".*/templates/.*%.tpl"] = "helm",
+			[".*%.ya?ml%.gotmpl"] = "helm", -- e.g. helmfile.yaml.gotmpl: YAML with Go templates, like a chart's templates
 		},
 		extension = {
 			service = "systemd",
@@ -935,6 +936,7 @@ do -- nvim-treesitter
 		"helm",
 		"javascript",
 		"json",
+		"jsonnet",
 		"python",
 		"robot",
 		"ruby",
