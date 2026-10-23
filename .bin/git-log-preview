@@ -4,8 +4,8 @@ set -euo pipefail
 
 git lg --color "$@" |
 	fzf --ansi --exact --no-sort --multi --print0 --accept-nth 1 \
-		--header 'Tab - select commits, Enter - copy commits, Space - show commit, C-p - toggle preview' \
-		--bind 'space:execute(git show --color {+1} | diff-so-fancy | less --tabs 4 -R)' \
+		--header 'Tab - select commits, Enter - copy commits, C-s - show commit, C-p - toggle preview' \
+		--bind 'ctrl-s:execute(git show --color {+1} | diff-so-fancy | less --tabs 4 -R)' \
 		--bind 'ctrl-p:toggle-preview' \
 		--preview 'git show --color {1} | diff-so-fancy' |
 	tr '\0' ' '
