@@ -486,11 +486,8 @@ do -- grug-far.nvim
 	})
 
 	vim.keymap.set("n", "<Leader><Leader>", function()
-		require("grug-far").open()
-	end, { silent = true, desc = "Search and replace workspace" })
-	vim.keymap.set("n", "<Leader>/", function()
 		require("grug-far").open({ prefills = { paths = vim.fn.expand("%") } })
-	end, { silent = true, desc = "Search and replace current" })
+	end, { silent = true, desc = "Search and replace" })
 end
 
 do -- guess-indent.nvim
