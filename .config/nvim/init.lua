@@ -409,8 +409,6 @@ do -- conform.nvim
 			lua = { "stylua" },
 			python = { "ruff_fix", "ruff_format", "ruff_organize_imports" },
 			robot = { lsp_format = "prefer" },
-			-- TODO: uncomment when rubocop is in brew?
-			-- ruby = { "rubocop" },
 			sh = { "shfmt" },
 			["_"] = { "trim_whitespace", "trim_newlines" },
 		},
@@ -645,8 +643,6 @@ do -- neo-tree.nvim
 			show_unloaded = true,
 		},
 		filesystem = {
-			-- TODO: is this needed?
-			-- use_libuv_file_watcher = true,
 			find_by_full_path_words = true,
 			follow_current_file = {
 				enabled = true,
@@ -774,13 +770,7 @@ do -- nvim-lspconfig
 		underline = { severity = { min = vim.diagnostic.severity.WARN } },
 	})
 
-	-- vim.api.nvim_create_autocmd({ "CursorHold" }, {
-	-- 	callback = function()
-	-- 		vim.diagnostic.open_float()
-	-- 	end,
-	-- })
-
-	-- TODO: remove once https://github.com/neovim/neovim/pull/41704 is released
+	-- TODO: remove once https://github.com/neovim/neovim/commit/31626aed411147fd213a36fc5a6e0f1418b025d6 is released
 	vim.api.nvim_create_autocmd("FileType", {
 		pattern = "robot",
 		callback = function()
