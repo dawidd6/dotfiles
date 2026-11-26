@@ -479,11 +479,7 @@ do -- grug-far.nvim
 		{ src = "https://github.com/MagicDuck/grug-far.nvim" },
 	})
 
-	require("grug-far").setup({
-		transient = true,
-		windowCreationCommand = "topleft vsplit",
-		openTargetWindow = { preferredLocation = "right" },
-	})
+	require("grug-far").setup({ transient = true })
 
 	vim.keymap.set("n", "<Leader><Leader>", function()
 		require("grug-far").open({ prefills = { paths = vim.fn.expand("%") } })
